@@ -36,6 +36,10 @@ For more information, refer to [Install WinUI 3 Preview](https://docs.microsoft.
 
 5. Build the demo project. All the required NuGet packages will be automatically retrieved by Visual Studio.
 
+## Demos Application
+
+[DevExpress WinUI Demos App](https://demos.devexpress.com/winui/)
+
 ## Documentation
 
 [DevExpress WinUI Controls](https://docs.devexpress.com/WinUI/402541/winui-controls)
