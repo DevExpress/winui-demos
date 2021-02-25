@@ -16,13 +16,13 @@ For more information, refer to [Install WinUI 3 Preview](https://docs.microsoft.
 
 1. Open the demo project.
 
-2. Use your DevExpress credentials to log into nuget.devexpress.com. Obtain your NuGet feed URL and copy it to the clipboard.
+2. Use your DevExpress credentials to log into [nuget.devexpress.com](nuget.devexpress.com). Obtain your **NuGet Feed URL** and copy it to the clipboard.
 
     <img src="./images/winui-nuget-gallery.png">
 
 3. In Visual Studio, select **Tools -> NuGet Package Manager -> Package Manager Settings**.
 
-    !<img src="./images/package-manager-settings.png">
+    <img src="./images/package-manager-settings.png">
 
 4. Navigate to **NuGet Package Manager -> Package Sources**. Click the plus sign at the top right corner to add a new NuGet package source. Use the following package settings:
 
@@ -30,7 +30,7 @@ For more information, refer to [Install WinUI 3 Preview](https://docs.microsoft.
 
     * Source - the obtained NuGet Feed URL (`https://nuget.devexpress.com/{your feed authorization key}/api`)
 
-    Make sure the nuget.org package source is also enabled. Click **OK**.
+    Make sure the **nuget.org** package source is also enabled. Click **OK**.
     
     <img src="./images/package-sources.png">
 
