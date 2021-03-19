@@ -1,0 +1,74 @@
+﻿<c:DemoModuleView
+    x:Class="EditorsDemo.MasksModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EditorsDemo"
+    xmlns:c="using:FeatureDemo.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    OptionsPaneWidth="350">
+
+    <Grid>
+        <NavigationView x:Name="navigation" 
+                        PaneDisplayMode="Top"
+                        IsSettingsVisible="False"
+                        ItemInvoked="pivot_ItemInvoked"
+                        IsBackButtonVisible="Collapsed"
+                        HorizontalAlignment="Center" MaxWidth="658">
+            <NavigationView.Resources>
+                <Style TargetType="NavigationViewItem">
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="FontFamily" Value="XamlAutoFontFamily"/>
+                    <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
+                </Style>
+            </NavigationView.Resources>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Numeric" IsSelected="True">
+                    <NavigationViewItem.Tag>
+                        <local:NumericMaskModule/>
+                    </NavigationViewItem.Tag>
+                </NavigationViewItem>
+                <NavigationViewItem Content="DateTime">
+                    <NavigationViewItem.Tag>
+                        <local:DateTimeMaskModule/>
+                    </NavigationViewItem.Tag>
+                </NavigationViewItem>
+                <NavigationViewItem Content="TimeSpan">
+                    <NavigationViewItem.Tag>
+                        <local:TimeSpanMaskModule/>
+                    </NavigationViewItem.Tag>
+                </NavigationViewItem>
+                <NavigationViewItem Content="RegEx">
+                    <NavigationViewItem.Tag>
+                        <local:RegExMaskModule/>
+                    </NavigationViewItem.Tag>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Simple">
+                    <NavigationViewItem.Tag>
+                        <local:SimpleMaskModule/>
+                    </NavigationViewItem.Tag>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Regular">
+                    <NavigationViewItem.Tag>
+                        <local:RegularMaskModule/>
+                    </NavigationViewItem.Tag>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <ContentPresenter Content="{x:Bind SelectedModule, Mode=OneWay}"
+                                  VerticalAlignment="Center"/>
+            </Grid>
+        </NavigationView>
+    </Grid>
+    <c:DemoModuleView.Options>
+        <ContentPresenter Content="{x:Bind SelectedModule.Options, Mode=OneWay}"/>
+    </c:DemoModuleView.Options>
+
+</c:DemoModuleView>

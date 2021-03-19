@@ -1,0 +1,147 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Core="using:DevExpress.WinUI.Core">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="CodeViewItemBackgroundBrush" Color="#00000000" Core:ColorKey.Id="CodeViewColors.ItemBackground.Default" />
+            <SolidColorBrush x:Key="CodeViewItemBackgroundHoverBrush" Color="#FF888888" Core:ColorKey.Id="CodeViewColors.ItemBackgroundHovered.Default" />
+            <SolidColorBrush x:Key="CodeViewItemBackgroundSelectedBrush" Color="#FF545454" Core:ColorKey.Id="CodeViewColors.ItemBackgroundSelected.Default" />
+            <SolidColorBrush x:Key="CodeViewItemBackgroundSelectedDisabledBrush" Color="#FF8A8A8A" Core:ColorKey.Id="CodeViewColors.ItemBackgroundSelectedDisabled.Default" />
+            <SolidColorBrush x:Key="CodeViewItemBackgroundSelectedHoverBrush" Color="#FF484848" Core:ColorKey.Id="CodeViewColors.ItemBackgroundSelectedHovered.Default" />
+            <SolidColorBrush x:Key="CodeViewItemBackgroundPressedBrush" Color="#FF545454" Core:ColorKey.Id="CodeViewColors.ItemBackgroundPressed.Default" />
+            <SolidColorBrush x:Key="CodeViewItemForegroundBrush" Color="#FF181818" Core:ColorKey.Id="CodeViewColors.ItemForeground.Default" />
+            <SolidColorBrush x:Key="CodeViewItemForegroundHoverBrush" Color="#FF181818" Core:ColorKey.Id="CodeViewColors.ItemForegroundHovered.Default" />
+            <SolidColorBrush x:Key="CodeViewItemForegroundDisabledBrush" Color="#FF696969" Core:ColorKey.Id="CodeViewColors.ItemForegroundDisabled.Default" />
+            <SolidColorBrush x:Key="CodeViewItemForegroundPressedBrush" Color="#FFB0B0B0" Core:ColorKey.Id="CodeViewColors.ItemForegroundPressed.Default" />
+            <SolidColorBrush x:Key="CodeViewItemForegroundSelectedBrush" Color="#FFB0B0B0" Core:ColorKey.Id="CodeViewColors.ItemForegroundSelected.Default" />
+            <SolidColorBrush x:Key="CodeViewItemForegroundSelectedDisabledBrush" Color="#FF696969" Core:ColorKey.Id="CodeViewColors.ItemForegroundSelectedDisabled.Default" />
+
+            <SolidColorBrush x:Key="CodeViewForegroundPressedBrush" Color="#FF181818" Core:ColorKey.Id="CodeViewColors.ForegroundPressed.Default" />
+            <SolidColorBrush x:Key="CodeViewForegroundDisabledBrush" Color="#66000000" Core:ColorKey.Id="CodeViewColors.ForegroundDisabled.Default" />
+            <SolidColorBrush x:Key="CodeViewBorderBrush" Color="#FF3E3E3E" Core:ColorKey.Id="CodeViewColors.BorderBrush.Default" />
+            <SolidColorBrush x:Key="CodeViewBorderHoverBrush" Color="#FF181818" Core:ColorKey.Id="CodeViewColors.BorderBrushHovered.Default" />
+            <SolidColorBrush x:Key="CodeViewBorderPressedBrush" Color="#FF181818" Core:ColorKey.Id="CodeViewColors.BorderBrushPressed.Default" />
+            <SolidColorBrush x:Key="CodeViewBorderDisabledBrush" Color="#26000000" Core:ColorKey.Id="CodeViewColors.BorderBrushDisabled.Default" />
+            <SolidColorBrush x:Key="CodeViewBackgroundBrush" Color="#FFDCDCDC" Core:ColorKey.Id="CodeViewColors.Background.Default" />
+            <SolidColorBrush x:Key="CodeViewBackgroundHoverBrush" Color="#FF6A6A6A" Core:ColorKey.Id="CodeViewColors.BackgroundHovered.Default" />
+            <SolidColorBrush x:Key="CodeViewBackgroundPressedBrush" Color="#FF6A6A6A" Core:ColorKey.Id="CodeViewColors.BackgroundPressed.Default" />
+            <SolidColorBrush x:Key="CodeViewBackgroundSelectedBrush" Color="#FF888888" Core:ColorKey.Id="CodeViewColors.BackgroundSelected.Default" />
+            <SolidColorBrush x:Key="CodeViewBackgroundSelectedHoverBrush" Color="#FF5F37BE" Core:ColorKey.Id="CodeViewColors.BackgroundSelectedHovered.Default" />
+            <SolidColorBrush x:Key="CodeViewBackgroundDisabledBrush" Color="#66CACACA" Core:ColorKey.Id="CodeViewColors.BackgroundDisabled.Default" />
+            <SolidColorBrush x:Key="CodeViewArrowForegroundBrush" Color="#FF545454" Core:ColorKey.Id="CodeViewColors.ArrowForeground.Default" />
+            <SolidColorBrush x:Key="CodeViewArrowForegroundPressedBrush" Color="#FFA4A4A4" Core:ColorKey.Id="CodeViewColors.ArrowForegroundPressed.Default" />
+            <SolidColorBrush x:Key="CodeViewArrowForegroundDisabledBrush" Color="#66FFFFFF" Core:ColorKey.Id="CodeViewColors.ArrowForegroundDisabled.Default" />
+            <SolidColorBrush x:Key="CodeViewFlyoutForegroundBrush" Color="#FF000000" Core:ColorKey.Id="CodeViewColors.FlyoutForeground.Default" />
+            <SolidColorBrush x:Key="CodeViewFlyoutBorderBrush" Color="#FF212121" Core:ColorKey.Id="CodeViewColors.FlyoutBorderBrush.Default" />
+            <SolidColorBrush x:Key="CodeViewFlyoutBackgroundBrush" Color="#FFDCDCDC" Core:ColorKey.Id="CodeViewColors.FlyoutBackground.Default" />
+            <SolidColorBrush x:Key="CodeViewGlyphBackgroundPressedBrush" Color="#FF484848" Core:ColorKey.Id="CodeViewColors.GlyphBackgroundPressed.Default" />
+
+            <SolidColorBrush x:Key="CodeViewFocusWhiteBrush" Color="#FFFFFFFF" Core:ColorKey.Id="CodeViewColors.FocusWhiteBrush.Default" />
+            <SolidColorBrush x:Key="CodeViewFocusBlackBrush" Color="#FF000000" Core:ColorKey.Id="CodeViewColors.FocusBlackBrush.Default" />
+
+            <SolidColorBrush x:Key="CodeViewerBackgroundBrush" Color="#FFFFFFFF"  Core:ColorKey.Id="CodeViewColors.PresenterBackground.Default" />
+            <SolidColorBrush x:Key="CodeViewerForegroundBrush" Color="#FF181818"  Core:ColorKey.Id="CodeViewColors.PresenterForeground.Default" />
+            <SolidColorBrush x:Key="CodeViewerBorderBrush" Color="#FFD9D9D9"  Core:ColorKey.Id="CodeViewColors.PresenterBorderBrush.Default" />
+            <SolidColorBrush x:Key="CodeViewerHighlightBackgroundBrush" Color="#4B0000C8"  Core:ColorKey.Id="CodeViewColors.PresenterHighlightBackground.Default" />
+            <SolidColorBrush x:Key="CodeViewerHighlightBorderBrush" Color="#E60000FE"  Core:ColorKey.Id="CodeViewColors.PresenterHighlightBorderBrush.Default" />
+            <SolidColorBrush x:Key="CodeViewControlPanelBackgroundBrush" Color="#FFDCDCDC"  Core:ColorKey.Id="CodeViewColors.PanelBackground.Default" />
+            <SolidColorBrush x:Key="CodeViewControlMessageForegroundBrush" Color="#FF9A9A9A"  Core:ColorKey.Id="CodeViewColors.MessageForeground.Default" />
+
+            <SolidColorBrush x:Key="CodeViewControlInnerBorderFocusedBrush" Color="#FF181818" Core:ColorKey.Id="CodeViewColors.InnerFocusVisualStroke.Default" />
+            <SolidColorBrush x:Key="CodeViewControlBorderFocusedBrush" Color="#30000000" Core:ColorKey.Id="CodeViewColors.OuterFocusVisualStroke.Default" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="CodeViewItemBackgroundBrush" Color="#00000000" Core:ColorKey.Id="CodeViewColors.ItemBackground.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemBackgroundHoverBrush" Color="#FFD2D2D2" Core:ColorKey.Id="CodeViewColors.ItemBackgroundHovered.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemBackgroundSelectedBrush" Color="#FF969696" Core:ColorKey.Id="CodeViewColors.ItemBackgroundSelected.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemBackgroundSelectedDisabledBrush" Color="#8C000000" Core:ColorKey.Id="CodeViewColors.ItemBackgroundSelectedDisabled.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemBackgroundSelectedHoverBrush" Color="#FF969696" Core:ColorKey.Id="CodeViewColors.ItemBackgroundSelectedHovered.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemBackgroundPressedBrush" Color="#FF969696" Core:ColorKey.Id="CodeViewColors.ItemBackgroundPressed.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemForegroundBrush" Color="#FF505050" Core:ColorKey.Id="CodeViewColors.ItemForeground.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemForegroundHoverBrush" Color="#FF505050" Core:ColorKey.Id="CodeViewColors.ItemForegroundHovered.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemForegroundDisabledBrush" Color="#66000000" Core:ColorKey.Id="CodeViewColors.ItemForegroundDisabled.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemForegroundPressedBrush" Color="#FFFFFFFF" Core:ColorKey.Id="CodeViewColors.ItemForegroundPressed.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemForegroundSelectedBrush" Color="#FFFFFFFF" Core:ColorKey.Id="CodeViewColors.ItemForegroundSelected.Light"/>
+            <SolidColorBrush x:Key="CodeViewItemForegroundSelectedDisabledBrush" Color="#99FFFFFF" Core:ColorKey.Id="CodeViewColors.ItemForegroundSelectedDisabled.Light"/>
+
+            <SolidColorBrush x:Key="CodeViewForegroundPressedBrush" Color="#FF505050" Core:ColorKey.Id="CodeViewColors.ForegroundPressed.Light"/>
+            <SolidColorBrush x:Key="CodeViewForegroundDisabledBrush" Color="#66000000" Core:ColorKey.Id="CodeViewColors.ForegroundDisabled.Light"/>
+            <SolidColorBrush x:Key="CodeViewBorderBrush" Color="#FFD2D2D2" Core:ColorKey.Id="CodeViewColors.BorderBrush.Light"/>
+            <SolidColorBrush x:Key="CodeViewBorderHoverBrush" Color="#FF999999" Core:ColorKey.Id="CodeViewColors.BorderBrushHovered.Light"/>
+            <SolidColorBrush x:Key="CodeViewBorderPressedBrush" Color="#FF999999" Core:ColorKey.Id="CodeViewColors.BorderBrushPressed.Light"/>
+            <SolidColorBrush x:Key="CodeViewBorderDisabledBrush" Color="#26000000" Core:ColorKey.Id="CodeViewColors.BorderBrushDisabled.Light"/>
+            <SolidColorBrush x:Key="CodeViewBackgroundBrush" Color="#FFFFFFFF" Core:ColorKey.Id="CodeViewColors.Background.Light"/>
+            <SolidColorBrush x:Key="CodeViewBackgroundHoverBrush" Color="#FFD2D2D2" Core:ColorKey.Id="CodeViewColors.BackgroundHovered.Light"/>
+            <SolidColorBrush x:Key="CodeViewBackgroundPressedBrush" Color="#FFD2D2D2" Core:ColorKey.Id="CodeViewColors.BackgroundPressed.Light"/>
+            <SolidColorBrush x:Key="CodeViewBackgroundSelectedBrush" Color="#FFD2D2D2" Core:ColorKey.Id="CodeViewColors.BackgroundSelected.Light"/>
+            <SolidColorBrush x:Key="CodeViewBackgroundSelectedHoverBrush" Color="#FF5F37BE" Core:ColorKey.Id="CodeViewColors.BackgroundSelectedHovered.Light"/>
+            <SolidColorBrush x:Key="CodeViewBackgroundDisabledBrush" Color="#66CACACA" Core:ColorKey.Id="CodeViewColors.BackgroundDisabled.Light"/>
+            <SolidColorBrush x:Key="CodeViewArrowForegroundBrush" Color="#FF505050" Core:ColorKey.Id="CodeViewColors.ArrowForeground.Light"/>
+            <SolidColorBrush x:Key="CodeViewArrowForegroundPressedBrush" Color="#FF505050" Core:ColorKey.Id="CodeViewColors.ArrowForegroundPressed.Light"/>
+            <SolidColorBrush x:Key="CodeViewArrowForegroundDisabledBrush" Color="#66FFFFFF" Core:ColorKey.Id="CodeViewColors.ArrowForegroundDisabled.Light"/>
+            <SolidColorBrush x:Key="CodeViewFlyoutForegroundBrush" Color="#FF000000" Core:ColorKey.Id="CodeViewColors.FlyoutForeground.Light"/>
+            <SolidColorBrush x:Key="CodeViewFlyoutBorderBrush" Color="#FFCCCCCC" Core:ColorKey.Id="CodeViewColors.FlyoutBorderBrush.Light"/>
+            <SolidColorBrush x:Key="CodeViewFlyoutBackgroundBrush" Color="#FFFFFFFF" Core:ColorKey.Id="CodeViewColors.FlyoutBackground.Light"/>
+            <SolidColorBrush x:Key="CodeViewGlyphBackgroundPressedBrush" Color="#FF999999" Core:ColorKey.Id="CodeViewColors.GlyphBackgroundPressed.Light"/>
+
+            <SolidColorBrush x:Key="CodeViewFocusWhiteBrush" Color="#FFFFFFFF" Core:ColorKey.Id="CodeViewColors.FocusWhiteBrush.Light"/>
+            <SolidColorBrush x:Key="CodeViewFocusBlackBrush" Color="#FF000000" Core:ColorKey.Id="CodeViewColors.FocusBlackBrush.Light"/>
+
+            <SolidColorBrush x:Key="CodeViewerBackgroundBrush" Color="#FFFFFFFF" Core:ColorKey.Id="CodeViewColors.PresenterBackground.Light"/>
+            <SolidColorBrush x:Key="CodeViewerForegroundBrush" Color="#FF505050" Core:ColorKey.Id="CodeViewColors.PresenterForeground.Light"/>
+            <SolidColorBrush x:Key="CodeViewerBorderBrush" Color="#FFD9D9D9" Core:ColorKey.Id="CodeViewColors.PresenterBorderBrush.Light"/>
+            <SolidColorBrush x:Key="CodeViewerHighlightBackgroundBrush" Color="#4B0000C8" Core:ColorKey.Id="CodeViewColors.PresenterHighlightBackground.Light"/>
+            <SolidColorBrush x:Key="CodeViewerHighlightBorderBrush" Color="#E60000FE" Core:ColorKey.Id="CodeViewColors.PresenterHighlightBorderBrush.Light"/>
+            <SolidColorBrush x:Key="CodeViewControlPanelBackgroundBrush" Color="#FFF5F5F5" Core:ColorKey.Id="CodeViewColors.PanelBackground.Light"/>
+            <SolidColorBrush x:Key="CodeViewControlMessageForegroundBrush" Color="#FF9A9A9A" Core:ColorKey.Id="CodeViewColors.MessageForeground.Light"/>
+
+            <SolidColorBrush x:Key="CodeViewControlInnerBorderFocusedBrush" Color="#FF969696" Core:ColorKey.Id="CodeViewColors.InnerFocusVisualStroke.Light"/>
+            <SolidColorBrush x:Key="CodeViewControlBorderFocusedBrush" Color="#30000000" Core:ColorKey.Id="CodeViewColors.OuterFocusVisualStroke.Light"/>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

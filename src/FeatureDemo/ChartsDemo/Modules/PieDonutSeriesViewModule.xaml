@@ -1,0 +1,65 @@
+﻿<Common:DemoModuleView
+    x:Class="ChartsDemo.PieDonutSeriesViewModule"
+    x:Name="pieDonutSeriesViewModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Charts="using:DevExpress.WinUI.Charts"
+    xmlns:Common="using:FeatureDemo.Common"
+    BorderBrush="Transparent">
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="US Regions Gross State Product 2020" Style="{StaticResource ChartHeaderTextStyle}" TextWrapping="WrapWholeWords" />
+        <Charts:PieChart x:Name="pieChart" Style="{StaticResource CommonPieChartStyle}" Grid.Row="1" Margin="7,0,7,0">
+            <Charts:PieChart.Legend>
+                <Charts:Legend BorderThickness="0"
+                               FontSize="12"
+                               Margin="0,-10,0,-10"/>
+            </Charts:PieChart.Legend>
+            <Charts:PieChart.Series>
+                <Charts:Series DisplayName="GDP"
+                               ShowInLegend="False"
+                               FontSize="14">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="Southwest" Value="2438089" />
+                            <Charts:DataPoint Argument="Mideast" Value="3768023" />
+                            <Charts:DataPoint Argument="Southeast" Value="4512857" />
+                            <Charts:DataPoint Argument="Great Lakes" Value="2807752" />
+                            <Charts:DataPoint Argument="Far West" Value="1201650" />
+                            <Charts:DataPoint Argument="New England" Value="1121715" />
+                            <Charts:DataPoint Argument="Rocky Mountain" Value="766387" />
+                            <Charts:DataPoint Argument="Plains" Value="1315095" />
+                        </Charts:DataPointCollection>
+                </Charts:Series.Data>
+                </Charts:Series>
+                <Charts:Series
+                            DisplayName="GDP Per Capita">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="Southwest" Value="206061" />
+                            <Charts:DataPoint Argument="Mideast" Value="559847" />
+                            <Charts:DataPoint Argument="Southeast" Value="601923" />
+                            <Charts:DataPoint Argument="Great Lakes" Value="295886" />
+                            <Charts:DataPoint Argument="Far West" Value="330739" />
+                            <Charts:DataPoint Argument="New England" Value="389420" />
+                            <Charts:DataPoint Argument="Rocky Mountain" Value="285709" />
+                            <Charts:DataPoint Argument="Plains" Value="441282" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+            </Charts:PieChart.Series>
+        </Charts:PieChart>
+    </Grid>
+    <Common:DemoModuleView.Options>
+        <Common:OptionsPanel>
+            <Common:OptionGroup Header="View">
+                <RadioButton GroupName="PieDonutSeriesViewGroup" Content="Pie" IsChecked="{Binding PieChecked, ElementName=pieDonutSeriesViewModule, Mode=TwoWay}" />
+                <RadioButton GroupName="PieDonutSeriesViewGroup" Content="Donut" IsChecked="{Binding DonutChecked, ElementName=pieDonutSeriesViewModule, Mode=TwoWay}" />
+                <RadioButton GroupName="PieDonutSeriesViewGroup" Content="Nested Donut" IsChecked="{Binding NestedDonutChecked, ElementName=pieDonutSeriesViewModule, Mode=TwoWay}" />
+            </Common:OptionGroup>
+        </Common:OptionsPanel>
+    </Common:DemoModuleView.Options>
+</Common:DemoModuleView>

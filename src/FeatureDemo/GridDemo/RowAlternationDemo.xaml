@@ -1,0 +1,29 @@
+﻿<Common:DemoModuleView
+    x:Class="GridDemo.RowAlternationDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GridDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    xmlns:Common="using:FeatureDemo.Common"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.DataContext>
+        <local:MultiSelectionViewModel/>
+    </UserControl.DataContext>
+    
+    <dxg:GridControl x:Name="grid"
+                     AutoGenerateColumns="False"
+                     ItemsSource="{Binding Path=Invoices}"
+                     AlternationCount="2">
+        <dxg:GridControl.Columns>
+            <dxg:GridTextColumn x:Name="colOrderID" FieldName="OrderID" MinWidth="60" Width="90" Header="ID"/>
+            <dxg:GridTextColumn x:Name="colProductName" FieldName="ProductName" MinWidth="60" Header="Product"/>
+            <dxg:GridTextColumn x:Name="colUnitPrice" FieldName="UnitPrice" MinWidth="60" Width="80" Header="Unit Price" />
+            <dxg:GridTextColumn x:Name="colQuantity" FieldName="Quantity" MinWidth="60" Width="80" Header="Quantity" />
+            <dxg:GridTextColumn x:Name="colTotal" FieldName="Total" MinWidth="60" Width="80" UnboundType="Decimal" UnboundExpression="[UnitPrice] * [Quantity]" />
+        </dxg:GridControl.Columns>
+    </dxg:GridControl>
+</Common:DemoModuleView>

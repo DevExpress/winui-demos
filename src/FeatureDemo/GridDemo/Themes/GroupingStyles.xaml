@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Grid="using:DevExpress.WinUI.Grid"
+    xmlns:local="using:GridDemo">
+    <Style x:Key="gridCellStyle" TargetType="Grid:CellControl">
+        <Setter Property="HorizontalContentAlignment" Value="Right" />        
+    </Style>
+    <Style x:Key="dayColumnCellStyle" TargetType="Grid:CellControl">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+    </Style>
+</ResourceDictionary>

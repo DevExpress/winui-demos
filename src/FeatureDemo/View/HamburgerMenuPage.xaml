@@ -1,0 +1,81 @@
+﻿<Page
+    x:Class="FeatureDemo.View.HamburgerMenuPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FeatureDemo.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dxmvvmi="using:DevExpress.WinUI.Mvvm.UI.Interactivity"
+    xmlns:Common="using:FeatureDemo.Common"
+    xmlns:Core="using:DevExpress.WinUI.Core"
+    xmlns:ViewModel="using:FeatureDemo.ViewModel"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <Core:TypeTemplateSelector x:Key="hamburgerMenuItemTemplateSelector">
+                <DataTemplate x:Key="GetStartedMenuItem" x:DataType="ViewModel:GetStartedMenuItem">
+                    <NavigationViewItem Content="{x:Bind Title}" Tag="{x:Bind}">
+                        <NavigationViewItem.Icon>
+                            <PathIcon Data="{x:Bind Icon}" />
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </DataTemplate>
+                <DataTemplate x:Key="DemoModuleGroupMenuItem" x:DataType="ViewModel:DemoModuleGroupMenuItem">
+                    <NavigationViewItem Content="{x:Bind Title}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}" MenuItemsSource="{x:Bind Items}" SelectsOnInvoked="False" Tag="{x:Bind}">
+                        <NavigationViewItem.Icon>
+                            <PathIcon Data="{x:Bind Icon}" />
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </DataTemplate>
+                <DataTemplate x:Key="DemoModuleMenuItem" x:DataType="ViewModel:DemoModuleMenuItem">
+                    <NavigationViewItem Content="{x:Bind Title}" Tag="{x:Bind}" SelectsOnInvoked="True"/>
+                </DataTemplate>
+
+                <DataTemplate x:Key="HamburgerMenuHyperLink" x:DataType="ViewModel:HamburgerMenuHyperLink">
+                    <NavigationViewItem Content="{x:Bind Title}" Tag="{x:Bind}" />
+                </DataTemplate>
+                <DataTemplate x:Key="HamburgerMenuSeparator" x:DataType="ViewModel:HamburgerMenuSeparator">
+                    <NavigationViewItemSeparator Tag="{x:Bind}"/>
+                </DataTemplate>
+
+            </Core:TypeTemplateSelector>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource WindowBackground}">
+        <NavigationView
+            x:Name="navView"
+            MenuItemsSource="{x:Bind MainViewModel.MenuItems}"
+            MenuItemTemplateSelector="{StaticResource hamburgerMenuItemTemplateSelector}"
+            SelectedItem="{x:Bind MainViewModel.SelectedMenuItem, Mode=TwoWay}"                        
+            ItemInvoked="{x:Bind NavigationView_ItemInvoked}"
+            CompactModeThresholdWidth="0"
+            ExpandedModeThresholdWidth="1200"
+            PaneOpening="NavigationView_PaneOpening"
+            PaneClosing="NavigationView_PaneClosing"
+            DisplayModeChanged="NavigationView_DisplayModeChanged"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
+            AlwaysShowHeader="False"
+        >
+            <Frame x:Name="RootFrame" x:FieldModifier="public">
+                <dxmvvmi:Interaction.Behaviors>
+                    <Common:DemoNavigationService />
+                </dxmvvmi:Interaction.Behaviors>
+            </Frame>
+            <dxmvvmi:Interaction.Behaviors>
+                <Common:AppThemeService  WindowTitleButtonBackgroundBrush="{ThemeResource WindowBackground}"/>
+            </dxmvvmi:Interaction.Behaviors>
+        </NavigationView>
+        <Border x:Name="WindowTitleBar" Opacity="{x:Bind MainViewModel.WindowTitleOpacity, Mode=OneWay}">
+            <Border.TranslationTransition>
+                <Vector3Transition Duration="0:0:0.250"/>
+            </Border.TranslationTransition>
+            <Border.OpacityTransition>
+                <ScalarTransition Duration="0:0:0.500"/>
+            </Border.OpacityTransition>
+            <TextBlock Text="{x:Bind MainViewModel.WindowTitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="11,8,0,0" />
+        </Border>
+    </Grid>
+</Page>

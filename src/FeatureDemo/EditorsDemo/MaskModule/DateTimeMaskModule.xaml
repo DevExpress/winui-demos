@@ -1,0 +1,104 @@
+﻿<c:DemoSubModuleView
+    x:Class="EditorsDemo.DateTimeMaskModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EditorsDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c="using:FeatureDemo.Common"
+    xmlns:dxe="using:DevExpress.WinUI.Editors" 
+    xmlns:dxmvvm="using:DevExpress.WinUI.Mvvm.UI"
+    xmlns:dxmvvmi="using:DevExpress.WinUI.Mvvm.UI.Interactivity"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <c:DemoSubModuleView.DataContext>
+        <local:DateTimeMaskViewModel/>
+    </c:DemoSubModuleView.DataContext>
+    <c:DemoSubModuleView.Options>
+        <c:OptionsPanel DataContext="{x:Bind Root.DataContext, Mode=OneWay}">
+            <c:OptionsPanel.Resources>
+                <dxmvvm:ObjectToObjectConverter x:Key="MaskTypeConverter">
+                    <dxmvvm:MapItem Source="0" Target="DateTime"/>
+                    <dxmvvm:MapItem Source="1" Target="DateTimeAdvancingCaret"/>
+                </dxmvvm:ObjectToObjectConverter>
+            </c:OptionsPanel.Resources>
+            <dxe:TextEdit Header="Edit value" 
+                          IsReadOnly="True" 
+                          EditValue="{Binding Path=FocusedEditor.EditValue}"/>
+            <dxe:TextEdit Header="Edit mask" 
+                          EditValue="{Binding Mask, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                          ValidateOnEnterKeyPressed="True" 
+                          ValidateOnTextInput="False" />
+            <ComboBox Header="Mask type" 
+                      HorizontalAlignment="Stretch"
+                      SelectedItem="{Binding Path=TextInputSettings.MaskType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource MaskTypeConverter}}">
+                <x:String>DateTime</x:String>
+                <x:String>DateTimeAdvancingCaret</x:String>
+            </ComboBox>
+            <CheckBox Content="Use mask as display format" IsChecked="{Binding TextInputSettings.UseAsDisplayFormat, Mode=TwoWay}"/>
+            <CheckBox Content="Allow null input" IsChecked="{Binding FocusedEditor.AllowNullInput, Mode=TwoWay}"/>
+        </c:OptionsPanel>
+    </c:DemoSubModuleView.Options>
+
+    <StackPanel x:Name="Root"
+                Spacing="6">
+        <dxmvvmi:Interaction.Behaviors>
+            <dxmvvm:MessageBoxService />
+        </dxmvvmi:Interaction.Behaviors>
+        <dxe:TextEdit Header="Full (f)" 
+                      EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="f" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Full date and time (f)" 
+                      EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="MM/dd/yyyy h:m:s t" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="RFC1123 (f)" 
+                      EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="R" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+        <dxe:TextEdit Header="Universal sortable (f)" 
+                      EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="u" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="MonthDay (M)"
+                      EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="M" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Year (Year: yyyy)"
+                      EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="Year: yyyy" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Short time (t)" 
+                      EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="t" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Day (d, dddd)" EditValue="07.09.2016 3:14:48">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings Mask="d, dddd" MaskType="DateTime"/>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+    </StackPanel>
+</c:DemoSubModuleView>

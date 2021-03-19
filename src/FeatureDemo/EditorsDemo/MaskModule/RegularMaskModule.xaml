@@ -1,0 +1,136 @@
+﻿<c:DemoSubModuleView
+    x:Class="EditorsDemo.RegularMaskModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EditorsDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c="using:FeatureDemo.Common"
+    xmlns:dxe="using:DevExpress.WinUI.Editors" 
+    xmlns:dxmvvm="using:DevExpress.WinUI.Mvvm.UI"
+    xmlns:dxmvvmi="using:DevExpress.WinUI.Mvvm.UI.Interactivity"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+
+    <c:DemoSubModuleView.DataContext>
+        <local:RegularMaskViewModel/>
+    </c:DemoSubModuleView.DataContext>
+    <c:DemoSubModuleView.Options>
+        <c:OptionsPanel DataContext="{x:Bind Root.DataContext, Mode=OneWay}">
+            <dxe:TextEdit Header="Edit value" 
+                          IsReadOnly="True" 
+                          EditValue="{Binding Path=FocusedEditor.EditValue}"/>
+            <dxe:TextEdit Header="Edit mask" 
+                          EditValue="{Binding Mask, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          ValidateOnEnterKeyPressed="True" 
+                          ValidateOnTextInput="False" />
+            <dxe:TextEdit  Header="Placeholder"
+                               EditValue="{Binding Path=TextInputSettings.PlaceHolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <dxe:TextEdit.TextInputSettings>
+                    <dxe:TextInputMaskSettings MaskType="Regular" Mask="." UseAsDisplayFormat="True" ShowPlaceHolders="True"/>
+                </dxe:TextEdit.TextInputSettings>
+            </dxe:TextEdit>
+            <CheckBox Content="Ignore mask blank" IsChecked="{Binding Path=TextInputSettings.IgnoreBlank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Content="Save literal" IsChecked="{Binding Path=TextInputSettings.SaveLiteral, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Content="Use mask as display format" IsChecked="{Binding Path=TextInputSettings.UseAsDisplayFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </c:OptionsPanel>
+    </c:DemoSubModuleView.Options>
+
+    <StackPanel x:Name="Root"
+                Spacing="6">
+        <dxmvvmi:Interaction.Behaviors>
+            <dxmvvm:MessageBoxService />
+        </dxmvvmi:Interaction.Behaviors>
+        <dxe:TextEdit Header="Phone">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="(\d?\d?\d?)\d\d\d-\d\d-\d\d" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Date">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="\d?\d?/\d\d/\d\d" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Long time">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="\d?\d:\d\d:\d\d >[PA]M" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Short time">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="\d?\d:\d\d" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Extension">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="\d?\d?\d?\d?\d?" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Social security">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="\d\d\d-\d\d-\d\d\d\d" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Long Zip code">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="\d\d\d\d\d-\d?\d?\d?\d?" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Short Zip code" >
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputMaskSettings 
+                            Mask="\d\d\d\d\d" 
+                            MaskType="Regular" 
+                            IgnoreBlank="True"
+                            SaveLiteral="True">
+                </dxe:TextInputMaskSettings>
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+    </StackPanel>
+
+</c:DemoSubModuleView>

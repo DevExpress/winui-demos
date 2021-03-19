@@ -1,0 +1,88 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Grid="using:DevExpress.WinUI.Grid"
+    xmlns:local="using:GridDemo">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///GridDemo/Themes/Generic.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="ItemContainerStyle" TargetType="Grid:RowControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Grid:RowControl">
+                    <Grid x:Name="backgroundBorder" Background="Transparent">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualStateGroup.States>
+                                    <VisualState x:Name="None"/>
+                                    <VisualState x:Name="FocusedAndSelected">
+                                        <VisualState.Storyboard>
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backgroundBorder" Storyboard.TargetProperty="Background" Duration="0">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="#FFCFDAED"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState.Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup.States>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid:RowContentPresenter x:Name="PART_RowContent" Foreground="#FF6B96D8" Grid.Column="1"/>
+                        <Grid:RowIndicatorControl BorderThickness="0,0,1,1" 
+                                     State="{Binding IndicatorState, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
+                                     ToolTipService.ToolTip="{Binding IndicatorTooltip, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                     Width="{Binding Path=Grid.ActualIndicatorWidth, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                     Visibility="{Binding Path=Grid.ActualShowIndicator, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Control.RenderTransform>
+                                <TranslateTransform X="{Binding Path=Grid.RowIndicatorHorizontalOffset, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                            </Control.RenderTransform>
+                        </Grid:RowIndicatorControl>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Grid:EditableCellControlBase" x:Key="CellStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Grid:EditableCellControlBase">
+                    <Grid x:Name="PART_CellBorder" Background="Transparent">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualStateGroup.States>
+                                    <VisualState x:Name="None"/>
+                                    <VisualState x:Name="Focused">
+                                        <VisualState.Setters>
+                                            <Setter Target="PART_CellBorder.Background" Value="#FFE0E6F0"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Target="PART_CellBorder.Background" Value="#FFDFE7EF"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="FocusedRow">
+                                        <VisualState.Setters>
+                                            <Setter Target="PART_CellBorder.Background" Value="#FFE0E6F0"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedRow">
+                                        <VisualState.Setters>
+                                            <Setter Target="PART_CellBorder.Background" Value="#FFE0E6F0"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup.States>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid:CellContentPresenter x:Name="PART_CellContent" 
+                                          HorizontalAlignment="Stretch"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

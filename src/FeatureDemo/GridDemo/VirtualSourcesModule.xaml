@@ -1,0 +1,89 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.VirtualSourcesModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:Grid="using:DevExpress.WinUI.Grid"
+    xmlns:Layout="using:DevExpress.WinUI.Layout"
+    xmlns:Editors="using:DevExpress.WinUI.Editors"
+    d:DesignHeight="300"
+    d:DesignWidth="400" 
+    OptionsPaneWidth="350">
+    <UserControl.DataContext>
+        <local:VirtualSourcesViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <common:OperandValueConverter x:Key="OperandValueConverter"/>
+    </UserControl.Resources>
+
+    <Grid:GridControl ItemsSource="{Binding Items}" 
+                      ShowFixedTotalSummary="True"
+                      AutoGenerateColumns="False"
+                      ShowSearchPanelMode="Never">
+        <Grid:GridControl.Columns>
+            <Grid:GridTextColumn FieldName="Subject" Width="200"/>
+            <Grid:GridTextColumn FieldName="User" 
+                                 AllowSorting="True" 
+                                 AllowColumnFiltering="True"
+                                 Width="70"/>
+            <Grid:GridDateColumn FieldName="Created"
+                                 AllowSorting="True" 
+                                 AllowColumnFiltering="True"
+                                 MaskType="DateTime" 
+                                 Mask="MM/dd-hh:mm:ss" 
+                                 FilterPopupMode="DateSmart"
+                                 Width="70"/>
+            <Grid:GridSpinEditColumn FieldName="Votes" 
+                                     MaskType="Numeric"
+                                     Mask="D"
+                                     FilterPopupMode="Custom" 
+                                     ImmediateUpdateColumnFilter="False"
+                                     AllowSorting="True" 
+                                     AllowColumnFiltering="True"
+                                     Width="60">
+                <Grid:ColumnBase.CustomColumnFilterPopupTemplate>
+                    <DataTemplate>
+                        <local:RangeFilter x:Name="rangeFilter" 
+                                           Filter="{Binding Path=CustomColumnFilter, Mode=TwoWay}" 
+                                           FieldName="{Binding Column.FieldName}"
+                                           HorizontalContentAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" Spacing="10" HorizontalAlignment="Stretch">
+                                <TextBlock Text="From:" />
+                                <Editors:SpinEdit EditValue="{Binding MinValue, ElementName=rangeFilter, Mode=TwoWay, Converter={StaticResource OperandValueConverter}}"
+                                                      MinValue="0"
+                                                      MaxValue="100"
+                                                      HorizontalAlignment="Stretch">
+                                    <Editors:SpinEdit.TextInputSettings>
+                                        <Editors:TextInputMaskSettings MaskType="Numeric" Mask="D"/>
+                                    </Editors:SpinEdit.TextInputSettings>
+                                </Editors:SpinEdit>
+
+                                <TextBlock Text="To:" />
+                                <Editors:SpinEdit EditValue="{Binding MaxValue, ElementName=rangeFilter, Mode=TwoWay, Converter={StaticResource OperandValueConverter}}"
+                                                      MinValue="0"
+                                                      MaxValue="100"
+                                                      HorizontalAlignment="Stretch">
+                                    <Editors:SpinEdit.TextInputSettings>
+                                        <Editors:TextInputMaskSettings MaskType="Numeric" Mask="D"/>
+                                    </Editors:SpinEdit.TextInputSettings>
+                                </Editors:SpinEdit>
+
+                            </StackPanel>
+                        </local:RangeFilter>
+                    </DataTemplate>
+                </Grid:ColumnBase.CustomColumnFilterPopupTemplate>
+            </Grid:GridSpinEditColumn>
+            <Grid:GridTextColumn FieldName="Priority" 
+                                 AllowSorting="True" 
+                                 AllowColumnFiltering="True"
+                                 Width="70"/>
+        </Grid:GridControl.Columns>
+        <Grid:GridControl.TotalSummary>
+            <Grid:GridSummaryItem SummaryType="Count" Alignment="Right"/>
+        </Grid:GridControl.TotalSummary>
+    </Grid:GridControl>
+</local:GridDemoUserControl>

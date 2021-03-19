@@ -1,0 +1,158 @@
+﻿<Common:DemoModuleView
+    x:Class="GaugesDemo.LinearGaugeModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Common="using:FeatureDemo.Common"
+    xmlns:Gauges="using:DevExpress.WinUI.Gauges"
+    BorderBrush="Transparent">
+    <Common:DemoModuleView.Resources>
+        <Style TargetType="Gauges:LinearScaleMarkerOptions" x:Key="markerOptionsStyle">
+                <Setter Property="Fill" Value="White"/>
+                <Setter Property="Offset" Value="0"/>
+                <Setter Property="FactorHeight" Value="1.5"/>
+            </Style>
+            <Style TargetType="Gauges:ScaleCustomLabel" x:Key="customLabelStyle">
+                <Setter Property="Offset" Value="-58"/>
+                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="Foreground" Value="{ThemeResource SystemBaseHighColor}"/>
+            </Style>
+        <Style TargetType="Gauges:DefaultScaleLabelControl">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Gauges:DefaultScaleLabelControl">
+                        <TextBlock RenderTransformOrigin="0.5, 0.5" 
+                                       Foreground="{ThemeResource SystemBaseMediumColor}" 
+                                       HorizontalAlignment="Right" 
+                                       Text="{Binding ElementInfo.Text, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
+                                       Margin="0,0,0,0" 
+                                       VerticalAlignment="Center"
+                                       Opacity="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Common:DemoModuleView.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
+        <Grid MinHeight="600" Padding="48,0,48,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Web Site Visitor Trend" Margin="0,5,0,0" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Foreground="{ThemeResource SystemBaseHighColor}"/>
+        <Gauges:LinearGauge x:Name="linearGaugeControl" Grid.Row="1" Margin="50,0,50,-70">
+            <Gauges:LinearGauge.ScalePanelTemplate>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </Gauges:LinearGauge.ScalePanelTemplate>
+            <Gauges:LinearGauge.Scales>
+                <Gauges:LinearScale Grid.Row="0" LayoutMode="LeftToRight" MajorIntervalCount="5" EndValue="9152" Margin="10,0,10,0" ShowMajorTickmarks="False" ShowLine="False">
+                    <Gauges:LinearScale.LevelBars>
+                            <Gauges:LinearScaleLevelBar Value="9152">
+                                <Gauges:LinearScaleLevelBar.Options>
+                                    <Gauges:LinearScaleLevelBarOptions Fill="#FFCA5677"/>
+                                </Gauges:LinearScaleLevelBar.Options>
+                            </Gauges:LinearScaleLevelBar>
+                    </Gauges:LinearScale.LevelBars>
+                    <Gauges:LinearScale.Markers>
+                        <Gauges:LinearScaleMarker Value="9152">
+                            <Gauges:LinearScaleMarker.Options>
+                                <Gauges:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}"/>
+                            </Gauges:LinearScaleMarker.Options>
+                        </Gauges:LinearScaleMarker>
+                    </Gauges:LinearScale.Markers>
+                    <Gauges:LinearScale.CustomLabels>
+                        <Gauges:ScaleCustomLabel Content="Visited a Web Site" Style="{StaticResource customLabelStyle}"/>
+                    </Gauges:LinearScale.CustomLabels>
+                </Gauges:LinearScale>
+                <Gauges:LinearScale Grid.Row="1" LayoutMode="LeftToRight" MajorIntervalCount="5" EndValue="9152" Margin="10,5,10,0" ShowMajorTickmarks="False" ShowLine="False">
+                    <Gauges:LinearScale.LevelBars>
+                            <Gauges:LinearScaleLevelBar Value="6870">
+                                <Gauges:LinearScaleLevelBar.Options>
+                                    <Gauges:LinearScaleLevelBarOptions Fill="#FFCA5677"/>
+                                </Gauges:LinearScaleLevelBar.Options>
+                            </Gauges:LinearScaleLevelBar>
+                        </Gauges:LinearScale.LevelBars>
+                    <Gauges:LinearScale.Markers>
+                        <Gauges:LinearScaleMarker Value="6870">
+                            <Gauges:LinearScaleMarker.Options>
+                                <Gauges:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}"/>
+                            </Gauges:LinearScaleMarker.Options>
+                        </Gauges:LinearScaleMarker>
+                    </Gauges:LinearScale.Markers>
+                    <Gauges:LinearScale.CustomLabels>
+                        <Gauges:ScaleCustomLabel Content="Downloaded a Trial" Style="{StaticResource customLabelStyle}"/>
+                    </Gauges:LinearScale.CustomLabels>
+                </Gauges:LinearScale>
+                <Gauges:LinearScale Grid.Row="2" LayoutMode="LeftToRight" MajorIntervalCount="5" EndValue="9152" Margin="10,10,10,0" ShowMajorTickmarks="False" ShowLine="False">
+                    <Gauges:LinearScale.LevelBars>
+                            <Gauges:LinearScaleLevelBar Value="5121" Visible="True">
+                                <Gauges:LinearScaleLevelBar.Options>
+                                    <Gauges:LinearScaleLevelBarOptions Fill="#FFCA5677"/>
+                                </Gauges:LinearScaleLevelBar.Options>
+                            </Gauges:LinearScaleLevelBar>
+                    </Gauges:LinearScale.LevelBars>
+                    <Gauges:LinearScale.Markers>
+                        <Gauges:LinearScaleMarker Value="5121">
+                            <Gauges:LinearScaleMarker.Options>
+                                <Gauges:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}"/>
+                            </Gauges:LinearScaleMarker.Options>
+                        </Gauges:LinearScaleMarker>
+                    </Gauges:LinearScale.Markers>
+                    <Gauges:LinearScale.CustomLabels>
+                        <Gauges:ScaleCustomLabel Content="Contacted to Support" Style="{StaticResource customLabelStyle}"/>
+                    </Gauges:LinearScale.CustomLabels>
+                </Gauges:LinearScale>
+                <Gauges:LinearScale Grid.Row="3" LayoutMode="LeftToRight" MajorIntervalCount="5" EndValue="9152" Margin="10,15,10,0" ShowMajorTickmarks="False" ShowLine="False">
+                    <Gauges:LinearScale.LevelBars>
+                        <Gauges:LinearScaleLevelBar Value="2224" Visible="True" >
+                                <Gauges:LinearScaleLevelBar.Options>
+                                    <Gauges:LinearScaleLevelBarOptions Fill="#FFCA5677"/>
+                                </Gauges:LinearScaleLevelBar.Options>
+                            </Gauges:LinearScaleLevelBar>
+                        </Gauges:LinearScale.LevelBars>
+                    <Gauges:LinearScale.Markers>
+                        <Gauges:LinearScaleMarker Value="2224">
+                            <Gauges:LinearScaleMarker.Options>
+                                <Gauges:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}"/>
+                            </Gauges:LinearScaleMarker.Options>
+                        </Gauges:LinearScaleMarker>
+                    </Gauges:LinearScale.Markers>
+                    <Gauges:LinearScale.CustomLabels>
+                        <Gauges:ScaleCustomLabel Content="Subscribed" Style="{StaticResource customLabelStyle}"/>
+                    </Gauges:LinearScale.CustomLabels>
+                </Gauges:LinearScale>
+                <Gauges:LinearScale Grid.Row="4" LayoutMode="LeftToRight" MajorIntervalCount="5" EndValue="9152" Margin="10,20,10,0" ShowMajorTickmarks="False" ShowLine="False">
+                    <Gauges:LinearScale.LevelBars>
+                            <Gauges:LinearScaleLevelBar Value="1670" Visible="True" >
+                                <Gauges:LinearScaleLevelBar.Options>
+                                    <Gauges:LinearScaleLevelBarOptions Fill="#FFCA5677"/>
+                                </Gauges:LinearScaleLevelBar.Options>
+                            </Gauges:LinearScaleLevelBar>
+                        </Gauges:LinearScale.LevelBars>
+                    <Gauges:LinearScale.Markers>
+                        <Gauges:LinearScaleMarker Value="1670">
+                            <Gauges:LinearScaleMarker.Options>
+                                <Gauges:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}"/>
+                            </Gauges:LinearScaleMarker.Options>
+                        </Gauges:LinearScaleMarker>
+                    </Gauges:LinearScale.Markers>
+                    <Gauges:LinearScale.CustomLabels>
+                        <Gauges:ScaleCustomLabel Content="Renewed" Style="{StaticResource customLabelStyle}"/>
+                    </Gauges:LinearScale.CustomLabels>
+                </Gauges:LinearScale>
+            </Gauges:LinearGauge.Scales>
+        </Gauges:LinearGauge>
+    </Grid>
+    </ScrollViewer>
+</Common:DemoModuleView>

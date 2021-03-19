@@ -1,0 +1,176 @@
+﻿<ResourceDictionary
+    x:Class="FeatureDemo.ControlsDemo.BarCodeSymbologyDataTemplates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Editors="using:DevExpress.WinUI.Editors"
+    xmlns:Core="using:DevExpress.WinUI.Core"
+    xmlns:Controls="using:DevExpress.WinUI.Controls"
+    xmlns:common="using:FeatureDemo.Common"    
+    xmlns:local="using:FeatureDemo.ControlsDemo">
+
+    <common:BarCodeEnumToListConveter x:Key="barCodeEnumToListConveter"/>
+    <local:BarCodeTypeTemplateSelector x:Key="barCodeTypeTemplateSelector">
+        <DataTemplate x:Key="Codabar" x:DataType="local:SymbologyViewModel">
+            <common:OptionGroupPanel>
+                <common:OptionGroupPanel.Resources>
+                    <Core:EnumItemsSourceProvider x:Name="StartStopPairItems" EnumInstance="{x:Bind ((Controls:CodabarSymbology)Symbology).StartStopPair, Mode=OneTime}" />
+                </common:OptionGroupPanel.Resources>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="StartStopPair:">
+                        <ComboBox ItemsSource="{StaticResource StartStopPairItems}" SelectedItem="{Binding Symbology.StartStopPair, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
+                    </common:OptionItem>
+                    <common:OptionItem Header="WideNarrowRatio:" Margin="0,12,0,0">
+                        <Editors:SpinEdit Value="{Binding Symbology.WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                    </common:OptionItem>
+                </common:OptionGroup>
+            </common:OptionGroupPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Industrial2of5">
+            <common:OptionGroupPanel>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="WideNarrowRatio:" IsHorizontal="True" HeaderWidth="120">
+                        <Editors:SpinEdit Value="{Binding Symbology.WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </common:OptionItem>
+                    <CheckBox Content="CalcCheckSum" IsChecked="{Binding Symbology.CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,12,0,0"/>
+                </common:OptionGroup>
+            </common:OptionGroupPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Interleaved2of5">
+            <common:OptionsPanel>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="WideNarrowRatio:" IsHorizontal="True" HeaderWidth="120">
+                        <Editors:SpinEdit Value="{Binding Symbology.WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </common:OptionItem>
+                    <CheckBox Content="CalcCheckSum" IsChecked="{Binding Symbology.CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,12,0,0"/>
+                </common:OptionGroup>
+            </common:OptionsPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Code39">
+            <common:OptionGroupPanel>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="WideNarrowRatio:" IsHorizontal="True" HeaderWidth="120">
+                        <Editors:SpinEdit Value="{Binding Symbology.WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </common:OptionItem>
+                    <CheckBox Content="CalcCheckSum" IsChecked="{Binding Symbology.CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,12,0,0"/>
+                </common:OptionGroup>
+            </common:OptionGroupPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Code39Extended">
+            <common:OptionGroupPanel>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="WideNarrowRatio:" IsHorizontal="True" HeaderWidth="120">
+                        <Editors:SpinEdit Value="{Binding Symbology.WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </common:OptionItem>
+                    <CheckBox Content="CalcCheckSum" IsChecked="{Binding Symbology.CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,12,0,0"/>
+                </common:OptionGroup>
+            </common:OptionGroupPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Code93">
+            <common:OptionGroup Header="Symbology Properties">
+                <CheckBox Content="CalcCheckSum" IsChecked="{Binding Symbology.CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </common:OptionGroup>
+        </DataTemplate>
+        <DataTemplate x:Key="Code93Extended">
+            <common:OptionGroup Header="Symbology Properties">
+                <CheckBox Content="CalcCheckSum" IsChecked="{Binding Symbology.CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </common:OptionGroup>
+        </DataTemplate>
+        <DataTemplate x:Key="Code128">
+            <common:OptionGroup Header="Symbology Properties">
+                <common:OptionItem Header="CharacterSet:" IsHorizontal="True" HeaderWidth="80">
+                    <common:OptionItem.Resources>
+                        <Core:EnumItemsSourceProvider x:Name="Code128CharsetItems" EnumInstance="{Binding Symbology.CharacterSet, Mode=OneTime}" />
+                    </common:OptionItem.Resources>
+                    <ComboBox ItemsSource="{StaticResource Code128CharsetItems}"
+                        SelectedItem="{Binding Symbology.CharacterSet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        HorizontalAlignment="Stretch"/>
+                </common:OptionItem>
+            </common:OptionGroup>
+        </DataTemplate>
+        <DataTemplate x:Key="Code11" />
+        <DataTemplate x:Key="CodeMSI">
+            <common:OptionGroup Header="Symbology Properties">
+                <common:OptionItem Header="MSICheckSum:" IsHorizontal="True">
+                    <common:OptionItem.Resources>
+                        <Core:EnumItemsSourceProvider x:Name="MSICheckSumItems" EnumInstance="{Binding Symbology.MSICheckSum, Mode=OneTime}" />
+                    </common:OptionItem.Resources>
+                    <ComboBox ItemsSource="{StaticResource MSICheckSumItems}"
+                        SelectedItem="{Binding Symbology.MSICheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        HorizontalAlignment="Stretch" />
+                </common:OptionItem>
+            </common:OptionGroup>
+        </DataTemplate>
+        <DataTemplate x:Key="PostNet" />
+
+        <DataTemplate x:Key="EAN13" />
+        <DataTemplate x:Key="UPCA" />
+        <DataTemplate x:Key="EAN8" />
+        <DataTemplate x:Key="EAN128">
+            <common:OptionGroupPanel>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="FNC1Substitute:">
+                        <Editors:TextEdit Text="{Binding Symbology.FNC1Substitute, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <Editors:TextEdit.TextInputSettings>
+                                <Editors:TextInputMaskSettings Mask=".{1,10}" MaskType="RegEx"/>
+                            </Editors:TextEdit.TextInputSettings>
+                        </Editors:TextEdit>
+                    </common:OptionItem>
+                    <common:OptionItem Header="CharacterSet:" Margin="0,12">
+                        <common:OptionItem.Resources>
+                            <Core:EnumItemsSourceProvider x:Name="Code128CharsetItems" EnumInstance="{Binding Symbology.CharacterSet, Mode=OneTime}" />
+                        </common:OptionItem.Resources>
+                        <ComboBox ItemsSource="{StaticResource Code128CharsetItems}"
+                            SelectedItem="{Binding Symbology.CharacterSet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            HorizontalAlignment="Stretch" />
+                    </common:OptionItem>
+                    <CheckBox Content="HumanReadableText" IsChecked="{Binding Symbology.HumanReadableText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </common:OptionGroup>
+            </common:OptionGroupPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="UPCSupplemental2" />
+        <DataTemplate x:Key="UPCSupplemental5" />
+        <DataTemplate x:Key="UPCE0" />
+        <DataTemplate x:Key="UPCE1" />
+
+        <DataTemplate x:Key="Matrix2of5">
+            <common:OptionGroupPanel>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="WideNarrowRatio:" IsHorizontal="True" HeaderWidth="120">
+                        <Editors:SpinEdit Value="{Binding Symbology.WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </common:OptionItem>
+                    
+                    <CheckBox Content="CalcCheckSum" IsChecked="{Binding Symbology.CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,12"/>
+                    
+                </common:OptionGroup>
+            </common:OptionGroupPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="IntelligentMail" />
+        <DataTemplate x:Key="ITF14">
+            <common:OptionGroup Header="Symbology Properties">
+                <common:OptionItem Header="WideNarrowRatio:">
+                    <Editors:SpinEdit Value="{Binding Symbology.WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </common:OptionItem>
+            </common:OptionGroup>
+        </DataTemplate>
+        <DataTemplate x:Key="DataBar">
+            <common:OptionGroupPanel>
+                <common:OptionGroup Header="Symbology Properties">
+                    <common:OptionItem Header="FNC1Substitute:">
+                        <TextBox Grid.Column="1" Text="{Binding FNC1Substitute, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" />
+                    </common:OptionItem>
+                    <common:OptionItem Header="SegmentsInRow:">
+                        <Editors:SpinEdit Value="{Binding Symbology.SegmentsInRow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </common:OptionItem>
+                    <common:OptionItem Header="Type:">
+                        <common:OptionItem.Resources>
+                            <Core:EnumItemsSourceProvider x:Name="DataBarTypeItems" EnumInstance="{Binding Symbology.Type, Mode=OneTime}" />
+                        </common:OptionItem.Resources>
+                        <ComboBox ItemsSource="{StaticResource DataBarTypeItems}"
+                            SelectedItem="{Binding Symbology.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            HorizontalAlignment="Stretch" />
+                    </common:OptionItem>
+                </common:OptionGroup>
+            </common:OptionGroupPanel>
+        </DataTemplate>
+    </local:BarCodeTypeTemplateSelector>
+</ResourceDictionary>

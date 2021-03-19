@@ -1,0 +1,73 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.GridSearchPanelModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GridDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:FeatureDemo.Data"
+    xmlns:Common="using:FeatureDemo.Common"
+    xmlns:Grid="using:DevExpress.WinUI.Grid"
+    OptionsPaneWidth="350"
+    mc:Ignorable="d">
+    <local:GridDemoUserControl.DataContext>
+        <local:GridSearchPanelViewModel/>
+    </local:GridDemoUserControl.DataContext>
+
+    <local:GridDemoUserControl.Resources>
+        <ResourceDictionary>
+            <data:NWindDataLoader x:Key="NWindDataLoader" />
+        </ResourceDictionary>
+    </local:GridDemoUserControl.Resources>
+
+    <Grid:GridControl x:Name="grid"
+                          ItemsSource="{Binding Path=Invoices, Source={StaticResource NWindDataLoader}}"
+                          SearchDelay="100"
+                          AutoGenerateColumns="False"
+                          SearchPanelFindMode="{Binding SearchMode}"
+                          ShowSearchPanelMode="{Binding ShowMode}"
+                          SearchPanelHighlightResults="{Binding IsChecked, ElementName=cbHighlightResults}"
+                          SearchPanelClearOnClose="{Binding IsChecked, ElementName=cbClearOnClose}"
+                          SearchString="Brazil France -Reims"
+                          SearchColumns="{Binding SearchColumns}"
+                          ShowTotalSummary="True"
+                          ShowFixedTotalSummary="True"
+                          >
+        <Grid:GridControl.Columns>
+            <Grid:GridTextColumn FieldName="Country" TextTrimming="CharacterEllipsis"/>
+            <Grid:GridTextColumn FieldName="City" TextTrimming="CharacterEllipsis"/>
+            <Grid:GridTextColumn FieldName="Quantity" TextTrimming="CharacterEllipsis"/>
+            <Grid:GridMaskColumn FieldName="UnitPrice" Mask="c2" MaskType="Numeric" DisplayFormat="$0.00" TextTrimming="CharacterEllipsis"/>
+            <Grid:GridTextColumn FieldName="Total" UnboundType="Decimal" UnboundExpression="([UnitPrice] * [Quantity]) * (1 - [Discount])" DisplayFormat="$0.00" TextTrimming="CharacterEllipsis"/>
+        </Grid:GridControl.Columns>
+
+        <Grid:GridControl.TotalSummary>
+            <Grid:GridSummaryItem SummaryType="Average" FieldName="UnitPrice" DisplayFormat="Avg=$0.00"/>
+            <Grid:GridSummaryItem SummaryType="Max" FieldName="Discount" DisplayFormat="Avg=$0.00"/>
+            <Grid:GridSummaryItem SummaryType="Count" Alignment="Right"/>
+        </Grid:GridControl.TotalSummary>
+    </Grid:GridControl>
+    <local:GridDemoUserControl.Options>
+        <Common:OptionsPanel>
+            <Common:OptionGroup Header="Search Results">
+                <CheckBox x:Name="cbHighlightResults" Content="Highlight Search Results" IsChecked="True"/>
+                <CheckBox x:Name="cbClearOnClose" Content="Clear Search Results on Panel Close" IsChecked="True"/>
+            </Common:OptionGroup>
+            <Common:OptionGroup Header="Search Panel Show Mode">
+                <RadioButton Content="Default" GroupName="ShowModes" IsChecked="{Binding IsShowModeDefault, Mode=TwoWay}"/>
+                <RadioButton Content="Always" GroupName="ShowModes" IsChecked="{Binding IsShowModeAlways, Mode=TwoWay}"/>
+                <RadioButton Content="Never" GroupName="ShowModes" IsChecked="{Binding IsShowModeNever, Mode=TwoWay}"/>
+            </Common:OptionGroup>
+            <Common:OptionGroup Header="Search Mode" >
+                <RadioButton Content="Always" GroupName="SearchModes" IsChecked="{Binding IsSearchModeAlways, Mode=TwoWay}"/>
+                <RadioButton Content="Find on Enter" GroupName="SearchModes" IsChecked="{Binding IsSearchModeFindOnEnter, Mode=TwoWay}"/>
+            </Common:OptionGroup>
+            <Common:OptionGroup Header="Search Columns">
+                <RadioButton Content="*" GroupName="SearchColumns" IsChecked="{Binding IsSearchColumnAll, Mode=TwoWay}"/>
+                <RadioButton Content="Country" GroupName="SearchColumns" IsChecked="{Binding IsSearchColumnCountry, Mode=TwoWay}"/>
+                <RadioButton Content="City" GroupName="SearchColumns" IsChecked="{Binding IsSearchColumnCity, Mode=TwoWay}"/>
+                <RadioButton Content="Country;City" GroupName="SearchColumns" IsChecked="{Binding IsSearchColumnCountryCity, Mode=TwoWay}"/>
+            </Common:OptionGroup>
+        </Common:OptionsPanel>
+    </local:GridDemoUserControl.Options>
+</local:GridDemoUserControl>

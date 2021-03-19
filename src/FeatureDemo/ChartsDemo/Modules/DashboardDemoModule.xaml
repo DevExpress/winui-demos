@@ -1,0 +1,180 @@
+﻿<Common:DemoModuleView
+    x:Class="ChartsDemo.DashboardDemoModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Common="using:FeatureDemo.Common"
+    xmlns:Charts="using:DevExpress.WinUI.Charts">
+    
+    <Common:DemoModuleView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///ChartsDemo/ResourceDictionaries/DashboardDemoResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Common:DemoModuleView.Resources>
+    <Grid x:Name="layoutRoot" DataContext="{x:Bind ViewModel}" Padding="48">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Top 10 Largest Countries by Area" HorizontalAlignment="Center"/>
+        <Charts:PieChart x:Name="chartOfCountriesArea" SelectionMode="Single" ToolTipEnabled="True" Padding="0,0,20,0" Grid.Row="1" Grid.RowSpan="5">
+            <Charts:PieChart.Legend>
+                <Charts:Legend VerticalPosition="BottomOutside" HorizontalPosition="Center" Orientation="Vertical"
+                               MaximumRowsOrColumns="2" Style="{StaticResource ResourceKey=legendStyle}"/>
+            </Charts:PieChart.Legend>
+            <Charts:Series x:Name="seriesAreaOfTop10">
+                <Charts:Series.Data>
+                    <Charts:DataSourceAdapter DataSource="{x:Bind ViewModel.Top10LargestCountriesData, Mode=OneTime}">
+                        <Charts:DataMember DataMemberType="Argument" ColumnName="Name" />
+                        <Charts:DataMember DataMemberType="Value" ColumnName="AreaMSqrKilometers" />
+                    </Charts:DataSourceAdapter>
+                </Charts:Series.Data>
+                <Charts:Series.View>
+                    <Charts:NestedDonutSeriesView x:Name="outerDoughnutView" HoleRadiusPercent="30" StartAngle="-35" ToolTipPointPattern="{}{A}: {V:0.0}M km²"
+                                                  LegendPointPattern="{}{A}" ToolTipPointTemplate="{StaticResource toolTipTemplate}"
+                                                  SelectedItem="{x:Bind ViewModel.SelectedCountry, Mode=TwoWay}">
+                        <Charts:PieSeriesView.LegendMarkerTemplate>
+                            <DataTemplate>
+                                <Rectangle Fill="{Binding MarkerBrush}" Width="20" Height="15"/>
+                            </DataTemplate>
+                        </Charts:PieSeriesView.LegendMarkerTemplate>
+                    </Charts:NestedDonutSeriesView>
+                </Charts:Series.View>
+            </Charts:Series>
+            <Charts:Series x:Name="seriesAreaOfTop10AndOthers">
+                <Charts:Series.Data>
+                    <Charts:DataSourceAdapter DataSource="{x:Bind ViewModel.Top10TogetherAndOthersCountriesData, Mode=OneTime}">
+                        <Charts:DataMember DataMemberType="Argument" ColumnName="Name" />
+                        <Charts:DataMember DataMemberType="Value" ColumnName="AreaMSqrKilometers" />
+                    </Charts:DataSourceAdapter>
+                </Charts:Series.Data>
+                <Charts:Series.View>
+                    <Charts:NestedDonutSeriesView x:Name="innerDoughnutView" ToolTipPointPattern="{}{A}: {V:0.0}M km²" LegendPointPattern="{}{A}"
+                                                  ToolTipPointTemplate="{StaticResource toolTipTemplate}"
+                                                  SelectedItem="{x:Bind ViewModel.SelectedCountry, Mode=TwoWay}" Palette="{x:Bind ViewModel.InnerDoughnutPalette}">
+                        <Charts:PieSeriesView.LegendMarkerTemplate>
+                            <DataTemplate>
+                                <Rectangle Fill="{Binding MarkerBrush}" Width="20" Height="15"/>
+                            </DataTemplate>
+                        </Charts:PieSeriesView.LegendMarkerTemplate>
+                    </Charts:NestedDonutSeriesView>
+                </Charts:Series.View>
+            </Charts:Series>
+        </Charts:PieChart>
+
+        <TextBlock Text="{x:Bind ViewModel.SelectedCountry, Mode=OneWay, Converter={StaticResource populationDynamicTitleConverter}}" Grid.Column="1" HorizontalAlignment="Center"/>
+        <Charts:CartesianChart x:Name="populationDynamicChart" Padding="0,0,15,0" Grid.Column="1" Grid.Row="1">
+            <Charts:CartesianChart.AxisX>
+                <Charts:AxisX GridSpacingAuto="False" GridSpacing="10">
+                    <Charts:AxisX.LabelOptions>
+                        <Charts:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" />
+                    </Charts:AxisX.LabelOptions>
+                    <Charts:AxisX.WholeRange>
+                        <Charts:WholeAxisRange SideMargins="6" />
+                    </Charts:AxisX.WholeRange>
+                </Charts:AxisX>
+            </Charts:CartesianChart.AxisX>
+            <Charts:CartesianChart.AxisY>
+                <Charts:AxisY Alignment="Far">
+                    <Charts:AxisY.LabelOptions>
+                        <Charts:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" Pattern="{}{V}M"/>
+                    </Charts:AxisY.LabelOptions>
+                    <Charts:AxisY.WholeRange>
+                        <Charts:WholeAxisRange SideMargins="5" />
+                    </Charts:AxisY.WholeRange>
+                </Charts:AxisY>
+            </Charts:CartesianChart.AxisY>
+            <Charts:Series DisplayName="Population">
+                <Charts:Series.Data>
+                    <Charts:DataSourceAdapter DataSource="{x:Bind ViewModel.PopulationDynamic, Mode=OneWay}">
+                        <Charts:DataMember DataMemberType="Argument" ColumnName="Year"/>
+                        <Charts:DataMember DataMemberType="Value" ColumnName="Population"/>
+                    </Charts:DataSourceAdapter>
+                </Charts:Series.Data>
+                <Charts:Series.View>
+                    <Charts:AreaSeriesView DataChangingAnimationMode="AnimateEntireSeries">
+                        <Charts:AreaSeriesView.Brush>
+                            <SolidColorBrush Color="{x:Bind ViewModel.SelectedCountryColor, Mode=OneWay}" />
+                        </Charts:AreaSeriesView.Brush>
+                        <Charts:AreaSeriesView.SeriesAnimation>
+                            <Charts:AreaUnwindAnimation Duration="00:000:3.0" BeginTime="00:000:0.15"/>
+                        </Charts:AreaSeriesView.SeriesAnimation>
+                    </Charts:AreaSeriesView>
+                </Charts:Series.View>
+            </Charts:Series>
+        </Charts:CartesianChart>
+
+        <TextBlock Text="Urban/Rural Population Change" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"/>
+        <Charts:CartesianChart x:Name="UrbanRuralDivisionDynamicChart" SelectionMode="Single" ToolTipEnabled="True" Padding="0,0,15,0" Grid.Column="1" Grid.Row="3">
+            <Charts:CartesianChart.Legend>
+                <Charts:Legend VerticalPosition="BottomOutside" HorizontalPosition="Center" Margin="0" Style="{StaticResource legendStyle}"/>
+            </Charts:CartesianChart.Legend>
+            <Charts:CartesianChart.AxisX>
+                <Charts:AxisX GridSpacingAuto="False" GridSpacing="10">
+                    <Charts:AxisX.LabelOptions>
+                        <Charts:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" />
+                    </Charts:AxisX.LabelOptions>
+                    <Charts:AxisX.WholeRange>
+                        <Charts:WholeAxisRange SideMargins="6" />
+                    </Charts:AxisX.WholeRange>
+                </Charts:AxisX>
+            </Charts:CartesianChart.AxisX>
+            <Charts:CartesianChart.AxisY>
+                <Charts:AxisY Alignment="Far">
+                    <Charts:AxisY.LabelOptions>
+                        <Charts:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" Pattern="{}{V:P0}"/>
+                    </Charts:AxisY.LabelOptions>
+                </Charts:AxisY>
+            </Charts:CartesianChart.AxisY>
+            <Charts:Series DisplayName="Urban">
+                <Charts:Series.Data>
+                    <Charts:DataSourceAdapter DataSource="{x:Bind ViewModel.PopulationDynamic, Mode=OneWay}">
+                        <Charts:DataMember DataMemberType="Argument" ColumnName="Year" />
+                        <Charts:DataMember DataMemberType="Value" ColumnName="UrbanPercent" />
+                    </Charts:DataSourceAdapter>
+                </Charts:Series.Data>
+                <Charts:Series.View>
+                    <Charts:FullStackedBarSeriesView BarWidth="5" DataChangingAnimationMode="AnimateEntireSeries" 
+                                                     ToolTipPointPattern="Year: {A}&#13;&#10;{S}: {V}%" ToolTipPointTemplate="{StaticResource toolTipTemplate}">
+                        <Charts:FullStackedBarSeriesView.PointAnimation>
+                            <Charts:BarSlideFromBottomAnimation PointOrder="Inverted" BeginTime="00:000:0.15">
+                                <Charts:BarSlideFromBottomAnimation.EasingFunction>
+                                    <PowerEase EasingMode="EaseOut" Power="4"/>
+                                </Charts:BarSlideFromBottomAnimation.EasingFunction>
+                            </Charts:BarSlideFromBottomAnimation>
+                        </Charts:FullStackedBarSeriesView.PointAnimation>
+                    </Charts:FullStackedBarSeriesView>
+                </Charts:Series.View>
+            </Charts:Series>
+            <Charts:Series DisplayName="Rural">
+                <Charts:Series.Data>
+                    <Charts:DataSourceAdapter DataSource="{x:Bind ViewModel.PopulationDynamic, Mode=OneWay}">
+                        <Charts:DataMember DataMemberType="Argument" ColumnName="Year" />
+                        <Charts:DataMember DataMemberType="Value" ColumnName="RuralPercent" />
+                    </Charts:DataSourceAdapter>
+                </Charts:Series.Data>
+                <Charts:Series.View>
+                    <Charts:FullStackedBarSeriesView BarWidth="5" DataChangingAnimationMode="AnimateEntireSeries"
+                                                     ToolTipPointPattern="Year: {A}&#13;&#10;{S}: {V}%" ToolTipPointTemplate="{StaticResource toolTipTemplate}">
+                        <Charts:FullStackedBarSeriesView.PointAnimation>
+                            <Charts:BarSlideFromTopAnimation BeginTime="00:000:0.15">
+                                <Charts:BarSlideFromTopAnimation.EasingFunction>
+                                    <PowerEase EasingMode="EaseOut" Power="4"/>
+                                </Charts:BarSlideFromTopAnimation.EasingFunction>
+                            </Charts:BarSlideFromTopAnimation>
+                        </Charts:FullStackedBarSeriesView.PointAnimation>
+                    </Charts:FullStackedBarSeriesView>
+                </Charts:Series.View>
+            </Charts:Series>
+        </Charts:CartesianChart>
+    </Grid>
+</Common:DemoModuleView>

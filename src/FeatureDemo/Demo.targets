@@ -1,0 +1,10 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="BeforeBuild">
+    <CreateItem Include="@(Page)">
+      <Output TaskParameter="Include" ItemName="EmbeddedResource" />
+    </CreateItem>
+    <CreateItem Include="@(Compile)">
+      <Output TaskParameter="Include" ItemName="EmbeddedResource" />
+    </CreateItem>
+  </Target>
+</Project>

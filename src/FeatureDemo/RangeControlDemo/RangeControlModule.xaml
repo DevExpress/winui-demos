@@ -1,0 +1,214 @@
+﻿<Common:DemoModuleView
+    x:Class="RangeControlDemo.RangeControlModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Common="using:FeatureDemo.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="using:RangeControlDemo" 
+    xmlns:Controls="using:DevExpress.WinUI.Controls"
+    xmlns:ControlsCore="using:DevExpress.WinUI.Controls.Core"
+    xmlns:Core="using:DevExpress.WinUI.Core"
+    mc:Ignorable="d"
+    d:DesignHeight="400"
+    d:DesignWidth="800">
+
+    <Common:DemoModuleView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="RangeForegroundBrush" Color="{ThemeResource SystemBaseHighColor}"/>
+                    <SolidColorBrush x:Key="RangeBackgroundColor" Color="#10FFFFFF"/>
+                    <SolidColorBrush x:Key="RangeBorderColor" Color="Transparent"/>
+                    <SolidColorBrush x:Key="DisplayRangeForegroundBrush" Color="#FFFFFFFF"/>
+                    <SolidColorBrush x:Key="DisplayRangeHeaderForegroundBrush" Color="#FF909090"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="RangeForegroundBrush" Color="{ThemeResource SystemBaseHighColor}"/>
+                    <SolidColorBrush x:Key="RangeBackgroundColor" Color="#10000000"/>
+                    <SolidColorBrush x:Key="RangeBorderColor" Color="Transparent"/>
+                    <SolidColorBrush x:Key="DisplayRangeHeaderForegroundBrush" Color="#FF909090"/>
+                    <SolidColorBrush x:Key="DisplayRangeForegroundBrush" Color="#FF191919"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            
+            <local:FromDateConverter x:Key="FromDateConverter"/>
+            <Core:TypeTemplateSelector x:Key="ViewTemplateSelector">
+                <DataTemplate x:Key="CalendarViewModel" x:DataType="local:CalendarViewModel">
+                    <StackPanel VerticalAlignment="Center" Margin="16">
+                        <Controls:RangeControl x:Name="CalendarRangeControl"
+                                               Height="200"
+                                               OutOfRangeAreaBrush="Transparent"
+                                               SelectionRangeStart="{x:Bind SelectionStart, Mode=TwoWay}"
+                                               SelectionRangeEnd="{x:Bind SelectionEnd, Mode=TwoWay}">
+                            <Controls:CalendarClient>
+                                <Controls:CalendarClient.IntervalFactories>
+                                    <ControlsCore:YearIntervalFactory/>
+                                    <ControlsCore:MonthIntervalFactory/>
+                                    <ControlsCore:DayIntervalFactory/>
+                                </Controls:CalendarClient.IntervalFactories>
+                            </Controls:CalendarClient>
+                        </Controls:RangeControl>
+                        <StackPanel Margin="0,32,0,0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <TextBlock Text="Selected Range" HorizontalAlignment="Right" FontSize="16" Foreground="{ThemeResource DisplayRangeHeaderForegroundBrush}"/>
+                            <TextBlock Text="{x:Bind local:RangeControlViewModel.GetDisplayRange(SelectionStart, SelectionEnd), Mode=OneWay}" Foreground="{ThemeResource DisplayRangeForegroundBrush}" FontSize="16" Margin="0,-2,0,0"/>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate x:Key="SparkPointViewModel" x:DataType="local:SparkPointViewModel">
+                    <StackPanel VerticalAlignment="Center" Margin="56,0">
+                        <Controls:RangeControl x:Name="SparkPointRangeControl"
+                                               ShowRangeThumbs="True"
+                                               ShowSelectionRectangle="False"
+                                               Height="170"
+                                               Grid.Row="1"
+                                               VisibleRangeStart="{x:Bind VisibleStart, Mode=TwoWay}"
+                                               VisibleRangeEnd="{x:Bind VisibleEnd, Mode=TwoWay}"
+                                               SelectionRangeStart="{x:Bind SelectionStart, Mode=TwoWay}"
+                                               SelectionRangeEnd="{x:Bind SelectionEnd, Mode=TwoWay}"
+                                               ShowRangeBar="True">
+                            <Controls:SparkPointClient ShowAxisLabels="True" ShowAxisXGridLines="True" ShowAxisXMinorGridLines="True" DisplayMember="DisplayValue" ValueMember="Value"
+                                DisplayScaleType="Numeric" ValueScaleType="DateTime" ItemsSource="{x:Bind ItemsSource, Mode=OneTime}">
+                                <Controls:SparkPointClient.IntervalFactories>
+                                    <ControlsCore:MonthIntervalFactory/>
+                                    <ControlsCore:DayIntervalFactory/>
+                                </Controls:SparkPointClient.IntervalFactories>
+                            </Controls:SparkPointClient>
+                        </Controls:RangeControl>
+                        <StackPanel Margin="0,32,0,0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <TextBlock Text="Selected Range" HorizontalAlignment="Right" FontSize="16" Foreground="{ThemeResource DisplayRangeHeaderForegroundBrush}"/>
+                            <TextBlock Text="{x:Bind local:RangeControlViewModel.GetDisplayRange(SelectionStart, SelectionEnd), Mode=OneWay}" Foreground="{ThemeResource DisplayRangeForegroundBrush}" FontSize="16" Margin="0,-2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+                
+                <DataTemplate x:Key="SparkLineViewModel" x:DataType="local:SparkLineViewModel">
+                    <StackPanel VerticalAlignment="Center" Margin="56,0">
+                        <Controls:RangeControl 
+                        x:Name="SparkLineRangeControl"
+                        ShowRangeThumbs="True"
+                        ShowSelectionRectangle="False"
+                        Height="170"
+                        VisibleRangeStart="{x:Bind VisibleStart, Mode=TwoWay}"
+                        VisibleRangeEnd="{x:Bind VisibleEnd, Mode=TwoWay}"
+                        SelectionRangeStart="{x:Bind SelectionStart, Mode=TwoWay}"
+                        SelectionRangeEnd="{x:Bind SelectionEnd, Mode=TwoWay}"
+                        ShowRangeBar="True">
+                            <Controls:SparkLineClient 
+                            ShowMarkers="False"
+                            ShowAxisLabels="True" 
+                            ShowAxisXGridLines="True" 
+                            ShowAxisXMinorGridLines="True"
+                            DisplayMember="DisplayValue"
+                            ValueMember="Value"
+                            DisplayScaleType="Numeric"
+                            ValueScaleType="DateTime"
+                            ItemsSource="{x:Bind ItemsSource, Mode=OneTime}">
+                                <Controls:SparkLineClient.IntervalFactories>
+                                    <ControlsCore:MonthIntervalFactory/>
+                                    <ControlsCore:DayIntervalFactory/>
+                                </Controls:SparkLineClient.IntervalFactories>
+                            </Controls:SparkLineClient>
+                        </Controls:RangeControl>
+                        <StackPanel Margin="0,32,0,0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <TextBlock Text="Selected Range" HorizontalAlignment="Right" FontSize="16" Foreground="{ThemeResource DisplayRangeHeaderForegroundBrush}"/>
+                            <TextBlock Text="{x:Bind local:RangeControlViewModel.GetDisplayRange(SelectionStart, SelectionEnd), Mode=OneWay}" Foreground="{ThemeResource DisplayRangeForegroundBrush}" FontSize="16" Margin="0,-2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate x:Key="SparkAreaViewModel" x:DataType="local:SparkAreaViewModel">
+                    <StackPanel VerticalAlignment="Center" Margin="56,0">
+                        <Controls:RangeControl x:Name="SparkAreaRangeControl"
+                                           ShowRangeThumbs="True"
+                                           Height="170"
+                                           ShowSelectionRectangle="False"
+                                           VisibleRangeStart="{x:Bind VisibleStart, Mode=TwoWay}"
+                                           VisibleRangeEnd="{x:Bind VisibleEnd, Mode=TwoWay}"
+                                           SelectionRangeStart="{x:Bind SelectionStart, Mode=TwoWay}"
+                                           SelectionRangeEnd="{x:Bind SelectionEnd, Mode=TwoWay}"
+                                           ShowRangeBar="True">
+                            <Controls:SparkAreaClient ShowMarkers="False"
+                                                  ShowAxisLabels="True" 
+                                                  ShowAxisXGridLines="True" 
+                                                  ShowAxisXMinorGridLines="True"
+                                                  DisplayMember="DisplayValue"
+                                                  ValueMember="Value"
+                                                  DisplayScaleType="Numeric"
+                                                  ValueScaleType="DateTime"
+                                                  ItemsSource="{x:Bind ItemsSource, Mode=OneTime}">
+                                <Controls:SparkAreaClient.StrokeStyle>
+                                    <ControlsCore:StrokeStyle Thickness="4"/>
+                                </Controls:SparkAreaClient.StrokeStyle>
+                                <Controls:SparkAreaClient.IntervalFactories>
+                                    <ControlsCore:MonthIntervalFactory/>
+                                    <ControlsCore:DayIntervalFactory/>
+                                </Controls:SparkAreaClient.IntervalFactories>
+                            </Controls:SparkAreaClient>
+                        </Controls:RangeControl>
+                        <StackPanel Margin="0,32,0,0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <TextBlock Text="Selected Range" HorizontalAlignment="Right" FontSize="16" Foreground="{ThemeResource DisplayRangeHeaderForegroundBrush}"/>
+                            <TextBlock Text="{x:Bind local:RangeControlViewModel.GetDisplayRange(SelectionStart, SelectionEnd), Mode=OneWay}" Foreground="{ThemeResource DisplayRangeForegroundBrush}" FontSize="16" Margin="0,-2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate x:Key="SparkBarViewModel" x:DataType="local:SparkBarViewModel">
+                    <StackPanel VerticalAlignment="Center" Margin="56,0">
+                        <Controls:RangeControl x:Name="SparkBarRangeControl"
+                                               Height="170"
+                            ShowRangeThumbs="True"
+                            ShowSelectionRectangle="False"
+                            VisibleRangeStart="{x:Bind VisibleStart, Mode=TwoWay}"
+                            VisibleRangeEnd="{x:Bind VisibleEnd, Mode=TwoWay}"
+                            SelectionRangeStart="{x:Bind SelectionStart, Mode=TwoWay}"
+                            SelectionRangeEnd="{x:Bind SelectionEnd, Mode=TwoWay}"
+                            ShowRangeBar="True">
+                            <Controls:SparkBarClient 
+                            BarWidth="0.01"
+                            ShowAxisLabels="True" 
+                            ShowAxisXGridLines="True" 
+                            ShowAxisXMinorGridLines="True"
+                            DisplayMember="DisplayValue"
+                            ValueMember="Value"
+                            DisplayScaleType="Numeric"
+                            ValueScaleType="DateTime"
+                            ItemsSource="{x:Bind ItemsSource, Mode=OneTime}">
+                                <Controls:SparkBarClient.IntervalFactories>
+                                    <ControlsCore:YearIntervalFactory/>
+                                    <ControlsCore:MonthIntervalFactory/>
+                                    <ControlsCore:DayIntervalFactory/>
+                                </Controls:SparkBarClient.IntervalFactories>
+                            </Controls:SparkBarClient>
+                        </Controls:RangeControl>
+                        <StackPanel Margin="0,32,0,0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <TextBlock Text="Selected Range" HorizontalAlignment="Right" FontSize="16" Foreground="{ThemeResource DisplayRangeHeaderForegroundBrush}"/>
+                            <TextBlock Text="{x:Bind local:RangeControlViewModel.GetDisplayRange(SelectionStart, SelectionEnd), Mode=OneWay}" Foreground="{ThemeResource DisplayRangeForegroundBrush}" FontSize="16" Margin="0,-2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </Core:TypeTemplateSelector>            
+        </ResourceDictionary>
+    </Common:DemoModuleView.Resources>
+
+    <Grid>
+        <ContentControl
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            ContentTemplateSelector="{StaticResource ViewTemplateSelector}"
+            Content="{x:Bind ViewModel.SelectedView, Mode=OneWay}"
+            />
+    </Grid>
+    <Common:DemoModuleView.Options>
+        <Common:OptionsPanel>
+            <Common:OptionGroup Header="View">
+                <RadioButton Content="Calendar" IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 0)}" Command="{x:Bind ViewModel.SetViewIndexCommand}" CommandParameter="0"/>
+                <RadioButton Content="Spark Point" IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 1)}"  Command="{x:Bind ViewModel.SetViewIndexCommand}" CommandParameter="1" />
+                <RadioButton Content="Spark Line" IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 2)}"  Command="{x:Bind ViewModel.SetViewIndexCommand}" CommandParameter="2"/>
+                <RadioButton Content="Spark Area" IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 3)}"  Command="{x:Bind ViewModel.SetViewIndexCommand}" CommandParameter="3"/>
+                <RadioButton Content="Spark Bar" IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 4)}"  Command="{x:Bind ViewModel.SetViewIndexCommand}" CommandParameter="4"/>
+            </Common:OptionGroup>
+        </Common:OptionsPanel>
+    </Common:DemoModuleView.Options>
+</Common:DemoModuleView>

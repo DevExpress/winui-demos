@@ -1,0 +1,513 @@
+<?xml version="1.0" standalone="yes"?>
+<Items>
+  <Item>
+    <CreatedDate>2014-07-01T00:00:00+05:00</CreatedDate>
+    <CreatorID>12</CreatorID>
+    <Description>When entering a new transaction into the Accounting system, MasterView nodes collapse.</Description>
+    <FixedDate>2014-07-10T00:00:00+05:00</FixedDate>
+    <ID>2</ID>
+    <ModifiedDate>2014-07-10T00:00:00+05:00</ModifiedDate>
+    <Name>Accounting System: MasterView</Name>
+    <OwnerID>4</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>66</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2013-12-04T00:00:00+04:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>Unable to enter data into the web edition of the Accounting System.</Description>
+    <FixedDate>2013-12-05T00:00:00+04:00</FixedDate>
+    <ID>3</ID>
+    <ModifiedDate>2013-12-05T00:00:00+04:00</ModifiedDate>
+    <Name>Web Edition: Data Entry Page</Name>
+    <OwnerID>11</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Postponed</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>90</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-07-11T00:00:00+05:00</CreatedDate>
+    <CreatorID>18</CreatorID>
+    <Description>Unable to calculate payables due.</Description>
+    <FixedDate>2014-07-23T00:00:00+05:00</FixedDate>
+    <ID>4</ID>
+    <ModifiedDate>2014-07-23T00:00:00+05:00</ModifiedDate>
+    <Name>Payables Due Calculator</Name>
+    <OwnerID>13</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>18</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-03-31T00:00:00+05:00</CreatedDate>
+    <CreatorID>10</CreatorID>
+    <Description>Unable to search for transactions via the search page. Date parameters are not being passed correctly.</Description>
+    <FixedDate>2014-08-09T00:00:00+05:00</FixedDate>
+    <ID>5</ID>
+    <ModifiedDate>2014-03-05T00:00:00+04:00</ModifiedDate>
+    <Name>Web Edition: Search Page</Name>
+    <OwnerID>9</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>67</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-07-27T00:00:00+05:00</CreatedDate>
+    <CreatorID>9</CreatorID>
+    <Description>There are duplicate items in the main menu.</Description>
+    <FixedDate>2014-07-10T00:00:00+05:00</FixedDate>
+    <ID>6</ID>
+    <ModifiedDate>2014-07-10T00:00:00+05:00</ModifiedDate>
+    <Name>Main Menu: Duplicate Items</Name>
+    <OwnerID>3</OwnerID>
+    <Priority>High</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>59</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-04-03T00:00:00+05:00</CreatedDate>
+    <CreatorID>12</CreatorID>
+    <Description>The system does not correctly sum all receivables due.</Description>
+    <FixedDate>2014-08-11T00:00:00+05:00</FixedDate>
+    <ID>7</ID>
+    <ModifiedDate>2014-04-03T00:00:00+05:00</ModifiedDate>
+    <Name>Receivables Calculator</Name>
+    <OwnerID>16</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>30</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-06-06T00:00:00+05:00</CreatedDate>
+    <CreatorID>17</CreatorID>
+    <Description>There are visual inconsistencies in the Ledger vs. other modules. The wrong grid is being used.</Description>
+    <FixedDate>2014-07-04T00:00:00+05:00</FixedDate>
+    <ID>8</ID>
+    <ModifiedDate>2014-07-04T00:00:00+05:00</ModifiedDate>
+    <Name>Ledger: Inconsistency</Name>
+    <OwnerID>16</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>72</Progress>
+    <HasAttachment>true</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-07-04T00:00:00+05:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>Unable to print any receivables due report.</Description>
+    <FixedDate>2014-08-10T00:00:00+05:00</FixedDate>
+    <ID>10</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Receivables Printing</Name>
+    <OwnerID>9</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>64</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-06-26T00:00:00+05:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>There is unnecessary screen redraws - appears as if the application is blinking</Description>
+    <FixedDate>2014-08-18T00:00:00+05:00</FixedDate>
+    <ID>11</ID>
+    <ModifiedDate>2014-07-08T00:00:00+05:00</ModifiedDate>
+    <Name>Screen Redraw</Name>
+    <OwnerID>7</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>47</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2013-11-05T00:00:00+04:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>Unable to send Email via Outlook Express.</Description>
+    <FixedDate>2014-01-27T00:00:00+04:00</FixedDate>
+    <ID>12</ID>
+    <ModifiedDate>2014-01-28T00:00:00+04:00</ModifiedDate>
+    <Name>Email System</Name>
+    <OwnerID>11</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>85</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-20T00:00:00+05:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>Unable to add new vendors to the system.</Description>
+    <FixedDate>2014-08-16T00:00:00+05:00</FixedDate>
+    <ID>14</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Adding New Vendors Fails</Name>
+    <OwnerID>13</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>69</Progress>
+    <HasAttachment>true</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-03-14T00:00:00+04:00</CreatedDate>
+    <CreatorID>9</CreatorID>
+    <Description>We need to track which user modified records in the database and when.</Description>
+    <FixedDate>2014-08-10T00:00:00+05:00</FixedDate>
+    <ID>16</ID>
+    <ModifiedDate>2014-04-09T00:00:00+05:00</ModifiedDate>
+    <Name>History</Name>
+    <OwnerID>11</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Postponed</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>1</Progress>
+    <HasAttachment>true</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2013-10-10T00:00:00+05:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>We need to add a file menu to the main menu. It looks strange without it.</Description>
+    <FixedDate>2014-08-08T00:00:00+05:00</FixedDate>
+    <ID>19</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Main Menu: Add a File menu</Name>
+    <OwnerID>16</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>35</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-04-03T00:00:00+05:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>The currency mask needs to include commas within it.</Description>
+    <FixedDate>2014-08-21T00:00:00+05:00</FixedDate>
+    <ID>20</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Currency Mask</Name>
+    <OwnerID>13</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>32</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-02-07T00:00:00+04:00</CreatedDate>
+    <CreatorID>12</CreatorID>
+    <Description>Cannot drag and drop transactions from one account type to another.</Description>
+    <FixedDate>2014-08-25T00:00:00+05:00</FixedDate>
+    <ID>21</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Drag &amp; Drop</Name>
+    <OwnerID>4</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>84</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-15T00:00:00+05:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>When importing information from Quicken, all banking information is lost.</Description>
+    <FixedDate>2014-08-15T00:00:00+05:00</FixedDate>
+    <ID>22</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Data Import</Name>
+    <OwnerID>4</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>96</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-03-13T00:00:00+04:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>Unable to print receivable reports for last quarter.</Description>
+    <FixedDate>2014-08-16T00:00:00+05:00</FixedDate>
+    <ID>23</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Reports</Name>
+    <OwnerID>9</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>35</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-01-09T00:00:00+04:00</CreatedDate>
+    <CreatorID>10</CreatorID>
+    <Description>The data archiving function is not working properly - an exception occurs.</Description>
+    <FixedDate>2014-01-19T00:00:00</FixedDate>
+    <ID>24</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Data Archiving</Name>
+    <OwnerID>3</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>69</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-02-22T00:00:00+04:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>There is a limit of 10 users by default. This should be 50.</Description>
+    <FixedDate>2014-02-26T00:00:00</FixedDate>
+    <ID>25</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>New Users</Name>
+    <OwnerID>11</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Rejected</Status>
+    <ProjectID>4</ProjectID>
+    <Progress>49</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-07-14T00:00:00+05:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>Attaching an invoice to an Email message is not possible.</Description>
+    <FixedDate>2014-08-02T00:00:00+05:00</FixedDate>
+    <ID>27</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Email Attachments</Name>
+    <OwnerID>3</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>83</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-09T00:00:00+05:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>Sending faxes via MS Fax fails.</Description>
+    <FixedDate>2014-08-01T00:00:00+05:00</FixedDate>
+    <ID>28</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Faxing</Name>
+    <OwnerID>3</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>50</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-08-25T00:00:00+05:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>Unable to change bank accounts from the check register.</Description>
+    <FixedDate>2014-08-25T00:00:00+05:00</FixedDate>
+    <ID>30</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Check Register</Name>
+    <OwnerID>3</OwnerID>
+    <Priority>High</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>80</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-06-25T00:00:00+05:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>We must allow users to easily add new fields for a given vendor.</Description>
+    <FixedDate>2014-08-29T00:00:00+05:00</FixedDate>
+    <ID>31</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Vendor List</Name>
+    <OwnerID>16</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>41</Progress>
+    <HasAttachment>true</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-02-24T00:00:00+04:00</CreatedDate>
+    <CreatorID>18</CreatorID>
+    <Description>Exporting data to QuickBooks fails.</Description>
+    <FixedDate>2014-05-28T00:00:00+05:00</FixedDate>
+    <ID>33</ID>
+    <ModifiedDate>2014-05-28T00:00:00+05:00</ModifiedDate>
+    <Name>Data Export</Name>
+    <OwnerID>7</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>26</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-10T00:00:00+05:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>Unable to export the transaction log to HTML.</Description>
+    <FixedDate>2014-05-26T00:00:00+05:00</FixedDate>
+    <ID>35</ID>
+    <ModifiedDate>2014-05-15T00:00:00+05:00</ModifiedDate>
+    <Name>Transaction Log</Name>
+    <OwnerID>5</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>60</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-03-27T00:00:00+04:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>Unable to open the transaction history window for any vendors.</Description>
+    <FixedDate>2014-04-28T00:00:00+05:00</FixedDate>
+    <ID>36</ID>
+    <ModifiedDate>2014-04-19T00:00:00+05:00</ModifiedDate>
+    <Name>Transaction History</Name>
+    <OwnerID>5</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>1</Progress>
+    <HasAttachment>true</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-27T00:00:00+05:00</CreatedDate>
+    <CreatorID>10</CreatorID>
+    <Description>The Phone Scripts form does not have the help file integration.</Description>
+    <FixedDate>2014-06-17T00:00:00+05:00</FixedDate>
+    <ID>37</ID>
+    <ModifiedDate>2014-06-17T00:00:00+05:00</ModifiedDate>
+    <Name>Help: Phone scripts</Name>
+    <OwnerID>14</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Rejected</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>13</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-10T00:00:00+05:00</CreatedDate>
+    <CreatorID>10</CreatorID>
+    <Description>There are 2 entries for the Ledger in the TOC.</Description>
+    <FixedDate>2014-08-08T00:00:00+05:00</FixedDate>
+    <ID>38</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Help File Duplicates</Name>
+    <OwnerID>5</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>27</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-02-21T00:00:00+04:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>The following topics are not described: Receivables &amp; Payables Due</Description>
+    <FixedDate>2014-08-17T00:00:00+05:00</FixedDate>
+    <ID>39</ID>
+    <ModifiedDate>2014-04-03T00:00:00+05:00</ModifiedDate>
+    <Name>Help File Topics</Name>
+    <OwnerID>5</OwnerID>
+    <Priority>Low</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>41</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-14T00:00:00+05:00</CreatedDate>
+    <CreatorID>12</CreatorID>
+    <Description>Numerous dialog windows are missing help file topics.</Description>
+    <FixedDate>2014-08-11T00:00:00+05:00</FixedDate>
+    <ID>41</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Help File Integration</Name>
+    <OwnerID>14</OwnerID>
+    <Priority>Low</Priority>
+    <Status>New</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>2</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-02-01T00:00:00+04:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>The Cancel button must be enabled during file copying in order to stop the setup process.</Description>
+    <FixedDate>2014-07-24T00:00:00+05:00</FixedDate>
+    <ID>42</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Installer</Name>
+    <OwnerID>16</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>56</Progress>
+    <HasAttachment>true</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-05-12T00:00:00+05:00</CreatedDate>
+    <CreatorID>15</CreatorID>
+    <Description>Cannot install the default database in repair mode.</Description>
+    <FixedDate>2014-08-08T00:00:00+05:00</FixedDate>
+    <ID>43</ID>
+    <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+    <Name>Installer</Name>
+    <OwnerID>16</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>New</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>2</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-04-10T00:00:00+05:00</CreatedDate>
+    <CreatorID>10</CreatorID>
+    <Description>Unable to enter TAX ID for vendors - the mask is wrong.</Description>
+    <FixedDate>2014-05-10T00:00:00+05:00</FixedDate>
+    <ID>44</ID>
+    <ModifiedDate>2014-05-01T00:00:00+05:00</ModifiedDate>
+    <Name>Vendor TAX IDs</Name>
+    <OwnerID>13</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>Fixed</Status>
+    <ProjectID>3</ProjectID>
+    <Progress>88</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+  <Item>
+    <CreatedDate>2014-03-06T00:00:00+04:00</CreatedDate>
+    <CreatorID>3</CreatorID>
+    <Description>The field name for vendors is limited to 25 characters - increase to 75.</Description>
+    <FixedDate>2014-08-01T00:00:00+05:00</FixedDate>
+    <ID>45</ID>
+    <ModifiedDate>2014-04-10T00:00:00+05:00</ModifiedDate>
+    <Name>Vendor Name</Name>
+    <OwnerID>13</OwnerID>
+    <Priority>Medium</Priority>
+    <Status>Rejected</Status>
+    <ProjectID>2</ProjectID>
+    <Progress>53</Progress>
+    <HasAttachment>false</HasAttachment>
+  </Item>
+</Items>

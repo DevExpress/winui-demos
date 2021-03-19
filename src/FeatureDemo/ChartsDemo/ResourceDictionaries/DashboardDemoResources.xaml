@@ -1,0 +1,46 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ChartsDemo="using:ChartsDemo"
+    xmlns:Charts="using:DevExpress.WinUI.Charts">
+    <ChartsDemo:DashboardViewModel x:Key="viewModel" />
+    <ChartsDemo:PopulationDynamicColorConverter x:Key="populationDynamicBrushConverter" />
+    <ChartsDemo:PopulationDynamicTitleConverter x:Key="populationDynamicTitleConverter" />
+    <ChartsDemo:PopulationDynamicConverter x:Key="populationDynamicConverter" />
+    <x:Double x:Key="labelsAndLegendFontSize">12</x:Double>
+    <Style TargetType="TextBlock" x:Key="headerStyle">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="0,0,0,20" />
+    </Style>
+    <Style TargetType="Charts:Legend" x:Key="legendStyle">
+        <Setter Property="FontSize" Value="{StaticResource ResourceKey=labelsAndLegendFontSize}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ReverseItems" Value="True" />
+    </Style>
+    <DataTemplate x:Key="toolTipTemplate">
+        <Grid x:Name="Tooltip" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="True">
+            <Grid x:Name="Shadow" Margin="0,4,0,-4" Opacity="0.1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="12" />
+                </Grid.RowDefinitions>
+                <Path x:Name="Arrow" Stretch="Fill" Fill="Black" Data="F1 M 461,303L 474,316L 487,303L 461,303 Z "
+                          HorizontalAlignment="Center" Height="13" Grid.Row="1" Width="26" Margin="0,-1,0,0" />
+                <Border x:Name="ContentBack" Background="Black" />
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="12" />
+                </Grid.RowDefinitions>
+                <Path x:Name="Arrow1" Stretch="Fill" Fill="{Binding ToolTipBrush}" Data="F1 M 461,303L 474,316L 487,303L 461,303 Z "
+                          HorizontalAlignment="Center" Height="13" Grid.Row="1" Width="26" Margin="0,-1,0,0" />
+                <Border x:Name="ContentBack1" Background="{Binding ToolTipBrush}" />
+                <TextBlock x:Name="Content1" TextWrapping="Wrap" Text="{Binding ToolTipText}" Margin="10, 7.5, 10, 9"
+                               FontSize="16" Foreground="White" />
+            </Grid>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

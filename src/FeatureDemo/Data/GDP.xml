@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<GDPInfoList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GDPInfo>
+    <GDP>2438089</GDP>
+    <GDPPerCapita>206061</GDPPerCapita>
+    <Region>Southwest</Region>
+    <State />
+  </GDPInfo>
+  <GDPInfo>
+    <GDP>3768023</GDP>
+    <GDPPerCapita>559847</GDPPerCapita>
+    <Region>Mideast</Region>
+    <State />
+  </GDPInfo>
+  <GDPInfo>
+    <GDP>4512857</GDP>
+    <GDPPerCapita>601923</GDPPerCapita>
+    <Region>Southeast</Region>
+    <State />
+  </GDPInfo>
+  <GDPInfo>
+    <GDP>2807752</GDP>
+    <GDPPerCapita>295886</GDPPerCapita>
+    <Region>Great Lakes</Region>
+    <State />
+  </GDPInfo>
+  <GDPInfo>
+    <GDP>1201650</GDP>
+    <GDPPerCapita>330739</GDPPerCapita>
+    <Region>Far West</Region>
+    <State />
+  </GDPInfo>
+  <GDPInfo>
+    <GDP>1121715</GDP>
+    <GDPPerCapita>389420</GDPPerCapita>
+    <Region>New England</Region>
+    <State />
+  </GDPInfo>
+  <GDPInfo>
+    <GDP>766387</GDP>
+    <GDPPerCapita>285709</GDPPerCapita>
+    <Region>Rocky Mountain</Region>
+    <State />
+  </GDPInfo>
+  <GDPInfo>
+    <GDP>1315095</GDP>
+    <GDPPerCapita>441282</GDPPerCapita>
+    <Region>Plains</Region>
+    <State />
+  </GDPInfo>
+</GDPInfoList>

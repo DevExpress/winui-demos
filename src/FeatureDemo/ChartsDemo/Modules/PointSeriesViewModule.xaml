@@ -1,0 +1,58 @@
+﻿<Common:DemoModuleView
+    x:Class="ChartsDemo.PointSeriesViewModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Common="using:FeatureDemo.Common"
+    xmlns:Charts="using:DevExpress.WinUI.Charts"
+    BorderBrush="Transparent">
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Top Films by Worldwide Grosses" Style="{StaticResource ChartHeaderTextStyle}" TextWrapping="WrapWholeWords" Margin="0,0,0,10"/>
+        <Charts:CartesianChart x:Name="cartesianChart" Style="{StaticResource CommonCartesianChartStyle}" Grid.Row="1" >
+            <Charts:CartesianChart.AxisX>
+                <Charts:AxisX ShowMajorGridlines="True" ShowMinorGridlines="True">
+                    <Charts:AxisX.Title>
+                        <Charts:AxisTitle Content="Production Budget, M$"/>
+                    </Charts:AxisX.Title>
+                    <Charts:AxisX.WholeRange>
+                        <Charts:WholeAxisRange AutoCorrect="False" StartValueInternal="140" EndValueInternal="270"/>
+                    </Charts:AxisX.WholeRange>
+                </Charts:AxisX>
+            </Charts:CartesianChart.AxisX>
+            <Charts:CartesianChart.AxisY >
+                <Charts:AxisY ShowMinorGridlines="True">
+                    <Charts:AxisY.Title>
+                        <Charts:AxisTitle Content="Worldwide Grosses, M$"/>
+                    </Charts:AxisY.Title>
+                    <Charts:AxisY.WholeRange>
+                        <Charts:WholeAxisRange AutoCorrect="False" StartValueInternal="900" EndValueInternal="3000" Charts:AxisY.ShowZeroValue="False"/>
+                    </Charts:AxisY.WholeRange>
+                </Charts:AxisY>
+            </Charts:CartesianChart.AxisY>
+        </Charts:CartesianChart>
+        <TextBlock Text="From www.boxofficemojo.com" Style="{StaticResource WebSource}" Grid.Row="2"/>
+    </Grid>
+    <Common:DemoModuleView.Options>
+        <Common:OptionsPanel>
+            <Common:OptionGroup Header="Markres">
+                <Common:OptionItem Header="Marker Size:">
+                    <Slider Minimum="10" Maximum="40" Value="{x:Bind MarkerSize, Mode=TwoWay}" />
+                </Common:OptionItem>
+            </Common:OptionGroup>
+            <Common:OptionGroup Header="Labels">
+                <Common:OptionItem Header="Angle:">
+                    <Slider Minimum="0" Maximum="360" Value="{x:Bind Angle, Mode=TwoWay}" IsEnabled="{x:Bind ShowLabels}" />
+                </Common:OptionItem>
+                <Common:OptionItem Header="Indent:">
+                    <Slider Minimum="10" Maximum="30" Value="{x:Bind Indent, Mode=TwoWay}" IsEnabled="{x:Bind ShowLabels}"/>
+                </Common:OptionItem>
+                <CheckBox Content="Show Labels" IsChecked="{x:Bind ShowLabels, Mode=TwoWay}" />
+            </Common:OptionGroup>
+        </Common:OptionsPanel>
+    </Common:DemoModuleView.Options>
+</Common:DemoModuleView>

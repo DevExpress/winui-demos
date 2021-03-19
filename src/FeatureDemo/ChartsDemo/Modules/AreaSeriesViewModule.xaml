@@ -1,0 +1,71 @@
+﻿<Common:DemoModuleView
+    x:Class="ChartsDemo.AreaSeriesViewModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Charts="using:DevExpress.WinUI.Charts"
+    xmlns:Common="using:FeatureDemo.Common"
+    BorderBrush="Transparent">
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Corporations with Highest Market Value" Style="{StaticResource ChartHeaderTextStyle}" TextWrapping="WrapWholeWords"/>
+        <Charts:CartesianChart x:Name="chart" Grid.Row="1"  Style="{StaticResource CommonCartesianChartStyle}">
+            <Charts:CartesianChart.Legend>
+                <Charts:Legend  FontSize="12" Orientation="Horizontal" HorizontalPosition="Right" VerticalPosition="Top"/>
+            </Charts:CartesianChart.Legend>
+            <Charts:CartesianChart.AxisX>
+                <Charts:AxisX ShowMajorGridlines="True">
+                    <Charts:AxisX.LabelOptions>
+                        <Charts:AxisLabelOptions Angle="20"/>
+                    </Charts:AxisX.LabelOptions>
+                    <Charts:AxisX.WholeRange>
+                        <Charts:WholeAxisRange SideMargins="0.1"/>
+                    </Charts:AxisX.WholeRange>
+                </Charts:AxisX>
+            </Charts:CartesianChart.AxisX>
+            <Charts:CartesianChart.AxisY>
+                <Charts:AxisY ShowMajorGridlines="False">
+                    <Charts:AxisY.LabelOptions>
+                        <Charts:AxisLabelOptions Pattern="{Binding AxisYLablePattern}" />
+                    </Charts:AxisY.LabelOptions>
+                    <Charts:AxisY.Title>
+                        <Charts:AxisTitle Content="Market Value, billion US$" Visible="{Binding ShowAxisYTitle}" Style="{StaticResource AxisTitle}" />
+                    </Charts:AxisY.Title>
+                </Charts:AxisY>
+            </Charts:CartesianChart.AxisY>
+            <Charts:CartesianChart.Series>
+                <Charts:Series DisplayName="2020" View="{Binding Series1View}">
+                    <Charts:Series.Data>
+                        <Charts:DataSourceAdapter DataSource="{Binding Series1Data}">
+                            <Charts:DataMember DataMemberType="Argument" ColumnName="CompanyName" />
+                            <Charts:DataMember DataMemberType="Value" ColumnName="MarketValue" />
+                        </Charts:DataSourceAdapter>
+                    </Charts:Series.Data>
+                </Charts:Series>
+                <Charts:Series DisplayName="2019" View="{Binding Series2View}">
+                    <Charts:Series.Data>
+                        <Charts:DataSourceAdapter DataSource="{Binding Series2Data}">
+                            <Charts:DataMember DataMemberType="Argument" ColumnName="CompanyName" />
+                            <Charts:DataMember DataMemberType="Value" ColumnName="MarketValue" />
+                        </Charts:DataSourceAdapter>
+                    </Charts:Series.Data>
+                </Charts:Series>
+            </Charts:CartesianChart.Series>
+        </Charts:CartesianChart>
+        <TextBlock Text="From www.geohive.com" Style="{StaticResource WebSource}" Grid.Row="2"/>
+    </Grid>
+    <Common:DemoModuleView.Options>
+        <Common:OptionsPanel>
+            <Common:OptionGroup Header="View">
+                <RadioButton GroupName="view" Content="Area" IsChecked="{Binding IsAreaChecked, Mode=TwoWay}" />
+                <RadioButton GroupName="view" Content="Stacked Area" IsChecked="{Binding IsStackedAreaChecked, Mode=TwoWay}"/>
+                <RadioButton GroupName="view" Content="Full Stacked Area" IsChecked="{Binding IsFullStackedAreaChecked, Mode=TwoWay}" />
+                <RadioButton GroupName="view" Content="Step Area" IsChecked="{Binding IsStepAreaChecked, Mode=TwoWay}" />
+            </Common:OptionGroup>
+        </Common:OptionsPanel>
+    </Common:DemoModuleView.Options>
+</Common:DemoModuleView>

@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="yes"?>
+<Movies>
+  <Movie>
+    <Name>Avatar</Name>
+    <ProductionBudget>237</ProductionBudget>
+    <WorlwideGrosses>2787</WorlwideGrosses>
+    <ReleaseDate>2009</ReleaseDate>
+  </Movie>
+  <Movie>
+    <Name>Titanic</Name>
+    <ProductionBudget>200</ProductionBudget>
+    <WorlwideGrosses>2186</WorlwideGrosses>
+    <ReleaseDate>1997</ReleaseDate>
+  </Movie>
+  <Movie>
+    <Name>Star Wars: The Force Awakens</Name>
+    <ProductionBudget>245</ProductionBudget>
+    <WorlwideGrosses>2068</WorlwideGrosses>
+    <ReleaseDate>2015</ReleaseDate>
+  </Movie>
+  <Movie>
+    <Name>Jurassic World</Name>
+    <ProductionBudget>150</ProductionBudget>
+    <WorlwideGrosses>1670</WorlwideGrosses>
+    <ReleaseDate>2015</ReleaseDate>
+  </Movie>
+  <Movie>
+    <Name>The Dark Knight</Name>
+    <ProductionBudget>185</ProductionBudget>
+    <WorlwideGrosses>1000</WorlwideGrosses>
+    <ReleaseDate>2008</ReleaseDate>
+  </Movie>
+  <Movie>
+    <Name>Furious 7</Name>
+    <ProductionBudget>190</ProductionBudget>
+    <WorlwideGrosses>1516</WorlwideGrosses>
+    <ReleaseDate>2015</ReleaseDate>
+  </Movie>
+  <Movie>
+    <Name>Avengers: Age of Ultron</Name>
+    <ProductionBudget>250</ProductionBudget>
+    <WorlwideGrosses>1405</WorlwideGrosses>
+    <ReleaseDate>2015</ReleaseDate>
+  </Movie>
+</Movies>

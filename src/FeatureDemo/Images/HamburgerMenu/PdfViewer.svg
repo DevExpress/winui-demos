@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   viewBox="0 0 20 20"
+   height="20"
+   width="20">
+
+  <path
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;"
+     d="m 2,1 0,2 2,0 11,0 0,4 2,0 0,-6 z m 0,8 0,10 4.7480469,0 2,-2 L 4,17 4,9 Z m 13,7 0,1 -1.837891,0 -2,2 L 17,19 17,16 Z"
+     id="rect4163" />
+  <rect
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.01999998;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect4171"
+     width="5.5999999"
+     height="4"
+     x="1"
+     y="4" />
+  <path
+     id="path4175"
+     d="m 16,8.6503906 c -1.802255,0 -3.25,1.5239284 -3.25,3.3496094 0,1.825681 1.447745,3.349609 3.25,3.349609 1.802255,0 3.25,-1.523928 3.25,-3.349609 0,-1.825681 -1.447745,-3.3496094 -3.25,-3.3496094 z m 0,1.5000004 c 0.959169,0 1.75,0.803409 1.75,1.849609 0,1.0462 -0.790831,1.849609 -1.75,1.849609 -0.959169,0 -1.75,-0.803409 -1.75,-1.849609 0,-1.0462 0.790831,-1.849609 1.75,-1.849609 z"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 13,13 -6,7 2,0 5,-6 z"
+     id="path4181" />
+  <path
+     style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 14,13 -7,7 2,0 6,-6 z"
+     id="path4183" />
+  <path
+     id="path4185"
+     d="m 14,13 -7,7 2,0 6,-6 z"
+     style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+</svg>

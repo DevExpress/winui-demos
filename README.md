@@ -6,7 +6,7 @@ This repository contains WinUI 3 demos that show how to use WinUI components and
 
 ## System Requirements
 
-* Windows 10, version 1803 (build 17134), or newer installed
+* Windows 10, version 20H2 (build 19041), or newer installed
 * Visual Studio 2019, version 16.9 Preview (including Universal Windows Platform development and .NET Desktop development)
 * [WinUI 3 Preview VSIX package](https://marketplace.visualstudio.com/items?itemName=Microsoft-WinUI.WinUIProjectTemplates)
 

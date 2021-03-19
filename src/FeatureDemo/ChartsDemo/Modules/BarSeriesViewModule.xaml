@@ -1,0 +1,141 @@
+﻿<Common:DemoModuleView
+    x:Class="ChartsDemo.BarSeriesViewModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Charts="using:DevExpress.WinUI.Charts"
+    xmlns:Common="using:FeatureDemo.Common"
+    BorderBrush="Transparent">
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Population: Age Structure" Style="{StaticResource ChartHeaderTextStyle}" TextWrapping="WrapWholeWords"/>
+        <Charts:CartesianChart x:Name="chart" Style="{StaticResource CommonCartesianChartStyle}" Rotated="{Binding IsRotated}" Grid.Row="1">
+            <Charts:CartesianChart.AxisY>
+                <Charts:AxisY>
+                    <Charts:AxisY.LabelOptions>
+                        <Charts:AxisLabelOptions
+                                Pattern="{Binding AxisYLablePattern}"/>
+                    </Charts:AxisY.LabelOptions>
+                    <Charts:AxisY.Title>
+                        <Charts:AxisTitle
+                                Content="Population in millions"
+                                Visible="{Binding ShowAxisYTitle}" />
+                    </Charts:AxisY.Title>
+                </Charts:AxisY>
+            </Charts:CartesianChart.AxisY>
+            <Charts:CartesianChart.Legend>
+                <Charts:Legend
+                        FontSize="12"
+                        Margin="0,-5,0,-5"
+                        Orientation="Horizontal"
+                        HorizontalPosition="Center"
+                        VerticalPosition="BottomOutside"
+                        MaximumRowsOrColumns="3"
+                        BorderThickness="0" />
+            </Charts:CartesianChart.Legend>
+            <Charts:CartesianChart.Series>
+                <Charts:Series
+                        DisplayName="Male: 0 - 14 years">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="US" Value="29.956" />
+                            <Charts:DataPoint Argument="Brazil" Value="25.607" />
+                            <Charts:DataPoint Argument="Russia" Value="13.493" />
+                            <Charts:DataPoint Argument="Japan" Value="9.575" />
+                            <Charts:DataPoint Argument="Mexico" Value="17.306" />
+                            <Charts:DataPoint Argument="Germany" Value="6.679" />
+                            <Charts:DataPoint Argument="UK" Value="5.816" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+                <Charts:Series
+                        DisplayName="Male: 15 - 64 years">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="US" Value="90.354" />
+                            <Charts:DataPoint Argument="Brazil" Value="55.793" />
+                            <Charts:DataPoint Argument="Russia" Value="48.983" />
+                            <Charts:DataPoint Argument="Japan" Value="43.363" />
+                            <Charts:DataPoint Argument="Mexico" Value="30.223" />
+                            <Charts:DataPoint Argument="Germany" Value="28.638" />
+                            <Charts:DataPoint Argument="UK" Value="19.622" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+                <Charts:Series
+                        DisplayName="Male: 65 years and older">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="US" Value="14.472" />
+                            <Charts:DataPoint Argument="Brazil" Value="3.727" />
+                            <Charts:DataPoint Argument="Russia" Value="5.802" />
+                            <Charts:DataPoint Argument="Japan" Value="9.024" />
+                            <Charts:DataPoint Argument="Mexico" Value="1.927" />
+                            <Charts:DataPoint Argument="Germany" Value="5.133" />
+                            <Charts:DataPoint Argument="UK" Value="3.864" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+                <Charts:Series DisplayName="Female: 0 - 14 years">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="US" Value="28.597" />
+                            <Charts:DataPoint Argument="Brazil" Value="24.67" />
+                            <Charts:DataPoint Argument="Russia" Value="12.971" />
+                            <Charts:DataPoint Argument="Japan" Value="9.105" />
+                            <Charts:DataPoint Argument="Mexico" Value="16.632" />
+                            <Charts:DataPoint Argument="Germany" Value="6.333" />
+                            <Charts:DataPoint Argument="UK" Value="5.519" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+                <Charts:Series
+                        DisplayName="Female: 15 - 64 years">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="US" Value="91.827" />
+                            <Charts:DataPoint Argument="Brazil" Value="57.598" />
+                            <Charts:DataPoint Argument="Russia" Value="52.14" />
+                            <Charts:DataPoint Argument="Japan" Value="42.98" />
+                            <Charts:DataPoint Argument="Mexico" Value="31.868" />
+                            <Charts:DataPoint Argument="Germany" Value="27.693" />
+                            <Charts:DataPoint Argument="UK" Value="19.228" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+                <Charts:Series DisplayName="Female: 65 years and older">
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="US" Value="20.362" />
+                            <Charts:DataPoint Argument="Brazil" Value="5.462" />
+                            <Charts:DataPoint Argument="Russia" Value="12.61" />
+                            <Charts:DataPoint Argument="Japan" Value="12.501" />
+                            <Charts:DataPoint Argument="Mexico" Value="2.391" />
+                            <Charts:DataPoint Argument="Germany" Value="8.318" />
+                            <Charts:DataPoint Argument="UK" Value="5.459" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+            </Charts:CartesianChart.Series>
+        </Charts:CartesianChart>
+        <TextBlock Text="From www.bea.gov" Style="{StaticResource WebSource}" Grid.Row="2" />
+    </Grid>
+    <Common:DemoModuleView.Options>
+        <Common:OptionsPanel>
+            <Common:OptionGroup Header="View">
+                <RadioButton GroupName="BarSeriesViewGroup" Content="Side-By-Side Bar" IsChecked="{Binding IsSideBySideBarChecked, Mode=TwoWay}" />
+                <RadioButton GroupName="BarSeriesViewGroup" Content="Stacked Bar" IsChecked="{Binding IsStackedBarChecked, Mode=TwoWay}" />
+                <RadioButton GroupName="BarSeriesViewGroup" Content="Full Stacked Bar" IsChecked="{Binding IsFullStackedBarChecked, Mode=TwoWay}" />
+                <RadioButton GroupName="BarSeriesViewGroup" Content="Side-By-Side Stacked Bar" IsChecked="{Binding IsSideBySideStackedBarChecked, Mode=TwoWay}" />
+                <RadioButton GroupName="BarSeriesViewGroup" Content="Side-By-Side Full Stacked Bar" IsChecked="{Binding IsSideBySideFullStackedBarChecked, Mode=TwoWay}" />
+            </Common:OptionGroup>
+            <Common:OptionGroup Header="Orientation">
+                <CheckBox Content="Diagram Rotated" IsChecked="{Binding IsRotated, Mode=TwoWay}" />
+            </Common:OptionGroup>
+        </Common:OptionsPanel>
+    </Common:DemoModuleView.Options>
+</Common:DemoModuleView>

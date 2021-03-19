@@ -1,0 +1,97 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.GridRealTimeDataModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:Grid="using:DevExpress.WinUI.Grid"    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:FeatureDemo.Data"
+    xmlns:dxmvvm="using:DevExpress.WinUI.Mvvm.UI.Interactivity"
+    BorderBrush="Transparent"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="1000">
+    <local:GridDemoUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:GridRealTimeDataStylesResourceDictionary/>
+            </ResourceDictionary.MergedDictionaries>
+            <common:StockPriceConverter x:Key="priceConverter"/>
+            <common:ArrowDirectionConverter x:Key="arrowDirectionConverter"/>
+        </ResourceDictionary>
+    </local:GridDemoUserControl.Resources>
+    <local:GridDemoUserControl.DataContext>
+        <local:StockDataViewModel />
+    </local:GridDemoUserControl.DataContext>
+    <Grid:GridControl ItemsSource="{Binding Data}" x:Name="grid" AllowLiveDataShaping="True" AutoGenerateColumns="False" NavigationStyle="None" ShowFixedTotalSummary="True" 
+                      FixedTotalSummaryItemTemplate="{StaticResource FixedTotalSummaryItemTemplate}" AllowColumnFiltering="False" AllowResizing="False" AllowCascadeUpdate="False">
+        <dxmvvm:Interaction.Behaviors>
+            <local:StockDataViewModelBehavior />
+        </dxmvvm:Interaction.Behaviors>
+        <Grid:GridControl.CellStyle>
+            <Style TargetType="Grid:CellControl">
+                <Setter Property="FontSize" Value="46"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="Foreground" Value="#FFA2A3A3"/>
+            </Style>
+        </Grid:GridControl.CellStyle>
+        <Grid:GridControl.Columns>
+            <Grid:GridTextColumn FieldName="CompanyName" Header="Symbol" MinWidth="120" AllowColumnFiltering="True">
+                <Grid:GridTextColumn.CellStyle>
+                    <Style TargetType="Grid:CellControl">
+                        <Setter Property="FontSize" Value="26"/>
+                        <Setter Property="FontFamily" Value="Segoe UI"/>
+                        <Setter Property="FontWeight" Value="Light"/>
+                        <Setter Property="Foreground" Value="#FFA2A3A3"/>
+                    </Style>
+                </Grid:GridTextColumn.CellStyle>
+            </Grid:GridTextColumn>
+            <Grid:GridTemplateColumn FieldName="Price" Header="Price ($)" MinWidth="200">
+                <Grid:GridTemplateColumn.CellTemplate>
+                    <DataTemplate x:DataType="data:StockItem">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <common:StockArrowControl IsUp="{x:Bind DeltaPrice, Converter={StaticResource arrowDirectionConverter}, Mode=OneWay}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{x:Bind Price, Converter={StaticResource priceConverter}, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </Grid:GridTemplateColumn.CellTemplate>
+            </Grid:GridTemplateColumn>
+            <Grid:GridTextColumn x:Name="DeltaPrice" FieldName="DeltaPrice" Header="Change ($)" MinWidth="170" DisplayFormat="{}{0:+0.00;-0.00;0}" HorizontalContentAlignment="Right"/>
+            <Grid:GridTextColumn x:Name="DeltaPricePercent" FieldName="DeltaPricePercent" Header="Change (%)" MinWidth="190" DisplayFormat="{}{0:+0.00;-0.00;0}%" HorizontalContentAlignment="Right"/>
+            <Grid:GridTextColumn x:Name="LowPrice" FieldName="LowPrice" MinWidth="190" Header="Low ($)" DisplayFormat="{}{0:.00}" HorizontalContentAlignment="Right"/>
+            <Grid:GridTextColumn x:Name="HighPrice" FieldName="HighPrice" MinWidth="190" Header="High ($)" DisplayFormat="{}{0:.00}" HorizontalContentAlignment="Right"/>
+            <Grid:GridTemplateColumn x:Name="PriceHistory" FieldName="PriceHistory" Header="Stock Chart" MinWidth="200">
+                <Grid:GridTemplateColumn.CellTemplate>
+                    <DataTemplate x:DataType="data:StockItem">
+                        <local:DemoSparkAreaChart Points="{x:Bind PriceHistory, Mode=OneWay}" Stroke="#FF1ABDD6" Fill="#FF1ABDD6" VerticalChartIndent="20" VerticalAlignment="Center" Height="40"/>
+                    </DataTemplate>
+                </Grid:GridTemplateColumn.CellTemplate>
+            </Grid:GridTemplateColumn>
+        </Grid:GridControl.Columns>
+        <Grid:GridControl.TotalSummary>
+            <Grid:GridSummaryItem SummaryType="Count" Alignment="Left"/>
+            <Grid:GridSummaryItem SummaryType="Max" Alignment="Left" FieldName="Price">
+                <Grid:GridSummaryItem.DisplayFormat>{0:.00}</Grid:GridSummaryItem.DisplayFormat>
+            </Grid:GridSummaryItem>
+            <Grid:GridSummaryItem x:Name="chartSummary" SummaryType="Custom" FieldName="Price" Alignment="Right" FixedTotalSummaryItemTemplate="{StaticResource stockChartSummaryTemplate}"/>
+        </Grid:GridControl.TotalSummary>
+
+        <Grid:GridControl.FormatConditions>
+            <Grid:FormatCondition FieldName="DeltaPriceSignChange" ValueRule="Greater" Value1="0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.LightGreenFill}" ApplyToRow="True"/>
+            <Grid:FormatCondition FieldName="DeltaPriceSignChange" ValueRule="Less" Value1="0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.LightRedFill}" ApplyToRow="True"/>
+            <Grid:FormatCondition FieldName="Price" Expression="[DeltaPrice] &gt; 0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.GreenText}"/>
+            <Grid:FormatCondition FieldName="Price" Expression="[DeltaPrice] &lt; 0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.RedText}"/>
+            <Grid:FormatCondition FieldName="DeltaPrice" ValueRule="Greater" Value1="0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.GreenText}"/>
+            <Grid:FormatCondition FieldName="DeltaPrice" ValueRule="Less" Value1="0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.RedText}"/>
+            <Grid:FormatCondition FieldName="DeltaPricePercent" ValueRule="Greater" Value1="0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.GreenText}"/>
+            <Grid:FormatCondition FieldName="DeltaPricePercent" ValueRule="Less" Value1="0" PredefinedFormatName="{x:Bind Grid:PredefinedFormatNames.RedText}"/>
+        </Grid:GridControl.FormatConditions>
+    </Grid:GridControl>
+</local:GridDemoUserControl>

@@ -1,0 +1,47 @@
+﻿<Common:DemoModuleView
+    x:Class="ChartsDemo.FunnelSeriesViewModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Charts="using:DevExpress.WinUI.Charts"
+    xmlns:Common="using:FeatureDemo.Common"
+    BorderBrush="Transparent">
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Web Site Visitor Trend" Style="{StaticResource ChartHeaderTextStyle}" TextWrapping="WrapWholeWords"/>
+        <Charts:FunnelChart x:Name="chart" Style="{StaticResource CommonFunnelChartStyle}" Grid.Row="1">
+            <Charts:FunnelChart.Legend>
+                <Charts:Legend BorderThickness="0" Orientation="Horizontal" HorizontalPosition="Center" VerticalPosition="BottomOutside" FontSize="12" Margin="0,10,0,-10"/>
+            </Charts:FunnelChart.Legend>
+            <Charts:FunnelChart.Series>
+                <Charts:Series>
+                    <Charts:Series.View>
+                        <Charts:FunnelSeriesView ShowLabels="True" AlignToCenter="False" PointDistance="{Binding ElementName=slPointsDistance, Path=Value}">
+                            <Charts:FunnelSeriesView.LabelOptions>
+                                <Charts:SeriesLabelOptions Pattern="{}{A}: {VP:p0}" Charts:FunnelSeriesView.LabelPosition="Center"/>
+                            </Charts:FunnelSeriesView.LabelOptions>
+                        </Charts:FunnelSeriesView>
+                    </Charts:Series.View>
+                    <Charts:Series.Data>
+                        <Charts:DataPointCollection>
+                            <Charts:DataPoint Argument="Visited a Web Site" Value="9152" />
+                            <Charts:DataPoint Argument="Downloaded a Trial" Value="6870" />
+                            <Charts:DataPoint Argument="Contacted to Support" Value="5121" />
+                            <Charts:DataPoint Argument="Subscribed" Value="2224" />
+                            <Charts:DataPoint Argument="Renewed" Value="1670" />
+                        </Charts:DataPointCollection>
+                    </Charts:Series.Data>
+                </Charts:Series>
+            </Charts:FunnelChart.Series>
+        </Charts:FunnelChart>
+    </Grid>
+    <Common:DemoModuleView.Options>
+        <Common:OptionGroup Header="Points Distance">
+            <Common:OptionItem>
+                <Slider Minimum="0" Maximum="15" Value="{Binding PointDistance, Mode=TwoWay}" VerticalAlignment="Top" />
+            </Common:OptionItem>
+        </Common:OptionGroup>
+    </Common:DemoModuleView.Options>
+</Common:DemoModuleView>
