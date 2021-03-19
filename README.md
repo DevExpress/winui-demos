@@ -10,7 +10,9 @@ This repository contains WinUI 3 demos that show how to use WinUI components and
 * Visual Studio 2019, version 16.9 (including Universal Windows Platform development and .NET Desktop development)
 * [Project Reunion Visual Studio extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftProjectReunion)
 
-**Note**: If you previously installed the [WinUI 3 Preview extension](https://marketplace.visualstudio.com/items?itemName=Microsoft-WinUI.WinUIProjectTemplates) from an earlier WinUI 3 preview release, uninstall the extension.
+**Notes**:
+* If you previously installed the [WinUI 3 Preview extension](https://marketplace.visualstudio.com/items?itemName=Microsoft-WinUI.WinUIProjectTemplates) from an earlier WinUI 3 preview release, uninstall the extension.
+* If you cannot buid the demo, check whether the correct configuration is specified (x86 or x64). Then rebuild the solution.
 
 For more information, refer to [Project Reunion](https://docs.microsoft.com/en-us/windows/apps/project-reunion/).
 
