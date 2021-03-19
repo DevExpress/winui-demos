@@ -38,7 +38,7 @@ For more information, refer to [Project Reunion](https://docs.microsoft.com/en-u
 
 5. Build the demo project. All the required NuGet packages will be automatically retrieved by Visual Studio.
 
-    If you cannot build the demo, check whether the correct configuration is specified (x86 or x64). Then rebuild the solution.
+    If you cannot build the demo, check whether the correct configuration is specified (x86 or x64). Then execute **Rebuild Solution**.
 
 ## Demos Application
 
