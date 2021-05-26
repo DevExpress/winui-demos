@@ -16,9 +16,7 @@ For more information, refer to [Project Reunion](https://docs.microsoft.com/en-u
 
 1. Open the demo project.
 
-2. Use your DevExpress credentials to log into [nuget.devexpress.com](nuget.devexpress.com). Obtain your **NuGet Feed URL** and copy it to the clipboard.
-
-    <img src="./images/winui-nuget-gallery.png">
+2. Use your DevExpress credentials to log into [devexpress.com](https://devexpress.com/). Refer to the [devexpress.com/winui-free](https://devexpress.com/winui-free) page to get your DevExpress WinUI Controls license. Check the specified email address and copy the [NuGet feed URL](xref:116042) from the email to the clipboard.
 
 3. In Visual Studio, select **Tools -> NuGet Package Manager -> Package Manager Settings**.
 
