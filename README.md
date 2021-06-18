@@ -8,7 +8,7 @@ This repository contains WinUI 3 demos that show how to use WinUI components and
 
 * Windows 10, version 2004 (build 19041), or newer installed
 * Visual Studio 2019 version 16.9 or higher, or Visual Studio 2019 Preview version 16.10 or higher (including Universal Windows Platform development and .NET Desktop development)
-* [WinUI 3 - Project Reunion 0.5 Preview VSIX](https://aka.ms/projectreunion/previewdownload)
+* [WinUI 3 - Project Reunion 0.5 Preview VSIX](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ProjectReunion/vsextensions/MicrosoftProjectReunion/0.5.0.37570840/vspackage)
 
 For more information, refer to [Project Reunion](https://docs.microsoft.com/en-us/windows/apps/project-reunion/).
 
