@@ -1,10 +1,8 @@
 # DevExpress WinUI 3 Demos
 
-This repository contains WinUI 3 demos that show how to use WinUI components and tools, including the Data Grid, Scheduler, Charting, and Data Editors.
+This repository contains WinUI 3 demos that show how to use [DevExpress WinUI components](https://devexpress.com/winui/) and tools, including the Data Grid, Scheduler, Charting, and Data Editors.
 
 <img src="./images/winui-demos.png">
-
-Refer to the following link for more information about DevExpress WinUI Controls: [DevExpress WinUI Controls](https://devexpress.com/winui/).
 
 ## System Requirements
 
