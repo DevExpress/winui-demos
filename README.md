@@ -4,6 +4,8 @@ This repository contains WinUI 3 demos that show how to use WinUI components and
 
 <img src="./images/winui-demos.png">
 
+Refer to the following link for more information about DevExpress WinUI Controls: [DevExpress WinUI Controls](https://devexpress.com/winui/).
+
 ## System Requirements
 
 * Windows 10, version 1809 (build 17763), or newer installed
@@ -39,10 +41,6 @@ For more information, refer to [Project Reunion](https://docs.microsoft.com/en-u
 ## Demos Application
 
 [DevExpress WinUI Demos App](https://demos.devexpress.com/winui/)
-
-## DevExpress WinUI Controls
-
-[DevExpress WinUI Controls](https://devexpress.com/winui/)
 
 ## Documentation
 
