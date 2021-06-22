@@ -9,7 +9,6 @@ This repository contains WinUI 3 demos that show how to use WinUI components and
 * Windows 10, version 1809 (build 17763), or newer installed
 * Visual Studio 2019 version 16.9 or higher, or Visual Studio 2019 Preview version 16.10 or higher
 * .NET Desktop development workload for Visual Studio
-* [DevExpress WinUI 3 for Desktop Project Templates VSIX](https://downloads.devexpress.com/WinUI/VSTemplates/21.2.1/DevExpress.WinUI.VSTemplates.vsix)
 
 For more information, refer to [Project Reunion](https://docs.microsoft.com/en-us/windows/apps/project-reunion/).
 
