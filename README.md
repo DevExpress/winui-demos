@@ -40,6 +40,10 @@ For more information, refer to [Project Reunion](https://docs.microsoft.com/en-u
 
 [DevExpress WinUI Demos App](https://demos.devexpress.com/winui/)
 
+## DevExpress WinUI Controls
+
+[DevExpress WinUI Controls](https://devexpress.com/winui/)
+
 ## Documentation
 
 [DevExpress WinUI Controls](https://docs.devexpress.com/WinUI/402541/winui-controls)
