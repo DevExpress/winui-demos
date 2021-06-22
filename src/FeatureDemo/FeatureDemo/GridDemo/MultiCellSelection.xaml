@@ -1,0 +1,44 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.MultiCellSelection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    xmlns:dx="using:DevExpress.WinUI.Core"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <local:GridDemoUserControl.Resources>
+        <dx:FormatStringConverter x:Key="FormatStringConverter" FormatString="$#0,0" />
+        <DataTemplate x:Key="dataTemplate">
+            <TextBlock Text="{Binding Path=CellControl.Value, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource FormatStringConverter}}" TextAlignment="Right" />
+        </DataTemplate>
+    </local:GridDemoUserControl.Resources>
+    <dxg:GridControl
+        x:Name="gridControl"
+        AllowHorizontalScrollingVirtualization="True"
+        AutoWidth="False"
+        ItemsSource="{x:Bind Data.TotalSales}"
+        NavigationStyle="Cell"
+        SelectionMode="Cell"
+        AutoGeneratingColumn="gridControl_AutoGeneratingColumn"
+        ShowTotalSummary="True" />
+
+    <local:GridDemoUserControl.Options>
+        <common:OptionsPanel>
+            <common:OptionsHeader Text="Selection Mode"/>
+            <RadioButton
+                    Checked="RbCellMode_Checked"
+                    Content="Cell"
+                    GroupName="SelectionModes"
+                    IsChecked="True" />
+            <RadioButton
+                    Checked="RbCellExtendedMode_Checked"
+                    Content="Cell Extended"
+                    GroupName="SelectionModes" />
+        </common:OptionsPanel>
+    </local:GridDemoUserControl.Options>
+</local:GridDemoUserControl>

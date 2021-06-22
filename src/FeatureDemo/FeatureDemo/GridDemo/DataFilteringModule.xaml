@@ -1,0 +1,184 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.DataFilteringModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxe="using:DevExpress.WinUI.Editors"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    d:DesignHeight="600"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    BorderBrush="Transparent"
+    OptionsPaneWidth="350">
+    <!--#region Resources-->
+    <local:GridDemoUserControl.Resources>
+        <ResourceDictionary>
+            <local:TextToCriteriaConverter x:Key="TextToCriteriaConverter" />
+            <local:DoubleToCriteriaOperatorConverter x:Key="DoubleToCriteriaOperatorConverter" />
+
+            <DataTemplate x:Key="cityColumnFilterPopupTemplate">
+                <Grid MaxWidth="{Binding Column.ActualHeaderWidth}" Padding="10">
+                    <dxe:TextEdit Header="Starts with" Text="{Binding Path=CustomColumnFilter, Converter={StaticResource TextToCriteriaConverter}, Mode=TwoWay}" />
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="orderDateColumnFilterPopupTemplate">
+                <local:RangeFilter
+                    x:Name="rangeFilter"
+                    FieldName="{Binding Column.FieldName}"
+                    Padding="10"
+                    Filter="{Binding Path=CustomColumnFilter, Mode=TwoWay}">
+                    <StackPanel Orientation="Vertical" Spacing="10">
+                        <dxe:DateEdit Header="From:" EditValue="{Binding MinValue, ElementName=rangeFilter, Mode=TwoWay}" MinWidth="200" />
+                        <dxe:DateEdit Header="To:" EditValue="{Binding MaxValue, ElementName=rangeFilter, Mode=TwoWay}" MinWidth="200"/>
+                    </StackPanel>
+                </local:RangeFilter>
+            </DataTemplate>
+
+            <DataTemplate x:Key="unitPriceColumnFilterPopupTemplate">
+                <local:RangeFilter
+                    x:Name="rangeFilter"
+                    FieldName="{Binding Column.FieldName}"
+                    Padding="10"
+                    Filter="{Binding Path=CustomColumnFilter, Mode=TwoWay}">
+                    <StackPanel
+                        Width="230"
+                        Orientation="Vertical"
+                        Spacing="10">
+                        <dxe:SpinEdit Header="From:" EditValue="{Binding MinValue, ElementName=rangeFilter, Mode=TwoWay}">
+                            <dxe:SpinEdit.TextInputSettings>
+                                <dxe:TextInputMaskSettings Mask="c2" MaskType="Numeric" />
+                            </dxe:SpinEdit.TextInputSettings>
+                        </dxe:SpinEdit>
+                        <dxe:SpinEdit Header="To:" EditValue="{Binding MaxValue, ElementName=rangeFilter, Mode=TwoWay}">
+                            <dxe:SpinEdit.TextInputSettings>
+                                <dxe:TextInputMaskSettings Mask="c2" MaskType="Numeric" />
+                            </dxe:SpinEdit.TextInputSettings>
+                        </dxe:SpinEdit>
+                    </StackPanel>
+                </local:RangeFilter>
+            </DataTemplate>
+
+            <DataTemplate x:Key="quantityColumnFilterPopupTemplate">
+                <StackPanel Margin="10">
+                    <Slider
+                        Header="Minimum Quantity"
+                        MinWidth="150"
+                        Maximum="100"
+                        Minimum="0"
+                        SmallChange="1"
+                        Value="{Binding Path=CustomColumnFilter, Converter={StaticResource DoubleToCriteriaOperatorConverter}, Mode=TwoWay}" />
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </local:GridDemoUserControl.Resources>
+    <!--#endregion Resources-->
+    <dxg:GridControl
+        Name="grid"
+        AutoGenerateColumns="False"
+        ItemsSource="{x:Bind ViewModel.Invoices}"
+        ShowAutoFilterRow="True"
+        ShowGroupPanel="False"
+        ShowGroupedColumns="False">
+        <dxg:GridControl.Columns>
+            <dxg:GridTextColumn
+                FieldName="Country"
+                MinWidth="150"
+                GroupIndex="0"
+                ShowCriteriaInAutoFilterRow="True" />
+            <dxg:GridTextColumn
+                x:Name="City"
+                FieldName="City"
+                MinWidth="150"
+                CustomColumnFilterPopupTemplate="{StaticResource cityColumnFilterPopupTemplate}"
+                FilterPopupMode="Custom"
+                ShowCriteriaInAutoFilterRow="True" />
+            <dxg:GridTextColumn
+                x:Name="ProductName"
+                FieldName="ProductName"
+                MinWidth="180"
+                ShowCriteriaInAutoFilterRow="True" />
+            <dxg:GridDateColumn
+                x:Name="UnboundOrderDate"
+                FieldName="UnboundOrderDate"
+                Header="Order Date"
+                Width="260"
+                MinWidth="260"
+                CustomColumnFilterPopupTemplate="{StaticResource orderDateColumnFilterPopupTemplate}"
+                FilterPopupMode="{x:Bind ViewModel.CurrentMode, Mode=OneWay}"
+                FixedWidth="True"
+                ImmediateUpdateColumnFilter="False"
+                ShowCriteriaInAutoFilterRow="True"
+                SortOrder="Ascending"
+                UnboundExpression="AddYears([OrderDate], GetYear(Today()) - 1 - 2014)"
+                UnboundType="DateTime" />
+            <dxg:GridMaskColumn
+                x:Name="UnitPrice"
+                FieldName="UnitPrice"
+                Width="120"
+                MinWidth="120"
+                CustomColumnFilterPopupTemplate="{StaticResource unitPriceColumnFilterPopupTemplate}"
+                FilterPopupMode="Custom"
+                FixedWidth="True"
+                ImmediateUpdateColumnFilter="False"
+                Mask="c2"
+                MaskType="Numeric"
+                ShowCriteriaInAutoFilterRow="True" />
+            <dxg:GridTextColumn
+                x:Name="Quantity"
+                FieldName="Quantity"
+                Width="120"
+                MinWidth="115"
+                CustomColumnFilterPopupTemplate="{StaticResource quantityColumnFilterPopupTemplate}"
+                FilterPopupMode="Custom"
+                FixedWidth="True"
+                ShowCriteriaInAutoFilterRow="True" />
+            <dxg:GridMaskColumn
+                x:Name="Discount"
+                FieldName="Discount"
+                Width="140"
+                MinWidth="120"
+                FixedWidth="True"
+                Mask="p0"
+                MaskType="Numeric"
+                ShowCriteriaInAutoFilterRow="True" />
+        </dxg:GridControl.Columns>
+        <dxg:GridControl.GroupSummary>
+            <dxg:GridSummaryItem SummaryType="Count" />
+        </dxg:GridControl.GroupSummary>
+    </dxg:GridControl>
+
+    <local:GridDemoUserControl.Options>
+        <common:OptionsPanel>
+            <TextBlock TextAlignment="Justify" TextWrapping="WrapWholeWords">
+                <Run Text="Displayed immediately under column headers, the Auto Filter Row allows end-users to quickly filter grid data. Enter values into this row's cells to see this feature in action" />
+                <LineBreak />
+                <Run Text="You can switch between date-time filter popup modes" />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="Custom:" />
+                <Run Text="allows you to design your own filter popup using templates. In this demo, this mode enables date range selection." />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="Date" />
+                <Run Text="and" />
+                <Run FontWeight="Bold" Text="DateAlt:" />
+                <Run Text="standard filter popups with different sets of predefined values." />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="DateSmart:" />
+                <Run Text="filter value list is calculated based on column data." />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="DateCompact:" />
+                <Run Text="filter popup doesn't show a value list." />
+                <LineBreak />
+                <LineBreak />
+                <Run Text="'Order Date' column's FilterPopupMode:" />
+            </TextBlock>
+            <ListBox
+                Margin="0,12,0,0"
+                ItemsSource="{x:Bind ViewModel.PopupModes}"
+                SelectedIndex="{x:Bind ViewModel.SelectedModeIndex, Mode=TwoWay}" />
+        </common:OptionsPanel>
+    </local:GridDemoUserControl.Options>
+</local:GridDemoUserControl>

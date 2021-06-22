@@ -1,0 +1,57 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.InputValidation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    mc:Ignorable="d"
+    OptionsPaneWidth="270">
+    <dxg:GridControl
+        x:Name="grid"
+        AllowLeaveInvalidEditor="{x:Bind ViewModel.AllowLeaveInvalidEditor, Mode=OneWay}"
+        AutoGenerateColumns="False"
+        InvalidRowException="grid_InvalidRowException"
+        ItemsSource="{x:Bind ViewModel.Invoices}"
+        NavigationStyle="Cell"
+        SelectionMode="None"
+        ShowIndicator="True"
+        ValidateRow="ValidateDemoRow">
+        <dxg:GridControl.Columns>
+            <dxg:GridTextColumn
+                x:Name="colOrderID"
+                FieldName="OrderID"
+                Header="Order ID"
+                Width="60"
+                Validate="colOrderIDValidate" />
+            <dxg:GridTextColumn
+                x:Name="colProductName"
+                FieldName="ProductName"
+                Header="Product"
+                Validate="ProductNameValidate" />
+            <dxg:GridDateColumn
+                x:Name="colOrderDate"
+                FieldName="OrderDate"
+                Header="Order Date"
+                Width="80"
+                Mask="d" />
+            <dxg:GridTextColumn
+                x:Name="colFreight"
+                FieldName="Freight"
+                Header="Freight"
+                Width="60"
+                Validate="colFreight_Validate" />
+        </dxg:GridControl.Columns>
+    </dxg:GridControl>
+
+    <local:GridDemoUserControl.Options>
+        <common:OptionsPanel>
+            <CheckBox
+                x:Name="allowLeaveCheckBox"
+                Content="Allow Leave Invalid Editor"
+                IsChecked="{x:Bind ViewModel.AllowLeaveInvalidEditor, Mode=TwoWay}" />
+        </common:OptionsPanel>
+    </local:GridDemoUserControl.Options>
+</local:GridDemoUserControl>

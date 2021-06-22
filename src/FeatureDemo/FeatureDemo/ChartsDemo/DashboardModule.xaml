@@ -1,0 +1,295 @@
+﻿<common:DemoModuleView
+    x:Class="ChartsDemo.DashboardModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxc="using:DevExpress.WinUI.Charts"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dx="using:DevExpress.WinUI.Core">
+
+    <common:DemoModuleView.Resources>
+        <dx:FormatStringConverter x:Key="populationDynamicTitleConverter" FormatString="Population Dynamics ({0})" />
+
+        <x:Double x:Key="labelsAndLegendFontSize">12</x:Double>
+        <Style x:Key="legendStyle" TargetType="dxc:Legend">
+            <Setter Property="FontSize" Value="{StaticResource ResourceKey=labelsAndLegendFontSize}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="ReverseItems" Value="True" />
+        </Style>
+        <DataTemplate x:Key="toolTipTemplate">
+            <Grid
+                x:Name="Tooltip"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                UseLayoutRounding="True">
+                <Grid
+                    x:Name="Shadow"
+                    Margin="0,4,0,-4"
+                    Opacity="0.1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                    </Grid.RowDefinitions>
+                    <Path
+                        x:Name="Arrow"
+                        Grid.Row="1"
+                        Width="26"
+                        Height="13"
+                        Margin="0,-1,0,0"
+                        HorizontalAlignment="Center"
+                        Data="F1 M 461,303L 474,316L 487,303L 461,303 Z "
+                        Fill="Black"
+                        Stretch="Fill" />
+                    <Border x:Name="ContentBack" Background="Black" />
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                    </Grid.RowDefinitions>
+                    <Path
+                        x:Name="Arrow1"
+                        Grid.Row="1"
+                        Width="26"
+                        Height="13"
+                        Margin="0,-1,0,0"
+                        HorizontalAlignment="Center"
+                        Data="F1 M 461,303L 474,316L 487,303L 461,303 Z "
+                        Fill="{Binding ToolTipBrush}"
+                        Stretch="Fill" />
+                    <Border x:Name="ContentBack1" Background="{Binding ToolTipBrush}" />
+                    <TextBlock
+                        x:Name="Content1"
+                        Margin="10,7.5,10,9"
+                        FontSize="16"
+                        Foreground="White"
+                        Text="{Binding ToolTipText}"
+                        TextWrapping="Wrap" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </common:DemoModuleView.Resources>
+
+    <Grid x:Name="layoutRoot" Padding="48">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            HorizontalAlignment="Center"
+            Style="{StaticResource DemoHeaderStyle}"
+            Text="Top 10 Largest Countries by Area" />
+        <dxc:PieChart
+            x:Name="chartOfCountriesArea"
+            Grid.Row="1"
+            Grid.RowSpan="5"
+            Padding="0,0,20,0"
+            SelectionMode="Single"
+            ToolTipEnabled="True">
+            <dxc:PieChart.Legend>
+                <dxc:Legend
+                    HorizontalPosition="Center"
+                    MaximumRowsOrColumns="2"
+                    Orientation="Vertical"
+                    Style="{StaticResource ResourceKey=legendStyle}"
+                    VerticalPosition="BottomOutside" />
+            </dxc:PieChart.Legend>
+            <dxc:Series x:Name="seriesAreaOfTop10">
+                <dxc:Series.Data>
+                    <dxc:DataSourceAdapter DataSource="{x:Bind ViewModel.Top10LargestCountriesData}">
+                        <dxc:DataMember ColumnName="Name" DataMemberType="Argument" />
+                        <dxc:DataMember ColumnName="AreaMSqrKilometers" DataMemberType="Value" />
+                    </dxc:DataSourceAdapter>
+                </dxc:Series.Data>
+                <dxc:Series.View>
+                    <dxc:NestedDonutSeriesView
+                        x:Name="outerDoughnutView"
+                        HoleRadiusPercent="30"
+                        LegendPointPattern="{}{A}"
+                        SelectedItem="{x:Bind ViewModel.SelectedCountry, Mode=TwoWay}"
+                        StartAngle="-35"
+                        ToolTipPointPattern="{}{A}: {V:0.0}M km²"
+                        ToolTipPointTemplate="{StaticResource toolTipTemplate}">
+                        <dxc:PieSeriesView.LegendMarkerTemplate>
+                            <DataTemplate>
+                                <Rectangle
+                                    Width="20"
+                                    Height="15"
+                                    Fill="{Binding MarkerBrush}" />
+                            </DataTemplate>
+                        </dxc:PieSeriesView.LegendMarkerTemplate>
+                    </dxc:NestedDonutSeriesView>
+                </dxc:Series.View>
+            </dxc:Series>
+            <dxc:Series x:Name="seriesAreaOfTop10AndOthers">
+                <dxc:Series.Data>
+                    <dxc:DataSourceAdapter DataSource="{x:Bind ViewModel.Top10TogetherAndOthersCountriesData}">
+                        <dxc:DataMember ColumnName="Name" DataMemberType="Argument" />
+                        <dxc:DataMember ColumnName="AreaMSqrKilometers" DataMemberType="Value" />
+                    </dxc:DataSourceAdapter>
+                </dxc:Series.Data>
+                <dxc:Series.View>
+                    <dxc:NestedDonutSeriesView
+                        x:Name="innerDoughnutView"
+                        LegendPointPattern="{}{A}"
+                        Palette="{x:Bind ViewModel.InnerDoughnutPalette}"
+                        SelectedItem="{x:Bind ViewModel.SelectedCountry, Mode=TwoWay}"
+                        ToolTipPointPattern="{}{A}: {V:0.0}M km²"
+                        ToolTipPointTemplate="{StaticResource toolTipTemplate}">
+                        <dxc:PieSeriesView.LegendMarkerTemplate>
+                            <DataTemplate>
+                                <Rectangle
+                                    Width="20"
+                                    Height="15"
+                                    Fill="{Binding MarkerBrush}" />
+                            </DataTemplate>
+                        </dxc:PieSeriesView.LegendMarkerTemplate>
+                    </dxc:NestedDonutSeriesView>
+                </dxc:Series.View>
+            </dxc:Series>
+        </dxc:PieChart>
+
+        <TextBlock
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            Style="{StaticResource DemoHeaderStyle}"
+            Text="{x:Bind ViewModel.SelectedCountry.Name, Mode=OneWay, Converter={StaticResource populationDynamicTitleConverter}}" />
+        <dxc:CartesianChart
+            x:Name="populationDynamicChart"
+            Grid.Row="1"
+            Grid.Column="1"
+            Padding="0,0,15,0">
+            <dxc:CartesianChart.AxisX>
+                <dxc:AxisX GridSpacing="10" GridSpacingAuto="False">
+                    <dxc:AxisX.LabelOptions>
+                        <dxc:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" />
+                    </dxc:AxisX.LabelOptions>
+                    <dxc:AxisX.WholeRange>
+                        <dxc:WholeAxisRange SideMargins="6" />
+                    </dxc:AxisX.WholeRange>
+                </dxc:AxisX>
+            </dxc:CartesianChart.AxisX>
+            <dxc:CartesianChart.AxisY>
+                <dxc:AxisY Alignment="Far">
+                    <dxc:AxisY.LabelOptions>
+                        <dxc:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" Pattern="{}{V}M" />
+                    </dxc:AxisY.LabelOptions>
+                    <dxc:AxisY.WholeRange>
+                        <dxc:WholeAxisRange SideMargins="5" />
+                    </dxc:AxisY.WholeRange>
+                </dxc:AxisY>
+            </dxc:CartesianChart.AxisY>
+            <dxc:Series DisplayName="Population">
+                <dxc:Series.Data>
+                    <dxc:DataSourceAdapter DataSource="{x:Bind ViewModel.PopulationDynamic, Mode=OneWay}">
+                        <dxc:DataMember ColumnName="Year" DataMemberType="Argument" />
+                        <dxc:DataMember ColumnName="Population" DataMemberType="Value" />
+                    </dxc:DataSourceAdapter>
+                </dxc:Series.Data>
+                <dxc:Series.View>
+                    <dxc:AreaSeriesView DataChangingAnimationMode="AnimateEntireSeries">
+                        <dxc:AreaSeriesView.Brush>
+                            <SolidColorBrush Color="{x:Bind ViewModel.SelectedCountryColor, Mode=OneWay}" />
+                        </dxc:AreaSeriesView.Brush>
+                        <dxc:AreaSeriesView.SeriesAnimation>
+                            <dxc:AreaUnwindAnimation BeginTime="00:000:0.15" Duration="00:000:3.0" />
+                        </dxc:AreaSeriesView.SeriesAnimation>
+                    </dxc:AreaSeriesView>
+                </dxc:Series.View>
+            </dxc:Series>
+        </dxc:CartesianChart>
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            Style="{StaticResource DemoHeaderStyle}"
+            Text="Urban/Rural Population Change" />
+        <dxc:CartesianChart
+            x:Name="UrbanRuralDivisionDynamicChart"
+            Grid.Row="3"
+            Grid.Column="1"
+            Padding="0,0,15,0"
+            SelectionMode="Single"
+            ToolTipEnabled="True">
+            <dxc:CartesianChart.Legend>
+                <dxc:Legend
+                    Margin="0"
+                    HorizontalPosition="Center"
+                    Style="{StaticResource legendStyle}"
+                    VerticalPosition="BottomOutside" />
+            </dxc:CartesianChart.Legend>
+            <dxc:CartesianChart.AxisX>
+                <dxc:AxisX GridSpacing="10" GridSpacingAuto="False">
+                    <dxc:AxisX.LabelOptions>
+                        <dxc:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" />
+                    </dxc:AxisX.LabelOptions>
+                    <dxc:AxisX.WholeRange>
+                        <dxc:WholeAxisRange SideMargins="6" />
+                    </dxc:AxisX.WholeRange>
+                </dxc:AxisX>
+            </dxc:CartesianChart.AxisX>
+            <dxc:CartesianChart.AxisY>
+                <dxc:AxisY Alignment="Far">
+                    <dxc:AxisY.LabelOptions>
+                        <dxc:AxisLabelOptions FontSize="{StaticResource labelsAndLegendFontSize}" Pattern="{}{V:P0}" />
+                    </dxc:AxisY.LabelOptions>
+                </dxc:AxisY>
+            </dxc:CartesianChart.AxisY>
+            <dxc:Series DisplayName="Urban">
+                <dxc:Series.Data>
+                    <dxc:DataSourceAdapter DataSource="{x:Bind ViewModel.PopulationDynamic, Mode=OneWay}">
+                        <dxc:DataMember ColumnName="Year" DataMemberType="Argument" />
+                        <dxc:DataMember ColumnName="UrbanPercent" DataMemberType="Value" />
+                    </dxc:DataSourceAdapter>
+                </dxc:Series.Data>
+                <dxc:Series.View>
+                    <dxc:FullStackedBarSeriesView
+                        BarWidth="5"
+                        DataChangingAnimationMode="AnimateEntireSeries"
+                        ToolTipPointPattern="Year: {A}&#13;&#10;{S}: {V}%"
+                        ToolTipPointTemplate="{StaticResource toolTipTemplate}">
+                        <dxc:FullStackedBarSeriesView.PointAnimation>
+                            <dxc:BarSlideFromBottomAnimation BeginTime="00:000:0.15" PointOrder="Inverted">
+                                <dxc:BarSlideFromBottomAnimation.EasingFunction>
+                                    <PowerEase EasingMode="EaseOut" Power="4" />
+                                </dxc:BarSlideFromBottomAnimation.EasingFunction>
+                            </dxc:BarSlideFromBottomAnimation>
+                        </dxc:FullStackedBarSeriesView.PointAnimation>
+                    </dxc:FullStackedBarSeriesView>
+                </dxc:Series.View>
+            </dxc:Series>
+            <dxc:Series DisplayName="Rural">
+                <dxc:Series.Data>
+                    <dxc:DataSourceAdapter DataSource="{x:Bind ViewModel.PopulationDynamic, Mode=OneWay}">
+                        <dxc:DataMember ColumnName="Year" DataMemberType="Argument" />
+                        <dxc:DataMember ColumnName="RuralPercent" DataMemberType="Value" />
+                    </dxc:DataSourceAdapter>
+                </dxc:Series.Data>
+                <dxc:Series.View>
+                    <dxc:FullStackedBarSeriesView
+                        BarWidth="5"
+                        DataChangingAnimationMode="AnimateEntireSeries"
+                        ToolTipPointPattern="Year: {A}&#13;&#10;{S}: {V}%"
+                        ToolTipPointTemplate="{StaticResource toolTipTemplate}">
+                        <dxc:FullStackedBarSeriesView.PointAnimation>
+                            <dxc:BarSlideFromTopAnimation BeginTime="00:000:0.15">
+                                <dxc:BarSlideFromTopAnimation.EasingFunction>
+                                    <PowerEase EasingMode="EaseOut" Power="4" />
+                                </dxc:BarSlideFromTopAnimation.EasingFunction>
+                            </dxc:BarSlideFromTopAnimation>
+                        </dxc:FullStackedBarSeriesView.PointAnimation>
+                    </dxc:FullStackedBarSeriesView>
+                </dxc:Series.View>
+            </dxc:Series>
+        </dxc:CartesianChart>
+    </Grid>
+</common:DemoModuleView>

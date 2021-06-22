@@ -1,0 +1,93 @@
+﻿<common:DemoModuleView
+    x:Class="ChartsDemo.AreaSeriesModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxc="using:DevExpress.WinUI.Charts"
+    xmlns:common="using:FeatureDemo.Common"
+    BorderBrush="Transparent">
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource DemoHeaderStyle}" Text="Corporations with Highest Market Value" />
+        <dxc:CartesianChart
+            x:Name="chart"
+            Grid.Row="1"
+            Margin="50,0,50,25"
+            ToolTipEnabled="True">
+            <dxc:CartesianChart.Legend>
+                <dxc:Legend
+                    FontSize="12"
+                    HorizontalPosition="Right"
+                    Orientation="Horizontal"
+                    VerticalPosition="Top" />
+            </dxc:CartesianChart.Legend>
+            <dxc:CartesianChart.AxisX>
+                <dxc:AxisX ShowMajorGridlines="True">
+                    <dxc:AxisX.LabelOptions>
+                        <dxc:AxisLabelOptions Angle="20" />
+                    </dxc:AxisX.LabelOptions>
+                    <dxc:AxisX.WholeRange>
+                        <dxc:WholeAxisRange SideMargins="0.1" />
+                    </dxc:AxisX.WholeRange>
+                </dxc:AxisX>
+            </dxc:CartesianChart.AxisX>
+            <dxc:CartesianChart.AxisY>
+                <dxc:AxisY ShowMajorGridlines="False">
+                    <dxc:AxisY.LabelOptions>
+                        <dxc:AxisLabelOptions Pattern="{x:Bind ViewModel.AxisYLablePattern, Mode=OneWay}" />
+                    </dxc:AxisY.LabelOptions>
+                    <dxc:AxisY.Title>
+                        <dxc:AxisTitle Content="Market Value, billion US$" Visible="{x:Bind ViewModel.ShowAxisYTitle, Mode=OneWay}" />
+                    </dxc:AxisY.Title>
+                </dxc:AxisY>
+            </dxc:CartesianChart.AxisY>
+            <dxc:CartesianChart.Series>
+                <dxc:Series DisplayName="2020" View="{x:Bind ViewModel.Series1View, Mode=OneWay}">
+                    <dxc:Series.Data>
+                        <dxc:DataSourceAdapter DataSource="{x:Bind ViewModel.Series1Data, Mode=OneWay}">
+                            <dxc:DataMember ColumnName="CompanyName" DataMemberType="Argument" />
+                            <dxc:DataMember ColumnName="MarketValue" DataMemberType="Value" />
+                        </dxc:DataSourceAdapter>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series DisplayName="2019" View="{x:Bind ViewModel.Series2View, Mode=OneWay}">
+                    <dxc:Series.Data>
+                        <dxc:DataSourceAdapter DataSource="{x:Bind ViewModel.Series2Data, Mode=OneWay}">
+                            <dxc:DataMember ColumnName="CompanyName" DataMemberType="Argument" />
+                            <dxc:DataMember ColumnName="MarketValue" DataMemberType="Value" />
+                        </dxc:DataSourceAdapter>
+                    </dxc:Series.Data>
+                </dxc:Series>
+            </dxc:CartesianChart.Series>
+        </dxc:CartesianChart>
+        <TextBlock
+            Grid.Row="2"
+            Style="{StaticResource DemoSourceUsedStyle}"
+            Text="From www.geohive.com" />
+    </Grid>
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionsHeader Text="View" />
+            <RadioButton
+                Content="Area"
+                GroupName="view"
+                IsChecked="{x:Bind ViewModel.IsAreaChecked, Mode=TwoWay}" />
+            <RadioButton
+                Content="Stacked Area"
+                GroupName="view"
+                IsChecked="{x:Bind ViewModel.IsStackedAreaChecked, Mode=TwoWay}" />
+            <RadioButton
+                Content="Full Stacked Area"
+                GroupName="view"
+                IsChecked="{x:Bind ViewModel.IsFullStackedAreaChecked, Mode=TwoWay}" />
+            <RadioButton
+                Content="Step Area"
+                GroupName="view"
+                IsChecked="{x:Bind ViewModel.IsStepAreaChecked, Mode=TwoWay}" />
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+</common:DemoModuleView>

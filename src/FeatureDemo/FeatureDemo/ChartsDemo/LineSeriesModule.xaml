@@ -1,0 +1,108 @@
+﻿<common:DemoModuleView
+    x:Class="ChartsDemo.LineSeriesModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxc="using:DevExpress.WinUI.Charts"
+    xmlns:common="using:FeatureDemo.Common"
+    BorderBrush="Transparent">
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource DemoHeaderStyle}" Text="Historic, Current and Future Population" />
+        <dxc:CartesianChart
+            x:Name="chart"
+            Grid.Row="1"
+            Margin="50,0,50,25"
+            ToolTipEnabled="True">
+            <dxc:CartesianChart.Legend>
+                <dxc:Legend Margin="0,-5,0,-5" BorderThickness="0" />
+            </dxc:CartesianChart.Legend>
+            <dxc:CartesianChart.AxisX>
+                <dxc:AxisX x:Name="axisX" />
+            </dxc:CartesianChart.AxisX>
+            <dxc:CartesianChart.AxisY>
+                <dxc:AxisY x:Name="axisY">
+                    <dxc:AxisY.LabelOptions>
+                        <dxc:AxisLabelOptions x:Name="axisYLabel" />
+                    </dxc:AxisY.LabelOptions>
+                    <dxc:AxisY.Title>
+                        <dxc:AxisTitle x:Name="axisYTitle" Content="Population mid-year, millions" />
+                    </dxc:AxisY.Title>
+                </dxc:AxisY>
+            </dxc:CartesianChart.AxisY>
+            <dxc:CartesianChart.Series>
+                <dxc:Series x:Name="seriesEurope" DisplayName="Europe">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="1950" Value="546" />
+                            <dxc:DataPoint Argument="1960" Value="605" />
+                            <dxc:DataPoint Argument="1970" Value="656" />
+                            <dxc:DataPoint Argument="1980" Value="694" />
+                            <dxc:DataPoint Argument="1990" Value="721" />
+                            <dxc:DataPoint Argument="2000" Value="730" />
+                            <dxc:DataPoint Argument="2010" Value="728" />
+                            <dxc:DataPoint Argument="2020" Value="721" />
+                            <dxc:DataPoint Argument="2030" Value="704" />
+                            <dxc:DataPoint Argument="2040" Value="680" />
+                            <dxc:DataPoint Argument="2050" Value="650" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series x:Name="seriesAmericas" DisplayName="Americas">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="1950" Value="332" />
+                            <dxc:DataPoint Argument="1960" Value="417" />
+                            <dxc:DataPoint Argument="1970" Value="513" />
+                            <dxc:DataPoint Argument="1980" Value="614" />
+                            <dxc:DataPoint Argument="1990" Value="721" />
+                            <dxc:DataPoint Argument="2000" Value="836" />
+                            <dxc:DataPoint Argument="2010" Value="935" />
+                            <dxc:DataPoint Argument="2020" Value="1027" />
+                            <dxc:DataPoint Argument="2030" Value="1110" />
+                            <dxc:DataPoint Argument="2040" Value="1178" />
+                            <dxc:DataPoint Argument="2050" Value="1231" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series x:Name="seriesAfrica" DisplayName="Africa">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="1950" Value="227" />
+                            <dxc:DataPoint Argument="1960" Value="283" />
+                            <dxc:DataPoint Argument="1970" Value="361" />
+                            <dxc:DataPoint Argument="1980" Value="471" />
+                            <dxc:DataPoint Argument="1990" Value="623" />
+                            <dxc:DataPoint Argument="2000" Value="797" />
+                            <dxc:DataPoint Argument="2010" Value="982" />
+                            <dxc:DataPoint Argument="2020" Value="1189" />
+                            <dxc:DataPoint Argument="2030" Value="1416" />
+                            <dxc:DataPoint Argument="2040" Value="1665" />
+                            <dxc:DataPoint Argument="2050" Value="1937" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+            </dxc:CartesianChart.Series>
+        </dxc:CartesianChart>
+        <TextBlock
+            Grid.Row="2"
+            Style="{StaticResource DemoSourceUsedStyle}"
+            Text="From www.geohive.com" />
+    </Grid>
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionsHeader Text="View" />
+            <RadioButton
+                Checked="{x:Bind OnIsLineChecked}"
+                Content="Line"
+                IsChecked="True" />
+            <RadioButton Checked="{x:Bind OnIsStepLineChecked}" Content="StepLine" />
+            <RadioButton Checked="{x:Bind OnIsStackedLineChecked}" Content="Stacked Line" />
+            <RadioButton Checked="{x:Bind OnIsFullStackedLineChecked}" Content="Full Stacked Line" />
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+</common:DemoModuleView>

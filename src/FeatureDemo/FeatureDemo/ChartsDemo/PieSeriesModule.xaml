@@ -1,0 +1,74 @@
+﻿<common:DemoModuleView
+    x:Class="ChartsDemo.PieSeriesModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxc="using:DevExpress.WinUI.Charts"
+    xmlns:common="using:FeatureDemo.Common"
+    x:Name="pieDonutSeriesViewModule"
+    BorderBrush="Transparent">
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource DemoHeaderStyle}" Text="US Regions Gross State Product 2020" />
+        <dxc:PieChart
+            x:Name="pieChart"
+            Grid.Row="1"
+            Margin="7,0,7,0"
+            MinIndentBetweenSeries="10"
+            ToolTipEnabled="True">
+            <dxc:PieChart.Legend>
+                <dxc:Legend
+                    Margin="0,-10,0,-10"
+                    BorderThickness="0"
+                    FontSize="12" />
+            </dxc:PieChart.Legend>
+            <dxc:PieChart.Series>
+                <dxc:Series
+                    DisplayName="GDP"
+                    FontSize="14"
+                    ShowInLegend="False">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="Southwest" Value="2438089" />
+                            <dxc:DataPoint Argument="Mideast" Value="3768023" />
+                            <dxc:DataPoint Argument="Southeast" Value="4512857" />
+                            <dxc:DataPoint Argument="Great Lakes" Value="2807752" />
+                            <dxc:DataPoint Argument="Far West" Value="1201650" />
+                            <dxc:DataPoint Argument="New England" Value="1121715" />
+                            <dxc:DataPoint Argument="Rocky Mountain" Value="766387" />
+                            <dxc:DataPoint Argument="Plains" Value="1315095" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series DisplayName="GDP Per Capita">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="Southwest" Value="206061" />
+                            <dxc:DataPoint Argument="Mideast" Value="559847" />
+                            <dxc:DataPoint Argument="Southeast" Value="601923" />
+                            <dxc:DataPoint Argument="Great Lakes" Value="295886" />
+                            <dxc:DataPoint Argument="Far West" Value="330739" />
+                            <dxc:DataPoint Argument="New England" Value="389420" />
+                            <dxc:DataPoint Argument="Rocky Mountain" Value="285709" />
+                            <dxc:DataPoint Argument="Plains" Value="441282" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+            </dxc:PieChart.Series>
+        </dxc:PieChart>
+    </Grid>
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionsHeader Text="View" />
+            <RadioButton
+                Checked="{x:Bind OnPieChecked}"
+                Content="Pie"
+                IsChecked="True" />
+            <RadioButton Checked="{x:Bind OnDonutChecked}" Content="Donut" />
+            <RadioButton Checked="{x:Bind OnNestedDonutChecked}" Content="Nested Donut" />
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+</common:DemoModuleView>

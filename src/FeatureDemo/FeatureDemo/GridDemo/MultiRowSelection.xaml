@@ -1,0 +1,84 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.MultiRowSelection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:demodata="using:FeatureDemo.Data"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    xmlns:sys="using:System"
+    d:DesignHeight="300"
+    d:DesignWidth="600"
+    mc:Ignorable="d"
+    BorderBrush="Transparent">
+    <dxg:GridControl
+        x:Name="grid"
+        AutoGenerateColumns="False"
+        ItemsSource="{x:Bind ViewModel.Invoices}"
+        SelectionMode="{x:Bind ViewModel.SelectionMode, Mode=TwoWay}"
+        ShowFixedTotalSummary="True">
+        <dxg:GridControl.Columns>
+            <dxg:GridTextColumn
+                x:Name="colOrderID"
+                FieldName="OrderID"
+                Header="ID"
+                MinWidth="60" />
+            <dxg:GridTextColumn
+                x:Name="colProductName"
+                FieldName="ProductName"
+                Header="Product"
+                MinWidth="60" />
+            <dxg:GridTextColumn
+                x:Name="colUnitPrice"
+                FieldName="UnitPrice"
+                Header="Unit Price"
+                Width="90"
+                MinWidth="60" />
+            <dxg:GridTextColumn
+                x:Name="colQuantity"
+                FieldName="Quantity"
+                Header="Quantity"
+                Width="90"
+                MinWidth="60" />
+            <dxg:GridTextColumn
+                x:Name="colTotal"
+                FieldName="Total"
+                Width="90"
+                MinWidth="60"
+                UnboundExpression="[UnitPrice] * [Quantity]"
+                UnboundType="Decimal" />
+        </dxg:GridControl.Columns>
+        <dxg:GridControl.TotalSummary>
+            <dxg:GridSummaryItem
+                FieldName="Total"
+                Alignment="Right"
+                SummaryType="Custom" />
+        </dxg:GridControl.TotalSummary>
+    </dxg:GridControl>
+
+    <local:GridDemoUserControl.Options>
+        <common:OptionsPanel>
+            <common:OptionItem Header="Selection Mode:">
+                <ComboBox
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{x:Bind ViewModel.MultiSelectModes}"
+                    SelectedItem="{x:Bind ViewModel.SelectionMode, Mode=TwoWay}" />
+            </common:OptionItem>
+
+            <common:OptionItem Header="Selected Items:">
+                <ListBox
+                    MaxHeight="400"
+                    ItemsSource="{x:Bind grid.SelectedItems, Mode=OneWay}"
+                    SelectionMode="Multiple">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="demodata:Invoices">
+                            <TextBlock Text="{x:Bind sys:String.Format(x:Null,'{0} {1}', OrderID, ProductName)}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </common:OptionItem>
+        </common:OptionsPanel>
+    </local:GridDemoUserControl.Options>
+</local:GridDemoUserControl>

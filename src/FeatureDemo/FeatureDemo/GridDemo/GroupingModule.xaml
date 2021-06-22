@@ -1,0 +1,168 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.GroupingModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d"
+    BorderBrush="Transparent">
+    
+    <Grid>
+        <dxg:GridControl
+            x:Name="grid"
+            AutoGenerateColumns="False"
+            GroupSummaryDisplayMode="AlignByColumns"
+            ItemsSource="{x:Bind Data.SalesByMonth}"
+            ShowGroupPanel="True"
+            ShowGroupedColumns="False"
+            ShowTotalSummary="True">
+            <dxg:GridControl.Columns>
+                <dxg:GridTextColumn
+                    FieldName="Year"
+                    MinWidth="130"
+                    DisplayFormat="yyyy"
+                    GroupIndex="0"
+                    GroupInterval="DateYear"
+                    SortOrder="Descending"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    UnboundExpression="[Date]"
+                    UnboundType="DateTime" />
+                <dxg:GridTextColumn
+                    FieldName="Month"
+                    MinWidth="130"
+                    DisplayFormat="MMMM"
+                    GroupIndex="1"
+                    GroupInterval="DateMonth"
+                    SortOrder="Descending"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    UnboundExpression="[Date]"
+                    UnboundType="DateTime" />
+                <dxg:GridTextColumn
+                    FieldName="Day"
+                    MinWidth="180"
+                    DisplayFormat="MMMM d"
+                    GroupInterval="Date"
+                    SortOrder="Descending"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    UnboundExpression="[Date]"
+                    UnboundType="DateTime" />
+                <dxg:GridTextColumn
+                    x:Name="AnitaRyan"
+                    FieldName="Anita Ryan"
+                    MinWidth="130"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    HorizontalContentAlignment="Right" />
+                <dxg:GridTextColumn
+                    x:Name="TonyGeeter"
+                    FieldName="Tony Geeter"
+                    MinWidth="130"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    HorizontalContentAlignment="Right" />
+                <dxg:GridTextColumn
+                    x:Name="AmyStamps"
+                    FieldName="Amy Stamps"
+                    MinWidth="130"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    HorizontalContentAlignment="Right" />
+                <dxg:GridTextColumn
+                    x:Name="ErnestWebb"
+                    FieldName="Ernest Webb"
+                    MinWidth="130"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    HorizontalContentAlignment="Right" />
+                <dxg:GridTextColumn
+                    x:Name="AlexMelton"
+                    FieldName="Alex Melton"
+                    MinWidth="130"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    HorizontalContentAlignment="Right" />
+                <dxg:GridTextColumn
+                    x:Name="ArvilChase"
+                    FieldName="Arvil Chase"
+                    MinWidth="130"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    HorizontalContentAlignment="Right" />
+                <dxg:GridTextColumn
+                    x:Name="AnitaBoyd"
+                    FieldName="Anita Boyd"
+                    MinWidth="130"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    HorizontalContentAlignment="Right" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.GroupSummary>
+                <dxg:GridSummaryItem
+                    FieldName="Anita Ryan"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Tony Geeter"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Amy Stamps"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Ernest Webb"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Alex Melton"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Arvil Chase"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Anita Boyd"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+            </dxg:GridControl.GroupSummary>
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem
+                    FieldName="Anita Ryan"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Tony Geeter"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Amy Stamps"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Ernest Webb"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Alex Melton"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Arvil Chase"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem
+                    FieldName="Anita Boyd"
+                    DisplayFormat="{}{0:c}"
+                    SummaryType="Sum" />
+            </dxg:GridControl.TotalSummary>
+        </dxg:GridControl>
+    </Grid>
+</local:GridDemoUserControl>

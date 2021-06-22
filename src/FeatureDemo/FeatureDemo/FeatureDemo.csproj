@@ -1,0 +1,329 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>FeatureDemo</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <NoWarn>CA1416;WMC1507</NoWarn>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Content Include="Data\Appointments.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Demo.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Employees.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\GDP.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Items.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Messages.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Movies.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\NWindInvoices.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SchedulerDemoData\CustomerEmployee.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SchedulerDemoData\Customers.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SchedulerDemoData\Employees.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ShapeFiles\Top10LargestCountries.dbf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ShapeFiles\Top10LargestCountries.shp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\StockSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Top10LagerstCountriesInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Category_HouseChores.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Category_Shopping.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Category_Work.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Flag_Completed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Flag_Custom.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Flag_NextWeek.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Flag_NoDate.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Flag_ThisWeek.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Flag_Today.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Flag_Tomorrow.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Status_Completed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Status_NotCompleted.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\Priority\High.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\Priority\Low.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\Priority\Medium.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\Status\Fixed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\Status\New.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\Status\Postponed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Default\Status\Rejected.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Category_HouseChores.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Category_Shopping.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Category_Work.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\ColumnPrioritized.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Flag_Completed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Flag_Custom.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Flag_NextWeek.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Flag_NoDate.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Flag_ThisWeek.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Flag_Today.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Flag_Tomorrow.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Status_Completed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\PersonalTasks\Status_NotCompleted.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\Priority\High.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\Priority\Low.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\Priority\Medium.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\Status\Fixed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\Status\New.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\Status\Postponed.svg" />
+    <Content Include="GridDemo\Themes\Icons\Light\Status\Rejected.svg" />
+    <Content Include="RibbonDemo\Templates\Inital.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\DemoToolbar\Code.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\DemoToolbar\Demo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\DemoToolbar\Next.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\DemoToolbar\Prev.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\DemoToolbar\Settings.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\DevExpress-Logo.scale-100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\DevExpress-Logo.scale-140.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\DevExpress-Logo.scale-240.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\GetStartedPage\Background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\GetStartedPage\DX Logo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\GetStartedPage\WUI Logo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Charts.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\ColorSchemes.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Controls.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Editors.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Gauges.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Grid.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Layout.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Maps.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Overview.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\PdfViewer.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Range.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Ribbon.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\HamburgerMenu\Scheduler.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Module1.Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\AlignCenter.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\AlignJustify.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\AlignLeft.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\AlignRight.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Arabic.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Bold.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\BulletedList.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Bullets.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Copy.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Cut.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\DecreaseFontSize.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\DecreaseIndent.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\IncreaseFontSize.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\IncreaseIndent.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Italic.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\None.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\NumberedList.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Paste.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Picture.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Subscript.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Superscript.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Dark\Underline.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\AlignCenter.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\AlignJustify.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\AlignLeft.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\AlignRight.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Arabic.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Bold.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\BulletedList.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Bullets.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Copy.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Cut.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\DecreaseFontSize.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\DecreaseIndent.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\IncreaseFontSize.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\IncreaseIndent.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Italic.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\None.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\NumberedList.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Paste.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Picture.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Subscript.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Superscript.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Light\Underline.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="RibbonDemo\Images\Paste.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include=".\**\*.cs" Exclude=".\obj\**\*.cs" />
+    <EmbeddedResource Include=".\**\*.xaml" Exclude=".\obj\**\*.xaml" />
+  </ItemGroup>
+</Project>

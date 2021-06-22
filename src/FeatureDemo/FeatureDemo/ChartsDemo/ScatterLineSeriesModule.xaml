@@ -1,0 +1,122 @@
+﻿<common:DemoModuleView
+    x:Class="ChartsDemo.ScatterLineSeriesModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxc="using:DevExpress.WinUI.Charts"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:mvvm="using:DevExpress.WinUI.Core">
+    <common:DemoModuleView.Resources>
+        <mvvm:TypeCastConverter x:Key="TypeCastConverter" />
+    </common:DemoModuleView.Resources>
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource DemoHeaderStyle}" Text="Function in Cartesian Coordinates" />
+        <dxc:CartesianChart
+            x:Name="cartesianChart"
+            Grid.Row="1"
+            Margin="50,0,50,25"
+            ToolTipEnabled="True">
+            <dxc:CartesianChart.AxisX>
+                <dxc:AxisX ShowMajorGridlines="True" ShowMinorGridlines="True">
+                    <dxc:AxisX.WholeRange>
+                        <dxc:WholeAxisRange SideMargins="2" />
+                    </dxc:AxisX.WholeRange>
+                </dxc:AxisX>
+            </dxc:CartesianChart.AxisX>
+            <dxc:CartesianChart.AxisY>
+                <dxc:AxisY ShowMajorGridlines="True" ShowMinorGridlines="True">
+                    <dxc:AxisY.WholeRange>
+                        <dxc:WholeAxisRange SideMargins="2" />
+                    </dxc:AxisY.WholeRange>
+                </dxc:AxisY>
+            </dxc:CartesianChart.AxisY>
+            <dxc:CartesianChart.Series>
+                <dxc:Series
+                    x:Name="seriesArchimedianSpiral"
+                    DisplayName="Archimedian Spiral"
+                    Visible="{x:Bind isArchimedianSpiralVisible.IsChecked.Value, Mode=OneWay}">
+                    <dxc:Series.View>
+                        <dxc:ScatterLineSeriesView
+                            MarkerSize="{x:Bind markerSize.Value, Mode=OneWay, Converter={StaticResource TypeCastConverter}}"
+                            ShowLabels="False"
+                            ShowMarkers="{x:Bind showMarkers.IsChecked.Value, Mode=OneWay}"
+                            ToolTipPointPattern="{}({A:0.0}; {V:0.0})" />
+                    </dxc:Series.View>
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection x:Name="archimedianSpiralData" />
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series
+                    x:Name="seriesCardioid"
+                    DisplayName="Cardioid"
+                    Visible="{x:Bind isCardioidVisible.IsChecked.Value, Mode=OneWay}">
+                    <dxc:Series.View>
+                        <dxc:ScatterLineSeriesView
+                            MarkerSize="{x:Bind markerSize.Value, Mode=OneWay, Converter={StaticResource TypeCastConverter}}"
+                            ShowLabels="False"
+                            ShowMarkers="{x:Bind showMarkers.IsChecked.Value, Mode=OneWay}"
+                            ToolTipPointPattern="{}({A:0.0}; {V:0.0})" />
+                    </dxc:Series.View>
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection x:Name="cardioidData" />
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series
+                    x:Name="seriesCartesianFolium"
+                    DisplayName="Cartesian Folium"
+                    Visible="{x:Bind isCartesianFoliumVisible.IsChecked.Value, Mode=OneWay}">
+                    <dxc:Series.View>
+                        <dxc:ScatterLineSeriesView
+                            MarkerSize="{x:Bind markerSize.Value, Mode=OneWay, Converter={StaticResource TypeCastConverter}}"
+                            ShowLabels="False"
+                            ShowMarkers="{x:Bind showMarkers.IsChecked.Value, Mode=OneWay}"
+                            ToolTipPointPattern="{}({A:0.0}; {V:0.0})" />
+                    </dxc:Series.View>
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection x:Name="cartesianFoliumData" />
+                    </dxc:Series.Data>
+                </dxc:Series>
+            </dxc:CartesianChart.Series>
+            <dxc:CartesianChart.Legend>
+                <dxc:Legend Margin="0,-15,0,-25" BorderThickness="0" />
+            </dxc:CartesianChart.Legend>
+        </dxc:CartesianChart>
+    </Grid>
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionsHeader Text="Function" />
+            <RadioButton
+                x:Name="isArchimedianSpiralVisible"
+                Content="Archimedian Spiral"
+                GroupName="function"
+                IsChecked="True" />
+            <RadioButton
+                x:Name="isCardioidVisible"
+                Content="Cardioid"
+                GroupName="function" />
+            <RadioButton
+                x:Name="isCartesianFoliumVisible"
+                Content="Cartesian Folium"
+                GroupName="function" />
+
+            <common:OptionsHeader Text="Markers" />
+            <common:OptionItem Header="Size:" IsHorizontal="True">
+                <Slider
+                    x:Name="markerSize"
+                    IsEnabled="{x:Bind showMarkers.IsChecked.Value, Mode=OneWay}"
+                    Maximum="20"
+                    Minimum="2"
+                    Value="7" />
+            </common:OptionItem>
+            <CheckBox
+                x:Name="showMarkers"
+                Margin="0,12"
+                Content="Show Markers"
+                IsChecked="True" />
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+</common:DemoModuleView>

@@ -1,0 +1,92 @@
+﻿<common:DemoModuleView
+    x:Class="SchedulerDemo.SchedulerDemoModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxsch="using:DevExpress.WinUI.Scheduler"
+    xmlns:dx="using:DevExpress.WinUI.Core"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <common:DemoModuleView.Resources>
+        <dx:TypeCastConverter x:Key="TypeCastConverter" />
+    </common:DemoModuleView.Resources>
+
+    <dxsch:SchedulerControl
+        x:Name="scheduler"
+        AppointmentsDisplayMode="{x:Bind appointmentsDisplayMode.SelectedItem, Mode=TwoWay, Converter={StaticResource TypeCastConverter}}"
+        GroupType="{x:Bind groupType.SelectedItem, Mode=TwoWay, Converter={StaticResource TypeCastConverter}}"
+        Start="{x:Bind ViewModel.Start, Mode=OneWay}">
+        <dx:Interaction.Behaviors>
+            <dxsch:SchedulerDateNavigationBehavior
+                CanChangeDateNavigatorVisibility="True"
+                FindNavigator="True"
+                NavigatorElementName="PART_SchedulerNavigator" />
+        </dx:Interaction.Behaviors>
+        <dxsch:SchedulerControl.Views>
+            <dxsch:DayView IsActive="True" ResourcesPerPage="2" />
+            <dxsch:WorkWeekView ResourcesPerPage="2" />
+            <dxsch:WeekView ResourcesPerPage="2" />
+            <dxsch:MonthView ResourcesPerPage="2" />
+        </dxsch:SchedulerControl.Views>
+
+        <dxsch:Calendar
+            AppointmentsSource="{x:Bind ViewModel.Appointments}"
+            LabelsSource="{x:Bind ViewModel.Labels}"
+            ResourcesSource="{x:Bind ViewModel.Calendars}">
+            <dxsch:Calendar.AppointmentMappings>
+                <dxsch:AppointmentMappings
+                    AllDay="AllDay"
+                    Description="Description"
+                    End="End"
+                    Id="Id"
+                    LabelId="Label"
+                    Location="Location"
+                    PatternId="PatternId"
+                    RecurrenceRule="RecurrenceInfo"
+                    Reminders="ReminderInfo"
+                    ResourceIds="ResourceId"
+                    Start="Start"
+                    StatusId="Status"
+                    Subject="Subject"
+                    Type="AppointmentType" />
+            </dxsch:Calendar.AppointmentMappings>
+            <dxsch:Calendar.ResourceMappings>
+                <dxsch:ResourceMappings
+                    Caption="Name"
+                    Id="Id"
+                    Visible="IsVisible" />
+            </dxsch:Calendar.ResourceMappings>
+            <dxsch:Calendar.LabelMappings>
+                <dxsch:AppointmentLabelMappings Caption="Caption" Id="Id" />
+            </dxsch:Calendar.LabelMappings>
+        </dxsch:Calendar>
+    </dxsch:SchedulerControl>
+
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionsPanel.Resources>
+                <dx:EnumItemsSourceProvider x:Name="DisplayModeItems" EnumInstance="{x:Bind scheduler.AppointmentsDisplayMode}" />
+                <dx:EnumItemsSourceProvider x:Name="GroupTypeItems" EnumInstance="{x:Bind scheduler.GroupType}" />
+            </common:OptionsPanel.Resources>
+            <common:OptionItem Header="Group Type:">
+                <ComboBox
+                    x:Name="groupType"
+                    MinWidth="120"
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{StaticResource GroupTypeItems}"
+                    SelectedIndex="1" />
+            </common:OptionItem>
+            <common:OptionItem Header="Appointments Display Mode:">
+                <ComboBox
+                    x:Name="appointmentsDisplayMode"
+                    MinWidth="120"
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{StaticResource DisplayModeItems}"
+                    SelectedIndex="0" />
+            </common:OptionItem>
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+</common:DemoModuleView>

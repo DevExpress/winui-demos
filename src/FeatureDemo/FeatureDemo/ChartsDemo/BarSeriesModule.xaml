@@ -1,0 +1,156 @@
+﻿<common:DemoModuleView
+    x:Class="ChartsDemo.BarSeriesModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxc="using:DevExpress.WinUI.Charts"
+    xmlns:common="using:FeatureDemo.Common"
+    BorderBrush="Transparent">
+
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource DemoHeaderStyle}" Text="Population: Age Structure" />
+        <dxc:CartesianChart
+            x:Name="chart"
+            Grid.Row="1"
+            Margin="50,0,50,25"
+            ToolTipEnabled="True">
+            <dxc:CartesianChart.AxisY>
+                <dxc:AxisY>
+                    <dxc:AxisY.LabelOptions>
+                        <dxc:AxisLabelOptions x:Name="axisYLabel" />
+                    </dxc:AxisY.LabelOptions>
+                    <dxc:AxisY.Title>
+                        <dxc:AxisTitle x:Name="axisYTitle" Content="Population in millions" />
+                    </dxc:AxisY.Title>
+                </dxc:AxisY>
+            </dxc:CartesianChart.AxisY>
+            <dxc:CartesianChart.Legend>
+                <dxc:Legend
+                    Margin="0,-5,0,-5"
+                    BorderThickness="0"
+                    FontSize="12"
+                    HorizontalPosition="Center"
+                    MaximumRowsOrColumns="3"
+                    Orientation="Horizontal"
+                    VerticalPosition="BottomOutside" />
+            </dxc:CartesianChart.Legend>
+            <dxc:CartesianChart.Series>
+                <dxc:Series DisplayName="Male: 0 - 14 years">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="US" Value="29.956" />
+                            <dxc:DataPoint Argument="Brazil" Value="25.607" />
+                            <dxc:DataPoint Argument="Russia" Value="13.493" />
+                            <dxc:DataPoint Argument="Japan" Value="9.575" />
+                            <dxc:DataPoint Argument="Mexico" Value="17.306" />
+                            <dxc:DataPoint Argument="Germany" Value="6.679" />
+                            <dxc:DataPoint Argument="UK" Value="5.816" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series DisplayName="Male: 15 - 64 years">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="US" Value="90.354" />
+                            <dxc:DataPoint Argument="Brazil" Value="55.793" />
+                            <dxc:DataPoint Argument="Russia" Value="48.983" />
+                            <dxc:DataPoint Argument="Japan" Value="43.363" />
+                            <dxc:DataPoint Argument="Mexico" Value="30.223" />
+                            <dxc:DataPoint Argument="Germany" Value="28.638" />
+                            <dxc:DataPoint Argument="UK" Value="19.622" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series DisplayName="Male: 65 years and older">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="US" Value="14.472" />
+                            <dxc:DataPoint Argument="Brazil" Value="3.727" />
+                            <dxc:DataPoint Argument="Russia" Value="5.802" />
+                            <dxc:DataPoint Argument="Japan" Value="9.024" />
+                            <dxc:DataPoint Argument="Mexico" Value="1.927" />
+                            <dxc:DataPoint Argument="Germany" Value="5.133" />
+                            <dxc:DataPoint Argument="UK" Value="3.864" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series DisplayName="Female: 0 - 14 years">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="US" Value="28.597" />
+                            <dxc:DataPoint Argument="Brazil" Value="24.67" />
+                            <dxc:DataPoint Argument="Russia" Value="12.971" />
+                            <dxc:DataPoint Argument="Japan" Value="9.105" />
+                            <dxc:DataPoint Argument="Mexico" Value="16.632" />
+                            <dxc:DataPoint Argument="Germany" Value="6.333" />
+                            <dxc:DataPoint Argument="UK" Value="5.519" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series DisplayName="Female: 15 - 64 years">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="US" Value="91.827" />
+                            <dxc:DataPoint Argument="Brazil" Value="57.598" />
+                            <dxc:DataPoint Argument="Russia" Value="52.14" />
+                            <dxc:DataPoint Argument="Japan" Value="42.98" />
+                            <dxc:DataPoint Argument="Mexico" Value="31.868" />
+                            <dxc:DataPoint Argument="Germany" Value="27.693" />
+                            <dxc:DataPoint Argument="UK" Value="19.228" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+                <dxc:Series DisplayName="Female: 65 years and older">
+                    <dxc:Series.Data>
+                        <dxc:DataPointCollection>
+                            <dxc:DataPoint Argument="US" Value="20.362" />
+                            <dxc:DataPoint Argument="Brazil" Value="5.462" />
+                            <dxc:DataPoint Argument="Russia" Value="12.61" />
+                            <dxc:DataPoint Argument="Japan" Value="12.501" />
+                            <dxc:DataPoint Argument="Mexico" Value="2.391" />
+                            <dxc:DataPoint Argument="Germany" Value="8.318" />
+                            <dxc:DataPoint Argument="UK" Value="5.459" />
+                        </dxc:DataPointCollection>
+                    </dxc:Series.Data>
+                </dxc:Series>
+            </dxc:CartesianChart.Series>
+        </dxc:CartesianChart>
+        <TextBlock
+            Grid.Row="2"
+            Style="{StaticResource DemoSourceUsedStyle}"
+            Text="From www.bea.gov" />
+    </Grid>
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionsHeader Text="View" />
+            <RadioButton
+                Checked="{x:Bind OnIsSideBySideBarChecked}"
+                Content="Side-By-Side Bar"
+                GroupName="BarSeriesViewGroup"
+                IsChecked="True" />
+            <RadioButton
+                Checked="{x:Bind OnIsStackedBarChecked}"
+                Content="Stacked Bar"
+                GroupName="BarSeriesViewGroup" />
+            <RadioButton
+                Checked="{x:Bind OnIsFullStackedBarChecked}"
+                Content="Full Stacked Bar"
+                GroupName="BarSeriesViewGroup" />
+            <RadioButton
+                Checked="{x:Bind OnIsSideBySideStackedBarChecked}"
+                Content="Side-By-Side Stacked Bar"
+                GroupName="BarSeriesViewGroup" />
+            <RadioButton
+                Checked="{x:Bind OnIsSideBySideFullStackedBarChecked}"
+                Content="Side-By-Side Full Stacked Bar"
+                GroupName="BarSeriesViewGroup" />
+
+            <common:OptionsHeader Text="Orientation" />
+            <CheckBox Content="Diagram Rotated" IsChecked="{x:Bind chart.Rotated, Mode=TwoWay}" />
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+</common:DemoModuleView>

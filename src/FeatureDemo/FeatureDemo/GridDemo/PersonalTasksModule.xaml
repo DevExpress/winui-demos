@@ -1,0 +1,278 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.PersonalTasksModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:dx="using:DevExpress.WinUI.Core"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d"
+    BorderBrush="Transparent">
+    <!--#region Resources-->
+    <local:GridDemoUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SvgImageSource x:Key="Status_Completed" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Status_Completed.svg" />
+                    <SvgImageSource x:Key="Status_NotCompleted" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Status_NotCompleted.svg" />
+
+                    <SvgImageSource x:Key="Category_HouseChores" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Category_HouseChores.svg" />
+                    <SvgImageSource x:Key="Category_Shopping" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Category_Shopping.svg" />
+                    <SvgImageSource x:Key="Category_Work" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Category_Work.svg" />
+
+                    <SvgImageSource x:Key="Flag_Completed" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Flag_Completed.svg" />
+                    <SvgImageSource x:Key="Flag_Custom" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Flag_Custom.svg" />
+                    <SvgImageSource x:Key="Flag_NextWeek" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Flag_NextWeek.svg" />
+                    <SvgImageSource x:Key="Flag_NoDate" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Flag_NoDate.svg" />
+                    <SvgImageSource x:Key="Flag_ThisWeek" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Flag_ThisWeek.svg" />
+                    <SvgImageSource x:Key="Flag_Today" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Flag_Today.svg" />
+                    <SvgImageSource x:Key="Flag_Tomorrow" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/PersonalTasks/Flag_Tomorrow.svg" />
+
+                    <SvgImageSource x:Key="Priority_High" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Priority/High.svg" />
+                    <SvgImageSource x:Key="Priority_Low" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Priority/Low.svg" />
+                    <SvgImageSource x:Key="Priority_Medium" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Priority/Medium.svg" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Default">
+                    <SvgImageSource x:Key="Status_Completed" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Status_Completed.svg" />
+                    <SvgImageSource x:Key="Status_NotCompleted" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Status_NotCompleted.svg" />
+
+                    <SvgImageSource x:Key="Category_HouseChores" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Category_HouseChores.svg" />
+                    <SvgImageSource x:Key="Category_Shopping" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Category_Shopping.svg" />
+                    <SvgImageSource x:Key="Category_Work" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Category_Work.svg" />
+
+                    <SvgImageSource x:Key="Flag_Completed" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Flag_Completed.svg" />
+                    <SvgImageSource x:Key="Flag_Custom" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Flag_Custom.svg" />
+                    <SvgImageSource x:Key="Flag_NextWeek" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Flag_NextWeek.svg" />
+                    <SvgImageSource x:Key="Flag_NoDate" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Flag_NoDate.svg" />
+                    <SvgImageSource x:Key="Flag_ThisWeek" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Flag_ThisWeek.svg" />
+                    <SvgImageSource x:Key="Flag_Today" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Flag_Today.svg" />
+                    <SvgImageSource x:Key="Flag_Tomorrow" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/PersonalTasks/Flag_Tomorrow.svg" />
+
+                    <SvgImageSource x:Key="Priority_High" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Priority/High.svg" />
+                    <SvgImageSource x:Key="Priority_Low" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Priority/Low.svg" />
+                    <SvgImageSource x:Key="Priority_Medium" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Priority/Medium.svg" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <local:ImageVisibilityConverter x:Key="ImageVisibilityConveter" />
+            <dx:ObjectToObjectConverter x:Key="StatusDisplayTextConverter">
+                <dx:MapItem Source="NotStarted" Target="Not Started" />
+                <dx:MapItem Source="InProgress" Target="In Progress" />
+                <dx:MapItem Source="Completed" Target="Completed" />
+                <dx:MapItem Source="WaitingOnSomeoneElse" Target="Waiting" />
+                <dx:MapItem Source="Deferred" Target="Deferred" />
+            </dx:ObjectToObjectConverter>
+            <dx:ObjectToObjectConverter x:Key="CategoryDisplayTextConverter">
+                <dx:MapItem Source="HouseChores" Target="House" />
+                <dx:MapItem Source="Shopping" Target="Shopping" />
+                <dx:MapItem Source="Work" Target="Work" />
+            </dx:ObjectToObjectConverter>
+
+            <DataTemplate x:Key="ColumnHeaderCompleteTemplate">
+                <FontIcon
+                    Margin="0,4,0,0"
+                    FontSize="16"
+                    Glyph="&#xE73E;" />
+            </DataTemplate>
+            <DataTemplate x:Key="ColumnCompleteTemplate" x:DataType="local:EmployeeTask">
+                <CheckBox
+                    MinWidth="0"
+                    MinHeight="0"
+                    Margin="-1,-1,1,-2"
+                    Padding="0"
+                    HorizontalAlignment="Center"
+                    IsChecked="{x:Bind Complete, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+            </DataTemplate>
+
+            <Style x:Key="PriorityImageStyle" TargetType="Image">
+                <Setter Property="Width" Value="16" />
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Margin" Value="8,2,8,0" />
+            </Style>
+            <DataTemplate x:Key="PriorityTemplate" x:DataType="local:TaskPriority">
+                <StackPanel Margin="-3,0,0,0" Orientation="Horizontal">
+                    <Image
+                        Source="{ThemeResource Priority_High}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=High}" />
+                    <Image
+                        Source="{ThemeResource Priority_Low}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Low}" />
+                    <Image
+                        Source="{ThemeResource Priority_Medium}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Medium}" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Bind}" />
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="ColumnPriorityHeaderTemplate">
+                <FontIcon
+                    Margin="0,4,0,0"
+                    FontSize="16"
+                    Glyph="&#xE7BA;" />
+            </DataTemplate>
+
+            <DataTemplate x:Key="ColumnStatusDataTemplate" x:DataType="local:TaskStatus">
+                <TextBlock Text="{x:Bind Converter={StaticResource StatusDisplayTextConverter}}" />
+            </DataTemplate>
+
+            <DataTemplate x:Key="ColumnPercentCompleteTemplate" x:DataType="local:EmployeeTask">
+                <Slider
+                    LargeChange="50"
+                    Maximum="100"
+                    Minimum="0"
+                    SmallChange="10"
+                    Value="{x:Bind Path=PercentComplete, Mode=TwoWay}" />
+            </DataTemplate>
+
+            <Style x:Key="CategoryImageStyle" TargetType="Image">
+                <Setter Property="Width" Value="16" />
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Stretch" Value="Fill" />
+                <Setter Property="Margin" Value="0,2,0,0" />
+            </Style>
+            <DataTemplate x:Key="ColumnCategoryDataTmplate" x:DataType="local:TaskCategory">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Source="{ThemeResource Category_HouseChores}"
+                        Style="{StaticResource CategoryImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=HouseChores}" />
+                    <Image
+                        Source="{ThemeResource Category_Shopping}"
+                        Style="{StaticResource CategoryImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Shopping}" />
+                    <Image
+                        Source="{ThemeResource Category_Work}"
+                        Style="{StaticResource CategoryImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Work}" />
+                    <TextBlock Margin="4,0,0,0" Text="{x:Bind Converter={StaticResource CategoryDisplayTextConverter}}" />
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </local:GridDemoUserControl.Resources>
+    <!--#endregion Resources-->
+    <dxg:GridControl
+        x:Name="grid"
+        AutoExpandAllGroups="True"
+        AutoGenerateColumns="False"
+        AutoWidth="False"
+        CustomSummary="{x:Bind ViewModel.CustomSummary}"
+        ItemsSource="{x:Bind ViewModel.Tasks}"
+        NavigationStyle="Cell"
+        ShowFixedTotalSummary="True"
+        ShowGroupPanel="False"
+        ShowGroupedColumns="False"
+        ShowSearchPanelMode="Always"
+        ValidateCell="{x:Bind ViewModel.ValidateCell}">
+        <dxg:GridControl.Columns>
+            <dxg:GridTemplateColumn
+                FieldName="Complete"
+                Width="50"
+                AllowFiltering="False"
+                AllowResizing="False"
+                AllowSorting="False"
+                AllowGrouping="False"
+                CellTemplate="{StaticResource ColumnCompleteTemplate}"
+                HeaderTemplate="{StaticResource ColumnHeaderCompleteTemplate}" />
+            <dxg:GridComboBoxColumn
+                FieldName="Priority"
+                Width="140"
+                AllowFiltering="False"
+                AllowResizing="False"
+                AllowSorting="False"
+                AllowGrouping="False"
+                DisplayTemplate="{StaticResource PriorityTemplate}"
+                HeaderTemplate="{StaticResource ColumnPriorityHeaderTemplate}"
+                ItemTemplate="{StaticResource PriorityTemplate}"
+                ItemsSource="{x:Bind ViewModel.TaskPriorities}" />
+            <dxg:GridTextColumn
+                FieldName="Subject"
+                Width="300"
+                AllowFiltering="False"
+                AllowGrouping="False"
+                TextTrimming="CharacterEllipsis" />
+            <dxg:GridComboBoxColumn
+                FieldName="Status"
+                Width="130"
+                AllowGrouping="False"
+                DisplayTemplate="{StaticResource ColumnStatusDataTemplate}"
+                ItemTemplate="{StaticResource ColumnStatusDataTemplate}"
+                ItemsSource="{x:Bind ViewModel.TaskStatusList}" />
+            <dxg:GridTemplateColumn
+                FieldName="PercentComplete"
+                Header="Progress"
+                Width="110"
+                AllowFiltering="False"
+                AllowGrouping="False"
+                AllowSorting="False"
+                CellTemplate="{StaticResource ColumnPercentCompleteTemplate}" />
+            <dxg:GridDateColumn
+                FieldName="CreatedDate"
+                Width="110"
+                AllowFiltering="False"
+                AllowGrouping="False"
+                GroupIndex="0"
+                GroupInterval="DateRange"
+                Mask="M/d/yyyy"
+                SortOrder="Descending" />
+            <dxg:GridDateColumn
+                FieldName="StartDate"
+                Width="110"
+                AllowFiltering="False"
+                AllowGrouping="False"
+                Mask="M/d/yyyy"
+                NullText="None" />
+            <dxg:GridDateColumn
+                FieldName="DueDate"
+                Width="110"
+                AllowFiltering="False"
+                AllowGrouping="False"
+                Mask="M/d/yyyy"
+                NullText="None" />
+            <dxg:GridDateColumn
+                FieldName="FinishDate"
+                Width="120"
+                AllowFiltering="False"
+                AllowGrouping="False"
+                Mask="M/d/yyyy"
+                NullText="None" />
+            <dxg:GridComboBoxColumn
+                AllowGrouping="False"
+                FieldName="Category"
+                Width="140"
+                DisplayTemplate="{StaticResource ColumnCategoryDataTmplate}"
+                ItemTemplate="{StaticResource ColumnCategoryDataTmplate}"
+                ItemsSource="{x:Bind ViewModel.TaskCategories}" />
+        </dxg:GridControl.Columns>
+        <dxg:GridControl.GroupSummary>
+            <dxg:GridSummaryItem SummaryType="Count" />
+        </dxg:GridControl.GroupSummary>
+        <dxg:GridControl.FormatConditions>
+            <dxg:FormatCondition
+                ApplyToRow="True"
+                Expression="[Overdue]"
+                PredefinedFormatName="{x:Bind dxg:PredefinedFormatNames.RedText}" />
+            <dxg:FormatCondition
+                ApplyToRow="True"
+                Expression="(Not [Complete]) And ([Priority]='High')"
+                PredefinedFormatName="{x:Bind dxg:PredefinedFormatNames.BoldText}" />
+            <dxg:FormatCondition ApplyToRow="True" Expression="([Status]='Completed') Or ([Status]='Deferred')">
+                <dxg:Format Foreground="Gray" />
+            </dxg:FormatCondition>
+            <dxg:FormatCondition ApplyToRow="True" Expression="[Status]='WaitingOnSomeoneElse'">
+                <dxg:Format Foreground="Orange" />
+            </dxg:FormatCondition>
+        </dxg:GridControl.FormatConditions>
+        <dxg:GridControl.TotalSummary>
+            <dxg:GridSummaryItem
+                FieldName="Complete"
+                Caption="Active Tasks"
+                Alignment="Right"
+                SummaryType="Custom" />
+        </dxg:GridControl.TotalSummary>
+    </dxg:GridControl>
+</local:GridDemoUserControl>

@@ -1,0 +1,83 @@
+﻿<common:DemoSubModuleView
+    x:Class="EditorsDemo.TimeSpanMaskModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:EditorsDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dx="using:DevExpress.WinUI.Core"
+    xmlns:dxe="using:DevExpress.WinUI.Editors"
+    xmlns:dxmvvm="using:DevExpress.WinUI.Core"
+    xmlns:dxmvvmi="using:DevExpress.WinUI.Core"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+
+    <common:DemoSubModuleView.Resources>
+        <dx:EnumItemsSourceProvider
+            x:Key="MaskTypeSource"
+            EnumType="dxe:MaskType"
+            WhiteList="TimeSpan,TimeSpanAdvancingCaret" />
+        <dx:EnumItemsSourceProvider
+            x:Key="TimeSpanPartSource"
+            EnumType="dxe:TimeSpanPart"
+            WhiteList="Days,Hours,Minutes,Seconds,Milliseconds,Fractional" />
+        <dx:EnumItemsSourceProvider
+            x:Key="TimeSpanInputModeSource"
+            EnumType="dxe:TimeSpanInputMode"
+            WhiteList="Restricted,NotRestricted,NotRestrictedLargestUnit" />
+        <dxmvvm:TypeCastConverter x:Key="TypeCastConverter" />
+    </common:DemoSubModuleView.Resources>
+
+    <common:DemoSubModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionItem Header="Edit value">
+                <dxe:TextEdit EditValue="{x:Bind ViewModel.FocusedEditor.EditValue}" IsReadOnly="True" />
+            </common:OptionItem>
+            <common:OptionItem Header="Edit mask">
+                <dxe:TextEdit
+                    EditValue="{x:Bind ViewModel.Mask, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ValidateOnEnterKeyPressed="True"
+                    ValidateOnTextInput="False" />
+            </common:OptionItem>
+            <common:OptionItem Header="Mask type">
+                <ComboBox HorizontalAlignment="Stretch" ItemsSource="{StaticResource MaskTypeSource}" SelectedItem="{x:Bind ViewModel.TextInputSettings.MaskType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </common:OptionItem>
+            <common:OptionItem Header="Default part">
+                <ComboBox HorizontalAlignment="Stretch" ItemsSource="{StaticResource TimeSpanPartSource}" SelectedItem="{x:Bind ViewModel.TextInputSettings.DefaultPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </common:OptionItem>
+            <common:OptionItem Header="Input mode">
+                <ComboBox HorizontalAlignment="Stretch" ItemsSource="{StaticResource TimeSpanInputModeSource}" SelectedItem="{x:Bind ViewModel.TextInputSettings.InputMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </common:OptionItem>
+            <CheckBox Content="Change next part on cycle value change" IsChecked="{x:Bind ViewModel.TextInputSettings.ChangeNextPartOnCycleValueChange, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <CheckBox Content="Assign value to entered literal" IsChecked="{x:Bind ViewModel.TextInputSettings.AssignValueToEnteredLiteral, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </common:OptionsPanel>
+    </common:DemoSubModuleView.Options>
+
+    <StackPanel x:Name="Root" Spacing="6">
+        <dxmvvmi:Interaction.Behaviors>
+            <dxmvvm:MessageBoxService />
+        </dxmvvmi:Interaction.Behaviors>
+        <dxe:TextEdit Header="Default" EditValue="01:02:03">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputTimeSpanMaskSettings />
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Hours and minutes are always visible, seconds are optional" EditValue="-5.01:02:00">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputTimeSpanMaskSettings Mask="hhH mmM[ ssS]" UseAsDisplayFormat="True" />
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+
+        <dxe:TextEdit Header="Hours, minutes, and seconds are optional">
+            <dxe:TextEdit.TextInputSettings>
+                <dxe:TextInputTimeSpanMaskSettings
+                    DefaultPart="Minutes"
+                    Mask="[hH ][mM ][sS]"
+                    UseAsDisplayFormat="True" />
+            </dxe:TextEdit.TextInputSettings>
+        </dxe:TextEdit>
+    </StackPanel>
+</common:DemoSubModuleView>

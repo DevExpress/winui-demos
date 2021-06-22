@@ -1,0 +1,53 @@
+﻿<common:DemoModuleView
+    x:Class="ChartsDemo.LargeDataSourceModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxc="using:DevExpress.WinUI.Charts"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:Controls="using:DevExpress.WinUI.Controls"
+    BorderBrush="Transparent">
+    <Grid Padding="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Margin="48,0,0,0"
+            Style="{StaticResource DemoHeaderStyle}"
+            Text="200 000 Points (100 000 Points per Series)" />
+        <dxc:CartesianChart
+            x:Name="chart"
+            Grid.Row="1"
+            Margin="30,50,30,25"
+            AllowAxisXZoomScroll="True"
+            ToolTipEnabled="False">
+            <dxc:CartesianChart.AxisX>
+                <dxc:AxisX ShowMajorGridlines="True" />
+            </dxc:CartesianChart.AxisX>
+            <dxc:CartesianChart.AxisY>
+                <dxc:AxisY ShowLabels="False" ShowMajorGridlines="False" />
+            </dxc:CartesianChart.AxisY>
+            <dxc:CartesianChart.Series>
+                <dxc:Series Data="{x:Bind Data1}" DisplayName="Series 1">
+                    <dxc:Series.View>
+                        <dxc:LineSeriesView />
+                    </dxc:Series.View>
+                </dxc:Series>
+                <dxc:Series Data="{x:Bind Data2}" DisplayName="Series 2">
+                    <dxc:Series.View>
+                        <dxc:LineSeriesView />
+                    </dxc:Series.View>
+                </dxc:Series>
+            </dxc:CartesianChart.Series>
+        </dxc:CartesianChart>
+        <Controls:RangeControl
+            Grid.Row="2"
+            MinHeight="40"
+            Margin="30,-10,30,15"
+            Background="Transparent"
+            ShowRangeThumbs="True">
+            <dxc:ChartRangeControlClient Chart="{Binding ElementName=chart}" />
+        </Controls:RangeControl>
+    </Grid>
+</common:DemoModuleView>

@@ -1,0 +1,150 @@
+﻿<common:DemoModuleView
+    x:Class="EditorsDemo.ContactDetailsModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxe="using:DevExpress.WinUI.Editors"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d"
+    x:DefaultBindMode="OneWay">
+    <common:DemoModuleView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="AvatarBorderBrush" Color="{ThemeResource SystemBaseLowColor}" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="AvatarBorderBrush" Color="#FF303030" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            <Style x:Key="CustomButtonStyle" TargetType="dxe:ButtonInfo">
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+        </ResourceDictionary>
+    </common:DemoModuleView.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+        <StackPanel
+            Width="658"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="10">
+                    <dxe:TextEdit
+                        Header="First Name"
+                        EditValue="{x:Bind ViewModel.Employee.FirstName, Mode=TwoWay}"
+                        IsTextPredictionEnabled="True"
+                        NullText="First Name"
+                        Validate="OnValidate" />
+                    <dxe:TextEdit
+                        Header="Last Name"
+                        EditValue="{x:Bind ViewModel.Employee.LastName, Mode=TwoWay}"
+                        NullText="Last Name"
+                        Validate="OnValidate" />
+                    <dxe:DateEdit Header="Birth Date" EditValue="{x:Bind ViewModel.Employee.BirthDate}" />
+                    <dxe:TextEdit
+                        Header="Title"
+                        EditValue="{x:Bind ViewModel.Employee.JobTitle}"
+                        IsReadOnly="True"
+                        Validate="OnValidate" />
+                </StackPanel>
+                <Grid Grid.Column="1" Margin="20,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Border
+                        Background="White"
+                        BorderBrush="{ThemeResource AvatarBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="234">
+                        <Image
+                            Width="234"
+                            Height="234"
+                            HorizontalAlignment="Center"
+                            Source="{x:Bind ViewModel.Employee.ImageSource}"
+                            Stretch="UniformToFill" />
+                    </Border>
+                    <HyperlinkButton
+                        Grid.Row="1"
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Center"
+                        Command="{x:Bind ViewModel.LoadPhotoCommand}"
+                        Content="Load Photo"
+                        Foreground="#FF20AFFF" />
+                </Grid>
+            </Grid>
+            <StackPanel Grid.ColumnSpan="2" Spacing="10">
+                <dxe:TextEdit
+                    Header="Address"
+                    EditValue="{x:Bind ViewModel.Employee.AddressLine1, Mode=TwoWay}"
+                    Validate="OnValidate" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <dxe:TextEdit
+                        Header="City"
+                        EditValue="{x:Bind ViewModel.Employee.City, Mode=TwoWay}"
+                        IsTextPredictionEnabled="True"
+                        Validate="OnValidate" />
+                    <dxe:TextEdit
+                        Header="ZIP code"
+                        Grid.Column="1"
+                        Margin="12,0,0,0"
+                        EditValue="{x:Bind ViewModel.Employee.PostalCode, Mode=TwoWay}"
+                        Validate="OnValidate">
+                        <dxe:TextEdit.TextInputSettings>
+                            <dxe:TextInputMaskSettings Mask="\d{5}" MaskType="RegEx" />
+                        </dxe:TextEdit.TextInputSettings>
+                    </dxe:TextEdit>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="0,42,0,0" Spacing="10">
+                <dxe:TextEdit
+                    Header="Phone"
+                    EditValue="{x:Bind ViewModel.Employee.Phone, Mode=TwoWay}"
+                    Validate="OnValidate">
+                    <dxe:TextEdit.Buttons>
+                        <dxe:ButtonInfo
+                            Command="{x:Bind ViewModel.CallPhoneCommand}"
+                            Content="&#xE717;"
+                            Style="{StaticResource CustomButtonStyle}" />
+                    </dxe:TextEdit.Buttons>
+                    <dxe:TextEdit.TextInputSettings>
+                        <dxe:TextInputMaskSettings
+                            AutoComplete="Optimistic"
+                            Mask="((\+\d|8)?\(\d{3}\))?\d{3}-\d\d-\d\d"
+                            MaskType="RegEx" />
+                    </dxe:TextEdit.TextInputSettings>
+                </dxe:TextEdit>
+                <dxe:TextEdit
+                    Header="Email"
+                    EditValue="{x:Bind ViewModel.Employee.EmailAddress, Mode=TwoWay}"
+                    Validate="OnValidate">
+                    <dxe:TextEdit.Buttons>
+                        <dxe:ButtonInfo
+                            Command="{x:Bind ViewModel.SendEmailCommand}"
+                            Content="&#xE715;"
+                            Style="{StaticResource CustomButtonStyle}" />
+                    </dxe:TextEdit.Buttons>
+                    <dxe:TextEdit.TextInputSettings>
+                        <dxe:TextInputMaskSettings
+                            Mask="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+                            MaskType="RegEx"
+                            ShowPlaceHolders="True" />
+                    </dxe:TextEdit.TextInputSettings>
+                </dxe:TextEdit>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</common:DemoModuleView>

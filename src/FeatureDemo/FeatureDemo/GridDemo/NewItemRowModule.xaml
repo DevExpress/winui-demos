@@ -1,0 +1,172 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.NewItemRowModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    xmlns:demodata="using:FeatureDemo.Data"
+    xmlns:mvvm="using:DevExpress.WinUI.Core"
+    mc:Ignorable="d">
+    <local:GridDemoUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SvgImageSource x:Key="Status_Fixed" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Status/Fixed.svg" />
+                    <SvgImageSource x:Key="Status_New" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Status/New.svg" />
+                    <SvgImageSource x:Key="Status_Postponed" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Status/Postponed.svg" />
+                    <SvgImageSource x:Key="Status_Rejected" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Status/Rejected.svg" />
+
+                    <SvgImageSource x:Key="Priority_High" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Priority/High.svg" />
+                    <SvgImageSource x:Key="Priority_Low" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Priority/Low.svg" />
+                    <SvgImageSource x:Key="Priority_Medium" UriSource="ms-appx:///GridDemo/Themes/Icons/Light/Priority/Medium.svg" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SvgImageSource x:Key="Status_Fixed" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Status/Fixed.svg" />
+                    <SvgImageSource x:Key="Status_New" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Status/New.svg" />
+                    <SvgImageSource x:Key="Status_Postponed" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Status/Postponed.svg" />
+                    <SvgImageSource x:Key="Status_Rejected" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Status/Rejected.svg" />
+
+                    <SvgImageSource x:Key="Priority_High" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Priority/High.svg" />
+                    <SvgImageSource x:Key="Priority_Low" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Priority/Low.svg" />
+                    <SvgImageSource x:Key="Priority_Medium" UriSource="ms-appx:///GridDemo/Themes/Icons/Default/Priority/Medium.svg" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <mvvm:ObjectToObjectConverter x:Key="BoolToNewItemRowPositionConverter">
+                <mvvm:MapItem Source="True" Target="Top" />
+                <mvvm:MapItem Source="False" Target="Bottom" />
+            </mvvm:ObjectToObjectConverter>
+            <local:ImageVisibilityConverter x:Key="ImageVisibilityConveter" />
+
+            <Style x:Key="StatusImageStyle" TargetType="Image">
+                <Setter Property="Width" Value="16" />
+                <Setter Property="Height" Value="16" />
+            </Style>
+            <DataTemplate x:Key="StatusImageTemplate" x:DataType="demodata:Status">
+                <Grid>
+                    <Image
+                        Source="{ThemeResource Status_Fixed}"
+                        Style="{StaticResource StatusImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Fixed}" />
+                    <Image
+                        Source="{ThemeResource Status_New}"
+                        Style="{StaticResource StatusImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=New}" />
+                    <Image
+                        Source="{ThemeResource Status_Postponed}"
+                        Style="{StaticResource StatusImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Postponed}" />
+                    <Image
+                        Source="{ThemeResource Status_Rejected}"
+                        Style="{StaticResource StatusImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Rejected}" />
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="StatusItemTemplate" x:DataType="demodata:Status">
+                <StackPanel Orientation="Horizontal">
+                    <ContentPresenter Content="{x:Bind}" ContentTemplate="{StaticResource StatusImageTemplate}" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{x:Bind}" />
+                </StackPanel>
+            </DataTemplate>
+
+            <Style x:Key="PriorityImageStyle" TargetType="Image">
+                <Setter Property="Width" Value="16" />
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Margin" Value="8,2,8,0" />
+            </Style>
+            <DataTemplate x:Key="PriorityTemplate" x:DataType="demodata:Priority">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Source="{ThemeResource Priority_High}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=High}" />
+                    <Image
+                        Source="{ThemeResource Priority_Low}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Low}" />
+                    <Image
+                        Source="{ThemeResource Priority_Medium}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Medium}" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Bind}" />
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </local:GridDemoUserControl.Resources>
+    <dxg:GridControl
+        Name="grid"
+        AddingNewRow="grid_AddingNewRow"
+        AutoGenerateColumns="False"
+        AutoWidth="False"
+        ItemsSource="{x:Bind Data.Items}"
+        NavigationStyle="Cell"
+        NewItemRowPosition="{x:Bind GetNewItemRowPosition(top.IsChecked.Value), Mode=OneWay}"
+        ShowIndicator="True">
+        <dxg:GridControl.Columns>
+            <dxg:GridTextColumn FieldName="Name" Width="250" AllowFiltering="False" />
+            <dxg:GridComboBoxColumn
+                FieldName="OwnerID"
+                Header="Owner"
+                Width="170"
+                DisplayMemberPath="Name"
+                ItemsSource="{x:Bind Data.Users}"
+                SelectedValuePath="Id"
+                SortMode="DisplayText"
+                AllowFiltering="False"
+                TextTrimming="CharacterEllipsis" />
+            <dxg:GridDateColumn
+                x:Name="CreatedDate"
+                FieldName="CreatedDate"
+                Header="Created"
+                Width="120"
+                AllowFiltering="False"
+                Mask="d" />
+            <dxg:GridComboBoxColumn
+                x:Name="Priority"
+                FieldName="Priority"
+                Width="140"
+                AllowFiltering="False"
+                DisplayTemplate="{StaticResource PriorityTemplate}"
+                ItemTemplate="{StaticResource PriorityTemplate}"
+                ItemsSource="{x:Bind Data.Priorities}"
+                SortMode="Value" />
+            <dxg:GridDateColumn
+                x:Name="FixedDate"
+                FieldName="FixedDate"
+                Header="Fixed"
+                Width="120"
+                AllowFiltering="False"
+                Mask="d" />
+            <dxg:GridComboBoxColumn
+                x:Name="Status"
+                FieldName="Status"
+                Width="95"
+                AllowFiltering="False"
+                DisplayTemplate="{StaticResource StatusImageTemplate}"
+                ItemTemplate="{StaticResource StatusItemTemplate}"
+                ItemsSource="{x:Bind Data.Statuses}"
+                SortMode="Value"
+                TextTrimming="CharacterEllipsis" />
+        </dxg:GridControl.Columns>
+    </dxg:GridControl>
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <common:OptionsHeader Text="New Item Row Position"/>
+            <RadioButton
+                    x:Name="top"
+                    Content="Top"
+                    GroupName="NewItemRowPositionGroup"
+                    IsChecked="True" />
+            <RadioButton
+                    x:Name="bottom"
+                    Content="Bottom"
+                    GroupName="NewItemRowPositionGroup" />
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+</local:GridDemoUserControl>

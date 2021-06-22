@@ -1,0 +1,206 @@
+﻿<common:DemoModuleView
+    x:Class="GaugesDemo.LinearGaugeModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxga="using:DevExpress.WinUI.Gauges"
+    BorderBrush="Transparent">
+    <common:DemoModuleView.Resources>
+        <Style x:Key="markerOptionsStyle" TargetType="dxga:LinearScaleMarkerOptions">
+            <Setter Property="Fill" Value="White" />
+            <Setter Property="Offset" Value="0" />
+            <Setter Property="FactorHeight" Value="1.5" />
+        </Style>
+        <Style x:Key="customLabelStyle" TargetType="dxga:ScaleCustomLabel">
+            <Setter Property="Offset" Value="-58" />
+            <Setter Property="FontSize" Value="26" />
+            <Setter Property="FontWeight" Value="Light" />
+            <Setter Property="Foreground" Value="{ThemeResource SystemBaseHighColor}" />
+        </Style>
+        <Style TargetType="dxga:DefaultScaleLabelControl">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="dxga:DefaultScaleLabelControl">
+                        <TextBlock
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Foreground="{ThemeResource SystemBaseMediumColor}"
+                            Opacity="1"
+                            RenderTransformOrigin="0.5, 0.5"
+                            Text="{Binding ElementInfo.Text, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </common:DemoModuleView.Resources>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
+        <Grid MinHeight="600" Padding="48,0,48,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="12*" />
+                <RowDefinition Height="75*" />
+                <RowDefinition Height="8*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Margin="0,5,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="40"
+                FontWeight="Light"
+                Foreground="{ThemeResource SystemBaseHighColor}"
+                Text="Web Site Visitor Trend" />
+            <dxga:LinearGauge
+                x:Name="linearGaugeControl"
+                Grid.Row="1"
+                Margin="50,0,50,-70">
+                <dxga:LinearGauge.ScalePanelTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                        </Grid>
+                    </DataTemplate>
+                </dxga:LinearGauge.ScalePanelTemplate>
+                <dxga:LinearGauge.Scales>
+                    <dxga:LinearScale
+                        Grid.Row="0"
+                        Margin="10,0,10,0"
+                        EndValue="9152"
+                        LayoutMode="LeftToRight"
+                        MajorIntervalCount="5"
+                        ShowLine="False"
+                        ShowMajorTickmarks="False">
+                        <dxga:LinearScale.LevelBars>
+                            <dxga:LinearScaleLevelBar Value="9152">
+                                <dxga:LinearScaleLevelBar.Options>
+                                    <dxga:LinearScaleLevelBarOptions Fill="#FFCA5677" />
+                                </dxga:LinearScaleLevelBar.Options>
+                            </dxga:LinearScaleLevelBar>
+                        </dxga:LinearScale.LevelBars>
+                        <dxga:LinearScale.Markers>
+                            <dxga:LinearScaleMarker Value="9152">
+                                <dxga:LinearScaleMarker.Options>
+                                    <dxga:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}" />
+                                </dxga:LinearScaleMarker.Options>
+                            </dxga:LinearScaleMarker>
+                        </dxga:LinearScale.Markers>
+                        <dxga:LinearScale.CustomLabels>
+                            <dxga:ScaleCustomLabel Content="Visited a Web Site" Style="{StaticResource customLabelStyle}" />
+                        </dxga:LinearScale.CustomLabels>
+                    </dxga:LinearScale>
+                    <dxga:LinearScale
+                        Grid.Row="1"
+                        Margin="10,5,10,0"
+                        EndValue="9152"
+                        LayoutMode="LeftToRight"
+                        MajorIntervalCount="5"
+                        ShowLine="False"
+                        ShowMajorTickmarks="False">
+                        <dxga:LinearScale.LevelBars>
+                            <dxga:LinearScaleLevelBar Value="6870">
+                                <dxga:LinearScaleLevelBar.Options>
+                                    <dxga:LinearScaleLevelBarOptions Fill="#FFCA5677" />
+                                </dxga:LinearScaleLevelBar.Options>
+                            </dxga:LinearScaleLevelBar>
+                        </dxga:LinearScale.LevelBars>
+                        <dxga:LinearScale.Markers>
+                            <dxga:LinearScaleMarker Value="6870">
+                                <dxga:LinearScaleMarker.Options>
+                                    <dxga:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}" />
+                                </dxga:LinearScaleMarker.Options>
+                            </dxga:LinearScaleMarker>
+                        </dxga:LinearScale.Markers>
+                        <dxga:LinearScale.CustomLabels>
+                            <dxga:ScaleCustomLabel Content="Downloaded a Trial" Style="{StaticResource customLabelStyle}" />
+                        </dxga:LinearScale.CustomLabels>
+                    </dxga:LinearScale>
+                    <dxga:LinearScale
+                        Grid.Row="2"
+                        Margin="10,10,10,0"
+                        EndValue="9152"
+                        LayoutMode="LeftToRight"
+                        MajorIntervalCount="5"
+                        ShowLine="False"
+                        ShowMajorTickmarks="False">
+                        <dxga:LinearScale.LevelBars>
+                            <dxga:LinearScaleLevelBar Visible="True" Value="5121">
+                                <dxga:LinearScaleLevelBar.Options>
+                                    <dxga:LinearScaleLevelBarOptions Fill="#FFCA5677" />
+                                </dxga:LinearScaleLevelBar.Options>
+                            </dxga:LinearScaleLevelBar>
+                        </dxga:LinearScale.LevelBars>
+                        <dxga:LinearScale.Markers>
+                            <dxga:LinearScaleMarker Value="5121">
+                                <dxga:LinearScaleMarker.Options>
+                                    <dxga:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}" />
+                                </dxga:LinearScaleMarker.Options>
+                            </dxga:LinearScaleMarker>
+                        </dxga:LinearScale.Markers>
+                        <dxga:LinearScale.CustomLabels>
+                            <dxga:ScaleCustomLabel Content="Contacted to Support" Style="{StaticResource customLabelStyle}" />
+                        </dxga:LinearScale.CustomLabels>
+                    </dxga:LinearScale>
+                    <dxga:LinearScale
+                        Grid.Row="3"
+                        Margin="10,15,10,0"
+                        EndValue="9152"
+                        LayoutMode="LeftToRight"
+                        MajorIntervalCount="5"
+                        ShowLine="False"
+                        ShowMajorTickmarks="False">
+                        <dxga:LinearScale.LevelBars>
+                            <dxga:LinearScaleLevelBar Visible="True" Value="2224">
+                                <dxga:LinearScaleLevelBar.Options>
+                                    <dxga:LinearScaleLevelBarOptions Fill="#FFCA5677" />
+                                </dxga:LinearScaleLevelBar.Options>
+                            </dxga:LinearScaleLevelBar>
+                        </dxga:LinearScale.LevelBars>
+                        <dxga:LinearScale.Markers>
+                            <dxga:LinearScaleMarker Value="2224">
+                                <dxga:LinearScaleMarker.Options>
+                                    <dxga:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}" />
+                                </dxga:LinearScaleMarker.Options>
+                            </dxga:LinearScaleMarker>
+                        </dxga:LinearScale.Markers>
+                        <dxga:LinearScale.CustomLabels>
+                            <dxga:ScaleCustomLabel Content="Subscribed" Style="{StaticResource customLabelStyle}" />
+                        </dxga:LinearScale.CustomLabels>
+                    </dxga:LinearScale>
+                    <dxga:LinearScale
+                        Grid.Row="4"
+                        Margin="10,20,10,0"
+                        EndValue="9152"
+                        LayoutMode="LeftToRight"
+                        MajorIntervalCount="5"
+                        ShowLine="False"
+                        ShowMajorTickmarks="False">
+                        <dxga:LinearScale.LevelBars>
+                            <dxga:LinearScaleLevelBar Visible="True" Value="1670">
+                                <dxga:LinearScaleLevelBar.Options>
+                                    <dxga:LinearScaleLevelBarOptions Fill="#FFCA5677" />
+                                </dxga:LinearScaleLevelBar.Options>
+                            </dxga:LinearScaleLevelBar>
+                        </dxga:LinearScale.LevelBars>
+                        <dxga:LinearScale.Markers>
+                            <dxga:LinearScaleMarker Value="1670">
+                                <dxga:LinearScaleMarker.Options>
+                                    <dxga:LinearScaleMarkerOptions Style="{StaticResource markerOptionsStyle}" />
+                                </dxga:LinearScaleMarker.Options>
+                            </dxga:LinearScaleMarker>
+                        </dxga:LinearScale.Markers>
+                        <dxga:LinearScale.CustomLabels>
+                            <dxga:ScaleCustomLabel Content="Renewed" Style="{StaticResource customLabelStyle}" />
+                        </dxga:LinearScale.CustomLabels>
+                    </dxga:LinearScale>
+                </dxga:LinearGauge.Scales>
+            </dxga:LinearGauge>
+        </Grid>
+    </ScrollViewer>
+</common:DemoModuleView>
