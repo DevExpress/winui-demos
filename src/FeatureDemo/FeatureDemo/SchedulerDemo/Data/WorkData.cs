@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using DevExpress.DemoData.Models;
 using DevExpress.Mvvm;
 using DevExpress.WinUI.Scheduler;
+using DevExpress.WinUI.Scheduler.Internal;
 using FeatureDemo.Common;
 
 using Windows.Storage;

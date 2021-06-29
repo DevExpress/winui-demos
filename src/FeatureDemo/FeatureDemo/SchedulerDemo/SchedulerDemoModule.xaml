@@ -19,12 +19,6 @@
         AppointmentsDisplayMode="{x:Bind appointmentsDisplayMode.SelectedItem, Mode=TwoWay, Converter={StaticResource TypeCastConverter}}"
         GroupType="{x:Bind groupType.SelectedItem, Mode=TwoWay, Converter={StaticResource TypeCastConverter}}"
         Start="{x:Bind ViewModel.Start, Mode=OneWay}">
-        <dx:Interaction.Behaviors>
-            <dxsch:SchedulerDateNavigationBehavior
-                CanChangeDateNavigatorVisibility="True"
-                FindNavigator="True"
-                NavigatorElementName="PART_SchedulerNavigator" />
-        </dx:Interaction.Behaviors>
         <dxsch:SchedulerControl.Views>
             <dxsch:DayView IsActive="True" ResourcesPerPage="2" />
             <dxsch:WorkWeekView ResourcesPerPage="2" />

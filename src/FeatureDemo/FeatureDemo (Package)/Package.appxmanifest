@@ -9,7 +9,7 @@
   <Identity
     Name="DevExpress.WinUI.Demos"
     Publisher="CN=Developer Express Incorporated, O=Developer Express Incorporated, L=Glendale, S=California, C=US"
-    Version="21.2.1.9"
+    Version="21.2.2.7"
   />
 
   <Properties>

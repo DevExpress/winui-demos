@@ -1,8 +1,7 @@
-﻿using DevExpress.Mvvm.Native;
-using DevExpress.WinUI.Core.Internal;
+﻿using DevExpress.WinUI.Core.Internal;
 using FeatureDemo.Common;
 using FeatureDemo.ViewModel;
-using Microsoft.System;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
