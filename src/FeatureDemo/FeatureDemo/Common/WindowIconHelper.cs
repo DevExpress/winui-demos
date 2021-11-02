@@ -1,44 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using Microsoft.UI.Xaml;
-using Windows.UI.ViewManagement;
 using WinRT;
 
 namespace FeatureDemo {
     public static class WindowIconHelper {
-        static IntPtr activeDarkIcon;
-        static IntPtr activeLightIcon;
-        static IntPtr inactiveIcon;
-        static UISettings settings;
-        static Window window;
-        public static void AttachIcon(this Window wnd, string activeDarkIconName, string activeLightIconName, string inactiveIconName) {
-            activeDarkIcon = LoadIcon(activeDarkIconName);
-            activeLightIcon = LoadIcon(activeLightIconName);
-            inactiveIcon = LoadIcon(inactiveIconName);
-            window = wnd;
-            settings = new UISettings();
-            wnd.Activated += OnWindowActivated;
-        }
-
-        private static void OnWindowActivated(object sender, WindowActivatedEventArgs args) {
-            if(args.WindowActivationState == WindowActivationState.Deactivated) {
-                SetIcon(window, inactiveIcon);
-                return;
-            }
-            var accent = settings.GetColorValue(UIColorType.Accent);
-            if((accent.R + accent.G + accent.B) / 3 > 150) {
-                SetIcon(window, activeDarkIcon);
-            } else {
-                SetIcon(window, activeLightIcon);
-            }
-        }
-
-        static IntPtr LoadIcon(string iconName)
-            => LoadImage(IntPtr.Zero, iconName, 1, 16, 16, 16);
         public static void SetIcon(this Window wnd, string iconName)
-            => SetIcon(wnd, LoadIcon(iconName));
-        static void SetIcon(this Window wnd, IntPtr icon)
-            => SendMessage(wnd.As<IWindowNative>().WindowHandle, WM_SETICON, 0, icon);
+            => SendMessage(wnd.As<IWindowNative>().WindowHandle, WM_SETICON, 0,
+                LoadImage(IntPtr.Zero, iconName, 1, 16, 16, 16));
+
         const uint WM_SETICON = 0x0080;
 
         [ComImport]

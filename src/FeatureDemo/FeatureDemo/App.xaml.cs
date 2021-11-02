@@ -40,8 +40,8 @@ namespace FeatureDemo {
                 Title = "DevExpress WinUI Demos " + DevExpress.WinUI.Core.Internal.AssemblyInfo.VersionShort,
                 Content = new MainPage() { Args = string.Join(" ", Environment.GetCommandLineArgs().Skip(1)) }
             };
-            WindowIconHelper.AttachIcon(MainWindow, "app-icon-active-dark.ico", "app-icon-active-light.ico", "app-icon-inactive.ico");
             MainWindow.Activate();
+            MainWindow.SetIcon("app-icon.ico");
         }       
     }
 }

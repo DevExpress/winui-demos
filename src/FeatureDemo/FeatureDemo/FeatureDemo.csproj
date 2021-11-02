@@ -339,13 +339,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Update="app-icon-active-light.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="app-icon-active-dark.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="app-icon-inactive.ico">
+    <None Update="app-icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
