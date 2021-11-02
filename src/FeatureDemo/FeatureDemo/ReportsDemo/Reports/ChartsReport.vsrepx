@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.2.0.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v20.2, Version=20.2.0.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4" Name="ChartReport" DisplayName="Chart" Landscape="true" Margins="50, 50, 55, 55" PageWidth="1100" PageHeight="850" Version="20.2" RequestParameters="false" DataSource="#Ref-0">
+  <Extensions>
+    <Item1 Ref="2" Key="VSReportExtInfo" Value=".vsrepx" />
+  </Extensions>
+  <CalculatedFields>
+    <Item1 Ref="3" Name="Year" FieldType="Int32" Expression="GetYear([OrderDate])" DataMember="Orders" />
+    <Item2 Ref="4" Name="Month" FieldType="Int32" Expression="GetMonth([OrderDate])" DataMember="Orders" />
+    <Item3 Ref="5" Name="Quarter" FieldType="Int32" Expression="[Month] / 4 + 1" DataMember="Orders" />
+    <Item4 Ref="6" Name="TotalSales" FieldType="Decimal" Expression="Sum([Sales])" DataMember="SalesByCategory" />
+  </CalculatedFields>
+  <Bands>
+    <Item1 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="645" TextAlignment="TopLeft" Font="Verdana, 9.75pt" BackColor="Transparent" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRChart" Name="xrChart1" BackColor="Transparent" Padding="22,22,15,22,96" DataSource="#Ref-0" SizeF="980,365" LocationFloat="10,10" BorderColor="255,232,236,240" Borders="All">
+          <Chart Ref="9" BackColor="Transparent" PaletteName="Palette 1" SideBySideBarDistanceFixed="2">
+            <AutoSeriesCheckedInLegendStates>
+              <Item1 Ref="10" AutoSeriesName="Series 3" CheckState="true" />
+              <Item2 Ref="11" AutoSeriesName="Series 2" CheckState="true" />
+              <Item3 Ref="12" AutoSeriesName="Series 1" CheckState="true" />
+            </AutoSeriesCheckedInLegendStates>
+            <DataContainer Ref="13" SeriesDataMember="Orders.Year" ValidateDataMembers="true">
+              <SeriesTemplate Ref="14" SeriesDataMember="Orders.Year" ArgumentDataMember="Orders.Month" ValueDataMembersSerializable="Orders.Total" LabelsVisibility="False" FilterString="[Orders.OrderDate] &gt;= #2018-01-01# And [Orders.OrderDate] &lt; #2020-01-01#">
+                <NumericSummaryOptions Ref="15" SummaryFunction="SUM([Orders.Total])" />
+              </SeriesTemplate>
+            </DataContainer>
+            <Diagram Ref="16" TypeNameSerializable="XYDiagram">
+              <AxisX Ref="17" Color="255,232,236,240" VisibleInPanesSerializable="-1">
+                <Tickmarks Ref="18" Visible="false" MinorVisible="false" />
+                <CustomLabels>
+                  <Item1 Ref="19" AxisValueSerializable="1" Name="JAN" />
+                  <Item2 Ref="20" AxisValueSerializable="2" Name="FEB" />
+                  <Item3 Ref="21" AxisValueSerializable="3" Name="MAR" />
+                  <Item4 Ref="22" AxisValueSerializable="4" Name="APR" />
+                  <Item5 Ref="23" AxisValueSerializable="5" Name="MAY" />
+                  <Item6 Ref="24" AxisValueSerializable="6" Name="JUN" />
+                  <Item7 Ref="25" AxisValueSerializable="7" Name="JUL" />
+                  <Item8 Ref="26" AxisValueSerializable="8" Name="AUG" />
+                  <Item9 Ref="27" AxisValueSerializable="9" Name="SEP" />
+                  <Item10 Ref="28" AxisValueSerializable="10" Name="OCT" />
+                  <Item11 Ref="29" AxisValueSerializable="11" Name="NOV" />
+                  <Item12 Ref="30" AxisValueSerializable="12" Name="DEC" />
+                </CustomLabels>
+                <Label Ref="31" Font="Tahoma, 7.25pt, style=Bold" TextColor="255,154,163,179" />
+              </AxisX>
+              <AxisY Ref="32" Color="255,232,236,240" VisibleInPanesSerializable="-1">
+                <Tickmarks Ref="33" Visible="false" MinorVisible="false" />
+                <Label Ref="34" TextPattern="{V:n0}" Font="Tahoma, 7.25pt, style=Bold" TextColor="255,154,163,179" />
+                <GridLines Ref="35" Color="255,232,236,240" />
+              </AxisY>
+              <DefaultPane Ref="36" BorderVisible="false" BackColor="Transparent" EnableAxisXScrolling="False" EnableAxisYScrolling="False" EnableAxisXZooming="False" EnableAxisYZooming="False">
+                <StackedBarTotalLabel Ref="37">
+                  <ConnectorLineStyle Ref="38" />
+                </StackedBarTotalLabel>
+              </DefaultPane>
+            </Diagram>
+            <Legend Ref="39" HorizontalIndent="20" AlignmentHorizontal="Right" AlignmentVertical="TopOutside" Direction="LeftToRight" TextOffset="5" MarkerSize="20,20" BackColor="Transparent" TextColor="255,30,85,104" Font="Tahoma, 9pt" DockTargetName="Default Pane" Name="Default Legend">
+              <Border Ref="40" Visibility="False" />
+            </Legend>
+            <OptionsPrint Ref="41" ImageFormat="Metafile" />
+            <Padding Ref="42" Left="22" Top="15" Right="22" Bottom="22" />
+            <Titles>
+              <Item1 Ref="43" Indent="0" WordWrap="true" Alignment="Near" Text="Annual Sales Comparison, $" Font="Tahoma, 11pt, style=Bold" TextColor="255,167,174,180" />
+            </Titles>
+            <XtraPaletteRepository>
+              <Item1 Ref="44" Name="Palette 1" ScaleMode="Repeat">
+                <Palette>
+                  <Item1 Ref="45" Color="255,220,225,230" Color2="255,220,225,230" />
+                  <Item2 Ref="46" Color="255,0,97,133" Color2="255,0,97,133" />
+                </Palette>
+              </Item1>
+            </XtraPaletteRepository>
+          </Chart>
+          <StylePriority Ref="47" UseBackColor="false" UsePadding="false" UseBorderColor="false" UseBorders="false" />
+        </Item1>
+        <Item2 Ref="48" ControlType="XRChart" Name="xrChart3" BackColor="Transparent" Padding="22,22,15,15,96" DataSource="#Ref-0" SizeF="390,240" LocationFloat="600,395" BorderColor="255,232,236,240" Borders="All">
+          <Chart Ref="49" BackColor="Transparent" PaletteName="Palette 1">
+            <DataContainer Ref="50" ValidateDataMembers="true">
+              <SeriesSerializable>
+                <Item1 Ref="51" Name="Series 1" ArgumentDataMember="Orders.CategoryName" ValueDataMembersSerializable="Orders.Total" SeriesPointsSorting="Ascending" LegendTextPattern="{A}" FilterString="[Orders.OrderDate] &gt;= #2019-01-01# And [Orders.OrderDate] &lt; #2020-01-01#">
+                  <View Ref="52" HoleRadiusPercent="45" SweepDirection="Clockwise" TypeNameSerializable="DoughnutSeriesView" />
+                  <NumericSummaryOptions Ref="53" SummaryFunction="SUM([Orders.Total])" />
+                  <QualitativeSummaryOptions Ref="54" SummaryFunction="SUM([Orders.Total])" />
+                  <Label Ref="55" Position="Inside" TypeNameSerializable="DoughnutSeriesLabel" TextColor="White" BackColor="Transparent" Font="Tahoma, 8pt, style=Bold" TextPattern="{VP:0%}">
+                    <Border Ref="56" Visibility="False" />
+                  </Label>
+                </Item1>
+              </SeriesSerializable>
+              <SeriesTemplate Ref="57" LabelsVisibility="False" FilterString="[Orders.OrderDate] &gt;= #2019-01-01# And [Orders.OrderDate] &lt; #2020-01-01#">
+                <View Ref="58" TypeNameSerializable="StackedBarSeriesView" />
+              </SeriesTemplate>
+            </DataContainer>
+            <Legend Ref="59" Visibility="True" HorizontalIndent="0" VerticalIndent="10" AlignmentVertical="Center" TextOffset="5" MarkerSize="20,20" BackColor="Transparent" TextColor="255,30,85,104" Font="Tahoma, 9pt" Name="Default Legend">
+              <Padding Ref="60" Left="20" Top="0" Right="30" Bottom="0" />
+              <Border Ref="61" Visibility="False" />
+            </Legend>
+            <OptionsPrint Ref="62" ImageFormat="Metafile" />
+            <Padding Ref="63" Left="22" Top="15" Right="22" Bottom="15" />
+            <Titles>
+              <Item1 Ref="64" Indent="15" Visibility="True" Alignment="Near" Text="Product Categories" Font="Tahoma, 11pt, style=Bold" TextColor="255,167,174,180" />
+            </Titles>
+            <XtraPaletteRepository>
+              <Item1 Ref="65" Name="Palette 1" ScaleMode="Repeat">
+                <Palette>
+                  <Item1 Ref="66" Color="255,103,174,197" Color2="255,103,174,197" />
+                  <Item2 Ref="67" Color="255,35,107,132" Color2="255,35,107,132" />
+                  <Item3 Ref="68" Color="255,79,163,140" Color2="255,79,163,140" />
+                  <Item4 Ref="69" Color="255,255,201,144" Color2="255,255,201,144" />
+                  <Item5 Ref="70" Color="255,79,162,161" Color2="255,79,162,161" />
+                </Palette>
+              </Item1>
+            </XtraPaletteRepository>
+          </Chart>
+          <StylePriority Ref="71" UseBackColor="false" UsePadding="false" UseBorderColor="false" UseBorders="false" />
+        </Item2>
+        <Item3 Ref="72" ControlType="XRChart" Name="xrChart2" BackColor="Transparent" Padding="22,22,15,22,96" DataSource="#Ref-0" SizeF="570,240" LocationFloat="10,395" BorderColor="255,232,236,240" Borders="All">
+          <Chart Ref="73" BackColor="Transparent" PaletteName="Palette 1">
+            <AutoSeriesCheckedInLegendStates>
+              <Item1 Ref="74" AutoSeriesName="Series 3" CheckState="true" />
+              <Item2 Ref="75" AutoSeriesName="Series 2" CheckState="true" />
+              <Item3 Ref="76" AutoSeriesName="Series 1" CheckState="true" />
+            </AutoSeriesCheckedInLegendStates>
+            <DataContainer Ref="77" BoundSeriesSorting="Ascending" SeriesDataMember="Orders.CategoryName" ValidateDataMembers="true">
+              <SeriesTemplate Ref="78" SeriesDataMember="Orders.CategoryName" ArgumentDataMember="Orders.Quarter" ValueDataMembersSerializable="Orders.Total" LabelsVisibility="False" FilterString="[Orders.OrderDate] &gt;= #2019-01-01# And [Orders.OrderDate] &lt; #2020-01-01#">
+                <View Ref="79" TypeNameSerializable="StackedBarSeriesView" />
+                <NumericSummaryOptions Ref="80" SummaryFunction="SUM([Orders.Total])" />
+              </SeriesTemplate>
+            </DataContainer>
+            <Diagram Ref="81" Rotated="true" TypeNameSerializable="XYDiagram">
+              <AxisX Ref="82" Reverse="true" Color="255,232,236,240" VisibleInPanesSerializable="-1">
+                <Tickmarks Ref="83" Visible="false" MinorVisible="false" />
+                <CustomLabels>
+                  <Item1 Ref="84" AxisValueSerializable="1" Name="Q1" />
+                  <Item2 Ref="85" AxisValueSerializable="2" Name="Q2" />
+                  <Item3 Ref="86" AxisValueSerializable="3" Name="Q3" />
+                  <Item4 Ref="87" AxisValueSerializable="4" Name="Q4" />
+                </CustomLabels>
+                <Label Ref="88" Font="Tahoma, 7.25pt, style=Bold" TextColor="255,154,163,179" />
+              </AxisX>
+              <AxisY Ref="89" Color="255,232,236,240" VisibleInPanesSerializable="-1">
+                <Tickmarks Ref="90" Visible="false" MinorVisible="false" />
+                <Label Ref="91" TextPattern="{V:n0}" Font="Tahoma, 7.25pt, style=Bold" TextColor="255,154,163,179" />
+                <GridLines Ref="92" Color="255,232,236,240" />
+                <NumericScaleOptions Ref="93" GridAlignment="Millions" AutoGrid="false">
+                  <IntervalOptions Ref="94" />
+                </NumericScaleOptions>
+              </AxisY>
+              <DefaultPane Ref="95" BorderVisible="false" BackColor="Transparent" EnableAxisXScrolling="False" EnableAxisYScrolling="False" EnableAxisXZooming="False" EnableAxisYZooming="False">
+                <LayoutOptions Ref="96" Row="0" Column="0" />
+                <StackedBarTotalLabel Ref="97">
+                  <ConnectorLineStyle Ref="98" />
+                </StackedBarTotalLabel>
+              </DefaultPane>
+              <PaneLayout Ref="99" Direction="Horizontal" />
+            </Diagram>
+            <Legend Ref="100" Visibility="False" AlignmentHorizontal="Right" AlignmentVertical="TopOutside" Direction="LeftToRight" Name="Default Legend">
+              <Border Ref="101" Visibility="False" />
+            </Legend>
+            <OptionsPrint Ref="102" ImageFormat="Metafile" />
+            <Padding Ref="103" Left="22" Top="15" Right="22" Bottom="22" />
+            <Titles>
+              <Item1 Ref="104" Indent="15" Alignment="Near" Text="Quarterly Sales Distribution, $" Font="Tahoma, 11pt, style=Bold" TextColor="255,167,174,180" />
+            </Titles>
+            <XtraPaletteRepository>
+              <Item1 Ref="105" Name="Palette 1" ScaleMode="Repeat">
+                <Palette>
+                  <Item1 Ref="106" Color="255,103,174,197" Color2="255,103,174,197" />
+                  <Item2 Ref="107" Color="255,35,107,132" Color2="255,35,107,132" />
+                  <Item3 Ref="108" Color="255,79,163,140" Color2="255,79,163,140" />
+                  <Item4 Ref="109" Color="255,255,201,144" Color2="255,255,201,144" />
+                  <Item5 Ref="110" Color="255,79,162,161" Color2="255,79,162,161" />
+                </Palette>
+              </Item1>
+            </XtraPaletteRepository>
+          </Chart>
+          <StylePriority Ref="111" UseBackColor="false" UsePadding="false" UseBorderColor="false" UseBorders="false" />
+        </Item3>
+      </Controls>
+    </Item1>
+    <Item2 Ref="112" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="55" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item3 Ref="113" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="98" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="114" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="1/1/2019 - 12/31/2019" TextAlignment="MiddleLeft" SizeF="570,25" LocationFloat="10,63" Font="Tahoma, 8pt, style=Bold" ForeColor="255,167,174,180" Padding="2,2,0,0,100">
+          <StylePriority Ref="115" UseFont="false" UseForeColor="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="116" ControlType="XRLabel" Name="xrLabel2" TextFormatString="{0:$#,##0}" Multiline="true" TextAlignment="TopRight" SizeF="390.0001,40" LocationFloat="600,22.99999" Font="Tahoma, 22pt, style=Bold" ForeColor="255,0,74,101" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="117" EventName="BeforePrint" PropertyName="Text" Expression="[SalesByCategory].[TotalSales]" />
+          </ExpressionBindings>
+          <StylePriority Ref="118" UseFont="false" UseForeColor="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="119" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="Total Sales" TextAlignment="BottomRight" SizeF="390,23" LocationFloat="600,0" Font="Tahoma, 11pt, style=Bold" ForeColor="255,167,174,180" Padding="2,2,0,0,100">
+          <StylePriority Ref="120" UseFont="false" UseForeColor="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="121" ControlType="XRLabel" Name="lbTitle" Text="Sales Analysis 2019" TextAlignment="BottomLeft" SizeF="570,63" LocationFloat="9.999992,0" Font="Tahoma, 28pt, style=Bold" ForeColor="255,0,74,101" Padding="2,2,0,0,100" Borders="None">
+          <StylePriority Ref="122" UseFont="false" UseForeColor="false" />
+        </Item4>
+      </Controls>
+      <ExpressionBindings>
+        <Item1 Ref="123" EventName="BeforePrint" PropertyName="Visible" Expression="?ShowTitle" />
+      </ExpressionBindings>
+    </Item3>
+    <Item4 Ref="124" ControlType="TopMarginBand" Name="topMarginBand1" HeightF="55" />
+    <Item5 Ref="125" ControlType="DetailReportBand" Name="DetailReport2" Level="1" DataMember="SalesByCategory" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="126" ControlType="VerticalDetailBand" Name="VerticalDetail" BandLayout="AcrossThenDown" WidthF="195" HeightF="215">
+          <SortFields>
+            <Item1 Ref="127" FieldName="CategoryName" />
+          </SortFields>
+          <Controls>
+            <Item1 Ref="128" ControlType="XRLabel" Name="xrLabel5" Multiline="true" TextAlignment="BottomCenter" SizeF="175,30" LocationFloat="20,185" Font="Tahoma, 9pt" ForeColor="255,30,85,104" Padding="2,2,0,12,100">
+              <ExpressionBindings>
+                <Item1 Ref="129" EventName="BeforePrint" PropertyName="Text" Expression="[CategoryName]" />
+              </ExpressionBindings>
+              <StylePriority Ref="130" UseFont="false" UseForeColor="false" UsePadding="false" UseTextAlignment="false" />
+            </Item1>
+            <Item2 Ref="131" ControlType="XRChart" Name="xrChart6" BackColor="Transparent" Padding="10,10,20,20,96" SizeF="175,185" LocationFloat="20,0" BorderColor="Black" Borders="None">
+              <Chart Ref="132" BackColor="Transparent" PaletteName="Palette 1">
+                <DataContainer Ref="133" ValidateDataMembers="true">
+                  <SeriesSerializable>
+                    <Item1 Ref="134" Name="Series 1" LabelsVisibility="False">
+                      <View Ref="135" HoleRadiusPercent="45" TypeNameSerializable="DoughnutSeriesView">
+                        <TotalLabel Ref="136" Font="Tahoma, 12pt, style=Bold" Visible="true" />
+                      </View>
+                    </Item1>
+                  </SeriesSerializable>
+                </DataContainer>
+                <Legend Ref="137" Visibility="False" Name="Default Legend" />
+                <OptionsPrint Ref="138" ImageFormat="Metafile" />
+                <Padding Ref="139" Left="10" Top="20" Right="10" Bottom="20" />
+                <XtraPaletteRepository>
+                  <Item1 Ref="140" Name="Palette 1" ScaleMode="Repeat">
+                    <Palette>
+                      <Item1 Ref="141" Color="255,103,174,197" Color2="255,103,174,197" />
+                      <Item2 Ref="142" Color="255,232,236,240" Color2="255,232,236,240" />
+                    </Palette>
+                  </Item1>
+                </XtraPaletteRepository>
+              </Chart>
+              <StylePriority Ref="143" UseBackColor="false" UsePadding="false" />
+            </Item2>
+          </Controls>
+        </Item1>
+        <Item2 Ref="144" ControlType="ReportHeaderBand" Name="ReportHeader1" HeightF="75">
+          <Controls>
+            <Item1 Ref="145" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Sales by Product Category" TextAlignment="MiddleLeft" SizeF="559.9999,26" LocationFloat="20,35.99999" Font="Tahoma, 11pt, style=Bold" ForeColor="255,167,174,180" Padding="17,2,0,0,100">
+              <StylePriority Ref="146" UseFont="false" UseForeColor="false" UsePadding="false" UseTextAlignment="false" />
+            </Item1>
+          </Controls>
+        </Item2>
+        <Item3 Ref="147" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="20" />
+      </Bands>
+    </Item5>
+    <Item6 Ref="148" ControlType="DetailReportBand" Name="DetailReport1" Level="0" DataMember="BestSellingProducts" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="149" ControlType="DetailBand" Name="Detail1" HeightF="32">
+          <Controls>
+            <Item1 Ref="150" ControlType="XRTable" Name="xrTable1" SizeF="390,32" LocationFloat="600.0001,0" Font="Tahoma, 9pt" ForeColor="255,30,85,104" Padding="2,2,0,0,96" BorderColor="255,232,236,240">
+              <Rows>
+                <Item1 Ref="151" ControlType="XRTableRow" Name="xrTableRow3" Weight="11.5">
+                  <Cells>
+                    <Item1 Ref="152" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.4364278092423868" Multiline="true" TextAlignment="MiddleLeft" Padding="22,2,0,0,100" Borders="Left, Bottom">
+                      <ExpressionBindings>
+                        <Item1 Ref="153" EventName="BeforePrint" PropertyName="Text" Expression="[ProductName]" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="154" UsePadding="false" UseBorderColor="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="155" ControlType="XRTableCell" Name="xrTableCell3" Weight="0.89468944643182358" Multiline="true" TextAlignment="MiddleRight" Padding="2,12,0,0,100" Borders="Bottom">
+                      <ExpressionBindings>
+                        <Item1 Ref="156" EventName="BeforePrint" PropertyName="Text" />
+                        <Item2 Ref="157" EventName="BeforePrint" PropertyName="Text" Expression="[SalesCount]" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="158" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item2>
+                    <Item3 Ref="159" ControlType="XRTableCell" Name="xrTableCell7" Weight="0.89468944643182358" TextFormatString="{0:c0}" Multiline="true" TextAlignment="MiddleRight" Padding="2,22,0,0,100" Borders="Right, Bottom">
+                      <ExpressionBindings>
+                        <Item1 Ref="160" EventName="BeforePrint" PropertyName="Text" />
+                        <Item2 Ref="161" EventName="BeforePrint" PropertyName="Text" Expression="[SalesTotal]" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="162" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item1>
+              </Rows>
+              <StylePriority Ref="163" UseFont="false" UseForeColor="false" UseBorderColor="false" />
+            </Item1>
+          </Controls>
+        </Item1>
+        <Item2 Ref="164" ControlType="GroupHeaderBand" Name="GroupHeader1" PrintAcrossBands="true" Level="1" HeightF="415.0001">
+          <Controls>
+            <Item1 Ref="165" ControlType="XRChart" Name="xrChart4" BackColor="Transparent" Padding="22,22,15,32,96" DataSource="#Ref-0" SizeF="570,405.0001" LocationFloat="10,10" BorderColor="255,232,236,240" Borders="All">
+              <Chart Ref="166" BackColor="Transparent" PaletteName="Palette 1">
+                <AutoSeriesCheckedInLegendStates>
+                  <Item1 Ref="167" AutoSeriesName="Series 3" CheckState="true" />
+                  <Item2 Ref="168" AutoSeriesName="Series 2" CheckState="true" />
+                  <Item3 Ref="169" AutoSeriesName="Series 1" CheckState="true" />
+                </AutoSeriesCheckedInLegendStates>
+                <DataContainer Ref="170" BoundSeriesSorting="Ascending" SeriesDataMember="Orders.CategoryName" ValidateDataMembers="true">
+                  <SeriesTemplate Ref="171" SeriesDataMember="Orders.CategoryName" ArgumentDataMember="Orders.Quarter" ValueDataMembersSerializable="Orders.Total" LabelsVisibility="False" FilterString="[Orders.OrderDate] &gt;= #2019-01-01# And [Orders.OrderDate] &lt; #2020-01-01#">
+                    <View Ref="172" TypeNameSerializable="LineSeriesView" />
+                    <NumericSummaryOptions Ref="173" SummaryFunction="SUM([Orders.Total])" />
+                  </SeriesTemplate>
+                </DataContainer>
+                <Diagram Ref="174" TypeNameSerializable="XYDiagram">
+                  <AxisX Ref="175" Color="255,232,236,240" VisibleInPanesSerializable="-1">
+                    <Tickmarks Ref="176" Visible="false" MinorVisible="false" />
+                    <CustomLabels>
+                      <Item1 Ref="177" AxisValueSerializable="1" Name="Q1" />
+                      <Item2 Ref="178" AxisValueSerializable="2" Name="Q2" />
+                      <Item3 Ref="179" AxisValueSerializable="3" Name="Q3" />
+                      <Item4 Ref="180" AxisValueSerializable="4" Name="Q4" />
+                    </CustomLabels>
+                    <Label Ref="181" Font="Tahoma, 7.25pt, style=Bold" TextColor="255,154,163,179" />
+                  </AxisX>
+                  <AxisY Ref="182" Color="255,232,236,240" VisibleInPanesSerializable="-1">
+                    <Tickmarks Ref="183" Visible="false" MinorVisible="false" />
+                    <Label Ref="184" TextPattern="{V:n0}" Font="Tahoma, 7.25pt, style=Bold" TextColor="255,154,163,179" />
+                    <GridLines Ref="185" Color="255,232,236,240" />
+                  </AxisY>
+                  <DefaultPane Ref="186" BorderVisible="false" BackColor="Transparent" EnableAxisXScrolling="False" EnableAxisYScrolling="False" EnableAxisXZooming="False" EnableAxisYZooming="False">
+                    <LayoutOptions Ref="187" Row="0" Column="0" />
+                    <StackedBarTotalLabel Ref="188">
+                      <ConnectorLineStyle Ref="189" />
+                    </StackedBarTotalLabel>
+                  </DefaultPane>
+                  <PaneLayout Ref="190" Direction="Horizontal" />
+                </Diagram>
+                <Legend Ref="191" Visibility="False" AlignmentHorizontal="Right" AlignmentVertical="TopOutside" Direction="LeftToRight" Name="Default Legend">
+                  <Border Ref="192" Visibility="False" />
+                </Legend>
+                <OptionsPrint Ref="193" ImageFormat="Metafile" />
+                <Padding Ref="194" Left="22" Top="15" Right="22" Bottom="32" />
+                <Titles>
+                  <Item1 Ref="195" Indent="25" Alignment="Near" Text="Sales by Product Category, $" Font="Tahoma, 11pt, style=Bold" TextColor="255,167,174,180" />
+                </Titles>
+                <XtraPaletteRepository>
+                  <Item1 Ref="196" Name="Palette 1" ScaleMode="Repeat">
+                    <Palette>
+                      <Item1 Ref="197" Color="255,103,174,197" Color2="255,103,174,197" />
+                      <Item2 Ref="198" Color="255,35,107,132" Color2="255,35,107,132" />
+                      <Item3 Ref="199" Color="255,79,163,140" Color2="255,79,163,140" />
+                      <Item4 Ref="200" Color="255,255,201,144" Color2="255,255,201,144" />
+                      <Item5 Ref="201" Color="255,79,162,161" Color2="255,79,162,161" />
+                    </Palette>
+                  </Item1>
+                </XtraPaletteRepository>
+              </Chart>
+              <StylePriority Ref="202" UseBackColor="false" UsePadding="false" UseBorderColor="false" UseBorders="false" />
+            </Item1>
+          </Controls>
+        </Item2>
+        <Item3 Ref="203" ControlType="GroupHeaderBand" Name="GroupHeader2" HeightF="95">
+          <Controls>
+            <Item1 Ref="204" ControlType="XRLine" Name="xrLine1" LineWidth="2" SizeF="390,2" LocationFloat="600,93" ForeColor="255,232,236,240">
+              <StylePriority Ref="205" UseForeColor="false" />
+            </Item1>
+            <Item2 Ref="206" ControlType="XRTable" Name="xrTable2" SizeF="390,82.99995" LocationFloat="600,10" Font="Tahoma, 7.25pt, style=Bold" ForeColor="255,167,174,180" Padding="2,2,0,0,96" BorderColor="255,232,236,240">
+              <Rows>
+                <Item1 Ref="207" ControlType="XRTableRow" Name="xrTableRow1" Weight="20.316647656758626">
+                  <Cells>
+                    <Item1 Ref="208" ControlType="XRTableCell" Name="xrTableCell1" Weight="3.2258067021060342" Multiline="true" Text="Best Selling Products" TextAlignment="TopLeft" Font="Tahoma, 11pt, style=Bold" Padding="22,22,15,8,100" Borders="All">
+                      <StylePriority Ref="209" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="210" ControlType="XRTableRow" Name="xrTableRow2" Weight="11.5">
+                  <Cells>
+                    <Item1 Ref="211" ControlType="XRTableCell" Name="xrTableCell4" Weight="1.4364278092423868" Multiline="true" Text="PRODUCT NAME" TextAlignment="MiddleLeft" Padding="22,2,0,0,100" Borders="Left, Right">
+                      <StylePriority Ref="212" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="213" ControlType="XRTableCell" Name="xrTableCell5" Weight="0.89468944643182358" Multiline="true" Text="SALES COUNT" TextAlignment="MiddleRight" Padding="2,12,0,0,100" Borders="Left, Right">
+                      <StylePriority Ref="214" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item2>
+                    <Item3 Ref="215" ControlType="XRTableCell" Name="xrTableCell6" Weight="0.89468944643182358" Multiline="true" Text="TOTAL" TextAlignment="MiddleRight" Padding="2,22,0,0,100" Borders="Left, Right">
+                      <StylePriority Ref="216" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item2>
+              </Rows>
+              <StylePriority Ref="217" UseFont="false" UseForeColor="false" UseBorderColor="false" UseBorders="false" />
+            </Item2>
+          </Controls>
+        </Item3>
+      </Bands>
+    </Item6>
+  </Bands>
+  <CrossBandControls>
+    <Item1 Ref="218" ControlType="XRCrossBandBox" Name="xrCrossBandBox1" BorderWidth="1" WidthF="980" StartBand="#Ref-144" EndBand="#Ref-147" StartPointFloat="10,20" EndPointFloat="10,19.99997" BorderColor="255,232,236,240" />
+  </CrossBandControls>
+  <ComponentStorage>
+    <Item1 Ref="219" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v20.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IkRldkF2Q29ubmVjdGlvblN0cmluZyIgRnJvbUFwcENvbmZpZz0idHJ1ZSIgLz48UXVlcnkgVHlwZT0iQ3VzdG9tU3FsUXVlcnkiIE5hbWU9Ik9yZGVycyI+PFNxbD5zZWxlY3QgcC5OYW1lIGFzIFByb2R1Y3ROYW1lLCBwLkNhdGVnb3J5IGFzIENhdGVnb3J5SWQsIG8uT3JkZXJEYXRlLCBvaS5Qcm9kdWN0VW5pdHMsIG9pLlRvdGFsDQpmcm9tIFtPcmRlckl0ZW1zXSBvaQ0KaW5uZXIgam9pbiBbT3JkZXJzXSBhcyBvIG9uIG8uSWQgPSBvaS5PcmRlcklkDQppbm5lciBqb2luIFtQcm9kdWN0c10gYXMgcCBvbiBwLklkID0gb2kuUHJvZHVjdElkPC9TcWw+PC9RdWVyeT48UXVlcnkgVHlwZT0iQ3VzdG9tU3FsUXVlcnkiIE5hbWU9IlNhbGVzQnlDYXRlZ29yeSI+PFNxbD5zZWxlY3QgcC5DYXRlZ29yeSBhcyBDYXRlZ29yeUlkLCBzdW0ob2kuVG90YWwpIGFzIFNhbGVzDQpmcm9tIFtPcmRlckl0ZW1zXSBvaQ0KaW5uZXIgam9pbiBbT3JkZXJzXSBhcyBvIG9uIG8uSWQgPSBvaS5PcmRlcklkDQppbm5lciBqb2luIFtQcm9kdWN0c10gYXMgcCBvbiBwLklkID0gb2kuUHJvZHVjdElkDQp3aGVyZSBEYXRlKG8uT3JkZXJEYXRlKSAmZ3Q7PSAnMjAxOS0wMS0wMScgYW5kIERhdGUoby5PcmRlckRhdGUpICZsdDsgJzIwMjAtMDEtMDEnDQpncm91cCBieSBwLkNhdGVnb3J5DQo8L1NxbD48L1F1ZXJ5PjxRdWVyeSBUeXBlPSJDdXN0b21TcWxRdWVyeSIgTmFtZT0iQmVzdFNlbGxpbmdQcm9kdWN0cyI+PFNxbD5zZWxlY3QgcC5OYW1lIGFzIFByb2R1Y3ROYW1lLCBzdW0ob2kuUHJvZHVjdFVuaXRzKSBhcyBTYWxlc0NvdW50LCBzdW0ob2kuVG90YWwpIGFzIFNhbGVzVG90YWwNCmZyb20gW09yZGVySXRlbXNdIG9pDQppbm5lciBqb2luIFtPcmRlcnNdIGFzIG8gb24gby5JZCA9IG9pLk9yZGVySWQNCmlubmVyIGpvaW4gW1Byb2R1Y3RzXSBhcyBwIG9uIHAuSWQgPSBvaS5Qcm9kdWN0SWQNCndoZXJlIERhdGUoby5PcmRlckRhdGUpICZndDs9ICcyMDE5LTAxLTAxJyBhbmQgRGF0ZShvLk9yZGVyRGF0ZSkgJmx0OyAnMjAyMC0wMS0wMScNCmdyb3VwIGJ5IFByb2R1Y3ROYW1lDQpvcmRlciBieSBTYWxlc1RvdGFsIGRlc2MNCmxpbWl0IDEwPC9TcWw+PC9RdWVyeT48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UxIj48VmlldyBOYW1lPSJPcmRlcnMiPjxGaWVsZCBOYW1lPSJQcm9kdWN0TmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDYXRlZ29yeUlkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iT3JkZXJEYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iUHJvZHVjdFVuaXRzIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iVG90YWwiIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlNhbGVzQnlDYXRlZ29yeSI+PEZpZWxkIE5hbWU9IkNhdGVnb3J5SWQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJTYWxlcyIgVHlwZT0iVW5rbm93biIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iQmVzdFNlbGxpbmdQcm9kdWN0cyI+PEZpZWxkIE5hbWU9IlByb2R1Y3ROYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlNhbGVzQ291bnQiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IlNhbGVzVG90YWwiIFR5cGU9IlVua25vd24iIC8+PC9WaWV3PjwvRGF0YVNldD48L1Jlc3VsdFNjaGVtYT48Q29ubmVjdGlvbk9wdGlvbnMgQ2xvc2VDb25uZWN0aW9uPSJ0cnVlIiAvPjwvU3FsRGF0YVNvdXJjZT4=" />
+    <Item2 Ref="220" ObjectType="DevExpress.DataAccess.Json.JsonDataSource,DevExpress.DataAccess.v20.2" Name="jsonDataSource1" Base64="PEpzb25EYXRhU291cmNlIE5hbWU9Impzb25EYXRhU291cmNlMSI+PFNvdXJjZSBTb3VyY2VUeXBlPSJEZXZFeHByZXNzLkRhdGFBY2Nlc3MuSnNvbi5DdXN0b21Kc29uU291cmNlIiBKc29uPSJbJiN4RDsmI3hBO3sgJnF1b3Q7Q2F0ZWdvcnlJZCZxdW90OzogMCwgJnF1b3Q7Q2F0ZWdvcnlOYW1lJnF1b3Q7OiAmcXVvdDtBdXRvbWF0aW9uJnF1b3Q7IH0sJiN4RDsmI3hBO3sgJnF1b3Q7Q2F0ZWdvcnlJZCZxdW90OzogMSwgJnF1b3Q7Q2F0ZWdvcnlOYW1lJnF1b3Q7OiAmcXVvdDtNb25pdG9ycyZxdW90OyB9LCYjeEQ7JiN4QTt7ICZxdW90O0NhdGVnb3J5SWQmcXVvdDs6IDIsICZxdW90O0NhdGVnb3J5TmFtZSZxdW90OzogJnF1b3Q7UHJvamVjdG9ycyZxdW90OyB9LCYjeEQ7JiN4QTt7ICZxdW90O0NhdGVnb3J5SWQmcXVvdDs6IDMsICZxdW90O0NhdGVnb3J5TmFtZSZxdW90OzogJnF1b3Q7VGVsZXZpc2lvbnMmcXVvdDsgfSwmI3hEOyYjeEE7eyAmcXVvdDtDYXRlZ29yeUlkJnF1b3Q7OiA0LCAmcXVvdDtDYXRlZ29yeU5hbWUmcXVvdDs6ICZxdW90O1ZpZGVvIFBsYXllcnMmcXVvdDsgfSwmI3hEOyYjeEE7XSIgLz48U2NoZW1hPjxOb2RlIE5hbWU9InJvb3QiIFNlbGVjdGVkPSJ0cnVlIiBOb2RlVHlwZT0iQXJyYXkiPjxOb2RlIE5hbWU9IkNhdGVnb3J5SWQiIFR5cGU9IlN5c3RlbS5OdWxsYWJsZWAxW1N5c3RlbS5JbnQ2NF0iIFNlbGVjdGVkPSJ0cnVlIiBOb2RlVHlwZT0iUHJvcGVydHkiIC8+PE5vZGUgTmFtZT0iQ2F0ZWdvcnlOYW1lIiBUeXBlPSJTeXN0ZW0uU3RyaW5nIiBTZWxlY3RlZD0idHJ1ZSIgTm9kZVR5cGU9IlByb3BlcnR5IiAvPjwvTm9kZT48L1NjaGVtYT48L0pzb25EYXRhU291cmNlPg==" />
+    <Item3 Ref="0" ObjectType="DevExpress.DataAccess.DataFederation.FederationDataSource,DevExpress.DataAccess.v20.2" Name="federationDataSource1" Base64="PEZlZGVyYXRpb25EYXRhU291cmNlIE5hbWU9ImZlZGVyYXRpb25EYXRhU291cmNlMSI+PFNvdXJjZXM+PFNvdXJjZSBTb3VyY2VOYW1lPSJzcWxEYXRhU291cmNlMV9PcmRlcnMiIERhdGFNZW1iZXI9Ik9yZGVycyIgLz48U291cmNlIFNvdXJjZU5hbWU9Impzb25EYXRhU291cmNlMSIgLz48U291cmNlIFNvdXJjZU5hbWU9InNxbERhdGFTb3VyY2UxX1NhbGVzQnlDYXRlZ29yeSIgRGF0YU1lbWJlcj0iU2FsZXNCeUNhdGVnb3J5IiAvPjxTb3VyY2UgU291cmNlTmFtZT0ic3FsRGF0YVNvdXJjZTFfQmVzdFNlbGxpbmdQcm9kdWN0cyIgRGF0YU1lbWJlcj0iQmVzdFNlbGxpbmdQcm9kdWN0cyIgLz48L1NvdXJjZXM+PFF1ZXJpZXM+PFF1ZXJ5IEFsaWFzPSJPcmRlcnMiIFF1ZXJ5VHlwZT0iU2VsZWN0Tm9kZSI+PFJvb3QgQWxpYXM9Ik9yZGVycyIgUXVlcnlUeXBlPSJTb3VyY2VOb2RlIiBTb3VyY2VOYW1lPSJzcWxEYXRhU291cmNlMV9PcmRlcnMiIC8+PFN1Yk5vZGVzPjxKb2luRWxlbWVudCBDb25kaXRpb249IltbanNvbkRhdGFTb3VyY2UxXF0uW0NhdGVnb3J5SWRcXV0gPSBbW09yZGVyc1xdLltDYXRlZ29yeUlkXF1dIj48UXVlcnkgQWxpYXM9Impzb25EYXRhU291cmNlMSIgUXVlcnlUeXBlPSJTb3VyY2VOb2RlIiBTb3VyY2VOYW1lPSJqc29uRGF0YVNvdXJjZTEiIC8+PC9Kb2luRWxlbWVudD48L1N1Yk5vZGVzPjxFeHByZXNzaW9ucz48RXhwcmVzc2lvbiBFeHByZXNzaW9uVHlwZT0iU2VsZWN0Q29sdW1uRXhwcmVzc2lvbiIgTmFtZT0iUHJvZHVjdE5hbWUiIE5vZGVBbGlhcz0iT3JkZXJzIiAvPjxFeHByZXNzaW9uIEV4cHJlc3Npb25UeXBlPSJTZWxlY3RDb2x1bW5FeHByZXNzaW9uIiBOYW1lPSJDYXRlZ29yeU5hbWUiIE5vZGVBbGlhcz0ianNvbkRhdGFTb3VyY2UxIiAvPjxFeHByZXNzaW9uIEV4cHJlc3Npb25UeXBlPSJTZWxlY3RDb2x1bW5FeHByZXNzaW9uIiBOYW1lPSJPcmRlckRhdGUiIE5vZGVBbGlhcz0iT3JkZXJzIiAvPjxFeHByZXNzaW9uIEV4cHJlc3Npb25UeXBlPSJTZWxlY3RDb2x1bW5FeHByZXNzaW9uIiBOYW1lPSJQcm9kdWN0VW5pdHMiIE5vZGVBbGlhcz0iT3JkZXJzIiAvPjxFeHByZXNzaW9uIEV4cHJlc3Npb25UeXBlPSJTZWxlY3RDb2x1bW5FeHByZXNzaW9uIiBOYW1lPSJUb3RhbCIgTm9kZUFsaWFzPSJPcmRlcnMiIC8+PC9FeHByZXNzaW9ucz48L1F1ZXJ5PjxRdWVyeSBBbGlhcz0iU2FsZXNCeUNhdGVnb3J5IiBRdWVyeVR5cGU9IlNlbGVjdE5vZGUiPjxSb290IEFsaWFzPSJTYWxlc0J5Q2F0ZWdvcnkiIFF1ZXJ5VHlwZT0iU291cmNlTm9kZSIgU291cmNlTmFtZT0ic3FsRGF0YVNvdXJjZTFfU2FsZXNCeUNhdGVnb3J5IiAvPjxTdWJOb2Rlcz48Sm9pbkVsZW1lbnQgQ29uZGl0aW9uPSJbW2pzb25EYXRhU291cmNlMVxdLltDYXRlZ29yeUlkXF1dID0gW1tTYWxlc0J5Q2F0ZWdvcnlcXS5bQ2F0ZWdvcnlJZFxdXSI+PFF1ZXJ5IEFsaWFzPSJqc29uRGF0YVNvdXJjZTEiIFF1ZXJ5VHlwZT0iU291cmNlTm9kZSIgU291cmNlTmFtZT0ianNvbkRhdGFTb3VyY2UxIiAvPjwvSm9pbkVsZW1lbnQ+PC9TdWJOb2Rlcz48RXhwcmVzc2lvbnM+PEV4cHJlc3Npb24gRXhwcmVzc2lvblR5cGU9IlNlbGVjdENvbHVtbkV4cHJlc3Npb24iIE5hbWU9IkNhdGVnb3J5TmFtZSIgTm9kZUFsaWFzPSJqc29uRGF0YVNvdXJjZTEiIC8+PEV4cHJlc3Npb24gRXhwcmVzc2lvblR5cGU9IlNlbGVjdENvbHVtbkV4cHJlc3Npb24iIE5hbWU9IlNhbGVzIiBOb2RlQWxpYXM9IlNhbGVzQnlDYXRlZ29yeSIgLz48L0V4cHJlc3Npb25zPjwvUXVlcnk+PFF1ZXJ5IEFsaWFzPSJCZXN0U2VsbGluZ1Byb2R1Y3RzIiBRdWVyeVR5cGU9IlNlbGVjdE5vZGUiPjxSb290IEFsaWFzPSJCZXN0U2VsbGluZ1Byb2R1Y3RzIiBRdWVyeVR5cGU9IlNvdXJjZU5vZGUiIFNvdXJjZU5hbWU9InNxbERhdGFTb3VyY2UxX0Jlc3RTZWxsaW5nUHJvZHVjdHMiIC8+PEV4cHJlc3Npb25zPjxFeHByZXNzaW9uIEV4cHJlc3Npb25UeXBlPSJTZWxlY3RDb2x1bW5FeHByZXNzaW9uIiBOYW1lPSJQcm9kdWN0TmFtZSIgTm9kZUFsaWFzPSJCZXN0U2VsbGluZ1Byb2R1Y3RzIiAvPjxFeHByZXNzaW9uIEV4cHJlc3Npb25UeXBlPSJTZWxlY3RDb2x1bW5FeHByZXNzaW9uIiBOYW1lPSJTYWxlc0NvdW50IiBOb2RlQWxpYXM9IkJlc3RTZWxsaW5nUHJvZHVjdHMiIC8+PEV4cHJlc3Npb24gRXhwcmVzc2lvblR5cGU9IlNlbGVjdENvbHVtbkV4cHJlc3Npb24iIE5hbWU9IlNhbGVzVG90YWwiIE5vZGVBbGlhcz0iQmVzdFNlbGxpbmdQcm9kdWN0cyIgLz48L0V4cHJlc3Npb25zPjwvUXVlcnk+PC9RdWVyaWVzPjwvRmVkZXJhdGlvbkRhdGFTb3VyY2U+">
+      <SerializableSourceMap>
+        <Item1 Ref="221" DataSource="#Ref-219" Name="sqlDataSource1_Orders" />
+        <Item2 Ref="222" DataSource="#Ref-220" Name="jsonDataSource1" />
+        <Item3 Ref="223" DataSource="#Ref-219" Name="sqlDataSource1_SalesByCategory" />
+        <Item4 Ref="224" DataSource="#Ref-219" Name="sqlDataSource1_BestSellingProducts" />
+      </SerializableSourceMap>
+    </Item3>
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

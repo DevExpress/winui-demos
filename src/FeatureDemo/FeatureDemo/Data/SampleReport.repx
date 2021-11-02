@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="21.1.0.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v21.1, Version=21.1.0.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4" Name="SampleReport" Margins="100, 100, 50, 50" PageWidth="850" PageHeight="1100" Version="21.1" Font="Arial, 9.75pt">
+  <Bands>
+    <Item1 Ref="1" ControlType="TopMarginBand" Name="topMarginBand1" HeightF="50" />
+    <Item2 Ref="2" ControlType="DetailBand" Name="detailBand1" HeightF="0" TextAlignment="MiddleLeft">
+      <SubBands>
+        <Item1 Ref="3" ControlType="SubBand" Name="sbMultiLine" HeightF="112.5">
+          <Controls>
+            <Item1 Ref="4" ControlType="XRTable" Name="table1" SizeF="650,112.5" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="5" ControlType="XRTableRow" Name="tableRow1" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="6" ControlType="XRTableCell" Name="tableCell1" Weight="2" Multiline="true" Text="PDF - Missing Text" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="7" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="8" ControlType="XRTableRow" Name="tableRow2" Weight="0.82500000000000018">
+                  <Cells>
+                    <Item1 Ref="9" ControlType="XRTableCell" Name="tableCell2" Weight="0.22435910738431492" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="10" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="11" ControlType="XRTableCell" Name="tableCell4" Weight="1.7756408926156853" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="12" ControlType="XRTable" Name="table4" SizeF="200,75" LocationFloat="224.999939,3.00000572" Padding="2,2,0,0,96" Borders="All">
+                          <Rows>
+                            <Item1 Ref="13" ControlType="XRTableRow" Name="tableRow7" Weight="1" Font="Arial, 9.75pt, style=Bold">
+                              <Cells>
+                                <Item1 Ref="14" ControlType="XRTableCell" Name="tableCell10" Weight="1" Multiline="true" Text="Property" />
+                                <Item2 Ref="15" ControlType="XRTableCell" Name="tableCell11" Weight="1" Multiline="true" Text="Value" />
+                              </Cells>
+                              <StylePriority Ref="16" UseFont="false" />
+                            </Item1>
+                            <Item2 Ref="17" ControlType="XRTableRow" Name="tableRow8" Weight="1">
+                              <Cells>
+                                <Item1 Ref="18" ControlType="XRTableCell" Name="tableCell12" Weight="1" Multiline="true" Text="CanGrow" />
+                                <Item2 Ref="19" ControlType="XRTableCell" Name="tableCell13" Weight="1" Multiline="true" Text="True" />
+                              </Cells>
+                            </Item2>
+                            <Item3 Ref="20" ControlType="XRTableRow" Name="tableRow32" Weight="1">
+                              <Cells>
+                                <Item1 Ref="21" ControlType="XRTableCell" Name="tableCell54" Weight="1" Multiline="true" Text="MultiLine" />
+                                <Item2 Ref="22" ControlType="XRTableCell" Name="tableCell55" Weight="1" Multiline="true" Text="True" />
+                              </Cells>
+                            </Item3>
+                          </Rows>
+                          <StylePriority Ref="23" UseBorders="false" />
+                        </Item1>
+                        <Item2 Ref="24" ControlType="XRLabel" Name="label2" Multiline="true" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." SizeF="199.999985,74.9999847" LocationFloat="2.99999237,3.00000763" Padding="2,2,0,0,100" Borders="All">
+                          <StylePriority Ref="25" UseBorders="false" />
+                        </Item2>
+                      </Controls>
+                      <StylePriority Ref="26" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+          <StylePriority Ref="27" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="28" ControlType="SubBand" Name="sbTextMeasuring" HeightF="112.291672" Visible="false">
+          <Controls>
+            <Item1 Ref="29" ControlType="XRTable" Name="table3" SizeF="650,112.291672" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="30" ControlType="XRTableRow" Name="tableRow5" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="31" ControlType="XRTableCell" Name="tableCell7" Weight="4" Multiline="true" Text="PDF - Text measuring (Not Reproduced)" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="32" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="33" ControlType="XRTableRow" Name="tableRow6" Weight="0.82291671752929685">
+                  <Cells>
+                    <Item1 Ref="34" ControlType="XRTableCell" Name="tableCell8" Weight="0.423549682024747" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="35" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="36" ControlType="XRTableCell" Name="tableCell9" Weight="3.3520912105909382" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="37" ControlType="XRTable" Name="table5" SizeF="200,75" LocationFloat="224.999954,3.00000572" Padding="2,2,0,0,96" Borders="All">
+                          <Rows>
+                            <Item1 Ref="38" ControlType="XRTableRow" Name="tableRow9" Weight="1" Font="Arial, 9.75pt, style=Bold">
+                              <Cells>
+                                <Item1 Ref="39" ControlType="XRTableCell" Name="tableCell14" Weight="1" Multiline="true" Text="Property" />
+                                <Item2 Ref="40" ControlType="XRTableCell" Name="tableCell15" Weight="1" Multiline="true" Text="Value" />
+                              </Cells>
+                              <StylePriority Ref="41" UseFont="false" />
+                            </Item1>
+                            <Item2 Ref="42" ControlType="XRTableRow" Name="tableRow10" Weight="1">
+                              <Cells>
+                                <Item1 Ref="43" ControlType="XRTableCell" Name="tableCell16" Weight="1" Multiline="true" Text="AutoWidth" />
+                                <Item2 Ref="44" ControlType="XRTableCell" Name="tableCell17" Weight="1" Multiline="true" Text="True" />
+                              </Cells>
+                            </Item2>
+                            <Item3 Ref="45" ControlType="XRTableRow" Name="tableRow28" Weight="1">
+                              <Cells>
+                                <Item1 Ref="46" ControlType="XRTableCell" Name="tableCell47" Weight="1" Multiline="true" Text="WordWrap" />
+                                <Item2 Ref="47" ControlType="XRTableCell" Name="tableCell48" Weight="1" Multiline="true" Text="False" />
+                              </Cells>
+                            </Item3>
+                          </Rows>
+                          <StylePriority Ref="48" UseBorders="false" />
+                        </Item1>
+                        <Item2 Ref="49" ControlType="XRLabel" Name="label1" AutoWidth="true" Text="Hello World Hello World Hello World" WordWrap="false" SizeF="65.625,23.0000038" LocationFloat="3,30.9999962" Padding="0,0,0,0,100" Borders="All">
+                          <StylePriority Ref="50" UseFont="false" UsePadding="false" UseBorders="false" />
+                        </Item2>
+                      </Controls>
+                      <StylePriority Ref="51" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item2>
+        <Item3 Ref="52" ControlType="SubBand" Name="sbArabicText" HeightF="93.54167">
+          <Controls>
+            <Item1 Ref="53" ControlType="XRTable" Name="table2" SizeF="650,93.54167" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="54" ControlType="XRTableRow" Name="tableRow3" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="55" ControlType="XRTableCell" Name="tableCell3" Weight="2" Multiline="true" Text="PDF - Arabic text and Rigth To Left" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="56" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="57" ControlType="XRTableRow" Name="tableRow4" Weight="0.63541671752929685">
+                  <Cells>
+                    <Item1 Ref="58" ControlType="XRTableCell" Name="tableCell5" Weight="0.22435910738431492" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="59" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="60" ControlType="XRTableCell" Name="tableCell6" Weight="1.7756408926156853" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="61" ControlType="XRLabel" Name="label3" RightToLeft="Yes" Multiline="true" Text="ثم قم بكتابة تعليق متعدد الاسطر" SizeF="203.000031,23" LocationFloat="0,21.4583588" Padding="2,2,0,0,96" />
+                        <Item2 Ref="62" ControlType="XRTable" Name="table6" SizeF="200,50" LocationFloat="224.999939,3.00000572" Padding="2,2,0,0,96" Borders="All">
+                          <Rows>
+                            <Item1 Ref="63" ControlType="XRTableRow" Name="tableRow11" Weight="1" Font="Arial, 9.75pt, style=Bold">
+                              <Cells>
+                                <Item1 Ref="64" ControlType="XRTableCell" Name="tableCell18" Weight="1" Multiline="true" Text="Property" />
+                                <Item2 Ref="65" ControlType="XRTableCell" Name="tableCell19" Weight="1" Multiline="true" Text="Value" />
+                              </Cells>
+                              <StylePriority Ref="66" UseFont="false" />
+                            </Item1>
+                            <Item2 Ref="67" ControlType="XRTableRow" Name="tableRow12" Weight="1">
+                              <Cells>
+                                <Item1 Ref="68" ControlType="XRTableCell" Name="tableCell20" Weight="1" Multiline="true" Text="RightToLeft" />
+                                <Item2 Ref="69" ControlType="XRTableCell" Name="tableCell21" Weight="1" Multiline="true" Text="Yes" />
+                              </Cells>
+                            </Item2>
+                          </Rows>
+                          <StylePriority Ref="70" UseBorders="false" />
+                        </Item2>
+                      </Controls>
+                      <StylePriority Ref="71" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item3>
+        <Item4 Ref="72" ControlType="SubBand" Name="sbFontsEmbedding" HeightF="93.54167">
+          <Controls>
+            <Item1 Ref="73" ControlType="XRTable" Name="table7" SizeF="650,93.54167" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="74" ControlType="XRTableRow" Name="tableRow13" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="75" ControlType="XRTableCell" Name="tableCell22" Weight="2" Multiline="true" Text="PDF - Fonts Embedding" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="76" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="77" ControlType="XRTableRow" Name="tableRow14" Weight="0.63541671752929685">
+                  <Cells>
+                    <Item1 Ref="78" ControlType="XRTableCell" Name="tableCell23" Weight="0.22435910738431492" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="79" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="80" ControlType="XRTableCell" Name="tableCell24" Weight="1.7756408926156853" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="81" ControlType="XRTable" Name="table8" SizeF="234.375031,50" LocationFloat="224.999939,3.00000572" Padding="2,2,0,0,96" Borders="All">
+                          <Rows>
+                            <Item1 Ref="82" ControlType="XRTableRow" Name="tableRow15" Weight="1" Font="Arial, 9.75pt, style=Bold">
+                              <Cells>
+                                <Item1 Ref="83" ControlType="XRTableCell" Name="tableCell25" Weight="0.85333322222223673" Multiline="true" Text="Property" />
+                                <Item2 Ref="84" ControlType="XRTableCell" Name="tableCell26" Weight="1.1466667777777633" Multiline="true" Text="Value" />
+                              </Cells>
+                              <StylePriority Ref="85" UseFont="false" />
+                            </Item1>
+                            <Item2 Ref="86" ControlType="XRTableRow" Name="tableRow16" Weight="1">
+                              <Cells>
+                                <Item1 Ref="87" ControlType="XRTableCell" Name="tableCell27" Weight="0.85333322222223673" Multiline="true" Text="Font.Name" />
+                                <Item2 Ref="88" ControlType="XRTableCell" Name="tableCell28" Weight="1.1466667777777633" Multiline="true" Text="Arial Unicode MS" />
+                              </Cells>
+                            </Item2>
+                          </Rows>
+                          <StylePriority Ref="89" UseBorders="false" />
+                        </Item1>
+                        <Item2 Ref="90" ControlType="XRLabel" Name="label4" Text="你好，世界" SizeF="200,23.0000019" LocationFloat="3,18" Font="Microsoft Sans Serif, 9.75pt, charSet=0" Padding="2,2,0,0,96" Borders="All">
+                          <StylePriority Ref="91" UseFont="false" UseBorders="false" />
+                        </Item2>
+                      </Controls>
+                      <StylePriority Ref="92" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item4>
+        <Item5 Ref="93" ControlType="SubBand" Name="sbBoldText" HeightF="89.99998" Visible="false">
+          <Controls>
+            <Item1 Ref="94" ControlType="XRTable" Name="table13" SizeF="650,89.99998" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="95" ControlType="XRTableRow" Name="tableRow24" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="96" ControlType="XRTableCell" Name="tableCell40" Weight="2" Multiline="true" Text="Bold Text (Not Reproduced)" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="97" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="98" ControlType="XRTableRow" Name="tableRow25" Weight="0.59999977111816416">
+                  <Cells>
+                    <Item1 Ref="99" ControlType="XRTableCell" Name="tableCell41" Weight="0.22435910738431492" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="100" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="101" ControlType="XRTableCell" Name="tableCell42" Weight="1.7756408926156853" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="102" ControlType="XRLabel" Name="label7" Text="Hello World" SizeF="200.000015,23.0000038" LocationFloat="2.99999237,18.00002" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="All">
+                          <StylePriority Ref="103" UseFont="false" UseBorders="false" />
+                        </Item1>
+                        <Item2 Ref="104" ControlType="XRTable" Name="table14" SizeF="200,50" LocationFloat="224.999939,3.00000572" Padding="2,2,0,0,96" Borders="All">
+                          <Rows>
+                            <Item1 Ref="105" ControlType="XRTableRow" Name="tableRow26" Weight="1" Font="Arial, 9.75pt, style=Bold">
+                              <Cells>
+                                <Item1 Ref="106" ControlType="XRTableCell" Name="tableCell43" Weight="1" Multiline="true" Text="Property" />
+                                <Item2 Ref="107" ControlType="XRTableCell" Name="tableCell44" Weight="1" Multiline="true" Text="Value" />
+                              </Cells>
+                              <StylePriority Ref="108" UseFont="false" />
+                            </Item1>
+                            <Item2 Ref="109" ControlType="XRTableRow" Name="tableRow27" Weight="1">
+                              <Cells>
+                                <Item1 Ref="110" ControlType="XRTableCell" Name="tableCell45" Weight="1" Multiline="true" Text="Font.Bold" Font="Arial, 9.75pt">
+                                  <StylePriority Ref="111" UseFont="false" />
+                                </Item1>
+                                <Item2 Ref="112" ControlType="XRTableCell" Name="tableCell46" Weight="1" Multiline="true" Text="True" />
+                              </Cells>
+                            </Item2>
+                          </Rows>
+                          <StylePriority Ref="113" UseBorders="false" />
+                        </Item2>
+                      </Controls>
+                      <StylePriority Ref="114" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item5>
+        <Item6 Ref="115" ControlType="SubBand" Name="sbWordWrap" HeightF="86.25">
+          <Controls>
+            <Item1 Ref="116" ControlType="XRTable" Name="table15" SizeF="650,86.25" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="117" ControlType="XRTableRow" Name="tableRow29" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="118" ControlType="XRTableCell" Name="tableCell49" Weight="4" Multiline="true" Text="Word Wrap" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="119" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="120" ControlType="XRTableRow" Name="tableRow30" Weight="0.5625">
+                  <Cells>
+                    <Item1 Ref="121" ControlType="XRTableCell" Name="tableCell50" Weight="0.423549682024747" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="122" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="123" ControlType="XRTableCell" Name="tableCell51" Weight="3.3520912105909382" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="124" ControlType="XRTable" Name="table16" SizeF="200,50" LocationFloat="224.999954,3.00000572" Padding="2,2,0,0,96" Borders="All">
+                          <Rows>
+                            <Item1 Ref="125" ControlType="XRTableRow" Name="tableRow31" Weight="1" Font="Arial, 9.75pt, style=Bold">
+                              <Cells>
+                                <Item1 Ref="126" ControlType="XRTableCell" Name="tableCell52" Weight="1" Multiline="true" Text="Property" />
+                                <Item2 Ref="127" ControlType="XRTableCell" Name="tableCell53" Weight="1" Multiline="true" Text="Value" />
+                              </Cells>
+                              <StylePriority Ref="128" UseFont="false" />
+                            </Item1>
+                            <Item2 Ref="129" ControlType="XRTableRow" Name="tableRow33" Weight="1">
+                              <Cells>
+                                <Item1 Ref="130" ControlType="XRTableCell" Name="tableCell56" Weight="1" Multiline="true" Text="WordWrap" />
+                                <Item2 Ref="131" ControlType="XRTableCell" Name="tableCell57" Weight="1" Multiline="true" Text="True" />
+                              </Cells>
+                            </Item2>
+                          </Rows>
+                          <StylePriority Ref="132" UseBorders="false" />
+                        </Item1>
+                        <Item2 Ref="133" ControlType="XRLabel" Name="label8" Text="HelloWorld" SizeF="54.16667,23.0000038" LocationFloat="3,17.0000229" Font="Microsoft Sans Serif, 9.75pt" Padding="0,0,0,0,100" Borders="All">
+                          <StylePriority Ref="134" UseFont="false" UsePadding="false" UseBorders="false" />
+                        </Item2>
+                      </Controls>
+                      <StylePriority Ref="135" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item6>
+        <Item7 Ref="136" ControlType="SubBand" Name="sbRichText" HeightF="83.3333359">
+          <Controls>
+            <Item1 Ref="137" ControlType="XRTable" Name="table11" SizeF="650,83.3333359" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="138" ControlType="XRTableRow" Name="tableRow21" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="139" ControlType="XRTableCell" Name="tableCell36" Weight="2" Multiline="true" Text="XRRichText control" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="140" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="141" ControlType="XRTableRow" Name="tableRow22" Weight="0.53333335876464849">
+                  <Cells>
+                    <Item1 Ref="142" ControlType="XRTableCell" Name="tableCell37" Weight="0.22435910738431492" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="143" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="144" ControlType="XRTableCell" Name="tableCell38" Weight="1.7756408926156853" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="145" ControlType="XRRichText" Name="richText1" SerializableRtfString="ewBcAHIAdABmADEAXABkAGUAZgBmADAAewBcAGYAbwBuAHQAdABiAGwAewBcAGYAMAAgAEMAYQBsAGkAYgByAGkAOwB9AHsAXABmADEAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AewBcAGYAMgAgAEEAcgBpAGEAbAA7AH0AfQB7AFwAYwBvAGwAbwByAHQAYgBsACAAOwBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADIANQA1ACAAOwBcAHIAZQBkADIANQA1AFwAZwByAGUAZQBuADAAXABiAGwAdQBlADAAIAA7AFwAcgBlAGQAMgA1ADUAXABnAHIAZQBlAG4AMQAyADgAXABiAGwAdQBlADYANAAgADsAXAByAGUAZAAyADIANQBcAGcAcgBlAGUAbgAyADIANQBcAGIAbAB1AGUAMAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADEAMgA4AFwAYgBsAHUAZQAwACAAOwBcAHIAZQBkADAAXABnAHIAZQBlAG4AMQAyADgAXABiAGwAdQBlADIANQA1ACAAOwBcAHIAZQBkADIANQA1AFwAZwByAGUAZQBuADIANQA1AFwAYgBsAHUAZQAyADUANQAgADsAXAByAGUAZAAxADIAOABcAGcAcgBlAGUAbgAwAFwAYgBsAHUAZQAyADUANQAgADsAfQB7AFwAKgBcAGQAZQBmAGMAaABwACAAXABmADEAXABmAHMAMgA0AH0AewBcAHMAdAB5AGwAZQBzAGgAZQBlAHQAIAB7AFwAcQBsAFwAZgAxAFwAZgBzADIANAAgAE4AbwByAG0AYQBsADsAfQB7AFwAKgBcAGMAcwAxAFwAZgAxAFwAZgBzADIANABcAGMAZgAxACAARABlAGYAYQB1AGwAdAAgAFAAYQByAGEAZwByAGEAcABoACAARgBvAG4AdAA7AH0AewBcACoAXABjAHMAMgBcAHMAYgBhAHMAZQBkAG8AbgAxAFwAZgAxAFwAZgBzADIANABcAGMAZgAxACAATABpAG4AZQAgAE4AdQBtAGIAZQByADsAfQB7AFwAKgBcAGMAcwAzAFwAZgAxAFwAZgBzADIANABcAHUAbABcAGMAZgAyACAASAB5AHAAZQByAGwAaQBuAGsAOwB9AHsAXAAqAFwAdABzADQAXAB0AHMAcgBvAHcAZABcAGYAMQBcAGYAcwAyADQAXABxAGwAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAbAAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABsADEAMAA4AFwAdABzAGMAZQBsAGwAcABhAGQAZABmAGIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgByADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAHIAMQAwADgAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAdAAzAFwAdABzAHYAZQByAHQAYQBsAHQAXABjAGwAdAB4AGwAcgB0AGIAIABOAG8AcgBtAGEAbAAgAFQAYQBiAGwAZQA7AH0AewBcACoAXAB0AHMANQBcAHQAcwByAG8AdwBkAFwAcwBiAGEAcwBlAGQAbwBuADQAXABmADEAXABmAHMAMgA0AFwAcQBsAFwAdAByAGIAcgBkAHIAdABcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgBsAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGIAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAcgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgBoAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAHYAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdABzAGMAZQBsAGwAcABhAGQAZABmAGwAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAbAAxADAAOABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgByADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAHIAMQAwADgAXAB0AHMAdgBlAHIAdABhAGwAdABcAGMAbAB0AHgAbAByAHQAYgAgAFQAYQBiAGwAZQAgAFMAaQBtAHAAbABlACAAMQA7AH0AfQB7AFwAKgBcAGwAaQBzAHQAbwB2AGUAcgByAGkAZABlAHQAYQBiAGwAZQB9AFwAbgBvAHUAaQBjAG8AbQBwAGEAdABcAHMAcABsAHkAdAB3AG4AaQBuAGUAXABoAHQAbQBhAHUAdABzAHAAXABhAGwAbgB0AGIAbABpAG4AZABcAGUAeABwAHMAaAByAHQAbgBcAHMAcABsAHQAcABnAHAAYQByAFwAbgBvAGcAcgBvAHcAYQB1AHQAbwBmAGkAdABcAHUAdABpAG4AbABcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGwAewBcAGYAMgBcAGYAcwAyADAAXABjAGYAMwAgAEwAbwByAGUAbQAgAH0AewBcAGYAMgBcAGYAcwAyADAAXABjAGYANAAgAGkAcABzAHUAbQAgAH0AewBcAGYAMgBcAGYAcwAyADAAXABjAGYANQAgAGQAbwBsAG8AcgAgAH0AewBcAGYAMgBcAGYAcwAyADAAXABjAGYANgAgAHMAaQB0ACAAfQB7AFwAZgAyAFwAZgBzADIAMABcAGMAZgA3AFwAYwBoAHMAaABkAG4AZwAwAFwAYwBoAGMAYgBwAGEAdAA4ACAAYQBtAGUAdAB9AHsAXABmADIAXABmAHMAMgAwAFwAYwBmADEAIAAsACAAfQB7AFwAZgAyAFwAZgBzADIAMABcAGMAZgAyACAAYwBvAG4AcwBlAGMAdABlAHQAdQByACAAfQB7AFwAZgAyAFwAZgBzADIAMABcAGMAZgA5ACAAYQBkAGkAcABpAHMAYwBpAG4AZwAgAH0AewBcAGYAMgBcAGYAcwAyADAAXABjAGYAMQAgAGUAbABpAHQALAAgAHMAZQBkACAAZABvACAAZQBpAHUAcwBtAG8AZAAgAHQAZQBtAHAAbwByACAAaQBuAGMAaQBkAGkAZAB1AG4AdAAgAHUAdAAgAGwAYQBiAG8AcgBlACAAZQB0ACAAZABvAGwAbwByAGUAIABtAGEAZwBuAGEAIABhAGwAaQBxAHUAYQAuAH0AXABmADIAXABmAHMAMgAwAFwAYwBmADEAXABwAGEAcgB9AA==" SizeF="199.999985,38.3333549" LocationFloat="2.99999237,4.9999733" Font="Arial, 9.75pt" Padding="2,2,0,0,96" Borders="All">
+                          <StylePriority Ref="146" UseBorders="false" />
+                        </Item1>
+                      </Controls>
+                      <StylePriority Ref="147" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item7>
+        <Item8 Ref="148" ControlType="SubBand" Name="sbCrossTab" HeightF="128.125" Visible="false">
+          <Controls>
+            <Item1 Ref="149" ControlType="XRLabel" Name="label6" Multiline="true" Text="Example:" SizeF="72.9167,98.1250153" LocationFloat="0,29.9999866" Padding="2,2,0,0,100" />
+            <Item2 Ref="151" ControlType="XRPivotGrid" Name="pivotGrid1" DataSource="#Ref-150" SizeF="421.999939,75" LocationFloat="75.9167,43.1250267">
+              <Appearance Ref="152">
+                <Cell Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </Cell>
+                <FieldHeader Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </FieldHeader>
+                <TotalCell Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </TotalCell>
+                <GrandTotalCell Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </GrandTotalCell>
+                <CustomTotalCell Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </CustomTotalCell>
+                <FieldValue Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </FieldValue>
+                <FieldValueTotal Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </FieldValueTotal>
+                <FieldValueGrandTotal Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </FieldValueGrandTotal>
+                <Lines Font="Tahoma, 8.25pt">
+                  <TextOptions WordWrap="NoWrap" Trimming="None" RightToLeft="false" />
+                </Lines>
+              </Appearance>
+              <OptionsPrint Ref="153" UsePrintAppearance="true" PrintFilterHeaders="False" />
+              <OptionsView Ref="154" />
+              <Fields>
+                <Item1 Ref="155" FieldName="Column" Name="fieldColumn1" Area="ColumnArea" Caption="Column" Index="0" AreaIndex="0">
+                  <FilterValues Ref="156" />
+                  <SummaryFilter Ref="157" />
+                </Item1>
+                <Item2 Ref="158" FieldName="Row" Name="fieldRow1" Area="RowArea" Caption="Row" Index="1" AreaIndex="0">
+                  <FilterValues Ref="159" />
+                  <SummaryFilter Ref="160" />
+                </Item2>
+                <Item3 Ref="161" FieldName="Value" Name="fieldValue1" Area="DataArea" Caption="Value" Index="2" AreaIndex="0">
+                  <FilterValues Ref="162" />
+                  <SummaryFilter Ref="163" />
+                </Item3>
+              </Fields>
+              <Prefilter Ref="164" />
+              <OptionsChartDataSource Ref="165" />
+            </Item2>
+            <Item3 Ref="166" ControlType="XRTable" Name="table12" SizeF="650,30" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="167" ControlType="XRTableRow" Name="tableRow23" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="168" ControlType="XRTableCell" Name="tableCell39" Weight="2" Multiline="true" Text="Cross-Tab content (Not reproduced)" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="169" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item3>
+          </Controls>
+        </Item8>
+        <Item9 Ref="170" ControlType="SubBand" Name="sbTextAlignment" HeightF="89.99998">
+          <Controls>
+            <Item1 Ref="171" ControlType="XRTable" Name="table9" SizeF="650,89.99998" LocationFloat="0,0" Padding="2,2,0,0,96">
+              <Rows>
+                <Item1 Ref="172" ControlType="XRTableRow" Name="tableRow17" Weight="0.3">
+                  <Cells>
+                    <Item1 Ref="173" ControlType="XRTableCell" Name="tableCell29" Weight="2" Multiline="true" Text="Justify text alignment" Font="Arial, 14pt, style=Bold" Padding="2,2,10,0,100">
+                      <StylePriority Ref="174" UseFont="false" UsePadding="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="175" ControlType="XRTableRow" Name="tableRow18" Weight="0.59999977111816416">
+                  <Cells>
+                    <Item1 Ref="176" ControlType="XRTableCell" Name="tableCell30" Weight="0.22435910738431492" Multiline="true" Text="Example:" Padding="12,2,0,0,100">
+                      <StylePriority Ref="177" UsePadding="false" />
+                    </Item1>
+                    <Item2 Ref="178" ControlType="XRTableCell" Name="tableCell31" Weight="1.7756408926156853" Multiline="true">
+                      <Controls>
+                        <Item1 Ref="179" ControlType="XRTable" Name="table10" SizeF="200,50" LocationFloat="224.999939,3.00000572" Padding="2,2,0,0,96" Borders="All">
+                          <Rows>
+                            <Item1 Ref="180" ControlType="XRTableRow" Name="tableRow19" Weight="1" Font="Arial, 9.75pt, style=Bold">
+                              <Cells>
+                                <Item1 Ref="181" ControlType="XRTableCell" Name="tableCell32" Weight="1" Multiline="true" Text="Property" />
+                                <Item2 Ref="182" ControlType="XRTableCell" Name="tableCell33" Weight="1" Multiline="true" Text="Value" />
+                              </Cells>
+                              <StylePriority Ref="183" UseFont="false" />
+                            </Item1>
+                            <Item2 Ref="184" ControlType="XRTableRow" Name="tableRow20" Weight="1">
+                              <Cells>
+                                <Item1 Ref="185" ControlType="XRTableCell" Name="tableCell34" Weight="1" Multiline="true" Text="TextAlignment" />
+                                <Item2 Ref="186" ControlType="XRTableCell" Name="tableCell35" Weight="1" Multiline="true" Text="TopJustify" />
+                              </Cells>
+                            </Item2>
+                          </Rows>
+                          <StylePriority Ref="187" UseBorders="false" />
+                        </Item1>
+                        <Item2 Ref="188" ControlType="XRLabel" Name="label5" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." TextAlignment="TopJustify" SizeF="199.999985,46.9999924" LocationFloat="2.99999237,2.99999237" Padding="2,2,0,0,96" Borders="All">
+                          <StylePriority Ref="189" UseBorders="false" UseTextAlignment="false" />
+                        </Item2>
+                      </Controls>
+                      <StylePriority Ref="190" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item9>
+      </SubBands>
+      <StylePriority Ref="191" UseTextAlignment="false" />
+    </Item2>
+    <Item3 Ref="192" ControlType="BottomMarginBand" Name="bottomMarginBand1" HeightF="50" />
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="150" ObjectType="DevExpress.DataAccess.Json.JsonDataSource,DevExpress.DataAccess.v21.1" Name="jsonDataSource1" Base64="PEpzb25EYXRhU291cmNlIE5hbWU9Impzb25EYXRhU291cmNlMSI+PFNvdXJjZSBTb3VyY2VUeXBlPSJEZXZFeHByZXNzLkRhdGFBY2Nlc3MuSnNvbi5DdXN0b21Kc29uU291cmNlIiBKc29uPSIgIFsmI3hEOyYjeEE7ICAgICAgICAgICAgICAgIHsgJnF1b3Q7Q29sdW1uJnF1b3Q7IDogJnF1b3Q7Q29sdW1uIDEmcXVvdDssICZxdW90O1JvdyZxdW90OzogJnF1b3Q7Um93IDEmcXVvdDssICZxdW90O1ZhbHVlJnF1b3Q7IDogMSB9LCYjeEQ7JiN4QTsgICAgICAgICAgICAgICAgeyAmcXVvdDtDb2x1bW4mcXVvdDsgOiAmcXVvdDtDb2x1bW4gMiZxdW90OywgJnF1b3Q7Um93JnF1b3Q7OiAmcXVvdDtSb3cgMSZxdW90OywgJnF1b3Q7VmFsdWUmcXVvdDsgOiAyIH0sJiN4RDsmI3hBOyAgICAgICAgICAgICAgICB7ICZxdW90O0NvbHVtbiZxdW90OyA6ICZxdW90O0NvbHVtbiAyJnF1b3Q7LCAmcXVvdDtSb3cmcXVvdDs6ICZxdW90O1JvdyAxJnF1b3Q7LCAmcXVvdDtWYWx1ZSZxdW90OyA6IDMgfSYjeEQ7JiN4QTsgICAgICAgICAgICBdIiAvPjxTY2hlbWE+PE5vZGUgTmFtZT0icm9vdCIgU2VsZWN0ZWQ9InRydWUiIE5vZGVUeXBlPSJBcnJheSI+PE5vZGUgTmFtZT0iQ29sdW1uIiBUeXBlPSJTeXN0ZW0uU3RyaW5nIiBTZWxlY3RlZD0idHJ1ZSIgTm9kZVR5cGU9IlByb3BlcnR5IiAvPjxOb2RlIE5hbWU9IlJvdyIgVHlwZT0iU3lzdGVtLlN0cmluZyIgU2VsZWN0ZWQ9InRydWUiIE5vZGVUeXBlPSJQcm9wZXJ0eSIgLz48Tm9kZSBOYW1lPSJWYWx1ZSIgVHlwZT0iU3lzdGVtLk51bGxhYmxlYDFbU3lzdGVtLkludDY0XSIgU2VsZWN0ZWQ9InRydWUiIE5vZGVUeXBlPSJQcm9wZXJ0eSIgLz48L05vZGU+PC9TY2hlbWE+PC9Kc29uRGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

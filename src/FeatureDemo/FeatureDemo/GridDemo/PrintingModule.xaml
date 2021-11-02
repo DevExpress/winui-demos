@@ -1,0 +1,120 @@
+﻿<local:GridDemoUserControl
+    x:Class="GridDemo.PrintingModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:GridDemo"
+    xmlns:common="using:FeatureDemo.Common"
+    xmlns:dxdv="using:DevExpress.WinUI.DocumentViewer"
+    xmlns:dxg="using:DevExpress.WinUI.Grid"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d"
+    BorderBrush="Transparent">
+
+    <common:DemoModuleView.Options>
+        <common:OptionsPanel>
+            <TextBlock
+                Margin="-12,0,-12,6"
+                TextAlignment="Justify"
+                TextWrapping="WrapWholeWords">
+                To customize print output, specify print properties such as “Print Column Headers” or “Print Group Summary.”<LineBreak />
+                To view the rendered WinUI Data Grid, click the <Bold>Show Print Preview</Bold>
+                button. This Preview allows you to print the Data Grid or export it a file.</TextBlock>
+            <common:OptionsHeader Text="Properties" />
+            <CheckBox Content="Print Column Headers" IsChecked="{x:Bind PrintColumnHeaders, Mode=TwoWay}" />
+            <CheckBox Content="Print Group Summary" IsChecked="{x:Bind PrintGroupSummary, Mode=TwoWay}" />
+            <CheckBox Content="Print Total Summary" IsChecked="{x:Bind PrintTotalSummary, Mode=TwoWay}" />
+            <CheckBox Content="Print Fixed Total Summary" IsChecked="{x:Bind PrintFixedTotalSummary, Mode=TwoWay}" />
+            <CheckBox Content="Print All Groups Expanded" IsChecked="{x:Bind PrintAllGroupsExpanded, Mode=TwoWay}" />
+            <Button
+                Height="40"
+                Margin="-12,12,-12,0"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Click="{x:Bind ShowPrintPreview}"
+                Content="Show Print Preview"
+                Visibility="{x:Bind IsGridVisible, Mode=OneWay}" />
+            <Button
+                Height="40"
+                Margin="-12,12,-12,0"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Click="{x:Bind NavigateBack}"
+                Content="Return to Grid"
+                Visibility="{x:Bind IsPreviewVisible, Mode=OneWay}" />
+        </common:OptionsPanel>
+    </common:DemoModuleView.Options>
+    <Grid>
+        <dxg:GridControl
+            x:Name="grid"
+            AutoGenerateColumns="False"
+            ItemsSource="{x:Bind Data, Mode=OneWay}"
+            PrintAllGroupsExpanded="{x:Bind PrintAllGroupsExpanded, Mode=OneWay}"
+            PrintColumnHeaders="{x:Bind PrintColumnHeaders, Mode=OneWay}"
+            PrintFixedTotalSummary="{x:Bind PrintFixedTotalSummary, Mode=OneWay}"
+            PrintGroupSummary="{x:Bind PrintGroupSummary, Mode=OneWay}"
+            PrintTotalSummary="{x:Bind PrintTotalSummary, Mode=OneWay}"
+            ShowFixedTotalSummary="True"
+            ShowGroupPanel="True"
+            ShowGroupedColumns="True"
+            ShowTotalSummary="True"
+            Visibility="{x:Bind IsGridVisible, Mode=OneWay}">
+            <dxg:GridControl.Columns>
+                <dxg:GridTextColumn
+                    FieldName="DeliveryDate"
+                    Header="Delivery Date"
+                    MinWidth="70"
+                    AllowFiltering="False"
+                    DisplayFormat="d"
+                    GroupIndex="0"
+                    GroupInterval="Date"
+                    SortOrder="Descending" />
+                <dxg:GridTextColumn
+                    FieldName="TrademarkName"
+                    Header="Trademark"
+                    MaxWidth="100"
+                    AllowFiltering="False"
+                    AllowGrouping="True" />
+                <dxg:GridTextColumn
+                    FieldName="Name"
+                    MinWidth="70"
+                    AllowFiltering="False"
+                    AllowGrouping="True" />
+                <dxg:GridTextColumn
+                    FieldName="Modification"
+                    MinWidth="150"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    TextTrimming="CharacterEllipsis" />
+                <dxg:GridTextColumn
+                    FieldName="Price"
+                    MinWidth="100"
+                    CellHorizontalContentAlignment="Right"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    DisplayFormat="c0"
+                    HorizontalHeaderContentAlignment="Right" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.GroupSummary>
+                <dxg:GridSummaryItem
+                    FieldName="Name"
+                    DisplayFormat="Count {0}"
+                    SummaryType="Count" />
+                <dxg:GridSummaryItem
+                    FieldName="Price"
+                    DisplayFormat="Sum {0:c0}"
+                    SummaryType="Sum" />
+            </dxg:GridControl.GroupSummary>
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem
+                    FieldName="Price"
+                    DisplayFormat="{}{0:c0}"
+                    SummaryType="Sum" />
+                <dxg:GridSummaryItem Alignment="Right" SummaryType="Count" />
+            </dxg:GridControl.TotalSummary>
+        </dxg:GridControl>
+        <dxdv:DocumentViewer DocumentSource="{x:Bind PrintDocument, Mode=OneWay}" Visibility="{x:Bind IsPreviewVisible, Mode=OneWay}" />
+    </Grid>
+</local:GridDemoUserControl>

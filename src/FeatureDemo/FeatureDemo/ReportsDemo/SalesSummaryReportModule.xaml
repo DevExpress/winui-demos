@@ -1,0 +1,15 @@
+﻿<local:ReportDemoModule
+    x:Class="ReportsDemo.SalesSummaryReportModule"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:ReportsDemo"
+    xmlns:dxdv="using:DevExpress.WinUI.DocumentViewer" 
+    xmlns:common="using:FeatureDemo.Common"
+    mc:Ignorable="d">
+    <Grid>
+        <dxdv:DocumentViewer DocumentSource="{x:Bind Report, Mode=OneWay}" />
+        <common:AlertControl IsVisible="{x:Bind IsLicenseMessageVisible, Mode=TwoWay}"/>
+    </Grid>
+</local:ReportDemoModule>

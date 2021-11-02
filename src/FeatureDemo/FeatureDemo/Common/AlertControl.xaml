@@ -1,0 +1,29 @@
+﻿<UserControl
+    x:Class="FeatureDemo.Common.AlertControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FeatureDemo.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border Background="#FFF7C209">
+        <Grid Padding="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <ContentPresenter Content="{x:Bind MessageContent}"/>
+            <Button Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Click="OnCloseButtonClick" Foreground="Black">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <FontIcon Glyph="&#xE8BB;" FontSize="14"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>
