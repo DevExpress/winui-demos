@@ -5,15 +5,15 @@ using System;
 using Windows.Foundation;
 
 namespace FeatureDemo.Common {
-    public class OptionsPanel : DXPanel {
+    public class OptionsPanel : DXPanelBase {
         protected Thickness Padding { get; set; } = new Thickness(16);
         static double GroupSpacing = 16;
         static double ItemSpacing = 8;
 
-        protected override Size MeasureOverride(Size s) {
+        protected override Size MeasureCore(Size s) {
             return Layout(s, true, false);
         }
-        protected override Size ArrangeOverride(Size s) {
+        protected override Size ArrangeCore(Size s) {
             Layout(s, false, true);
             return s;
         }
@@ -52,10 +52,10 @@ namespace FeatureDemo.Common {
 
                 Size ds = new Size();
                 if(measure) {
-                    ds = MeasureChild(child, new Size(s.Width, double.PositiveInfinity), margin);
+                    ds = Measure(child, new Size(s.Width, double.PositiveInfinity), margin);
                 }
                 if(arrange) {
-                    ds = ArrangeChild(child, new Rect(
+                    ds = Arrange(child, new Rect(
                         new Point(0, rh), 
                         new Size(s.Width, child.DesiredSize.Height + margin.Top + margin.Bottom)), 
                         margin);
@@ -79,27 +79,27 @@ namespace FeatureDemo.Common {
             return new Size(Math.Max(0, s.Width - h), Math.Max(0, s.Height - v));
         }
 
-        static Size MeasureChild(UIElement child, Size s) {
+        static Size Measure(UIElement child, Size s) {
             child.Measure(s);
             return child.DesiredSize;
         }
-        static Size MeasureChild(UIElement child, Size s, Thickness margin) {
+        static Size Measure(UIElement child, Size s, Thickness margin) {
             if(margin == default(Thickness))
-                return MeasureChild(child, s);
-            var ds = MeasureChild(child, SubtractThickness(s, margin));
+                return Measure(child, s);
+            var ds = Measure(child, SubtractThickness(s, margin));
             ds = AddThickness(ds, margin);
             return new Size(Math.Min(s.Width, ds.Width), Math.Min(s.Height, ds.Height));
         }
-        static Size ArrangeChild(UIElement child, Rect r) {
+        static Size Arrange(UIElement child, Rect r) {
             child.Arrange(r);
             return r.Size();
         }
-        static Size ArrangeChild(UIElement child, Rect r, Thickness margin) {
+        static Size Arrange(UIElement child, Rect r, Thickness margin) {
             if(margin == default(Thickness))
-                return ArrangeChild(child, r);
+                return Arrange(child, r);
             var p = new Point(r.X + margin.Left, r.Y + margin.Top);
             var s = SubtractThickness(r.Size(), margin);
-            ArrangeChild(child, new Rect(p, s));
+            Arrange(child, new Rect(p, s));
             return r.Size();
         }
     }

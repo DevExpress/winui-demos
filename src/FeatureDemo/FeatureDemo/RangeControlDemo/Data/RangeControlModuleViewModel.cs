@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace RangeControlDemo {
-    public class RangeControlDemoModuleViewModel : ViewModelBase {
+    [GenerateViewModel]
+    public partial class RangeControlDemoModuleViewModel {
         public RangeControlDemoModuleViewModel() {
-            SetViewIndexCommand = new DelegateCommand<int>(OnSetViewIndexCommandExecuted);
             Views = new List<object>() {
                 new CalendarViewModel(),
                 new SparkPointViewModel(0, 1000, TimeSpan.FromHours(6)),
@@ -16,30 +17,27 @@ namespace RangeControlDemo {
             };
             SelectedView = Views[0];
         }
-        public ICommand SetViewIndexCommand { get; }
-        public object SelectedView {
-            get => GetValue<object>();
-            private set => SetValue(value);
-        }
-        public int SelectedViewIndex {
-            get => GetValue<int>();
-            set => SetValue(value, OnSelectedViewModelIndexChanged);
-        }
+        [GenerateProperty(SetterAccessModifier = AccessModifier.Private)]
+        public object _SelectedView;
+
+        [GenerateProperty]
+        int _SelectedViewIndex;
+        void OnSelectedViewIndexChanged() => SelectedView = Views[SelectedViewIndex];
+
         public List<object> Views { get; }
 
-        void OnSelectedViewModelIndexChanged() => SelectedView = Views[SelectedViewIndex];
-        void OnSetViewIndexCommandExecuted(int index) => SelectedViewIndex = index;
+        [GenerateCommand]
+        void SetViewIndex(int index) => SelectedViewIndex = index;
     }
 
-    public class CalendarViewModel : ViewModelBase {
-        public DateTime SelectionStart {
-            get => GetValue<DateTime>();
-            set => SetValue(value);
-        }
-        public DateTime SelectionEnd {
-            get => GetValue<DateTime>();
-            set => SetValue(value);
-        }
+    [GenerateViewModel]
+    public partial class CalendarViewModel {
+        [GenerateProperty]
+        DateTime _SelectionStart;
+
+        [GenerateProperty]
+        DateTime _SelectionEnd;
+
         public CalendarViewModel() {
             SelectionStart = new DateTime(DateTime.Now.Year - 1, 1, 1);
             SelectionEnd = SelectionStart.AddYears(1);
@@ -57,5 +55,4 @@ namespace RangeControlDemo {
     public class SparkBarViewModel : RangeControlViewModel {
         public SparkBarViewModel(double firstPointValue, int pointCount, TimeSpan step) : base(firstPointValue, pointCount, step) { }
     }
-
 }

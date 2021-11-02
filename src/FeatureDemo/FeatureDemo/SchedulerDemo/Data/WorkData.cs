@@ -46,65 +46,65 @@ namespace SchedulerDemo {
         public string Caption { get; set; }
     }
     public static class WorkDataStrings {
-        public static string AptSubj_Dinner = "Dinner";
-        public static string AptSubj_Dentist = "Dentist";
-        public static string AptSubj_Gym = "Gym";
-        public static string AptSubj_CarWash = "Car wash";
-        public static string AptSubj_Lunch = "Lunch";
-        public static string AptSubj_PhoneCall = "Phone call with {0}";
-        public static string AptSubj_FrenchLesson = "French lesson";
-        public static string AptSubj_GermanLesson = "German lesson";
-        public static string AptSubj_Training = "Training (Customer Service)";
-        public static string AptSubj_Sick = "Sick Leave";
-        public static string AptSubj_SecondShift = "Second shift";
-        public static string AptSubj_HalfDay = "Half day off";
-        public static string AptSubj_Day = "Day off";
-        public static string AptSubj_Vacation = "Vacation";
-        public static string AptSubj_Birthday = "Birthday";
-        public static string AptSubj_CompanyMeeting = "Company meeting";
-        public static string AptSubj_FridayParty = "Friday party";
-        public static string AptSubj_TripConFooCA = "ConFoo.CA";
-        public static string AptSubj_TripDevnexus = "Devnexus";
-        public static string AptSubj_TripSmashingConf = "SmashingConf";
-        public static string AptSubj_DeveloperWeek = "DeveloperWeek";
-        public static string AptSubj_Conference = "Conference: {0}";
-
-        public static string AptDesc_FrenchLesson = "If we are to have any chance in France, salespeople must learn french. Practice makes perfect and without constant repetition, learning a new language is impossible.";
-        public static string AptDesc_GermanLesson = "If we are to have any chance in Germany, salespeople must learn german. Practice makes perfect and without constant repetition, learning a new language is impossible.";
-        public static string AptDesc_Training = "Jack Howell from Worldwide Consulting will pay us a visit to give us pointers on how to improve our customer service processes.";
-        public static string AptDesc_CompanyMeeting = "Review rules that govern workplace behavior. Discuss impact of changes to the law and how it will impact DevAV in the upcoming 12 months.";
-        public static string AptDesc_FridayParty = "Rest, relax and get ready for next week.";
-        public static string AptDesc_TripConFooCA = "ConFoo focuses on pragmatic solutions for web developers. The conference usually features 150+ presentations and is trying to attract more AI developers.";
-        public static string AptDesc_TripDevnexus = "Conference organizers say their goal is to make Devnexus a forum for connecting developers from all over the world and promoting open-source values. While the conference caters to all developers, there is a slightly larger focus on Java topics, and JavaScript after that.";
-        public static string AptDesc_TripSmashingConf = "Considered one of the top conferences for designers, SmashingConf, which is affiliated with Smashing magazine, is aimed at seasoned professionals searching for a competitive edge in the design world.";
-        public static string AptDesc_DeveloperWeek = "DeveloperWeek is a series of conferences held in the United States for developers and technology managers. The Oakland DeveloperWeek has more than 100 talks, with speakers from the biggest companies in tech. Some of the events include DevExec World, a get-together for developer managers and executives, and a BlockChain Dev conference to discuss the latest developments in blockchain and ethereum technologies.";
-        public static string AptDesc_Conference = "{0} {1} tells us about {2}.";
-
-        public static string AptLoc_TrainingRoom = "Training Room";
-        public static string AptLoc_ConferenceRoom = "Conference Room 1001";
-        public static string AptLoc_TripConFooCA = "Montreal, Quebec, Canada";
-        public static string AptLoc_TripDevnexus = "Atlanta, Georgia, USA";
-        public static string AptLoc_TripSmashingConf = "London, United Kingdom";
-        public static string AptLoc_DeveloperWeek = "Oakland, California, USA";
-
-        public static string Conf1 = "DevExpress MVVM Framework";
-        public static string Conf2 = "New Theme Designer";
-        public static string Conf3 = "New Theme Designer";
-        public static string Conf4 = "WinForms and DirectX";
-        public static string Conf5 = "LOB applications";
-        public static string Conf6 = "Module Injection Framework";
-        public static string Conf7 = "Git tricks";
-        public static string Conf8 = "Machine learning";
-        public static string Conf9 = "Azure";
-        public static string Conf10 = "WCF Services";
-        public static string Conf11 = "Docking Floating Panels";
-        public static string Conf12 = "Personal Time Management";
-        public static string Conf13 = "Entity Framework Core";
-        public static string Conf14 = ".Net Core";
-
-        public static string Team_Support = "Support Team";
-        public static string Team_Development = "Development Team";
-        public static string MyCalendar = "My Calendar";
+        public static readonly string AptSubj_Dinner = "Dinner";
+        public static readonly string AptSubj_Dentist = "Dentist";
+        public static readonly string AptSubj_Gym = "Gym";
+        public static readonly string AptSubj_CarWash = "Car wash";
+        public static readonly string AptSubj_Lunch = "Lunch";
+        public static readonly string AptSubj_PhoneCall = "Phone call with {0}";
+        public static readonly string AptSubj_FrenchLesson = "French lesson";
+        public static readonly string AptSubj_GermanLesson = "German lesson";
+        public static readonly string AptSubj_Training = "Training (Customer Service)";
+        public static readonly string AptSubj_Sick = "Sick Leave";
+        public static readonly string AptSubj_SecondShift = "Second shift";
+        public static readonly string AptSubj_HalfDay = "Half day off";
+        public static readonly string AptSubj_Day = "Day off";
+        public static readonly string AptSubj_Vacation = "Vacation";
+        public static readonly string AptSubj_Birthday = "Birthday";
+        public static readonly string AptSubj_CompanyMeeting = "Company meeting";
+        public static readonly string AptSubj_FridayParty = "Friday party";
+        public static readonly string AptSubj_TripConFooCA = "ConFoo.CA";
+        public static readonly string AptSubj_TripDevnexus = "Devnexus";
+        public static readonly string AptSubj_TripSmashingConf = "SmashingConf";
+        public static readonly string AptSubj_DeveloperWeek = "DeveloperWeek";
+        public static readonly string AptSubj_Conference = "Conference: {0}";
+                       
+        public static readonly string AptDesc_FrenchLesson = "If we are to have any chance in France, salespeople must learn french. Practice makes perfect and without constant repetition, learning a new language is impossible.";
+        public static readonly string AptDesc_GermanLesson = "If we are to have any chance in Germany, salespeople must learn german. Practice makes perfect and without constant repetition, learning a new language is impossible.";
+        public static readonly string AptDesc_Training = "Jack Howell from Worldwide Consulting will pay us a visit to give us pointers on how to improve our customer service processes.";
+        public static readonly string AptDesc_CompanyMeeting = "Review rules that govern workplace behavior. Discuss impact of changes to the law and how it will impact DevAV in the upcoming 12 months.";
+        public static readonly string AptDesc_FridayParty = "Rest, relax and get ready for next week.";
+        public static readonly string AptDesc_TripConFooCA = "ConFoo focuses on pragmatic solutions for web developers. The conference usually features 150+ presentations and is trying to attract more AI developers.";
+        public static readonly string AptDesc_TripDevnexus = "Conference organizers say their goal is to make Devnexus a forum for connecting developers from all over the world and promoting open-source values. While the conference caters to all developers, there is a slightly larger focus on Java topics, and JavaScript after that.";
+        public static readonly string AptDesc_TripSmashingConf = "Considered one of the top conferences for designers, SmashingConf, which is affiliated with Smashing magazine, is aimed at seasoned professionals searching for a competitive edge in the design world.";
+        public static readonly string AptDesc_DeveloperWeek = "DeveloperWeek is a series of conferences held in the United States for developers and technology managers. The Oakland DeveloperWeek has more than 100 talks, with speakers from the biggest companies in tech. Some of the events include DevExec World, a get-together for developer managers and executives, and a BlockChain Dev conference to discuss the latest developments in blockchain and ethereum technologies.";
+        public static readonly string AptDesc_Conference = "{0} {1} tells us about {2}.";
+                      
+        public static readonly string AptLoc_TrainingRoom = "Training Room";
+        public static readonly string AptLoc_ConferenceRoom = "Conference Room 1001";
+        public static readonly string AptLoc_TripConFooCA = "Montreal, Quebec, Canada";
+        public static readonly string AptLoc_TripDevnexus = "Atlanta, Georgia, USA";
+        public static readonly string AptLoc_TripSmashingConf = "London, United Kingdom";
+        public static readonly string AptLoc_DeveloperWeek = "Oakland, California, USA";
+                      
+        public static readonly string Conf1 = "DevExpress MVVM Framework";
+        public static readonly string Conf2 = "New Theme Designer";
+        public static readonly string Conf3 = "New Theme Designer";
+        public static readonly string Conf4 = "WinForms and DirectX";
+        public static readonly string Conf5 = "LOB applications";
+        public static readonly string Conf6 = "Module Injection Framework";
+        public static readonly string Conf7 = "Git tricks";
+        public static readonly string Conf8 = "Machine learning";
+        public static readonly string Conf9 = "Azure";
+        public static readonly string Conf10 = "WCF Services";
+        public static readonly string Conf11 = "Docking Floating Panels";
+        public static readonly string Conf12 = "Personal Time Management";
+        public static readonly string Conf13 = "Entity Framework Core";
+        public static readonly string Conf14 = ".Net Core";
+                      
+        public static readonly string Team_Support = "Support Team";
+        public static readonly string Team_Development = "Development Team";
+        public static readonly string MyCalendar = "My Calendar";
 
         public static string GetCustomerInfo(Customer customer) {
             string res = "";

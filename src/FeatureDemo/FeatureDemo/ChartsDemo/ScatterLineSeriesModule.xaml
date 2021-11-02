@@ -103,8 +103,7 @@
                 Content="Cartesian Folium"
                 GroupName="function" />
 
-            <common:OptionsHeader Text="Markers" />
-            <common:OptionItem Header="Size:" IsHorizontal="True">
+            <common:OptionItem Header="Marker size" IsHorizontal="True">
                 <Slider
                     x:Name="markerSize"
                     IsEnabled="{x:Bind showMarkers.IsChecked.Value, Mode=OneWay}"

@@ -20,15 +20,15 @@ using DevExpress.WinUI.Core.Internal;
 using Microsoft.UI.Xaml.Controls;
 using System.Runtime.InteropServices;
 using WinRT;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace RibbonDemo {
-    public class InsertGroupViewModel : ViewModelBase {
+    [GenerateViewModel]
+    public partial class InsertGroupViewModel : ViewModelBase {
         public InsertGroupViewModel(RibbonToolBarViewModel parent){
             ((ISupportParentViewModel)this).ParentViewModel = parent;
-            InsertImageCommand = new DelegateCommand(OnInsertImage);
         }
 
-        public ICommand InsertImageCommand { get; }
         RibbonToolBarViewModel Parent => ((ISupportParentViewModel)this).ParentViewModel as RibbonToolBarViewModel;
         public IRichEditorInsertService RichEditorService => Parent.Service as IRichEditorInsertService;
 
@@ -40,7 +40,8 @@ namespace RibbonDemo {
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
         public static extern IntPtr GetActiveWindow();
 
-        async void OnInsertImage() {
+        [GenerateCommand]
+        async void InsertImage() {
             FileOpenPicker filePicker = new FileOpenPicker();
             if(Window.Current == null) {
                 var wrapper = filePicker.As<IInitializeWithWindow>();

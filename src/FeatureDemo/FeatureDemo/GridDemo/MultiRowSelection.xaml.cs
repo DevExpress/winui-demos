@@ -17,7 +17,7 @@ namespace GridDemo {
 
         void OnLoaded(object sender, RoutedEventArgs e) {
             grid.SelectionChanged += grid_UpdateSummary;
-            grid.SelectedItemChanged += grid_UpdateSummary;
+            grid.CurrentItemChanged += grid_UpdateSummary;
             grid.CustomSummary += grid_CustomSummary;
             Grid.SelectRange(2, 6);
             Grid.SelectItem(10);
@@ -25,7 +25,7 @@ namespace GridDemo {
 
         void OnUnloaded(object sender, RoutedEventArgs e) {
             grid.SelectionChanged -= grid_UpdateSummary;
-            grid.SelectedItemChanged -= grid_UpdateSummary;
+            grid.CurrentItemChanged -= grid_UpdateSummary;
             grid.CustomSummary -= grid_CustomSummary;
             grid.DataContext = null;
         }
@@ -41,7 +41,7 @@ namespace GridDemo {
                     break;
                 case CustomSummaryProcess.Calculate:
                     if(grid.SelectionMode != MultiSelectMode.None) {
-                        if(Grid.IsItemSelected(e.RowHandle)) {
+                        if(Grid.IsRowSelected(e.RowHandle)) {
                             this.sum += (decimal)e.FieldValue;
                         }
                     }

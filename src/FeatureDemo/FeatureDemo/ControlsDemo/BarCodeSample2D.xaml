@@ -84,16 +84,10 @@
             <DataTemplate x:Key="QRCodeViewModel" x:DataType="local:QRCodeViewModel">
                 <common:OptionsSubPanel>
                     <common:OptionsHeader Text="Properties" />
-                    <common:OptionItem
-                        Header="Text:"
-                        HeaderWidth="50"
-                        IsHorizontal="True">
+                    <common:OptionItem Header="Text">
                         <TextBox HorizontalAlignment="Stretch" Text="{x:Bind Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionItem>
-                    <common:OptionItem
-                        Header="Version:"
-                        HeaderWidth="50"
-                        IsHorizontal="True">
+                    <common:OptionItem Header="Version">
                         <ComboBox
                             HorizontalAlignment="Stretch"
                             ItemsSource="{StaticResource QRCodeVersions}"
@@ -104,10 +98,10 @@
             <DataTemplate x:Key="PDF417ViewModel" x:DataType="local:PDF417ViewModel">
                 <common:OptionsSubPanel>
                     <common:OptionsHeader Text="Properties" />
-                    <common:OptionItem Header="Text:">
+                    <common:OptionItem Header="Text">
                         <TextBox HorizontalAlignment="Stretch" Text="{x:Bind Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionItem>
-                    <common:OptionItem Header="Error Correction Level:">
+                    <common:OptionItem Header="Error Correction Level">
                         <ComboBox
                             HorizontalAlignment="Stretch"
                             ItemsSource="{StaticResource ErrorCorrectionLevels}"
@@ -118,10 +112,10 @@
             <DataTemplate x:Key="DataMatrixViewModel" x:DataType="local:DataMatrixViewModel">
                 <common:OptionsSubPanel>
                     <common:OptionsHeader Text="Properties" />
-                    <common:OptionItem Header="Text:">
+                    <common:OptionItem Header="Text">
                         <TextBox HorizontalAlignment="Stretch" Text="{x:Bind Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionItem>
-                    <common:OptionItem Header="Compaction Mode:">
+                    <common:OptionItem Header="Compaction Mode">
                         <ComboBox
                             HorizontalAlignment="Stretch"
                             ItemsSource="{StaticResource CompactionModes}"
@@ -132,16 +126,10 @@
             <DataTemplate x:Key="DataMatrixGS1ViewModel" x:DataType="local:DataMatrixGS1ViewModel">
                 <common:OptionsSubPanel>
                     <common:OptionsHeader Text="Properties" />
-                    <common:OptionItem
-                        Header="Text:"
-                        HeaderWidth="70"
-                        IsHorizontal="True">
+                    <common:OptionItem Header="Text">
                         <TextBox HorizontalAlignment="Stretch" Text="{x:Bind Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionItem>
-                    <common:OptionItem
-                        Header="Matrix Size:"
-                        HeaderWidth="70"
-                        IsHorizontal="True">
+                    <common:OptionItem Header="Matrix Size">
                         <ComboBox
                             HorizontalAlignment="Stretch"
                             ItemsSource="{StaticResource DataMatrixSizes}"
@@ -154,28 +142,29 @@
 
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="Barcode Type" />
-            <RadioButton
-                Command="{x:Bind ViewModel.SetViewIndexCommand}"
-                CommandParameter="0"
-                Content="QRCode"
-                IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 0)}" />
-            <RadioButton
-                Command="{x:Bind ViewModel.SetViewIndexCommand}"
-                CommandParameter="1"
-                Content="PDF417"
-                IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 1)}" />
-            <RadioButton
-                Command="{x:Bind ViewModel.SetViewIndexCommand}"
-                CommandParameter="2"
-                Content="DataMatrix"
-                IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 2)}" />
-            <RadioButton
-                Command="{x:Bind ViewModel.SetViewIndexCommand}"
-                CommandParameter="3"
-                Content="DataMatrixGS1"
-                IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 3)}" />
-            
+            <StackPanel Margin="-16,0" Spacing="8">
+                <RadioButton
+                    Command="{x:Bind ViewModel.SetViewIndexCommand}"
+                    CommandParameter="0"
+                    Content="QRCode"
+                    IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 0)}" />
+                <RadioButton
+                    Command="{x:Bind ViewModel.SetViewIndexCommand}"
+                    CommandParameter="1"
+                    Content="PDF417"
+                    IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 1)}" />
+                <RadioButton
+                    Command="{x:Bind ViewModel.SetViewIndexCommand}"
+                    CommandParameter="2"
+                    Content="DataMatrix"
+                    IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 2)}" />
+                <RadioButton
+                    Command="{x:Bind ViewModel.SetViewIndexCommand}"
+                    CommandParameter="3"
+                    Content="DataMatrixGS1"
+                    IsChecked="{x:Bind GetRadioButtonIsCheckedValue(ViewModel.SelectedViewIndex, 3)}" />
+            </StackPanel>
+
             <ContentControl
                 HorizontalContentAlignment="Stretch"
                 Content="{x:Bind ViewModel.SelectedView, Mode=OneWay}"

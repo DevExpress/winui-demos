@@ -56,8 +56,7 @@
     </Grid>
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="Markres" />
-            <common:OptionItem Header="Marker Size:">
+            <common:OptionItem Header="Marker Size">
                 <Slider
                     x:Name="markerSize"
                     Maximum="40"
@@ -65,9 +64,7 @@
                     ValueChanged="{x:Bind OnMarkerSizeChanged}"
                     Value="25" />
             </common:OptionItem>
-
-            <common:OptionsHeader Text="Labels" />
-            <common:OptionItem Header="Angle:">
+            <common:OptionItem Header="Label Angle">
                 <Slider
                     x:Name="angle"
                     IsEnabled="{x:Bind showLabels.IsChecked.Value, Mode=OneWay}"
@@ -76,7 +73,7 @@
                     ValueChanged="{x:Bind OnAngleChanged}"
                     Value="30" />
             </common:OptionItem>
-            <common:OptionItem Header="Indent:">
+            <common:OptionItem Header="Label Indent">
                 <Slider
                     x:Name="indent"
                     IsEnabled="{x:Bind showLabels.IsChecked.Value, Mode=OneWay}"

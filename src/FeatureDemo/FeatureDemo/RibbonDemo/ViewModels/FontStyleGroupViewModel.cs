@@ -11,15 +11,13 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml;
 using DevExpress.WinUI.Editors;
 using Color = Windows.UI.Color;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace RibbonDemo {
-    public class FontStyleGroupViewModel : ViewModelBase {
+    [GenerateViewModel]
+    public partial class FontStyleGroupViewModel : ViewModelBase {
         public FontStyleGroupViewModel(RibbonToolBarViewModel parent) {
             ((ISupportParentViewModel)this).ParentViewModel = parent;
-            SetForegroundColorCommand = new DelegateCommand(OnSetForegroundColor);
-            SetBackgroundColorCommand = new DelegateCommand(OnSetBackgroundColor);
-            DecreaseFontSizeCommand = new DelegateCommand(OnDecreaseFontSize);
-            IncreaseFontSizeCommand = new DelegateCommand(OnIncreaseFontSize);
             MainColorsList = new ColorPalette();
             MainColorsList.Title = "Standard colors";
             Colors = new ColorGroups();
@@ -55,31 +53,22 @@ namespace RibbonDemo {
             Background = MainColorsList.Items[1];
         }
 
-        public SolidColorBrush Background {
-            get => GetValue<SolidColorBrush>();
-            set => SetValue(value, () => OnBackgroundChanged());
-        }
-        public SolidColorBrush Foreground {
-            get => GetValue<SolidColorBrush>();
-            set => SetValue(value, () => OnForegroundChanged());
-        }
-        public FontFamily FontFamily {
-            get => GetValue<FontFamily>();
-            set => SetValue(value);
-        }
-        public ColorGroups Colors {
-            get => GetValue<ColorGroups>();
-            set => SetValue(value);
-        }
-        public ColorPalette DocumentColors {
-            get => GetValue<ColorPalette>();
-            set => SetValue(value);
-        }
+        [GenerateProperty]
+        SolidColorBrush _Background;
+
+        [GenerateProperty]
+        SolidColorBrush _Foreground;
+
+        [GenerateProperty]
+        FontFamily _FontFamily;
+
+        [GenerateProperty]
+        ColorGroups _Colors;
+
+        [GenerateProperty]
+        ColorPalette _DocumentColors;
+
         protected ColorPalette MainColorsList { get; set; }
-        public ICommand IncreaseFontSizeCommand { get; }
-        public ICommand DecreaseFontSizeCommand { get; }
-        public ICommand SetForegroundColorCommand { get; }
-        public ICommand SetBackgroundColorCommand { get; }
         protected IRichEditorFontService RichEditorFontService => Parent.Service as IRichEditorFontService;
         RibbonToolBarViewModel Parent => ((ISupportParentViewModel)this).ParentViewModel as RibbonToolBarViewModel;
 
@@ -103,10 +92,16 @@ namespace RibbonDemo {
             else
                 Background = MainColorsList.Items[1];
         }
-        void OnIncreaseFontSize() => RichEditorFontService?.IncreaseFontFize();
-        void OnDecreaseFontSize() => RichEditorFontService?.DecreaseFontSize();
-        void OnSetBackgroundColor() => RichEditorFontService?.SetBackground(Background);
-        void OnSetForegroundColor() => RichEditorFontService?.SetForeground(Foreground);
+
+        [GenerateCommand]
+        void IncreaseFontSize() => RichEditorFontService?.IncreaseFontFize();
+        [GenerateCommand]
+        void DecreaseFontSize() => RichEditorFontService?.DecreaseFontSize();
+        [GenerateCommand]
+        void SetBackgroundColor() => RichEditorFontService?.SetBackground(Background);
+        [GenerateCommand]
+        void SetForegroundColor() => RichEditorFontService?.SetForeground(Foreground);
+
         void AddColorLine(ColorPalette ColorsList, byte r, byte g, byte b, int hi, int lo, int step) {
             ColorsList.Items.Add(new SolidColorBrush(Color.FromArgb(255, r, g, b)));
             for (int n = hi; n > lo; n -= step) {
@@ -119,16 +114,16 @@ namespace RibbonDemo {
         }
     }
     public class ColorSet : ObservableCollection<SolidColorBrush> { }
-    public class ColorPalette : BindableBase {
+
+    [GenerateViewModel]
+    public partial class ColorPalette {
         public ColorPalette() {
             Items = new ColorSet();
         }
-
-        public string Title {
-            get => GetValue<string>();
-            set => SetValue(value);
-        }
+        [GenerateProperty]
+        string _Title;
         public ColorSet Items { get; }
     }
+
     public class ColorGroups : ObservableCollection<ColorPalette> { }
 }

@@ -3,46 +3,38 @@ using DevExpress.WinUI.Core;
 using DevExpress.WinUI.Core.Internal;
 using Microsoft.UI.Xaml;
 using System.Windows.Input;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace ControlsDemo {
-    public class ContextMenuViewModel : ViewModelBase {
-        public bool IsToolbarChecked {
-            get { return GetValue<bool>(); }
-            set { SetValue(value, UpdateMenuType); }
-        }
-        public bool IsContextToolbarChecked {
-            get { return GetValue<bool>(); }
-            set { SetValue(value, UpdateMenuType); }
-        }
-        public bool IsMenuFlyoutChecked {
-            get { return GetValue<bool>(); }
-            set { SetValue(value, UpdateMenuType); }
-        }
-        public bool IsCustomChecked {
-            get { return GetValue<bool>(); }
-            set { SetValue(value, UpdateMenuType); }
-        }
+    [GenerateViewModel(ImplementISupportServices = true)]
+    public partial class ContextMenuViewModel {
+        [GenerateProperty]
+        bool _IsToolbarChecked;
 
-        public ContextMenuType MenuType {
-            get { return GetValue<ContextMenuType>(); }
-            set { SetValue(value); }
-        }
-        public bool CancelOpening {
-            get { return GetValue<bool>(); }
-            set { SetValue(value); }
-        }
-        public double HorizontalMenuOffset {
-            get { return GetValue<double>(); }
-            set { SetValue(value); }
-        }
-        public double VerticalMenuOffset {
-            get { return GetValue<double>(); }
-            set { SetValue(value); }
-        }
-        public string Header {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
-        }
+        [GenerateProperty]
+        bool _IsContextToolbarChecked;
+
+        [GenerateProperty]
+        bool _IsMenuFlyoutChecked;
+
+        [GenerateProperty]
+        bool _IsCustomChecked;
+
+        [GenerateProperty]
+        ContextMenuType _MenuType;
+
+        [GenerateProperty]
+        bool _CancelOpening;
+
+        [GenerateProperty]
+        double _HorizontalMenuOffset;
+
+        [GenerateProperty]
+        double _VerticalMenuOffset;
+
+        [GenerateProperty]
+        string _Header;
+
         public ContextMenuItem TextFormattingGroup { get; }
         public ContextMenuToggleItem BoldItem { get; }
         public ContextMenuToggleItem ItalicItem { get; }
@@ -57,14 +49,10 @@ namespace ControlsDemo {
         public ContextMenuItem CopyItem { get; }
         public ContextMenuItem PasteItem { get; }
         public ContextMenuItem CutItem { get; }
-        public ICommand MenuOpeningCommand { get; }
-        public ICommand ShowContextMenuCommand { get; }
         protected IContextMenuService ContextMenuService { get { return GetService<IContextMenuService>(); } }
         public string Name { get; } = "Name";
         public ContextMenuViewModel() {
             IsContextToolbarChecked = true;
-            MenuOpeningCommand = new DelegateCommand<ContextMenuOpeningEventArgs>(OnMenuOpening);
-            ShowContextMenuCommand = new DelegateCommand(ShowContextMenu);
             CancelOpening = false;
             Header = "Header";
             Name = "Name";
@@ -102,10 +90,12 @@ namespace ControlsDemo {
             }
             MenuType = ContextMenuType.Custom;
         }
+        [GenerateCommand]
         void ShowContextMenu() {
             ContextMenuService?.Open();
         }
-        void OnMenuOpening(ContextMenuOpeningEventArgs args) {
+        [GenerateCommand]
+        void MenuOpening(ContextMenuOpeningEventArgs args) {
             args.Cancel = CancelOpening;
             var pos = args.Info.TargetPosition;
             args.Info.TargetPosition = pos.Offset(HorizontalMenuOffset, VerticalMenuOffset);

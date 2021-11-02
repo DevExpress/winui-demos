@@ -76,13 +76,6 @@ namespace RibbonDemo {
             selectionLocked = false;
         }
        
-        public void UpdateSelection() {
-            if (!selectionLocked) {
-                selectionLocked = true;
-                Document.Selection.SetRange(Document.Selection.EndPosition, Document.Selection.EndPosition);
-                selectionLocked = false;
-            }
-        }
         public string RTFText {
             get { return (string)GetValue(RTFTextProperty); }
             set { SetValue(RTFTextProperty, value); }
@@ -101,6 +94,7 @@ namespace RibbonDemo {
         protected override void OnPointerEntered(PointerRoutedEventArgs e) { }
         protected override void OnApplyTemplate() {
             base.OnApplyTemplate();
+            SelectionHighlightColorWhenNotFocused = SelectionHighlightColor;
             SelectionChanged -= OnSelectionChanged;
             SelectionChanged += OnSelectionChanged;
         }
@@ -491,7 +485,6 @@ namespace RibbonDemo {
         void OnCurrentForegroundChanged() {
             if (currentSelection != null) {
                 currentSelection.CharacterFormat.ForegroundColor = CurrentForeground;
-                UpdateSelection();
             } else {
                 var currentFormat = Document.GetDefaultCharacterFormat();
                 currentFormat.ForegroundColor = CurrentForeground;
@@ -503,7 +496,6 @@ namespace RibbonDemo {
                 CurrentSelectionListLevel = 0;
             if (currentSelection != null) {
                 currentSelection.ParagraphFormat.ListLevelIndex = CurrentSelectionListLevel;
-                UpdateSelection();
             }
         }
         protected virtual void OnBulletsListChanged() {
@@ -514,7 +506,6 @@ namespace RibbonDemo {
                     currentSelection.ParagraphFormat.ListType = MarkerType.Bullet;
                     currentSelection.ParagraphFormat.ListLevelIndex = CurrentSelectionListLevel;
                 }
-                UpdateSelection();
             }
         }
         protected virtual void OnCurrentSelectionUnderlineDecorationChanged() {
@@ -524,7 +515,6 @@ namespace RibbonDemo {
                         currentSelection.CharacterFormat.Underline = UnderlineType.Single;
                     else
                         currentSelection.CharacterFormat.Underline = UnderlineType.None;
-                UpdateSelection();
             } 
         }
         protected virtual void OnCurrentSelectionItalicDecorationChanged() {
@@ -534,7 +524,6 @@ namespace RibbonDemo {
                         currentSelection.CharacterFormat.Italic = FormatEffect.On;
                     else
                         currentSelection.CharacterFormat.Italic = FormatEffect.Off;
-                UpdateSelection();
             } 
         }
         protected virtual void OnCurrentSelectionBoldDecorationChanged() {
@@ -544,14 +533,12 @@ namespace RibbonDemo {
                         currentSelection.CharacterFormat.Bold = FormatEffect.On;
                     else
                         currentSelection.CharacterFormat.Bold = FormatEffect.Off;
-                UpdateSelection();
             } 
         }
         protected virtual void OnCurrentSelectionFontSizeChanged() {
             if (currentSelection != null && currentSelection.Length != 0 && !double.IsNaN(CurrentSelectionFontSize)) {
                 if (CurrentSelectionFontSize != currentSelection.CharacterFormat.Size)
                     currentSelection.CharacterFormat.Size = (float)CurrentSelectionFontSize;
-                UpdateSelection();
             }
         }
         protected virtual void OnCurrentSelectionFontFamilyChanged() {
@@ -559,7 +546,6 @@ namespace RibbonDemo {
                 if (currentSelection != null) {
                     if (CurrentSelectionFontFamily != currentSelection.CharacterFormat.Name && CurrentSelectionFontFamily != "")
                         currentSelection.CharacterFormat.Name = CurrentSelectionFontFamily;
-                    UpdateSelection();
                 }
             }
         }
@@ -567,7 +553,6 @@ namespace RibbonDemo {
             if (currentSelection != null) {
                 if (CurrentSelectionAlignment != currentSelection.ParagraphFormat.Alignment)
                     currentSelection.ParagraphFormat.Alignment = CurrentSelectionAlignment;
-                UpdateSelection();
             } 
         }
         protected virtual void OnCurrentSelectionSubscriptChanged() {
@@ -580,7 +565,6 @@ namespace RibbonDemo {
                     } else {
                         currentSelection.CharacterFormat.Subscript = FormatEffect.Off;
                     }
-                UpdateSelection();
             } 
         }
         protected virtual void OnCurrentSelectionSuperscriptChanged() {
@@ -593,7 +577,6 @@ namespace RibbonDemo {
                     } else {
                         currentSelection.CharacterFormat.Superscript = FormatEffect.Off;
                     }
-                UpdateSelection();
             } 
         }
     }

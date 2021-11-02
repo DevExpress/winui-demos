@@ -2,24 +2,20 @@
 using DevExpress.WinUI.Controls.Internal;
 using System.Collections.Generic;
 using System.Windows.Input;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace FeatureDemo.ControlsDemo {
-    public class BarCodeSample2DViewModel : ViewModelBase {
-        public ICommand SetViewIndexCommand { get; }
-        public object SelectedView {
-            get => GetValue<object>();
-            private set => SetValue<object>(value);
-        }
-        public int SelectedViewIndex {
-            get => GetValue<int>();
-            set => SetValue(value, OnSelectedViewModelIndexChanged);
-        }
+    [GenerateViewModel]
+    public partial class BarCodeSample2DViewModel {
+        [GenerateProperty(SetterAccessModifier = AccessModifier.Private)]
+        object _SelectedView;
 
-        private void OnSelectedViewModelIndexChanged() => SelectedView = Views[SelectedViewIndex];
+        [GenerateProperty]
+        int _SelectedViewIndex;
+        void OnSelectedViewIndexChanged() => SelectedView = Views[SelectedViewIndex];
 
         public List<object> Views { get; }
         public BarCodeSample2DViewModel() {
-            SetViewIndexCommand = new DelegateCommand<int>(OnSetViewIndexCommandExecuted);
             Views = new List<object>() {
                 new QRCodeViewModel(),
                 new PDF417ViewModel(),
@@ -29,47 +25,43 @@ namespace FeatureDemo.ControlsDemo {
             SelectedView = Views[0];
         }
 
-        private void OnSetViewIndexCommandExecuted(int index) => SelectedViewIndex = index;
+        [GenerateCommand]
+        public void SetViewIndex(int index) => SelectedViewIndex = index;
     }
-    public class BarCode2DViewModelBase : ViewModelBase {
-        public string Text {
-            get => GetValue<string>();
-            set => SetValue(value);
-        }
+    [GenerateViewModel]
+    public partial class BarCode2DViewModelBase {
+        [GenerateProperty]
+        string _Text;
     }
-    public class QRCodeViewModel : BarCode2DViewModelBase {
-        public QRCodeVersion Version {
-            get => GetValue<QRCodeVersion>();
-            set => SetValue(value);
-        }
+    [GenerateViewModel]
+    public partial class QRCodeViewModel : BarCode2DViewModelBase {
+        [GenerateProperty]
+        QRCodeVersion _Version;
         public QRCodeViewModel() {
             Text = "QRCode";
         }
     }
-    public class PDF417ViewModel : BarCode2DViewModelBase {
-        public ErrorCorrectionLevel ErrorCorrectionLevel {
-            get => GetValue<ErrorCorrectionLevel>();
-            set => SetValue(value);
-        }
+    [GenerateViewModel]
+    public partial class PDF417ViewModel : BarCode2DViewModelBase {
+        [GenerateProperty]
+        ErrorCorrectionLevel _ErrorCorrectionLevel;
         public PDF417ViewModel() {
             Text = "PDF417";
         }
     }
-    public class DataMatrixViewModel : BarCode2DViewModelBase {
-        public DataMatrixCompactionMode CompactionMode {
-            get => GetValue<DataMatrixCompactionMode>();
-            set => SetValue(value);
-        }
+    [GenerateViewModel]
+    public partial class DataMatrixViewModel : BarCode2DViewModelBase {
+        [GenerateProperty]
+        DataMatrixCompactionMode _CompactionMode;
         public DataMatrixViewModel() {
             Text = "DataMatrix";
             CompactionMode = DataMatrixCompactionMode.C40;
         }
     }
-    public class DataMatrixGS1ViewModel : BarCode2DViewModelBase {
-        public DataMatrixSize MatrixSize {
-            get => GetValue<DataMatrixSize>();
-            set => SetValue(value);
-        }
+    [GenerateViewModel]
+    public partial class DataMatrixGS1ViewModel : BarCode2DViewModelBase {
+        [GenerateProperty]
+        DataMatrixSize _MatrixSize;
         public DataMatrixGS1ViewModel() {
             Text = "DataMatrixGS1";
         }

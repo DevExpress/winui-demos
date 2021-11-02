@@ -3,6 +3,7 @@ using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using DevExpress.WinUI.Editors;
 using FeatureDemo.Common;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace EditorsDemo {
     public sealed partial class SimpleMaskModule : DemoSubModuleView {
@@ -15,19 +16,16 @@ namespace EditorsDemo {
         public SimpleMaskViewModel ViewModel { get; }
     }
 
-    public class SimpleMaskViewModel : ViewModelBase {
-        public TextEdit FocusedEditor {
-            get => GetValue<TextEdit>();
-            set => SetValue(value, OnFocusedEditorChanged);
-        }
-        public TextInputMaskSettings TextInputSettings {
-            get => GetValue<TextInputMaskSettings>();
-            private set => SetValue(value);
-        }
-        public string Mask {
-            get => GetValue<string>();
-            set => SetValue(value, OnMaskChanged);
-        }
+    [GenerateViewModel(ImplementISupportServices = true)]
+    public partial class SimpleMaskViewModel {
+        [GenerateProperty]
+        public TextEdit _FocusedEditor;
+
+        [GenerateProperty(SetterAccessModifier = AccessModifier.Private)]
+        TextInputMaskSettings _TextInputSettings;
+
+        [GenerateProperty]
+        string _Mask;
 
         void OnFocusedEditorChanged() {
             TextInputSettings = FocusedEditor?.TextInputSettings as TextInputMaskSettings;

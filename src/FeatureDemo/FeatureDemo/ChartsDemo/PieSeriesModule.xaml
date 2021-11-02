@@ -62,7 +62,6 @@
     </Grid>
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="View" />
             <RadioButton
                 Checked="{x:Bind OnPieChecked}"
                 Content="Pie"

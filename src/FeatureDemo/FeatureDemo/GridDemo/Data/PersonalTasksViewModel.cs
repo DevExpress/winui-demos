@@ -2,7 +2,7 @@
 using DevExpress.Mvvm.Native;
 using DevExpress.WinUI.Core.Internal;
 using DevExpress.WinUI.Editors;
-using DevExpress.WinUI.Grid.Internal;
+using DevExpress.WinUI.Grid;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -37,7 +37,7 @@ namespace GridDemo {
         }
 
         internal void ValidateCell(object sender, GridCellValidationEventArgs e) {
-            if(e.Column.FieldName != nameof(EmployeeTask.DueDate))
+            if(e.Column.FieldName != nameof(EmployeeTask.DueDate) || e.Row == null)
                 return;            
             var dueDate = (DateTime?)e.Value;
             var row = (EmployeeTask)e.Row;

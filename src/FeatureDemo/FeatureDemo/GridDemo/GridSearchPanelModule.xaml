@@ -54,7 +54,6 @@
     </dxg:GridControl>
     <local:GridDemoUserControl.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="Search Results"/>
             <StackPanel>
                 <CheckBox
                     x:Name="cbHighlightResults"
@@ -66,7 +65,7 @@
                     IsChecked="True" />
             </StackPanel>
 
-            <common:OptionsHeader Text="Search Panel Show Mode"/>
+            <common:OptionsHeader Text="Search Panel Show Mode" />
             <StackPanel>
                 <RadioButton
                     Content="Default"
@@ -82,33 +81,33 @@
                     IsChecked="{x:Bind ViewModel.IsShowModeNever, Mode=TwoWay}" />
             </StackPanel>
 
-            <common:OptionsHeader Text="Search Mode"/>
+            <common:OptionsHeader Text="Search Mode" />
             <RadioButton
-                    Content="Always"
-                    GroupName="SearchModes"
-                    IsChecked="{x:Bind ViewModel.IsSearchModeAlways, Mode=TwoWay}" />
+                Content="Always"
+                GroupName="SearchModes"
+                IsChecked="{x:Bind ViewModel.IsSearchModeAlways, Mode=TwoWay}" />
             <RadioButton
-                    Content="Find on Enter"
-                    GroupName="SearchModes"
-                    IsChecked="{x:Bind ViewModel.IsSearchModeFindOnEnter, Mode=TwoWay}" />
+                Content="Find on Enter"
+                GroupName="SearchModes"
+                IsChecked="{x:Bind ViewModel.IsSearchModeFindOnEnter, Mode=TwoWay}" />
 
-            <common:OptionsHeader Text="Search Columns"/>
+            <common:OptionsHeader Text="Search Columns" />
             <RadioButton
-                    Content="*"
-                    GroupName="SearchColumns"
-                    IsChecked="{x:Bind ViewModel.IsSearchColumnAll, Mode=TwoWay}" />
+                Content="*"
+                GroupName="SearchColumns"
+                IsChecked="{x:Bind ViewModel.IsSearchColumnAll, Mode=TwoWay}" />
             <RadioButton
-                    Content="Country"
-                    GroupName="SearchColumns"
-                    IsChecked="{x:Bind ViewModel.IsSearchColumnCountry, Mode=TwoWay}" />
+                Content="Country"
+                GroupName="SearchColumns"
+                IsChecked="{x:Bind ViewModel.IsSearchColumnCountry, Mode=TwoWay}" />
             <RadioButton
-                    Content="City"
-                    GroupName="SearchColumns"
-                    IsChecked="{x:Bind ViewModel.IsSearchColumnCity, Mode=TwoWay}" />
+                Content="City"
+                GroupName="SearchColumns"
+                IsChecked="{x:Bind ViewModel.IsSearchColumnCity, Mode=TwoWay}" />
             <RadioButton
-                    Content="Country;City"
-                    GroupName="SearchColumns"
-                    IsChecked="{x:Bind ViewModel.IsSearchColumnCountryCity, Mode=TwoWay}" />
+                Content="Country;City"
+                GroupName="SearchColumns"
+                IsChecked="{x:Bind ViewModel.IsSearchColumnCountryCity, Mode=TwoWay}" />
         </common:OptionsPanel>
     </local:GridDemoUserControl.Options>
 </local:GridDemoUserControl>

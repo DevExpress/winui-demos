@@ -21,18 +21,18 @@
             <local:BarCodeSymbologyCoverter x:Key="barCodeSymbologyCoverter" />
             <local:BarCodeSymbologyWrapperConverter x:Key="barCodeSymbologyWrapperConverter" />
             <dx:EnumItemsSourceProvider x:Name="StartStopPairItems" EnumInstance="{x:Bind dxcoi:CodabarStartStopPair.AT}" />
-            
+
             <local:BarCodeTypeTemplateSelector x:Key="barCodeTypeTemplateSelector">
                 <DataTemplate x:Key="Codabar" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem Header="StartStopPair:">
+                        <common:OptionItem Header="StartStopPair">
                             <ComboBox
                                 HorizontalAlignment="Stretch"
                                 ItemsSource="{StaticResource StartStopPairItems}"
                                 SelectedItem="{x:Bind ((dxco:CodabarSymbology)Symbology).StartStopPair, Mode=TwoWay}" />
                         </common:OptionItem>
-                        <common:OptionItem Header="WideNarrowRatio:">
+                        <common:OptionItem Header="WideNarrowRatio">
                             <dxe:SpinEdit HorizontalAlignment="Stretch" Value="{x:Bind ((dxco:CodabarSymbology)Symbology).WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
                     </common:OptionsSubPanel>
@@ -40,61 +40,37 @@
                 <DataTemplate x:Key="Industrial2of5" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem
-                            Header="WideNarrowRatio:"
-                            HeaderWidth="120"
-                            IsHorizontal="True">
+                        <common:OptionItem Header="WideNarrowRatio">
                             <dxe:SpinEdit Value="{x:Bind ((dxco:Industrial2of5Symbology)Symbology).WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
-                        <CheckBox
-                            Margin="0,12,0,0"
-                            Content="CalcCheckSum"
-                            IsChecked="{x:Bind ((dxco:Industrial2of5Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox Content="CalcCheckSum" IsChecked="{x:Bind ((dxco:Industrial2of5Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionsSubPanel>
                 </DataTemplate>
                 <DataTemplate x:Key="Interleaved2of5" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem
-                            Header="WideNarrowRatio:"
-                            HeaderWidth="120"
-                            IsHorizontal="True">
+                        <common:OptionItem Header="WideNarrowRatio">
                             <dxe:SpinEdit Value="{x:Bind ((dxco:Interleaved2of5Symbology)Symbology).WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
-                        <CheckBox
-                            Margin="0,12,0,0"
-                            Content="CalcCheckSum"
-                            IsChecked="{x:Bind ((dxco:Interleaved2of5Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox Content="CalcCheckSum" IsChecked="{x:Bind ((dxco:Interleaved2of5Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionsSubPanel>
                 </DataTemplate>
                 <DataTemplate x:Key="Code39" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem
-                            Header="WideNarrowRatio:"
-                            HeaderWidth="120"
-                            IsHorizontal="True">
+                        <common:OptionItem Header="WideNarrowRatio">
                             <dxe:SpinEdit Value="{x:Bind ((dxco:Code39Symbology)Symbology).WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
-                        <CheckBox
-                            Margin="0,12,0,0"
-                            Content="CalcCheckSum"
-                            IsChecked="{x:Bind ((dxco:Code39Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox Content="CalcCheckSum" IsChecked="{x:Bind ((dxco:Code39Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionsSubPanel>
                 </DataTemplate>
                 <DataTemplate x:Key="Code39Extended" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem
-                            Header="WideNarrowRatio:"
-                            HeaderWidth="120"
-                            IsHorizontal="True">
+                        <common:OptionItem Header="WideNarrowRatio">
                             <dxe:SpinEdit Value="{x:Bind ((dxco:Code39ExtendedSymbology)Symbology).WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
-                        <CheckBox
-                            Margin="0,12,0,0"
-                            Content="CalcCheckSum"
-                            IsChecked="{x:Bind ((dxco:Code39ExtendedSymbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox Content="CalcCheckSum" IsChecked="{x:Bind ((dxco:Code39ExtendedSymbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionsSubPanel>
                 </DataTemplate>
                 <DataTemplate x:Key="Code93" x:DataType="local:SymbologyViewModel">
@@ -112,10 +88,7 @@
                 <DataTemplate x:Key="Code128" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem
-                            Header="CharacterSet:"
-                            HeaderWidth="80"
-                            IsHorizontal="True">
+                        <common:OptionItem Header="CharacterSet">
                             <common:OptionItem.Resources>
                                 <dx:EnumItemsSourceProvider x:Name="Code128CharsetItems" EnumInstance="{x:Bind ((dxco:Code128Symbology)Symbology).CharacterSet, Mode=OneTime}" />
                             </common:OptionItem.Resources>
@@ -130,7 +103,7 @@
                 <DataTemplate x:Key="CodeMSI" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem Header="MSICheckSum:" IsHorizontal="True">
+                        <common:OptionItem Header="MSICheckSum">
                             <common:OptionItem.Resources>
                                 <dx:EnumItemsSourceProvider x:Name="MSICheckSumItems" EnumInstance="{x:Bind ((dxco:CodeMSISymbology)Symbology).MSICheckSum, Mode=OneTime}" />
                             </common:OptionItem.Resources>
@@ -149,14 +122,14 @@
                 <DataTemplate x:Key="EAN128" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem Header="FNC1Substitute:">
+                        <common:OptionItem Header="FNC1Substitute">
                             <dxe:TextEdit Text="{x:Bind ((dxco:EAN128Symbology)Symbology).FNC1Substitute, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <dxe:TextEdit.TextInputSettings>
                                     <dxe:TextInputMaskSettings Mask=".{1,10}" MaskType="RegEx" />
                                 </dxe:TextEdit.TextInputSettings>
                             </dxe:TextEdit>
                         </common:OptionItem>
-                        <common:OptionItem Header="CharacterSet:" Margin="0,12">
+                        <common:OptionItem Header="CharacterSet">
                             <common:OptionItem.Resources>
                                 <dx:EnumItemsSourceProvider x:Name="Code128CharsetItems" EnumInstance="{x:Bind ((dxco:EAN128Symbology)Symbology).CharacterSet, Mode=OneTime}" />
                             </common:OptionItem.Resources>
@@ -176,23 +149,17 @@
                 <DataTemplate x:Key="Matrix2of5" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem
-                            Header="WideNarrowRatio:"
-                            HeaderWidth="120"
-                            IsHorizontal="True">
+                        <common:OptionItem Header="WideNarrowRatio">
                             <dxe:SpinEdit Value="{x:Bind ((dxco:Matrix2of5Symbology)Symbology).WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
-                        <CheckBox
-                            Margin="0,12"
-                            Content="CalcCheckSum"
-                            IsChecked="{x:Bind ((dxco:Matrix2of5Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox Content="CalcCheckSum" IsChecked="{x:Bind ((dxco:Matrix2of5Symbology)Symbology).CalcCheckSum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </common:OptionsSubPanel>
                 </DataTemplate>
                 <DataTemplate x:Key="IntelligentMail" />
                 <DataTemplate x:Key="ITF14" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem Header="WideNarrowRatio:">
+                        <common:OptionItem Header="WideNarrowRatio">
                             <dxe:SpinEdit Value="{x:Bind ((dxco:ITF14Symbology)Symbology).WideNarrowRatio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
                     </common:OptionsSubPanel>
@@ -200,10 +167,10 @@
                 <DataTemplate x:Key="DataBar" x:DataType="local:SymbologyViewModel">
                     <common:OptionsSubPanel>
                         <common:OptionsHeader Text="Symbology Properties" />
-                        <common:OptionItem Header="SegmentsInRow:">
+                        <common:OptionItem Header="SegmentsInRow">
                             <dxe:SpinEdit Value="{x:Bind ((dxco:DataBarSymbology)Symbology).SegmentsInRow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </common:OptionItem>
-                        <common:OptionItem Header="Type:">
+                        <common:OptionItem Header="Type">
                             <ComboBox HorizontalAlignment="Stretch" SelectedItem="{x:Bind ((dxco:DataBarSymbology)Symbology).Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <ComboBox.ItemsSource>
                                     <dx:EnumItemsSourceProvider EnumInstance="{x:Bind ((dxco:DataBarSymbology)Symbology).Type, Mode=OneTime}" />
@@ -218,53 +185,31 @@
 
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="Properties" />
-            <common:OptionItem
-                Header="Text:"
-                HeaderWidth="75"
-                IsHorizontal="True">
-                <Grid HorizontalAlignment="Stretch" ColumnDefinitions="*, Auto">
+            <StackPanel Margin="-16,0" Spacing="8">
+                <common:OptionItem Header="Text">
                     <dxe:TextEdit Text="{x:Bind ViewModel.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <dxe:TextEdit.TextInputSettings>
                             <dxe:TextInputMaskSettings Mask=".{1,20}" MaskType="RegEx" />
                         </dxe:TextEdit.TextInputSettings>
                     </dxe:TextEdit>
-                    <CheckBox
-                        Grid.Column="1"
-                        MinWidth="62"
-                        Margin="12,0,0,0"
-                        Content="Show"
-                        IsChecked="{x:Bind ViewModel.ShowText, Mode=TwoWay}" />
-                </Grid>
-            </common:OptionItem>
-            <common:OptionItem
-                Header="Module:"
-                HeaderWidth="75"
-                IsHorizontal="True">
-                <Grid HorizontalAlignment="Stretch" ColumnDefinitions="*, Auto">
+                </common:OptionItem>
+                <common:OptionItem Header="Module">
                     <dxe:TextEdit Text="{x:Bind ViewModel.BarCodeModule, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <dxe:TextEdit.TextInputSettings>
                             <dxe:TextInputMaskSettings Mask="[0-9]{1,3}" MaskType="RegEx" />
                         </dxe:TextEdit.TextInputSettings>
                     </dxe:TextEdit>
-                    <CheckBox
-                        Grid.Column="1"
-                        MinWidth="62"
-                        Margin="12,0,0,0"
-                        Content="Auto"
-                        IsChecked="{x:Bind ViewModel.AutoModule, Mode=TwoWay}" />
-                </Grid>
-            </common:OptionItem>
-            <common:OptionItem
-                Header="Symbology:"
-                HeaderWidth="75"
-                IsHorizontal="True">
-                <ComboBox
-                    HorizontalAlignment="Stretch"
-                    IsTabStop="False"
-                    ItemsSource="{x:Bind ViewModel.BarCodeTypes}"
-                    SelectedItem="{x:Bind ViewModel.BarCodeType, Mode=TwoWay}" />
-            </common:OptionItem>
+                </common:OptionItem>
+                <common:OptionItem Header="Symbology">
+                    <ComboBox
+                        HorizontalAlignment="Stretch"
+                        IsTabStop="False"
+                        ItemsSource="{x:Bind ViewModel.BarCodeTypes}"
+                        SelectedItem="{x:Bind ViewModel.BarCodeType, Mode=TwoWay}" />
+                </common:OptionItem>
+                <CheckBox Content="Show Text" IsChecked="{x:Bind ViewModel.ShowText, Mode=TwoWay}" />
+                <CheckBox Content="Allow Auto Module" IsChecked="{x:Bind ViewModel.AutoModule, Mode=TwoWay}" />
+            </StackPanel>
 
             <ContentControl
                 HorizontalContentAlignment="Stretch"

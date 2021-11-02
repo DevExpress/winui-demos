@@ -4,34 +4,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.Devices.PointOfService;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace FeatureDemo.ControlsDemo {
-    public class BarCodeSampleViewModel : DevExpress.Mvvm.BindableBase {
+    [GenerateViewModel]
+    public partial class BarCodeSampleViewModel  {
         #region props
-        public bool ShowText {
-            get => GetValue<bool>();
-            set => SetValue(value);
-        }
-        public bool AutoModule {
-            get => GetValue<bool>();
-            set => SetValue(value);
-        }
-        public string Text {
-            get => GetValue<string>();
-            set => SetValue(value);
-        }
-        public double BarCodeModule {
-            get => GetValue<double>();
-            set => SetValue(value);
-        }
-        public BarCodeSymbology BarCodeType {
-            get => GetValue<BarCodeSymbology>();
-            set => SetValue(value, OnBarCodeTypeChanged);
-        }
-        public SymbologyViewModel SymbologyViewModel {
-            get => GetValue<SymbologyViewModel>();
-            private set => SetValue(value);
-        }
+        [GenerateProperty]
+        bool _ShowText;
+
+        [GenerateProperty]
+        bool _AutoModule;
+
+        [GenerateProperty]
+        string _Text;
+
+        [GenerateProperty]
+        double _BarCodeModule;
+
+        [GenerateProperty]
+        BarCodeSymbology _BarCodeType;
+
+        [GenerateProperty]
+        SymbologyViewModel _SymbologyViewModel;
 
         #endregion
         public BarCodeSampleViewModel() {

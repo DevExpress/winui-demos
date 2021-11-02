@@ -9,10 +9,23 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Margin="48,0,0,0" Style="{StaticResource DemoHeaderStyle}" Text="5000 Points (2500 Points per Series)" />
-        <dxc:CartesianChart x:Name="chart" Grid.Row="1" Margin="30,0,30,25" SelectionMode="None" ToolTipEnabled="False">
+        <TextBlock
+            Margin="48,0,0,0"
+            Style="{StaticResource DemoHeaderStyle}"
+            Text="5000 Points (2500 Points per Series)" />
+        <dxc:CartesianChart
+            x:Name="chart"
+            Grid.Row="1"
+            Margin="30,0,30,25"
+            SelectionMode="None"
+            ToolTipEnabled="False">
             <dxc:CartesianChart.AxisX>
-                <dxc:AxisX ShowLabels="True" ShowMajorGridlines="True" ShowMinorGridlines="True" DateTimeMeasureUnit="Millisecond" DateTimeGridAlignment="Millisecond">
+                <dxc:AxisX
+                    ShowLabels="True"
+                    ShowMajorGridlines="True"
+                    ShowMinorGridlines="True"
+                    DateTimeMeasureUnit="Millisecond"
+                    DateTimeGridAlignment="Millisecond">
                     <dxc:AxisX.WholeRange>
                         <dxc:WholeAxisRange SideMargins="0" />
                     </dxc:AxisX.WholeRange>

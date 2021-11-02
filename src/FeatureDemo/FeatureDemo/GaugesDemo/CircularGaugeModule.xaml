@@ -8,12 +8,12 @@
     <common:DemoModuleView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Default">
+                <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="GaugeSecondNeedleColor" Color="#FFCA5677" />
                     <SolidColorBrush x:Key="GaugeMinuteNeedleColor" Color="#FF343231" />
                     <SolidColorBrush x:Key="GaugeHourNeedleColor" Color="#FF343231" />
                 </ResourceDictionary>
-                <ResourceDictionary x:Key="Dark">
+                <ResourceDictionary x:Key="Default">
                     <SolidColorBrush x:Key="GaugeSecondNeedleColor" Color="#FFCA5677" />
                     <SolidColorBrush x:Key="GaugeMinuteNeedleColor" Color="#FFB2B2B2" />
                     <SolidColorBrush x:Key="GaugeHourNeedleColor" Color="#FFB2B2B2" />
@@ -60,8 +60,7 @@
             </Style>
         </ResourceDictionary>
     </common:DemoModuleView.Resources>
-    <Grid
-        Padding="48,10,48,10">
+    <Grid Padding="48,10,48,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />

@@ -14,7 +14,7 @@ namespace GridDemo {
     }
     public static class OutlookDataGenerator {
         static Random rnd = new Random();
-        public static string[] Subjects = new string[] { "Integrating Developer Express MasterView control into an Accounting System.",
+        public static readonly string[] Subjects = new string[] { "Integrating Developer Express MasterView control into an Accounting System.",
                                                 "Web Edition: Data Entry Page. There is an issue with date validation.",
                                                 "Payables Due Calculator is ready for testing.",
                                                 "Web Edition: Search Page is ready for testing.",

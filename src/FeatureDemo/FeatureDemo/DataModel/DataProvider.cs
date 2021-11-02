@@ -6,6 +6,7 @@ using FeatureDemo.ControlsDemo;
 using GaugesDemo;
 using GridDemo;
 using RangeControlDemo;
+using ReportsDemo;
 using RibbonDemo;
 using SchedulerDemo;
 
@@ -141,6 +142,7 @@ namespace FeatureDemo.DataModel {
                     { Sources = new string[] { "Data/GridSearchPanelViewModel.cs" }},
                 new DemoModule(nameof(DataFilteringModule), "Data Filtering", "The WinUI Data Grid allows users to filter its data. Users can select filter values from the column’s Drop-down Filter or type text in the Automatic Filter Row to apply a filter condition.")
                     { Sources = new string[] { "Data/DataFilteringViewModel.cs" }},
+                 new DemoModule(nameof(PrintingModule), "Print Options", "The DevExpress WinUI Data Grid allows you to render its content to paper (or export rendered data to DOC, XLS, PDF, HTML and more)."),
                 new DemoModule(nameof(GroupingModule), "Grouping and Summary", "This demo shows how to group data and align group summaries for corresponding columns.")
                     { Sources = new string[] { "Data/SalesByYearData.cs" }},
                 new DemoModule(nameof(ConditionalFormattingModule), "Conditional Formatting", "The WinUI Data Grid allows you to apply conditional formatting and change the appearance of individual cells and rows based on specific conditions.")
@@ -158,6 +160,8 @@ namespace FeatureDemo.DataModel {
                     { Sources = new string[] { "Data/SalesByYearData.cs" }},
                 new DemoModule(nameof(RowAlternationDemo), "Row Alternation", "The following demo highlights alternate rows to enhance the readability of WinUI Data Grid data. ")
                     { Sources = new string[] { "Data/MultiSelectionViewModel.cs" }},
+                new DemoModule("VirtualSourcesModule", "Virtual Data Sources", "This module shows how to use a GridControl with an infinite virtual data source.")
+                    { Sources = new string[] { "GridDemo/Data/VirtualSourcesViewModel.cs", "GridDemo/Data/IssuesData.cs" } },
             });
             #endregion
             #region Editors
@@ -172,11 +176,31 @@ namespace FeatureDemo.DataModel {
                 },
                 new DemoModule("InputValidationModule", "Input Validation", "This demo shows WinUI Editor validation capabilities."){
                     Sources = new string[] { "Data/InputValidationViewModel.cs" }
-                },
-                new DemoModule("DateNavigatorModule", "DateNavigator", "This demo shows features available in the WinUI Date Navigator, including range selection."),
+                }
             });
             #endregion
-            DemoModuleGroups.AddRange(new DemoModuleGroup[] { gridGroup, schedulerGroup, editorsGroup, ribbonGroup, chartsGroup, gaugesGroup, controlsGroup });
+            #region Reports
+            var reportsGroup = new DemoModuleGroup("Reporting", "Reporting", "F0 M20,20z M0,0z M13.9944,2.01258L12,0 0,0 0,20 16,20 16,15 15,15 15,19 1,19 1,1 11.5716,1 13.2913,2.72114 15,4.42888 15,6 16,6 16,4 13.9944,2.01258z M19.9954,9.52552L16.4599,5.98999 7.97461,14.4753 7.97461,18.0108 11.5101,18.0108 19.9954,9.52552z M18.5812,9.52552L16.4599,7.4042 9.03516,14.8289 11.1565,16.9503 18.5812,9.52552z M10.9621,8.15564C11.6825,7.65136 12,7.05062 12,6.5 12,5.94938 11.6825,5.34864 10.9621,4.84436 10.2448,4.34229 9.2007,4 8,4 6.7993,4 5.75517,4.34229 5.03793,4.84436 4.31753,5.34864 4,5.94938 4,6.5 4,7.05062 4.31753,7.65136 5.03793,8.15564 5.75517,8.65771 6.7993,9 8,9 9.2007,9 10.2448,8.65771 10.9621,8.15564z M8,10C10.7614,10 13,8.433 13,6.5 13,4.567 10.7614,3 8,3 5.23858,3 3,4.567 3,6.5 3,8.433 5.23858,10 8,10z M11,6.5C11,7.32843 9.65685,8 8,8 6.34315,8 5,7.32843 5,6.5 5,5.67157 6.34315,5 8,5L8,6.5 11,6.5z", new List<DemoModule>() {
+                new DemoModule("MasterDetailReportModule", "Master-Detail Report", @"This demo illustrates the use of Detail Report bands when generating a master-detail report. The report displays the invoice data where the Detail Report lists the products ordered.")
+                { Sources = new string[] { "Reports/MasterDetailReport.cs", "Reports/MasterDetailReport.Designer.cs", "Reports/MasterDetailReport.vsrepx" } },
+
+                new DemoModule("BarCodeTypesReportModule", "BarCode", "This report demonstrates all bar code types the BarCode control supports and the AutoModule option the BarCode control exposes. Enable this option in the Parameters panel to automatically calculate the width of the narrowest bar or space based on the control's size.")
+                { Sources = new string[] { "Reports/BarCodeTypesReport.cs", "Reports/BarCodeTypesReport.Designer.cs", "Reports/BarCodeTypesReport.vsrepx" } },
+
+                new DemoModule("ChartsReportModule", "Chart", "You can use the DevExpress Reporting Chart control to add charts to your reports. In this demo, the Chart control displays sales data collected from different sources, and FederationDataSource is used to combine these sources into one data source. The chart's Data Member is set to the Categories.CategoriesProducts relation.")
+                { Sources = new string[] { "Reports/ChartsReport.cs", "Reports/ChartsReport.Designer.cs", "Reports/ChartsReport.vsrepx" } },
+
+                new DemoModule("ReportMergingWithPdfReportModule", "Report Merging with PDF", "In this invoice demo, a report document is merged with PDF content. The report includes an XRPdfContent control that adds a PDF specification document for each product ordered.")
+                { Sources = new string[] { "Reports/ReportMergingWithPdfReport.cs", "Reports/ReportMergingWithPdfReport.Designer.cs", "Reports/ReportMergingWithPdfReport.vsrepx" } },
+
+                new DemoModule("SalesSummaryReportModule", "Sales Summary", "This demo illustrates how to use the Cross Tab control to create a Sales Summary report. In this demo, the Cross Tab calculates automatic totals and grand totals across all row and column fields. The top left corner displays row field headers, and row field values are grouped by quarter.")
+                { Sources = new string[] { "Reports/SalesSummaryReport.cs", "Reports/SalesSummaryReport.Designer.cs", "Reports/SalesSummaryReport.vsrepx" } },
+
+                new DemoModule("TableReportModule", "Table Report", "This demo illustrates how to use the Table control to create a table report. This control allows you to draw a data-aware table and apply report styles (for example, to odd and even table rows).")
+                { Sources = new string[] { "Reports/TableReport.cs", "Reports/TableReport.Designer.cs", "Reports/TableReport.vsrepx" } }
+            });
+            #endregion
+            DemoModuleGroups.AddRange(new DemoModuleGroup[] { gridGroup, editorsGroup, reportsGroup, chartsGroup, schedulerGroup, ribbonGroup, gaugesGroup, controlsGroup });
         }
         private void InitializeProductGroups() {
             var charts = new ProductGroup("Charting", nameof(DashboardModule), "A fast and lightweight chart component with a broad range of data presentation types.");
@@ -185,12 +209,14 @@ namespace FeatureDemo.DataModel {
             var gauges = new ProductGroup("Gauges and Indicators", nameof(HouseClimateModule), "An easy-to-use component with interactive linear and circular gauge indicators.");
             var toolbars = new ProductGroup("Ribbon", nameof(RibbonToolbarModule), "A suite with a lightweight ribbon toolbar control - Ribbon Toolbar, that help you create app forms.");
             var editors = new ProductGroup("Data Editors", nameof(ContactDetailsModule), "An extensive suite of data editors to be used standalone or within container components.");
+            var reports = new ProductGroup("Reporting", nameof(MasterDetailReportModule), "A feature-complete reporting suite for WinUI applications. DevExpress Reports for WinUI ships with an intuitive Visual Studio Report Designer and a comprehensive suite of report elements such as tables, labels, objects, charts, pivot tables, etc.");
 
             ProductGroups.Add(grid);
-            ProductGroups.Add(scheduler);
+            ProductGroups.Add(reports);
             ProductGroups.Add(editors);
-            ProductGroups.Add(toolbars);
             ProductGroups.Add(charts);
+            ProductGroups.Add(scheduler);
+            ProductGroups.Add(toolbars);
             ProductGroups.Add(gauges);
         }
     }

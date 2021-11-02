@@ -3,9 +3,11 @@ using Microsoft.UI.Composition;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace RangeControlDemo {
-    public class RangeControlViewModel : ViewModelBase {
+    [GenerateViewModel]
+    public partial class RangeControlViewModel {
         #region static
         public static string GetDisplayRange(DateTime start, DateTime end) => $"{start.ToString("MMMM dd, yyyy")}-{end.ToString("MMMM dd, yyyy")}";
         #endregion
@@ -15,22 +17,19 @@ namespace RangeControlDemo {
         readonly Random random = new Random();
         public int PointCount { get; }
         public double FirstPointValue { get; }
-        public DateTime VisibleStart {
-            get => GetValue<DateTime>();
-            set => SetValue(value);
-        }
-        public DateTime VisibleEnd {
-            get => GetValue<DateTime>();
-            set => SetValue(value);
-        }
-        public DateTime SelectionStart {
-            get => GetValue<DateTime>();
-            set => SetValue(value);
-        }
-        public DateTime SelectionEnd {
-            get => GetValue<DateTime>();
-            set => SetValue(value);       
-        }
+
+        [GenerateProperty]
+        DateTime _VisibleStart;
+
+        [GenerateProperty]
+        DateTime _VisibleEnd;
+
+        [GenerateProperty]
+        DateTime _SelectionStart;
+
+        [GenerateProperty]
+        DateTime _SelectionEnd;
+
         public TimeSpan Step { get; }
         public IEnumerable ItemsSource { get { return itemsSource ?? (itemsSource = CreateItemsSource(PointCount)); } }
 

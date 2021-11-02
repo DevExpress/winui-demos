@@ -22,21 +22,24 @@
         NavigationStyle="Row"
         ShowTotalSummary="True">
         <dxg:GridControl.Columns>
-            <dxg:GridTextColumn FieldName="State" SortIndex="0" AllowFiltering="False"/>
+            <dxg:GridTextColumn
+                FieldName="State"
+                SortIndex="0"
+                AllowFiltering="False" />
             <dxg:GridTextColumn
                 FieldName="Sales"
-                HorizontalContentAlignment="Right"
+                CellHorizontalContentAlignment="Right"
                 AllowFiltering="False"
                 DisplayFormat="#,##0,,M" />
             <dxg:GridTextColumn
                 FieldName="SalesVsTarget"
                 Header="Sales vs Target"
-                HorizontalContentAlignment="Right"
+                CellHorizontalContentAlignment="Right"
                 AllowFiltering="False"
                 DisplayFormat="p" />
             <dxg:GridTextColumn
                 FieldName="Profit"
-                HorizontalContentAlignment="Right"
+                CellHorizontalContentAlignment="Right"
                 AllowFiltering="False"
                 DisplayFormat="#,##0,,M" />
         </dxg:GridControl.Columns>
@@ -89,7 +92,7 @@
                 Margin="-16,-16,-16,8"
                 AutoGenerateColumns="False"
                 AutoWidth="True"
-                BorderThickness="0,1,0,1"
+                BorderThickness="0,1,0,0"
                 ItemsSource="{x:Bind ViewModel.Infos, Mode=OneWay}"
                 NavigationStyle="Row"
                 SelectedItem="{x:Bind ViewModel.SelectedInfo, Mode=TwoWay}">
@@ -106,14 +109,14 @@
                         AllowFiltering="False"
                         FixedWidth="True">
                         <dxg:GridTemplateColumn.CellTemplate>
-                            <DataTemplate x:DataType="local:FormatConditionInfo">
+                            <DataTemplate x:DataType="dxg:CellData">
                                 <Border
                                     Margin="-7,-3,-7,-3"
                                     Padding="7,3,7,3"
-                                    Background="{x:Bind Format.Background, Mode=OneWay}">
+                                    Background="{x:Bind ((dxg:Format)Value).Background, Mode=OneWay}">
                                     <TextBlock Text="AaBbCcYyZz">
                                         <dx:Interaction.Behaviors>
-                                            <local:FormatApplierBehavior Format="{x:Bind Format, Mode=OneWay}" />
+                                            <local:FormatApplierBehavior Format="{x:Bind (dxg:Format)Value, Mode=OneWay}" />
                                         </dx:Interaction.Behaviors>
                                     </TextBlock>
                                 </Border>
@@ -122,10 +125,14 @@
                     </dxg:GridTemplateColumn>
                 </dxg:GridControl.Columns>
             </dxg:GridControl>
-            <common:OptionItem Header="Format" IsHorizontal="True">
-                <ComboBox ItemsSource="{x:Bind ViewModel.FormatNames}" SelectedItem="{x:Bind ViewModel.SelectedInfo.FormatName, Mode=TwoWay}" />
+            <common:OptionsHeader Text="Options" />
+            <common:OptionItem Header="Format:" IsHorizontal="True">
+                <ComboBox
+                    ItemsSource="{x:Bind ViewModel.FormatNames}"
+                    SelectedItem="{x:Bind ViewModel.SelectedInfo.FormatName, Mode=TwoWay}"
+                    HorizontalAlignment="Stretch" />
             </common:OptionItem>
-            <CheckBox Content="Apply To Row" IsChecked="{x:Bind ViewModel.SelectedInfo.ApplyToRow, Mode=TwoWay}" />
+            <CheckBox Content="Apply to Row" IsChecked="{x:Bind ViewModel.SelectedInfo.ApplyToRow, Mode=TwoWay}" />
             <CheckBox Content="Is Enabled" IsChecked="{x:Bind ViewModel.SelectedInfo.IsEnabled, Mode=TwoWay}" />
         </common:OptionsPanel>
     </local:GridDemoUserControl.Options>

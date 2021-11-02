@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using Windows.Storage;
 using Microsoft.UI.Xaml.Data;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace DevExpress.DemoData.Models {
     
@@ -235,47 +236,66 @@ namespace DevExpress.DemoData.Models {
 namespace DevExpress.DemoData.Models {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "DXCA003", Justification = "VB Convertion")]
     [Bindable]
-    public partial class Employee : BindableBase
+    [GenerateViewModel]
+    public partial class Employee
     {
+        [GenerateProperty]
         long _EmployeeID;
-        public long EmployeeID { get { return _EmployeeID; } set { SetProperty(ref _EmployeeID, value, "EmployeeID"); } }
-        string _LastName;
-        public string LastName { get { return _LastName; } set { SetProperty(ref _LastName, value, "LastName"); } }
-        string _FirstName;
-        public string FirstName { get { return _FirstName; } set { SetProperty(ref _FirstName, value, "FirstName"); } }
-        string _Title;
-        public string Title { get { return _Title; } set { SetProperty(ref _Title, value, "Title"); } }
-        string _TitleOfCourtesy;
-        public string TitleOfCourtesy { get { return _TitleOfCourtesy; } set { SetProperty(ref _TitleOfCourtesy, value, "TitleOfCourtesy"); } }
-        Nullable<System.DateTime> _BirthDate;
-        public Nullable<System.DateTime> BirthDate { get { return _BirthDate; } set { SetProperty(ref _BirthDate, value, "BirthDate"); } }
-        Nullable<System.DateTime> _HireDate;
-        public Nullable<System.DateTime> HireDate { get { return _HireDate; } set { SetProperty(ref _HireDate, value, "HireDate"); } }
-        string _Address;
-        public string Address { get { return _Address; } set { SetProperty(ref _Address, value, "Address"); } }
-        string _City;
-        public string City { get { return _City; } set { SetProperty(ref _City, value, "City"); } }
-        string _Region;
-        public string Region { get { return _Region; } set { SetProperty(ref _Region, value, "Region"); } }
-        string _PostalCode;
-        public string PostalCode { get { return _PostalCode; } set { SetProperty(ref _PostalCode, value, "PostalCode"); } }
-        string _Country;
-        public string Country { get { return _Country; } set { SetProperty(ref _Country, value, "Country"); } }
-        string _HomePhone;
-        public string HomePhone { get { return _HomePhone; } set { SetProperty(ref _HomePhone, value, "HomePhone"); } }
-        string _Extension;
-        public string Extension { get { return _Extension; } set { SetProperty(ref _Extension, value, "Extension"); } }
-        byte[] _Photo;
-        public byte[] Photo { get { return _Photo; } set { SetProperty(ref _Photo, value, "Photo"); } }
-        string _Notes;
-        public string Notes { get { return _Notes; } set { SetProperty(ref _Notes, value, "Notes"); } }
-        Nullable<long> _ReportsTo;
-        public Nullable<long> ReportsTo { get { return _ReportsTo; } set { SetProperty(ref _ReportsTo, value, "ReportsTo"); } }
-        string _Email;
-        public string Email { get { return _Email; } set { SetProperty(ref _Email, value, "Email"); } }
-        string _GroupName;
-        public string GroupName { get { return _GroupName; } set { SetProperty(ref _GroupName, value, "GroupName"); } }
 
+        [GenerateProperty]
+        string _LastName;
+
+        [GenerateProperty]
+        string _FirstName;
+
+        [GenerateProperty]
+        string _Title;
+
+        [GenerateProperty]
+        string _TitleOfCourtesy;
+
+        [GenerateProperty]
+        DateTime? _BirthDate;
+
+        [GenerateProperty]
+        DateTime? _HireDate;
+
+        [GenerateProperty]
+        string _Address;
+
+        [GenerateProperty]
+        string _City;
+
+        [GenerateProperty]
+        string _Region;
+
+        [GenerateProperty]
+        string _PostalCode;
+
+        [GenerateProperty]
+        string _Country;
+
+        [GenerateProperty]
+        string _HomePhone;
+
+        [GenerateProperty]
+        string _Extension;
+
+        [GenerateProperty]
+        byte[] _Photo;
+
+        [GenerateProperty]
+        string _Notes;
+
+        [GenerateProperty]
+        long? _ReportsTo;
+
+        [GenerateProperty]
+        string _Email;
+
+        [GenerateProperty]
+        string _GroupName;
+        
         string _FullName = null;
         public string FullName {
             get {

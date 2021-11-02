@@ -8,32 +8,34 @@
     xmlns:dxe="using:DevExpress.WinUI.Editors"
     mc:Ignorable="d">
 
-    <StackPanel
-        MaxWidth="658"
-        VerticalAlignment="Center"
-        Spacing="12">
-        <dxe:SpinEdit Header="Default" EditValue="15" />
-        <dxe:SpinEdit
-            Header="Min/Max Values"
-            EditValue="1"
-            Increment="1"
-            MaxValue="9"
-            MinValue="-9" />
-        <dxe:SpinEdit
-            Header="Custom Step"
-            EditValue="100"
-            Increment="100" />
-        <dxe:SpinEdit
-            Header="Masked Input"
-            EditValue="125000"
-            Increment="1000">
-            <dxe:TextEdit.TextInputSettings>
-                <dxe:TextInputMaskSettings Mask="c0" MaskType="Numeric" />
-            </dxe:TextEdit.TextInputSettings>
-        </dxe:SpinEdit>
-        <dxe:SpinEdit
-            Header="Non Editable"
-            EditValue="50"
-            IsTextEditable="False" />
-    </StackPanel>
+    <Border Background="{ThemeResource PageContentBackground}">
+        <StackPanel
+            MaxWidth="658"
+            VerticalAlignment="Center"
+            Spacing="12">
+            <dxe:SpinEdit Header="Default" EditValue="15" />
+            <dxe:SpinEdit
+                Header="Min/Max Values"
+                EditValue="1"
+                Increment="1"
+                MaxValue="9"
+                MinValue="-9" />
+            <dxe:SpinEdit
+                Header="Custom Step"
+                EditValue="100"
+                Increment="100" />
+            <dxe:SpinEdit
+                Header="Masked Input"
+                EditValue="125000"
+                Increment="1000">
+                <dxe:TextEdit.TextInputSettings>
+                    <dxe:TextInputMaskSettings Mask="c0" MaskType="Numeric" />
+                </dxe:TextEdit.TextInputSettings>
+            </dxe:SpinEdit>
+            <dxe:SpinEdit
+                Header="Non Editable"
+                EditValue="50"
+                IsTextEditable="False" />
+        </StackPanel>
+    </Border>
 </common:DemoModuleView>

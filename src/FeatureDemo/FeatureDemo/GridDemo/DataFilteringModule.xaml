@@ -32,8 +32,14 @@
                     Padding="10"
                     Filter="{Binding Path=CustomColumnFilter, Mode=TwoWay}">
                     <StackPanel Orientation="Vertical" Spacing="10">
-                        <dxe:DateEdit Header="From:" EditValue="{Binding MinValue, ElementName=rangeFilter, Mode=TwoWay}" MinWidth="200" />
-                        <dxe:DateEdit Header="To:" EditValue="{Binding MaxValue, ElementName=rangeFilter, Mode=TwoWay}" MinWidth="200"/>
+                        <dxe:DateEdit
+                            Header="From:"
+                            EditValue="{Binding MinValue, ElementName=rangeFilter, Mode=TwoWay}"
+                            MinWidth="200" />
+                        <dxe:DateEdit
+                            Header="To:"
+                            EditValue="{Binding MaxValue, ElementName=rangeFilter, Mode=TwoWay}"
+                            MinWidth="200" />
                     </StackPanel>
                 </local:RangeFilter>
             </DataTemplate>

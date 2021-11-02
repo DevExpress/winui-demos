@@ -34,7 +34,7 @@
             </Setter>
         </Style>
     </common:DemoModuleView.Resources>
-    
+
     <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
         <Grid MinHeight="600" Padding="48,0,48,0">
             <Grid.RowDefinitions>

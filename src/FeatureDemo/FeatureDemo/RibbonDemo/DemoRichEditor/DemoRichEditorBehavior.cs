@@ -50,7 +50,6 @@ namespace RibbonDemo {
         void Do(Action action) {
             if (AssociatedEditor != null) {
                 action();
-                AssociatedEditor.UpdateSelection();
                 AssociatedEditor.UpdateLayout();
             }
         }

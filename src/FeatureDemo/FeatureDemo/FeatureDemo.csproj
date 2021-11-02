@@ -11,22 +11,26 @@
     <WarningsAsErrors />
     <NoWarn>CA1416;WMC1507</NoWarn>
     <UseWinUI>true</UseWinUI>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   
   <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\Appointments.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Demo.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\devav.sqlite3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\Employees.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\GDP.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Invoice.prnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Items.xml">
@@ -38,7 +42,13 @@
     <Content Include="Data\Movies.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\nwind.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\NWindInvoices.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SampleReport.repx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\SchedulerDemoData\CustomerEmployee.xml">
@@ -60,6 +70,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Top10LagerstCountriesInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Vehicles.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="GridDemo\Themes\Icons\Default\PersonalTasks\Category_HouseChores.svg" />
@@ -325,9 +338,29 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Update="app-icon-active-light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="app-icon-active-dark.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="app-icon-inactive.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include=".\**\*.cs" Exclude=".\obj\**\*.cs" />
     <EmbeddedResource Include=".\**\*.xaml" Exclude=".\obj\**\*.xaml" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ReportsDemo\Reports\BarCodeTypesReport.vsrepx" />
+    <EmbeddedResource Include="ReportsDemo\Reports\ChartsReport.vsrepx" />
+    <EmbeddedResource Include="ReportsDemo\Reports\SalesSummaryReport.vsrepx" />
+    <EmbeddedResource Include="ReportsDemo\Reports\ReportMergingWithPdfReport.vsrepx" />  
+    <EmbeddedResource Include="ReportsDemo\Reports\MasterDetailReport.vsrepx" />
+    <EmbeddedResource Include="ReportsDemo\Reports\TableReport.vsrepx" />
+  </ItemGroup>
+
 </Project>

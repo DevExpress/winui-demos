@@ -3,6 +3,7 @@ using FeatureDemo.Common;
 using Microsoft.UI.Xaml;
 using System;
 using System.ComponentModel;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace GaugesDemo {
     public sealed partial class CircularGaugeModule : DemoModuleView {
@@ -16,12 +17,18 @@ namespace GaugesDemo {
         }
     }
 
-    public class WorldTimeInfo : BindableBase {
-        public double NewYorkHours { get => GetValue<double>(); set => SetValue(value); }
-        public double LondonHours { get => GetValue<double>(); set => SetValue(value); }
-        public double MoscowHours { get => GetValue<double>(); set => SetValue(value); }
-        public double Minutes { get => GetValue<double>(); set => SetValue(value); }
-        public double Seconds { get => GetValue<double>(); set => SetValue(value); }
+    [GenerateViewModel]
+    public partial class WorldTimeInfo {
+        [GenerateProperty]
+        double _NewYorkHours;
+        [GenerateProperty]
+        double _LondonHours;
+        [GenerateProperty]
+        double _MoscowHours;
+        [GenerateProperty]
+        double _Minutes;
+        [GenerateProperty]
+        double _Seconds;
 
         DispatcherTimer timer = new DispatcherTimer();
 

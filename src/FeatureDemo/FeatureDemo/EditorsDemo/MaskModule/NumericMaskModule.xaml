@@ -40,8 +40,8 @@
             </dxe:TextEdit.TextInputSettings>
         </dxe:TextEdit>
         <dxe:TextEdit
-            Header="Negative"
             Grid.Row="1"
+            Header="Negative"
             EditValue="-399.99">
             <dxe:TextEdit.TextInputSettings>
                 <dxe:TextInputMaskSettings Mask="#,##0.00;&lt;&lt;#,##0.00&gt;&gt;" MaskType="Numeric" />

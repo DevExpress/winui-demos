@@ -126,7 +126,6 @@
     </Grid>
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="View" />
             <RadioButton
                 Checked="{x:Bind OnIsSideBySideBarChecked}"
                 Content="Side-By-Side Bar"
@@ -149,7 +148,6 @@
                 Content="Side-By-Side Full Stacked Bar"
                 GroupName="BarSeriesViewGroup" />
 
-            <common:OptionsHeader Text="Orientation" />
             <CheckBox Content="Diagram Rotated" IsChecked="{x:Bind chart.Rotated, Mode=TwoWay}" />
         </common:OptionsPanel>
     </common:DemoModuleView.Options>

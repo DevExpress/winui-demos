@@ -9,6 +9,11 @@ using DevExpress.Mvvm;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using DevExpress.Mvvm.CodeGenerators;
+using System.Data;
+using Windows.Devices.Usb;
+using DevExpress.Pdf.Native;
+using Microsoft.UI.Xaml.Media;
 
 namespace FeatureDemo.Data {
     public partial class Customer {
@@ -135,7 +140,7 @@ namespace FeatureDemo.Data {
 
             imageSource = new BitmapImage();
             imageSource.SetSource(stream);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSource"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageSource)));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -185,74 +190,34 @@ namespace FeatureDemo.Data {
     }
     public enum Priority { Low, Medium, High }
     public enum Status { New, Postponed, Fixed, Rejected }
-    [XmlRoot("Items")]
-    public class Item : BindableBase {
+    [XmlRoot("Items"), GenerateViewModel]
+    public partial class Item {
+        [GenerateProperty]
         DateTime createdDate;
-        int creatorId;
+        [GenerateProperty]
+        int creatorID;
+        [GenerateProperty]
         string description;
+        [GenerateProperty]
         DateTime fixedDate;
+        [GenerateProperty]
         int id;
+        [GenerateProperty]
         DateTime modifiedDate;
+        [GenerateProperty]
         string name;
-        int ownerId;
+        [GenerateProperty]
+        int ownerID;
+        [GenerateProperty]
         Priority priority;
+        [GenerateProperty]
         Status status;
-        int projectId;
+        [GenerateProperty]
+        int projectID;
+        [GenerateProperty]
         double progress;
+        [GenerateProperty]
         bool hasAttachment;
-
-        public DateTime CreatedDate {
-            get { return createdDate; }
-            set { SetProperty(ref createdDate, value, nameof(CreatedDate)); }
-        }
-        public int CreatorID {
-            get { return creatorId; }
-            set { SetProperty(ref creatorId, value, nameof(CreatorID)); }
-        }
-        public string Description {
-            get { return description; }
-            set { SetProperty(ref description, value, nameof(Description)); }
-        }
-        public DateTime FixedDate {
-            get { return fixedDate; }
-            set { SetProperty(ref fixedDate, value, nameof(FixedDate)); }
-        }
-        public int ID {
-            get { return id; }
-            set { SetProperty(ref id, value, nameof(ID)); }
-        }
-        public DateTime ModifiedDate {
-            get { return modifiedDate; }
-            set { SetProperty(ref modifiedDate, value, nameof(ModifiedDate)); }
-        }
-        public string Name {
-            get { return name; }
-            set { SetProperty(ref name, value, nameof(Name)); }
-        }
-        public int OwnerID {
-            get { return ownerId; }
-            set { SetProperty(ref ownerId, value, nameof(OwnerID)); }
-        }
-        public Priority Priority {
-            get { return priority; }
-            set { SetProperty(ref priority, value, nameof(Priority)); }
-        }
-        public Status Status {
-            get { return status; }
-            set { SetProperty(ref status, value, nameof(Status)); }
-        }
-        public int ProjectID {
-            get { return projectId; }
-            set { SetProperty(ref projectId, value, nameof(ProjectID)); }
-        }
-        public double Progress {
-            get { return progress; }
-            set { SetProperty(ref progress, value, nameof(Progress)); }
-        }
-        public bool HasAttachment {
-            get { return hasAttachment; }
-            set { SetProperty(ref hasAttachment, value, nameof(HasAttachment)); }
-        }
     }
 
     public class DataStorage {
@@ -368,5 +333,175 @@ namespace FeatureDemo.Data {
             new User() { Id = 15, Name = "Carl Lucas" },
             new User() { Id = 16, Name = "Jerry Campbell" },
         };
+    }
+
+    public class VehiclesData {
+        public static readonly Random random = new Random();
+        public enum Category {
+            Car = 1,
+            CrossoverAndSUV = 2,
+            Truck = 3,
+            Minivan = 4
+        }
+        public class Trademark {
+            
+            public int ID { get; set; }
+            public ImageSource Logo { get; set; }
+            public byte[] LogoData { get; set; }
+            public string Name { get; set; }
+            
+            
+            
+            
+            
+            
+            
+        }
+        public class OrderItem {
+            internal Model Model;
+            public OrderItem(int totalCount, List<Model> models, int id)
+                : this(totalCount, models[id % models.Count], id) {
+            }
+            public OrderItem(int totalCount, Model model, int id) {
+                Model = model;
+                ModelPrice = model.Price;
+                Trademark = model.Trademark;
+                Name = model.Name;
+                Modification = model.Modification;
+                Category = model.Category;
+                MPGCity = model.MPGCity;
+                MPGHighway = model.MPGHighway;
+                Doors = model.Doors;
+                BodyStyle = model.BodyStyle;
+                Cylinders = model.Cylinders;
+                Horsepower = model.Horsepower;
+                Torque = model.Torque;
+                TransmissionSpeeds = model.TransmissionSpeeds;
+                TransmissionType = model.TransmissionType;
+                Discount = Math.Round(0.05 * ((id * Trademark) % 4), 2);
+                OrderID = id;
+                if(totalCount > 0)
+                    CreateSalesInfo(id, totalCount);
+            }
+
+            void CreateSalesInfo(int id, int totalCount) {
+                var salesPerDay = totalCount / (365.25 * 7);
+                var lastSaleDateTime = DateTime.Today.AddHours(-15);
+                SalesDate = lastSaleDateTime.AddDays(-id / salesPerDay);
+                var orderWithinYearId = (int)Math.Floor((SalesDate - new DateTime(SalesDate.Year, 1, 1)).TotalDays * salesPerDay) + 1;
+                SalesID = string.Format("{0:d4}-<size=-1><b>{1:d6}</b>", SalesDate.Year, orderWithinYearId);
+            }
+            public OrderItem(Model model, int days, Random rnd, int id) : this(-1, model, id) {
+                Discount = Math.Round(0.05 * rnd.Next(4), 2);
+                SalesDate = DateTime.Now.AddDays(-rnd.Next(days));
+            }
+            public int OrderID { get; set; }
+            public string SalesID { get; set; }
+            
+            public DateTime SalesDate { get; set; }
+            
+            public double Discount { get; set; }
+            
+            public decimal ModelPrice { get; set; }
+            public int Trademark { get; set; }
+            public string Name { get; set; }
+            public string Modification { get; set; }
+            public int Category { get; set; }
+            public int? MPGCity { get; set; }
+            public int? MPGHighway { get; set; }
+            public int Doors { get; set; }
+            public int BodyStyle { get; set; }
+            public int Cylinders { get; set; }
+            public string Horsepower { get; set; }
+            public string Torque { get; set; }
+            public int TransmissionSpeeds { get; set; }
+            public int TransmissionType { get; set; }
+            
+        }
+        public class Model {
+            public int ID { get; set; }
+            public int Trademark { get; set; }
+            public string Name { get; set; }
+            public string Modification { get; set; }
+            public int Category { get; set; }
+            public decimal Price { get; set; }
+            public int? MPGCity { get; set; }
+            public int? MPGHighway { get; set; }
+            public int Doors { get; set; }
+            public int BodyStyle { get; set; }
+            public int Cylinders { get; set; }
+            public string Horsepower { get; set; }
+            public string Torque { get; set; }
+            public int TransmissionSpeeds { get; set; }
+            public int TransmissionType { get; set; }
+            public string Description { get; set; }
+            
+            
+            public DateTime DeliveryDate { get; set; }
+            public bool InStock { get; set; }
+            public ImageSource TrademarkImage => Trademarks?[Trademark - 1].Logo;
+            public byte[] TrademarkImageData => Trademarks?[Trademark - 1].LogoData;
+            public string TrademarkName { get { return Trademarks != null ? Trademarks[Trademark - 1].Name : string.Empty; } }
+            public string CategoryName {
+                get => Enum.GetName<Category>((Category)Category);
+            }
+            public List<VehiclesData.Trademark> Trademarks = null;
+
+        }
+        static IEnumerable<Model> models;
+        public static async Task<IEnumerable<Model>> GetModels()  => models ?? (models = await CreateModels(15));
+
+        async static Task<List<Model>> CreateModels(int dataInterval) {
+            string Model = "Model";
+            string Trademark = "Trademark";
+            var dataFile = StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Data/Vehicles.xml")).AsTask().Result;
+            var ds = new DataSet();
+            using var stream = await dataFile.OpenStreamForReadAsync();
+            ds.ReadXml(stream);
+            var listTrademarks = new List<VehiclesData.Trademark>();
+            foreach(DataRow row in ds.Tables[Trademark].Rows)
+                listTrademarks.Add(new VehiclesData.Trademark() {
+                    ID = (int)(row["ID"]),
+                    Name = (string)row["Name"],
+                    LogoData = (byte[])row["Logo"],
+                    Logo = await ToImageAsync((byte[])row["Logo"])
+                });
+
+            var listModels = new List<VehiclesData.Model>();
+            foreach(DataRow row in ds.Tables[Model].Rows)
+                listModels.Add(new VehiclesData.Model() {
+                    ID = (int)row["ID"],
+                    Name = (string)row["Name"],
+                    Trademark = (int)row["TrademarkID"],
+                    Modification = (string)row["Modification"],
+                    Category = (int)row["CategoryID"],
+                    Price = (decimal)row["Price"],
+                    MPGCity = System.DBNull.Value.Equals(row["MPG City"]) ? null : (int?)row["MPG City"],
+                    MPGHighway = System.DBNull.Value.Equals(row["MPG City"]) ? null : (int?)row["MPG Highway"],
+                    Doors = (int)row["Doors"],
+                    BodyStyle = (int)row["BodyStyleID"],
+                    Cylinders = (int)row["Cylinders"],
+                    Horsepower = (string)row["Horsepower"],
+                    Torque = (string)row["Torque"],
+                    TransmissionSpeeds = Convert.ToInt32(row["Transmission Speeds"]),
+                    TransmissionType = (int)row["Transmission Type"],
+                    Description = string.Format("{0}", row["Description"]),
+                    
+                    
+                    DeliveryDate = DateTime.Now.AddDays(random.Next(dataInterval)),
+                    InStock = random.Next(100) < 95,
+                    Trademarks = listTrademarks
+                });
+            return listModels;
+        }
+        public static async Task<BitmapImage> ToImageAsync(byte[] bytes) {
+            using var stream = new InMemoryRandomAccessStream();
+            var writer = new DataWriter(stream.GetOutputStreamAt(0));
+            writer.WriteBytes(bytes);
+            await writer.StoreAsync();
+            var image = new BitmapImage();
+            await image.SetSourceAsync(stream);
+            return image;
+        }
     }
 }

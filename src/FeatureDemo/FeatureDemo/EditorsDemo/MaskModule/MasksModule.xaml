@@ -19,6 +19,7 @@
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
             ItemInvoked="pivot_ItemInvoked"
+            Background="Transparent"
             PaneDisplayMode="Top">
             <NavigationView.Resources>
                 <Style TargetType="NavigationViewItem">
@@ -27,6 +28,7 @@
                     <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
                 </Style>
                 <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent" />
+                <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
             </NavigationView.Resources>
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Numeric" IsSelected="True">

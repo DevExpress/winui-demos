@@ -19,10 +19,10 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource PageBackground}" RowDefinitions="Auto, Auto, *">
+    <Grid Background="Transparent" RowDefinitions="Auto, Auto, *">
         <Grid ColumnDefinitions="*, Auto">
             <TextBlock
-                Margin="16,0,0,0"
+                Margin="16,12,0,10"
                 VerticalAlignment="Center"
                 FontSize="24"
                 Text="{x:Bind MainViewModel.SelectedDemo.DemoModule.Title, Mode=OneWay}"
@@ -34,10 +34,12 @@
             </TextBlock>
             <dxri:ToolbarControl
                 Grid.Column="1"
+                Margin="0,0,10,0"
                 VerticalAlignment="Center"
                 Background="Transparent">
                 <dxri:ToolbarGroup>
                     <dxri:ToolbarButton
+                        ItemStyle="GlyphWithText"
                         Command="{x:Bind MainViewModel.ShowPrevCommand}"
                         Content="Prev"
                         IconHeight="24"
@@ -45,6 +47,7 @@
                         IconWidth="24"
                         Visibility="{x:Bind MainViewModel.PrevNextEnabled, Converter={StaticResource booleanToVisibilityConverter}, Mode=OneWay}" />
                     <dxri:ToolbarButton
+                        ItemStyle="GlyphWithText"
                         Command="{x:Bind MainViewModel.ShowNextCommand, Mode=OneTime}"
                         Content="Next"
                         FlyoutFlowBreakWithSeparator="True"
@@ -53,6 +56,7 @@
                         IconWidth="24"
                         Visibility="{x:Bind MainViewModel.PrevNextEnabled, Converter={StaticResource booleanToVisibilityConverter}, Mode=OneWay}" />
                     <dxri:ToolbarToggleButton
+                        ItemStyle="GlyphWithText"
                         CheckedContent="Show demo"
                         CheckedIconSource="&#xF19D;"
                         Content="Show code"
@@ -62,12 +66,14 @@
                         IsChecked="{x:Bind IsCodeVisible, Mode=TwoWay}"
                         IsThreeStateMode="False" />
                     <dxri:ToolbarButton
+                        ItemStyle="GlyphWithText"
                         Click="{x:Bind ToggleTheme}"
                         Content="Toggle Theme"
                         IconHeight="24"
                         IconSource="&#xE771;"
                         IconWidth="24" />
                     <dxri:ToolbarToggleButton
+                        ItemStyle="Glyph"
                         IconHeight="24"
                         IconSource="&#xE713;"
                         IconWidth="24"
@@ -81,7 +87,7 @@
             Grid.Row="1"
             Height="1"
             Margin="0,2,0,0"
-            Fill="{ThemeResource DemoModuleSeparatorBrush}" />
+            Fill="{ThemeResource SeparatorBrush}" />
 
         <SplitView
             x:Name="splitView"
@@ -96,13 +102,13 @@
                     <Rectangle
                         Width="1"
                         HorizontalAlignment="Left"
-                        Fill="{ThemeResource DemoModuleSeparatorBrush}" />
+                        Fill="{ThemeResource SeparatorBrush}" />
                     <ScrollViewer
                         Margin="1,0,0,0"
                         Background="{ThemeResource OptionsPanelBackground}"
                         HorizontalScrollMode="Disabled"
                         VerticalScrollBarVisibility="Auto">
-                        <ContentPresenter Content="{x:Bind DemoModuleView.Options, Mode=OneWay}" />
+                        <ContentPresenter Content="{x:Bind DemoModuleView.Options, Mode=OneWay}" Margin="12" />
                     </ScrollViewer>
                 </Grid>
             </SplitView.Pane>
@@ -126,13 +132,19 @@
                         IsIndeterminate="True" />
                 </StackPanel>
                 <Grid x:Name="demoContainer" RowDefinitions="*, Auto">
-                    <ContentControl Content="{x:Bind DemoModuleView, Mode=OneWay}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                    <Border Background="{ThemeResource PageContentBackground}">
+                        <ContentControl
+                            Content="{x:Bind DemoModuleView, Mode=OneWay}"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch" />
+                    </Border>
                     <Border
                         Grid.Row="1"
-                        Margin="16"
+                        BorderThickness="0,1,0,0"
+                        BorderBrush="{ThemeResource DescriptionPanelBorder}"
+                        Padding="14"
                         Background="{ThemeResource DescriptionPanelBackground}">
                         <TextBlock
-                            Margin="16,9,16,11"
                             VerticalAlignment="Center"
                             FontFamily="Segoe UI Light"
                             FontSize="14"

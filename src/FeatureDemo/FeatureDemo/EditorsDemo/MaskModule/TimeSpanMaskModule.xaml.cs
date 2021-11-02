@@ -3,6 +3,7 @@ using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
 using DevExpress.WinUI.Editors;
 using FeatureDemo.Common;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace EditorsDemo {
     public sealed partial class TimeSpanMaskModule : DemoSubModuleView {
@@ -15,20 +16,16 @@ namespace EditorsDemo {
         public TimeSpanMaskViewModel ViewModel { get; }
     }
 
-    public class TimeSpanMaskViewModel : ViewModelBase {
+    [GenerateViewModel(ImplementISupportServices = true)]
+    public partial class TimeSpanMaskViewModel {
+        [GenerateProperty]
+        public TextEdit _FocusedEditor;
 
-        public TextEdit FocusedEditor {
-            get => GetValue<TextEdit>();
-            set => SetValue(value, OnFocusedEditorChanged);
-        }
-        public TextInputTimeSpanMaskSettings TextInputSettings {
-            get => GetValue<TextInputTimeSpanMaskSettings>();
-            private set => SetValue(value);
-        }
-        public string Mask {
-            get => GetValue<string>();
-            set => SetValue(value, OnMaskChanged);
-        }
+        [GenerateProperty(SetterAccessModifier = AccessModifier.Private)]
+        TextInputTimeSpanMaskSettings _TextInputSettings;
+
+        [GenerateProperty]
+        string _Mask;
 
         void OnFocusedEditorChanged() {
             TextInputSettings = FocusedEditor?.TextInputSettings as TextInputTimeSpanMaskSettings;

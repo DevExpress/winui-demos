@@ -1,7 +1,11 @@
 ﻿using DevExpress.WinUI.Core.Internal;
 using FeatureDemo.View;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Popups;
@@ -20,6 +24,9 @@ namespace FeatureDemo {
             }
             this.InitializeComponent();
         }
+
+        public Window MainWindow { get; private set; }
+
         Task<IUICommand> task;
         void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e) {
             e.Handled = true;
@@ -29,13 +36,12 @@ namespace FeatureDemo {
             task = dialog.ShowAsync().AsTask();
         }
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args) {
-            m_window = new Window() { 
+            MainWindow = new Window() { 
                 Title = "DevExpress WinUI Demos " + DevExpress.WinUI.Core.Internal.AssemblyInfo.VersionShort,
-                Content = new MainPage(),
+                Content = new MainPage() { Args = string.Join(" ", Environment.GetCommandLineArgs().Skip(1)) }
             };
-            CurrentWindowHelper.SetCurrentWindow(m_window);
-            m_window.Activate();
-        }
-        private Window m_window;
+            WindowIconHelper.AttachIcon(MainWindow, "app-icon-active-dark.ico", "app-icon-active-light.ico", "app-icon-inactive.ico");
+            MainWindow.Activate();
+        }       
     }
 }

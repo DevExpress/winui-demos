@@ -20,10 +20,11 @@ using Windows.Foundation;
 namespace FeatureDemo.View {
     public sealed partial class MainPage : Page {
         public MainViewModel MainViewModel { get; } = MainViewModel.Instance;
+        public string Args { get; set; }
         public MainPage() {
             this.InitializeComponent();
             InitializeMenu();
-            RootFrame.Navigate(typeof(GetStartedPage));
+
             var navService = new DemoNavigationService();
             Interaction.GetBehaviors(RootFrame).Add(navService);
             MainViewModel.NavigationService = navService;
@@ -44,7 +45,14 @@ namespace FeatureDemo.View {
                         menuItem.IsSelected = true;
                 }
             };
+            
+            Loaded += MainPage_Loaded;
         }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e) {
+            MainViewModel.Init(Args);
+        }
+
         void MainViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e) {
             if(e.PropertyName == nameof(MainViewModel.SelectedMenuItem)) {
                 var menuItem = GetMenuItem(MainViewModel.SelectedMenuItem);
@@ -220,6 +228,7 @@ namespace FeatureDemo.View {
                 OnOwnerChanged();
             }
         }
+        internal DXNavigationViewItem ParentItem { get; private set; }
         int Level {
             get => level;
             set {
@@ -235,6 +244,7 @@ namespace FeatureDemo.View {
         FrameworkElement PART_SelectionIndent { get; set; }
         bool IsPointerOver { get; set; }
         bool IsPointerPressed { get; set; }
+        bool HasSelectedChild => Items.Any(x => x.IsSelected);
 
         DXNavigationView owner;
         int level = 0;
@@ -290,28 +300,35 @@ namespace FeatureDemo.View {
                 foreach(DXNavigationViewItem oldItem in e.OldItems) {
                     oldItem.Level = 0;
                     oldItem.Owner = null;
+                    oldItem.ParentItem = null;
                 }
             }
             if(e.NewItems != null) {
                 foreach(DXNavigationViewItem newItem in e.NewItems) {
                     newItem.Level = Level + 1;
                     newItem.Owner = Owner;
+                    newItem.ParentItem = this;
                 }
             }
             if(Items.Count == 0)
                 IsExpanded = false;
             UpdateDropDown();
         }
-        void OnIsSelectedChanged(bool oldValue, bool newValue) {
+        void OnIsSelectedChanged(bool oldValue, bool newValue)
+        {
             if(Owner == null) return;
-            if(newValue) {
+            if(newValue)
+            {
                 Owner.SelectedItem = this;
-            } else {
+            } else
+            {
                 if(Level == 0) return;
                 var itemsPresenter = LayoutTreeHelper.GetVisualParents(this).OfType<DXNavigationViewItemsPresenter>().Skip(1).FirstOrDefault();
                 if(itemsPresenter == null) return;
                 itemsPresenter.HighlightItem(null);
             }
+            UpdateCommonState();
+            ParentItem?.UpdateCommonState();
         }
         void OnLevelChanged() {
             UpdateLevelIndent();
@@ -359,6 +376,8 @@ namespace FeatureDemo.View {
             var state =
                 IsPointerOver
                 ? "PointerOver"
+                : IsSelected || (!IsExpanded && HasSelectedChild)
+                ? "Selected"
                 : "Normal";
             VisualStateManager.GoToState(this, state, true);
         }
@@ -370,18 +389,16 @@ namespace FeatureDemo.View {
             VisualStateManager.GoToState(this, state, true);
         }
         void OnIsExpandedChanged() {
+            UpdateCommonState();
+            UpdateExpandState();
+
             var itemsPresenter = LayoutTreeHelper.GetVisualParents(this).OfType<DXNavigationViewItemsPresenter>().FirstOrDefault();
             if(itemsPresenter == null) return;
-            bool isChildSelected = Items.Any(x => x.IsSelected);
-            if(!isChildSelected) return;
-            if(IsExpanded) {
+            if(!HasSelectedChild) return;
+            if(IsExpanded)
                 itemsPresenter.HighlightItem(null);
-            }
-            else {
+            else
                 itemsPresenter.HighlightItem(this);
-            }
-
-            UpdateExpandState();
         }
         void UpdateExpandState() {
             var state = IsExpanded ? "Expanded" : "Collapsed";
@@ -389,7 +406,7 @@ namespace FeatureDemo.View {
         }
     }
     [ContentProperty]
-    public class DXNavigationViewItemsPresenter : DXPanel {
+    public class DXNavigationViewItemsPresenter : DXPanelBase {
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable<DXNavigationViewItem>), typeof(DXNavigationViewItemsPresenter),
                 new PropertyMetadata(null, (d, e) => ((DXNavigationViewItemsPresenter)d).OnItemsSourceChanged((IEnumerable<DXNavigationViewItem>)e.OldValue, (IEnumerable<DXNavigationViewItem>)e.NewValue)));
@@ -506,7 +523,7 @@ namespace FeatureDemo.View {
             selectionStoryboard.Begin();
         }
 
-        protected override Size MeasureOverride(Size s) {
+        protected override Size MeasureCore(Size s) {
             if(Panel == null)
                 return new Size();
             Panel.Measure(new Size(s.Width, double.PositiveInfinity));
@@ -519,7 +536,7 @@ namespace FeatureDemo.View {
                 SelectionElement.Measure(new Size(s.Width, double.PositiveInfinity));
             return ds;
         }
-        protected override Size ArrangeOverride(Size s) {
+        protected override Size ArrangeCore(Size s) {
             if(Panel != null) {
                 var ds = Panel.DesiredSize;
                 Panel.Arrange(new Rect(new Point(0, 0), new Size(s.Width, ds.Height)));
@@ -537,8 +554,8 @@ namespace FeatureDemo.View {
             return s;
         }
 
-        class DXNavigationViewItemsPanel : ItemsSourcePanel {
-            protected override Size MeasureOverrideCore(Size s) {
+        class DXNavigationViewItemsPanel : DXPanel {
+            protected override Size MeasureCore(Size s) {
                 double h = 0;
                 double w = 0;
                 foreach(var child in Children) {
@@ -551,7 +568,7 @@ namespace FeatureDemo.View {
                     h = s.Height;
                 return new Size(w, h);
             }
-            protected override Size ArrangeOverrideCore(Size s) {
+            protected override Size ArrangeCore(Size s) {
                 double y = 0;
                 foreach(var child in Children) {
                     var ds = child.DesiredSize;

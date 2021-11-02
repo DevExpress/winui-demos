@@ -6,6 +6,7 @@ using DevExpress.WinUI.Core.Internal;
 using System;
 using System.ComponentModel.DataAnnotations;
 using DevExpress.Mvvm;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace GridDemo {
     public class ValidationInvoices {
@@ -19,8 +20,11 @@ namespace GridDemo {
         public string ProductName { get; set; }
         public decimal Freight { get; set; }
     }
-    public class InputValidationViewModel : BindableBase {
-        public bool AllowLeaveInvalidEditor { get => GetValue<bool>(); set => SetValue(value); }
+    [GenerateViewModel]
+    public partial class InputValidationViewModel {
+        [GenerateProperty]
+        bool _AllowLeaveInvalidEditor;
+
         public List<ValidationInvoices> Invoices { get; } = new List<ValidationInvoices>();
 
         public InputValidationViewModel() {

@@ -1,24 +1,24 @@
-<Page
+﻿<Page
     x:Class="FeatureDemo.View.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:FeatureDemo.View"
+    xmlns:local="using:FeatureDemo.View" xmlns:featuredemo="using:FeatureDemo"
     mc:Ignorable="d"
     UseLayoutRounding="True">
     <Page.Resources>
         <Duration x:Key="AnimationDuration">0:0:0.1</Duration>
         <Duration x:Key="SelectionAnimationDuration">0:0:0.2</Duration>
         <DataTemplate x:Key="DXNavigationView_SelectionElement_Template">
-            <Rectangle
-                Width="2"
-                Height="24"
-                Margin="4,8,0,8"
-                Fill="{ThemeResource SystemControlForegroundAccentBrush}"
-                IsHitTestVisible="False" />
+                <Border
+                    CornerRadius="3"
+                    Width="3"
+                    Height="17"
+                    Margin="-1,12,0,0"
+                    Background="{ThemeResource HamburgerMenuItem__Indicator}"
+                    IsHitTestVisible="False" />
         </DataTemplate>
-
         <ControlTemplate x:Key="DXNavigationViewItem_Template" TargetType="local:DXNavigationViewItem">
             <Grid RowDefinitions="Auto,Auto">
                 <VisualStateManager.VisualStateGroups>
@@ -28,6 +28,13 @@
                             <VisualState.Storyboard>
                                 <Storyboard>
                                     <DoubleAnimation Storyboard.TargetName="borderPointerOver" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                </Storyboard>
+                            </VisualState.Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Storyboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="borderSelected" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
                                 </Storyboard>
                             </VisualState.Storyboard>
                         </VisualState>
@@ -67,12 +74,22 @@
                 </VisualStateManager.VisualStateGroups>
                 <Grid x:Name="PART_Content" Background="Transparent">
                     <Border
-                        x:Name="borderPointerOver"
-                        Background="{ThemeResource SystemControlHighlightListLowRevealBackgroundBrush}"
+                        Margin="2"
+                        CornerRadius="3"
+                        x:Name="borderSelected"
+                        Background="{ThemeResource HamburgerMenuItem__SelectedBackground}"
                         Opacity="0" />
                     <Border
+                        Margin="2"
+                        CornerRadius="3"
+                        x:Name="borderPointerOver"
+                        Background="{ThemeResource HamburgerMenuItem__HoverBackground}"
+                        Opacity="0" />
+                    <Border
+                        Margin="2"
+                        CornerRadius="3"
                         x:Name="borderPressed"
-                        Background="{ThemeResource SystemControlHighlightListMediumRevealBackgroundBrush}"
+                        Background="{ThemeResource HamburgerMenuItem__PressedBackground}"
                         Opacity="0" />
                     <Grid Height="40" ColumnDefinitions="Auto, Auto,*,Auto">
                         <Grid x:Name="PART_Indent" />
@@ -96,7 +113,7 @@
                             Margin="12,0,12,0"
                             VerticalAlignment="Center"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            FontSize="12"
+                            FontSize="10"
                             Glyph="&#xE70D;"
                             RenderTransformOrigin="0.5,0.5">
                             <FontIcon.RenderTransform>
@@ -121,7 +138,7 @@
                     </local:DXNavigationViewItemsPresenter.SelectionAnimation>
                     <local:DXNavigationViewItemsPresenter.SelectionElement>
                         <StackPanel Orientation="Horizontal">
-                            <Grid x:Name="PART_SelectionIndent" />
+                            <Grid x:Name="PART_SelectionIndent"/>
                             <ContentPresenter ContentTemplate="{StaticResource DXNavigationView_SelectionElement_Template}" />
                         </StackPanel>
                     </local:DXNavigationViewItemsPresenter.SelectionElement>
@@ -135,7 +152,7 @@
         <ControlTemplate x:Key="DXNavigationView_Template" TargetType="local:DXNavigationView">
             <SplitView
                 x:Name="PART_SplitView"
-                CompactPaneLength="{ThemeResource NavigationViewCompactPaneLength}"
+                CompactPaneLength="40"
                 DisplayMode="CompactInline"
                 IsPaneOpen="True"
                 OpenPaneLength="320"
@@ -143,7 +160,7 @@
                 PanePlacement="Left">
                 <SplitView.Pane>
                     <Grid RowDefinitions="Auto, *">
-                        <local:DXNavigationViewItem x:Name="PART_ToggleButton" HorizontalAlignment="Left">
+                        <local:DXNavigationViewItem x:Name="PART_ToggleButton" HorizontalAlignment="Left" >
                             <local:DXNavigationViewItem.Icon>
                                 <FontIcon
                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
@@ -177,15 +194,16 @@
             </SplitView>
         </ControlTemplate>
         <Style TargetType="local:DXNavigationView">
-            <Setter Property="Background" Value="{ThemeResource SystemControlChromeMediumLowAcrylicElementMediumBrush}" />
+            <Setter Property="Background" Value="{ThemeResource NavigationView__Background}" />
             <Setter Property="Template" Value="{StaticResource DXNavigationView_Template}" />
         </Style>
     </Page.Resources>
 
     <Grid x:Name="root" Background="{ThemeResource WindowBackground}">
         <local:DXNavigationView x:Name="navView">
-            <Frame x:Name="RootFrame" x:FieldModifier="public" />
+            <Border BorderThickness="1,0,0,0" BorderBrush="{ThemeResource SeparatorBrush}" >
+                <Frame x:Name="RootFrame" x:FieldModifier="public" />
+            </Border>
         </local:DXNavigationView>
-        
     </Grid>
 </Page>

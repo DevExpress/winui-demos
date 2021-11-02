@@ -80,14 +80,14 @@ namespace SchedulerDemo {
     }
 
     public class ReceptionDeskData {
-        public static DateTime BaseDate = DateTime.Today;
+        public static readonly DateTime BaseDate = DateTime.Today;
 
-        public static string[] AppointmentTypes = { "Hospital", "Office", "Phone Consultation", "Home", "Hospice" };
+        public static readonly string[] AppointmentTypes = { "Hospital", "Office", "Phone Consultation", "Home", "Hospice" };
 
-        public static string[] PaymentStates = { "Paid", "Unpaid" };
-        public static SolidColorBrush[] PaymentBrushStates = { new SolidColorBrush(ColorExtensions.FromRgb(0xec, 0x70, 0x63)), new SolidColorBrush(ColorExtensions.FromRgb(0x45, 0xb3, 0x9d)) };
+        public static readonly string[] PaymentStates = { "Paid", "Unpaid" };
+        public static readonly SolidColorBrush[] PaymentBrushStates = { new SolidColorBrush(ColorExtensions.FromRgb(0xec, 0x70, 0x63)), new SolidColorBrush(ColorExtensions.FromRgb(0x45, 0xb3, 0x9d)) };
 
-        public static string[] PatientNames = { "Andrew Glover", "Mark Oliver", "Taylor Riley", "Addison Davis", "Benjamin Hughes", "Lucas Smith",
+        public static readonly string[] PatientNames = { "Andrew Glover", "Mark Oliver", "Taylor Riley", "Addison Davis", "Benjamin Hughes", "Lucas Smith",
                                     "Robert King", "Laura Callahan", "Miguel Simmons", "Isabella Carter", "Andrew Fuller", "Madeleine Russell",
                                     "Steven Buchanan", "Nancy Davolio", "Michael Suyama", "Margaret Peacock", "Janet Leverling", "Ariana Alexander",
                                     "Brad Farkus", "Bart Arnaz", "Arnie Schwartz", "Billy Zimmer", "Samantha Piper", "Maggie Boxter",
@@ -97,7 +97,7 @@ namespace SchedulerDemo {
                                     "Ed Holmes", "Sammy Hill", "Olivia Peyton", "Jim Packard", "Hannah Brookly", "Harv Mudd",
                                     "Todd Hoffman", "Kevin Carter","Mary Stern", "Robin Cosworth","Jenny Hobbs", "Dallas Lou"};
 
-        public static Dictionary<string, string[]> DepartmentCache = new Dictionary<string, string[]>();
+        public static readonly Dictionary<string, string[]> DepartmentCache = new Dictionary<string, string[]>();
 
         static Random rnd = new Random();
         

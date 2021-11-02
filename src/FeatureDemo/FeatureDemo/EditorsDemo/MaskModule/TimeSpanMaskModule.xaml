@@ -42,13 +42,22 @@
                     ValidateOnTextInput="False" />
             </common:OptionItem>
             <common:OptionItem Header="Mask type">
-                <ComboBox HorizontalAlignment="Stretch" ItemsSource="{StaticResource MaskTypeSource}" SelectedItem="{x:Bind ViewModel.TextInputSettings.MaskType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <ComboBox
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{StaticResource MaskTypeSource}"
+                    SelectedItem="{x:Bind ViewModel.TextInputSettings.MaskType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </common:OptionItem>
             <common:OptionItem Header="Default part">
-                <ComboBox HorizontalAlignment="Stretch" ItemsSource="{StaticResource TimeSpanPartSource}" SelectedItem="{x:Bind ViewModel.TextInputSettings.DefaultPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <ComboBox
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{StaticResource TimeSpanPartSource}"
+                    SelectedItem="{x:Bind ViewModel.TextInputSettings.DefaultPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </common:OptionItem>
             <common:OptionItem Header="Input mode">
-                <ComboBox HorizontalAlignment="Stretch" ItemsSource="{StaticResource TimeSpanInputModeSource}" SelectedItem="{x:Bind ViewModel.TextInputSettings.InputMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <ComboBox
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{StaticResource TimeSpanInputModeSource}"
+                    SelectedItem="{x:Bind ViewModel.TextInputSettings.InputMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </common:OptionItem>
             <CheckBox Content="Change next part on cycle value change" IsChecked="{x:Bind ViewModel.TextInputSettings.ChangeNextPartOnCycleValueChange, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <CheckBox Content="Assign value to entered literal" IsChecked="{x:Bind ViewModel.TextInputSettings.AssignValueToEnteredLiteral, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

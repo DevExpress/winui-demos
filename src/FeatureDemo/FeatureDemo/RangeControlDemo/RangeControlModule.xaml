@@ -16,19 +16,20 @@
     <common:DemoModuleView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Default">
-                    <SolidColorBrush x:Key="RangeForegroundBrush" Color="{ThemeResource SystemBaseHighColor}" />
-                    <SolidColorBrush x:Key="RangeBackgroundColor" Color="#10FFFFFF" />
-                    <SolidColorBrush x:Key="RangeBorderColor" Color="Transparent" />
-                    <SolidColorBrush x:Key="DisplayRangeForegroundBrush" Color="#FFFFFFFF" />
-                    <SolidColorBrush x:Key="DisplayRangeHeaderForegroundBrush" Color="#FF909090" />
-                </ResourceDictionary>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="RangeForegroundBrush" Color="{ThemeResource SystemBaseHighColor}" />
                     <SolidColorBrush x:Key="RangeBackgroundColor" Color="#10000000" />
                     <SolidColorBrush x:Key="RangeBorderColor" Color="Transparent" />
                     <SolidColorBrush x:Key="DisplayRangeHeaderForegroundBrush" Color="#FF909090" />
                     <SolidColorBrush x:Key="DisplayRangeForegroundBrush" Color="#FF191919" />
+                </ResourceDictionary>
+                
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="RangeForegroundBrush" Color="{ThemeResource SystemBaseHighColor}" />
+                    <SolidColorBrush x:Key="RangeBackgroundColor" Color="#10FFFFFF" />
+                    <SolidColorBrush x:Key="RangeBorderColor" Color="Transparent" />
+                    <SolidColorBrush x:Key="DisplayRangeForegroundBrush" Color="#FFFFFFFF" />
+                    <SolidColorBrush x:Key="DisplayRangeHeaderForegroundBrush" Color="#FF909090" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -258,7 +259,6 @@
     </common:DemoModuleView.Resources>
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="View" />
             <RadioButton
                 Command="{x:Bind ViewModel.SetViewIndexCommand}"
                 CommandParameter="0"

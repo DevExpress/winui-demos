@@ -8,7 +8,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Text;
-using DevExpress.WinUI.Core.Internal;
+using DevExpress.Mvvm.CodeGenerators;
+using FeatureDemo;
 
 namespace EditorsDemo {
     public sealed partial class EditorButtonsModule : DemoModuleView {
@@ -20,79 +21,81 @@ namespace EditorsDemo {
         public EditorButtonsViewModel ViewModel { get; }
     }
 
-    public class EditorButtonsViewModel : ViewModelBase {
-
+    [GenerateViewModel]
+    public partial class EditorButtonsViewModel {
         public EditorButtonsViewModel() {
-            IncreaseCommand = new DelegateCommand(() => Value++, () => Value < 10);
-            DecreaseCommand = new DelegateCommand(() => Value--, () => Value > 0);
-            UndoCommand = new DelegateCommand<TextEdit>(x => x.Undo());
-            EditCommand = new DelegateCommand(() => ShowDialog("The EditCommand executed!"));
-            CopyCommand = new DelegateCommand(() => {
-                var dataPackage = new DataPackage();
-                dataPackage.SetText(CustomText);
-                Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
-                ShowDialog($"The text '{CustomText}' was copied");
-            });
             CustomText = "Editor with custom buttons";
             TextAlignment = TextAlignment.Left;
             IsBold = true;
         }
 
-        public DelegateCommand IncreaseCommand { get; }
-        public DelegateCommand DecreaseCommand { get; }
-        public DelegateCommand CopyCommand { get; }
-        public DelegateCommand EditCommand { get; }
-        public DelegateCommand<TextEdit> UndoCommand { get; }
-        public int Value {
-            get => GetValue<int>();
-            private set => SetValue(value, OnValueChanged);
-        }
-        public string CustomText {
-            get => GetValue<string>();
-            set => SetValue(value);
-        }
-        public bool IsBold {
-            get => GetValue<bool>();
-            set => SetValue(value);
-        }
-        public bool IsItalic {
-            get => GetValue<bool>();
-            set => SetValue(value);
-        }
-        public bool AlignLeft {
-            get => GetValue<bool>();
-            set => SetValue(value, () => TextAlignment = value ? TextAlignment.Left : TextAlignment);
-        }
-        public bool AlignCenter {
-            get => GetValue<bool>();
-            set => SetValue(value, () => TextAlignment = value ? TextAlignment.Center : TextAlignment);
-        }
-        public bool AlignRight {
-            get => GetValue<bool>();
-            set => SetValue(value, () => TextAlignment = value ? TextAlignment.Right : TextAlignment);
-        }
-        public TextAlignment TextAlignment {
-            get => GetValue<TextAlignment>();
-            private set => SetValue(value, OnTextAlignmentChanged);
+        [GenerateCommand]
+        void Increase() => Value++;
+        bool CanIncrease() => Value< 10;
+
+        [GenerateCommand]
+        void Decrease() => Value--;
+        bool CanDecrease() => Value > 0;
+
+        [GenerateCommand]
+        void Undo(TextEdit edit) => edit.Undo();
+
+        [GenerateCommand]
+        void Edit() => ShowDialog("The EditCommand executed!");
+
+        [GenerateCommand]
+        void Copy() {
+            var dataPackage = new DataPackage();
+            dataPackage.SetText(CustomText);
+            Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
+            ShowDialog($"The text '{CustomText}' was copied");
         }
 
+        [GenerateProperty]
+        int _Value;
+
+        [GenerateProperty]
+        string _CustomText;
+
+        [GenerateProperty]
+        bool _IsBold;
+
+        [GenerateProperty]
+        bool _IsItalic;
+
+        [GenerateProperty]
+        bool _AlignLeft;
+        void OnAlignLeftChanged() => TextAlignment = (AlignLeft ? TextAlignment.Left : TextAlignment);
+
+        [GenerateProperty]
+        bool _AlignCenter;
+        void OnAlignCenterChanged() => TextAlignment = (AlignCenter ? TextAlignment.Center : TextAlignment);
+
+        [GenerateProperty]
+        bool _AlignRight;
+        void OnAlignRightChanged() => TextAlignment = (AlignRight ? TextAlignment.Right : TextAlignment);
+
+        [GenerateProperty(SetterAccessModifier = AccessModifier.Private)]
+        TextAlignment _TextAlignment;
         void OnTextAlignmentChanged() {
             AlignLeft = TextAlignment == TextAlignment.Left;
             AlignCenter = TextAlignment == TextAlignment.Center;
             AlignRight = TextAlignment == TextAlignment.Right;
         }
+
         void OnValueChanged() {
             IncreaseCommand.RaiseCanExecuteChanged();
             DecreaseCommand.RaiseCanExecuteChanged();
         }
         async void ShowDialog(string content) {
-            var xamlRoot = CurrentWindowHelper.CurrentWindow?.Content?.XamlRoot;
+            var xamlRoot = ((App)App.Current).MainWindow.Content.XamlRoot;
             if (xamlRoot != null) {
                 var dlg = new ContentDialog() {
                     Title = "Result Dialog",
                     Content = content,
                     CloseButtonText = "OK",
-                    XamlRoot = xamlRoot
+                    XamlRoot = xamlRoot,
+                    RequestedTheme = ((FrameworkElement)xamlRoot.Content).RequestedTheme
                 };
                 await dlg.ShowAsync().AsTask();
             }

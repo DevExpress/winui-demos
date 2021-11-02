@@ -65,7 +65,7 @@
                 <dx:EnumItemsSourceProvider x:Name="DisplayModeItems" EnumInstance="{x:Bind scheduler.AppointmentsDisplayMode}" />
                 <dx:EnumItemsSourceProvider x:Name="GroupTypeItems" EnumInstance="{x:Bind scheduler.GroupType}" />
             </common:OptionsPanel.Resources>
-            <common:OptionItem Header="Group Type:">
+            <common:OptionItem Header="Group Type">
                 <ComboBox
                     x:Name="groupType"
                     MinWidth="120"
@@ -73,7 +73,7 @@
                     ItemsSource="{StaticResource GroupTypeItems}"
                     SelectedIndex="1" />
             </common:OptionItem>
-            <common:OptionItem Header="Appointments Display Mode:">
+            <common:OptionItem Header="Appointments Display Mode">
                 <ComboBox
                     x:Name="appointmentsDisplayMode"
                     MinWidth="120"

@@ -71,7 +71,6 @@
     </Grid>
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="View" />
             <RadioButton
                 Content="Area"
                 GroupName="view"

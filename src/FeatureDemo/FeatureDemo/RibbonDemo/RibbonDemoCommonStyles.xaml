@@ -1,42 +1,10 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:dx="using:DevExpress.WinUI.Core"
-    xmlns:local="using:RibbonDemo">
+    xmlns:local="using:RibbonDemo"
+    xmlns:dx="using:DevExpress.WinUI.Core">
 
     <ResourceDictionary.ThemeDictionaries>
-        <ResourceDictionary x:Key="Default">
-            <SolidColorBrush x:Key="IconAccentColorBrush" />
-            <x:String x:Key="BookmarkPath">M 0,0 L0,24 M0,24 L24,24 M5,1 L5,0 L19,0 L19,1 L19,12 L19,24 L12,14 L5,24 L5,12</x:String>
-            <x:String x:Key="ContinuousePath">M 0,2E-06 L0,24 M0,24 L24,24 M15,21 L18,21 L18,22 L15,22 z M15,18 L18,18 L18,19 L15,19 z M7.16667,16.1667 L7.16667,20.8333 L11.8333,20.8333 L11.8333,16.1667 z M15,15 L18,15 L18,16 L15,16 z M6,15 L13,15 L13,22 L6,22 z M3,12 L21,12 L21,24 L20,24 L20,13 L4,13 L4,24 L3,24 z M6,7 L18,7 L18,8 L6,8 z M6,4 L18,4 L18,5 L6,5 z M6,1 L18,1 L18,2 L6,2 z M3,0 L4,0 L4,9 L20,9 L20,0 L21,0 L21,10 L3,10 z</x:String>
-            <x:String x:Key="SinglePagePath">M 0,2E-06 L0,24 M0,24 L24,24 M6,21 L18,21 L18,22 L6,22 z M6,18 L18,18 L18,19 L6,19 z M6,15 L18,15 L18,16 L6,16 z M6,12 L18,12 L18,13 L6,13 z M15,9 L18,9 L18,10 L15,10 z M15,6 L18,6 L18,7 L15,7 z M7.16667,4.16667 L7.16667,8.83333 L11.8333,8.83333 L11.8333,4.16667 z M15,3 L18,3 L18,4 L15,4 z M6,3 L13,3 L13,10 L6,10 z M4,1 L4,23 L20,23 L20,1 z M3,0 L21,0 L21,24 L3,24 z</x:String>
-            <x:String x:Key="MultiColumnReportPath">[F#FFE1C678 L#2 T#1 W#20 H#23 M 0,23 L0,0 L4,0 L4,2 L16,2 L16,0 L20,0 L20,23 z][F#FF939393 L#3 T#4 W#18 H#18 M 0,0 l 18,0 0,18 -18,0 z][F#White L#4 T#5 W#16 H#16 M 0,0 l 16,0 0,16 -16,0 z][F#FF939393 L#5 W#14 H#21 M3,0 L11,0 L11,2 L3,2 z M8,5 L9,5 L9,21 L8,21 z M10,6 L14,6 L14,7 L10,7 z M10,8 L14,8 L14,9 L10,9 z M10,10 L14,10 L14,11 L10,11 z M10,12 L12,12 L12,13 L10,13 z M0,6 L7,6 L7,7 L0,7 z M0,8 L7,8 L7,9 L0,9 z M0,10 L7,10 L7,11 L0,11 z M0,12 L6,12 L6,13 L0,13 z]</x:String>
-            <x:String x:Key="ReportMasterPath">[F#E1C678 L#2 T#1 W#20 H#23 M0,23 L0,0 L4,0 L4,2 L16,2 L16,0 L20,0 L20,23][F#939393 L#3 T#4 W#18 H#16 M 0 0 l 18 0 0 16 -18 0 z][F#White L#4 T#5 W#16 H#16 M 0 0 l 16 0 0 16 -16 0 z][F#627EB4 L#5 T#17 W#14 H#3 M 0 0 l 14 0 0 3 -14 0 z][F#939393 L#5 W#14 H#16 M3,0 L11,0 L11,2 L3,2 z M4,13 L4,15 L8,15 L8,13 z M4,10 L4,12 L8,12 L8,10 z M4,7 L4,9 L8,9 L8,7 z M0,6 L14,6 L14,7 L9,7 L9,9 L14,9 L14,10 L9,10 L9,12 L14,12 L14,13 L9,13 L9,15 L14,15 L14,16 L0,16 L0,15 L3,15 L3,13 L0,13 L0,12 L3,12 L3,10 L0,10 L0,9 L3,9 L3,7 L0,7 z]</x:String>
-            <x:String x:Key="ReportMergedPath">[F#E1C678 L#2 T#1 W#20 H#23 M0,23 L0,0 L4,0 L4,2 L16,2 L16,0 L20,0 L20,23][F#939393 L#3 T#4 W#18 H#18 M 0 0 l 18 0 0 18 -18 0 z][F#White L#4 T#5 W#16 H#16 M 0 0 l 16 0 0 16 -16 0 z][F#627EB4 L#3 T#12 W#18 H#10 M1,0 L2,0 L2,2 L3,2 L3,0 L4,0 L4,2 L5,2 L5,0 L6,0 L6,2 L7,2 L7,0 L8,0 L8,2 L9,2 L9,0 L10,0 L10,2 L11,2 L11,0 L12,0 L12,2 L13,2 L13,0 L14,0 L14,2 L15,2 L15,0 L16,0 L16,2 L18,2 L18,10 L0,10 L0,2 L1,2 z][F#White L#5 T#16 W#13 H#3 M 0 0 L 13 0 0 1 -13 0 z m 0 1 l 13 0 0 1 -13 0 z][F#939393 L#5 W#13 H#9 M3,0 L11,0 L11,2 L3,2 z M0,6 L13,6 L13,7 L0,7 z M0,8 L13,8 L13,9 L0,9 z]</x:String>
-            <SolidColorBrush x:Key="BrowseButtonIconForeground" Color="Black" />
-            <SvgImageSource x:Key="AlignCenterSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignCenter.svg" />
-            <SvgImageSource x:Key="AlignJustifySvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignJustify.svg" />
-            <SvgImageSource x:Key="AlignLeftSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignLeft.svg" />
-            <SvgImageSource x:Key="AlignRightSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignRight.svg" />
-            <SvgImageSource x:Key="BoldSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Bold.svg" />
-            <SvgImageSource x:Key="BulletedListSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/BulletedList.svg" />
-            <SvgImageSource x:Key="CopySvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Copy.svg" />
-            <SvgImageSource x:Key="CutSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Cut.svg" />
-            <SvgImageSource x:Key="DecreaseFontSizeSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/DecreaseFontSize.svg" />
-            <SvgImageSource x:Key="DecreaseIndentSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/DecreaseIndent.svg" />
-            <SvgImageSource x:Key="IncreaseFontSizeSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/IncreaseFontSize.svg" />
-            <SvgImageSource x:Key="IncreaseIndentSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/IncreaseIndent.svg" />
-            <SvgImageSource x:Key="ItalicSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Italic.svg" />
-            <SvgImageSource x:Key="NumberedListSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/NumberedList.svg" />
-            <SvgImageSource x:Key="PasteSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Paste.svg" />
-            <SvgImageSource x:Key="PictureSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Picture.svg" />
-            <SvgImageSource x:Key="SubscriptSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Subscript.svg" />
-            <SvgImageSource x:Key="SuperscriptSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Superscript.svg" />
-            <SvgImageSource x:Key="UnderlineSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Underline.svg" />
-            <SvgImageSource x:Key="BulletsSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Bullets.svg" />
-            <SvgImageSource x:Key="NoneSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/None.svg" />
-            <SvgImageSource x:Key="ArabicSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Arabic.svg" />
-        </ResourceDictionary>
         <ResourceDictionary x:Key="Light">
             <SolidColorBrush x:Key="IconAccentColorBrush" />
             <x:String x:Key="BookmarkPath">M 0,0 L0,24 M0,24 L24,24 M5,1 L5,0 L19,0 L19,1 L19,12 L19,24 L12,14 L5,24 L5,12</x:String>
@@ -69,6 +37,40 @@
             <SvgImageSource x:Key="NoneSvg" UriSource="ms-appx:///RibbonDemo/Images/Light/None.svg" />
             <SvgImageSource x:Key="ArabicSvg" UriSource="ms-appx:///RibbonDemo/Images/Light/Arabic.svg" />
         </ResourceDictionary>
+        
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="IconAccentColorBrush" />
+            <x:String x:Key="BookmarkPath">M 0,0 L0,24 M0,24 L24,24 M5,1 L5,0 L19,0 L19,1 L19,12 L19,24 L12,14 L5,24 L5,12</x:String>
+            <x:String x:Key="ContinuousePath">M 0,2E-06 L0,24 M0,24 L24,24 M15,21 L18,21 L18,22 L15,22 z M15,18 L18,18 L18,19 L15,19 z M7.16667,16.1667 L7.16667,20.8333 L11.8333,20.8333 L11.8333,16.1667 z M15,15 L18,15 L18,16 L15,16 z M6,15 L13,15 L13,22 L6,22 z M3,12 L21,12 L21,24 L20,24 L20,13 L4,13 L4,24 L3,24 z M6,7 L18,7 L18,8 L6,8 z M6,4 L18,4 L18,5 L6,5 z M6,1 L18,1 L18,2 L6,2 z M3,0 L4,0 L4,9 L20,9 L20,0 L21,0 L21,10 L3,10 z</x:String>
+            <x:String x:Key="SinglePagePath">M 0,2E-06 L0,24 M0,24 L24,24 M6,21 L18,21 L18,22 L6,22 z M6,18 L18,18 L18,19 L6,19 z M6,15 L18,15 L18,16 L6,16 z M6,12 L18,12 L18,13 L6,13 z M15,9 L18,9 L18,10 L15,10 z M15,6 L18,6 L18,7 L15,7 z M7.16667,4.16667 L7.16667,8.83333 L11.8333,8.83333 L11.8333,4.16667 z M15,3 L18,3 L18,4 L15,4 z M6,3 L13,3 L13,10 L6,10 z M4,1 L4,23 L20,23 L20,1 z M3,0 L21,0 L21,24 L3,24 z</x:String>
+            <x:String x:Key="MultiColumnReportPath">[F#FFE1C678 L#2 T#1 W#20 H#23 M 0,23 L0,0 L4,0 L4,2 L16,2 L16,0 L20,0 L20,23 z][F#FF939393 L#3 T#4 W#18 H#18 M 0,0 l 18,0 0,18 -18,0 z][F#White L#4 T#5 W#16 H#16 M 0,0 l 16,0 0,16 -16,0 z][F#FF939393 L#5 W#14 H#21 M3,0 L11,0 L11,2 L3,2 z M8,5 L9,5 L9,21 L8,21 z M10,6 L14,6 L14,7 L10,7 z M10,8 L14,8 L14,9 L10,9 z M10,10 L14,10 L14,11 L10,11 z M10,12 L12,12 L12,13 L10,13 z M0,6 L7,6 L7,7 L0,7 z M0,8 L7,8 L7,9 L0,9 z M0,10 L7,10 L7,11 L0,11 z M0,12 L6,12 L6,13 L0,13 z]</x:String>
+            <x:String x:Key="ReportMasterPath">[F#E1C678 L#2 T#1 W#20 H#23 M0,23 L0,0 L4,0 L4,2 L16,2 L16,0 L20,0 L20,23][F#939393 L#3 T#4 W#18 H#16 M 0 0 l 18 0 0 16 -18 0 z][F#White L#4 T#5 W#16 H#16 M 0 0 l 16 0 0 16 -16 0 z][F#627EB4 L#5 T#17 W#14 H#3 M 0 0 l 14 0 0 3 -14 0 z][F#939393 L#5 W#14 H#16 M3,0 L11,0 L11,2 L3,2 z M4,13 L4,15 L8,15 L8,13 z M4,10 L4,12 L8,12 L8,10 z M4,7 L4,9 L8,9 L8,7 z M0,6 L14,6 L14,7 L9,7 L9,9 L14,9 L14,10 L9,10 L9,12 L14,12 L14,13 L9,13 L9,15 L14,15 L14,16 L0,16 L0,15 L3,15 L3,13 L0,13 L0,12 L3,12 L3,10 L0,10 L0,9 L3,9 L3,7 L0,7 z]</x:String>
+            <x:String x:Key="ReportMergedPath">[F#E1C678 L#2 T#1 W#20 H#23 M0,23 L0,0 L4,0 L4,2 L16,2 L16,0 L20,0 L20,23][F#939393 L#3 T#4 W#18 H#18 M 0 0 l 18 0 0 18 -18 0 z][F#White L#4 T#5 W#16 H#16 M 0 0 l 16 0 0 16 -16 0 z][F#627EB4 L#3 T#12 W#18 H#10 M1,0 L2,0 L2,2 L3,2 L3,0 L4,0 L4,2 L5,2 L5,0 L6,0 L6,2 L7,2 L7,0 L8,0 L8,2 L9,2 L9,0 L10,0 L10,2 L11,2 L11,0 L12,0 L12,2 L13,2 L13,0 L14,0 L14,2 L15,2 L15,0 L16,0 L16,2 L18,2 L18,10 L0,10 L0,2 L1,2 z][F#White L#5 T#16 W#13 H#3 M 0 0 L 13 0 0 1 -13 0 z m 0 1 l 13 0 0 1 -13 0 z][F#939393 L#5 W#13 H#9 M3,0 L11,0 L11,2 L3,2 z M0,6 L13,6 L13,7 L0,7 z M0,8 L13,8 L13,9 L0,9 z]</x:String>
+            <SolidColorBrush x:Key="BrowseButtonIconForeground" Color="Black" />
+            <SvgImageSource x:Key="AlignCenterSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignCenter.svg" />
+            <SvgImageSource x:Key="AlignJustifySvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignJustify.svg" />
+            <SvgImageSource x:Key="AlignLeftSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignLeft.svg" />
+            <SvgImageSource x:Key="AlignRightSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/AlignRight.svg" />
+            <SvgImageSource x:Key="BoldSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Bold.svg" />
+            <SvgImageSource x:Key="BulletedListSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/BulletedList.svg" />
+            <SvgImageSource x:Key="CopySvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Copy.svg" />
+            <SvgImageSource x:Key="CutSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Cut.svg" />
+            <SvgImageSource x:Key="DecreaseFontSizeSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/DecreaseFontSize.svg" />
+            <SvgImageSource x:Key="DecreaseIndentSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/DecreaseIndent.svg" />
+            <SvgImageSource x:Key="IncreaseFontSizeSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/IncreaseFontSize.svg" />
+            <SvgImageSource x:Key="IncreaseIndentSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/IncreaseIndent.svg" />
+            <SvgImageSource x:Key="ItalicSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Italic.svg" />
+            <SvgImageSource x:Key="NumberedListSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/NumberedList.svg" />
+            <SvgImageSource x:Key="PasteSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Paste.svg" />
+            <SvgImageSource x:Key="PictureSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Picture.svg" />
+            <SvgImageSource x:Key="SubscriptSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Subscript.svg" />
+            <SvgImageSource x:Key="SuperscriptSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Superscript.svg" />
+            <SvgImageSource x:Key="UnderlineSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Underline.svg" />
+            <SvgImageSource x:Key="BulletsSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Bullets.svg" />
+            <SvgImageSource x:Key="NoneSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/None.svg" />
+            <SvgImageSource x:Key="ArabicSvg" UriSource="ms-appx:///RibbonDemo/Images/Dark/Arabic.svg" />
+        </ResourceDictionary>
+       
     </ResourceDictionary.ThemeDictionaries>
 
     <DataTemplate x:Key="ReportMergedIconTemplate">

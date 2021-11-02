@@ -11,10 +11,9 @@
 
                 <ResourceDictionary Source="ms-appx:///View/Brushes.xaml" />
                 <common:CommonStyles />
-                <ResourceDictionary Source="ms-appx:///RibbonDemo/RibbonDemoCommonStyles.xaml"/>
+                <ResourceDictionary Source="ms-appx:///RibbonDemo/RibbonDemoCommonStyles.xaml" />
                 <ResourceDictionary Source="Common/CodeViewControl/Themes/CodeViewControl.xaml" />
                 <ResourceDictionary Source="ms-appx:///GridDemo/Themes/Generic.xaml" />
-                <ResourceDictionary Source="ms-appx:///DevExpress.WinUI.Editors.v21.2/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
             
             <x:String x:Key="AppName">FeatureDemo</x:String>

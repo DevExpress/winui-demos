@@ -10,7 +10,7 @@
     d:DesignWidth="400"
     mc:Ignorable="d"
     BorderBrush="Transparent">
-    
+
     <Grid>
         <dxg:GridControl
             x:Name="grid"
@@ -59,49 +59,49 @@
                     MinWidth="130"
                     AllowFiltering="False"
                     AllowGrouping="True"
-                    HorizontalContentAlignment="Right" />
+                    CellHorizontalContentAlignment="Right" />
                 <dxg:GridTextColumn
                     x:Name="TonyGeeter"
                     FieldName="Tony Geeter"
                     MinWidth="130"
                     AllowFiltering="False"
                     AllowGrouping="True"
-                    HorizontalContentAlignment="Right" />
+                    CellHorizontalContentAlignment="Right" />
                 <dxg:GridTextColumn
                     x:Name="AmyStamps"
                     FieldName="Amy Stamps"
                     MinWidth="130"
                     AllowFiltering="False"
                     AllowGrouping="True"
-                    HorizontalContentAlignment="Right" />
+                    CellHorizontalContentAlignment="Right" />
                 <dxg:GridTextColumn
                     x:Name="ErnestWebb"
                     FieldName="Ernest Webb"
                     MinWidth="130"
                     AllowFiltering="False"
                     AllowGrouping="True"
-                    HorizontalContentAlignment="Right" />
+                    CellHorizontalContentAlignment="Right" />
                 <dxg:GridTextColumn
                     x:Name="AlexMelton"
                     FieldName="Alex Melton"
                     MinWidth="130"
                     AllowFiltering="False"
                     AllowGrouping="True"
-                    HorizontalContentAlignment="Right" />
+                    CellHorizontalContentAlignment="Right" />
                 <dxg:GridTextColumn
                     x:Name="ArvilChase"
                     FieldName="Arvil Chase"
                     MinWidth="130"
                     AllowFiltering="False"
                     AllowGrouping="True"
-                    HorizontalContentAlignment="Right" />
+                    CellHorizontalContentAlignment="Right" />
                 <dxg:GridTextColumn
                     x:Name="AnitaBoyd"
                     FieldName="Anita Boyd"
                     MinWidth="130"
                     AllowFiltering="False"
                     AllowGrouping="True"
-                    HorizontalContentAlignment="Right" />
+                    CellHorizontalContentAlignment="Right" />
             </dxg:GridControl.Columns>
             <dxg:GridControl.GroupSummary>
                 <dxg:GridSummaryItem

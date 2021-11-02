@@ -12,7 +12,7 @@ using Microsoft.UI.Xaml;
 
 namespace GridDemo {
     public abstract class GridDemoUserControl : DemoModuleView {
-        public double MinGridWidth { get { return Grid.VisibleColumns.Sum(column => column.FixedWidth ? column.Width : column.MinWidth); }}
+        public double MinGridWidth { get { return Grid.VisibleColumns.Sum(column => column.FixedWidth ? column.Width.Value : column.MinWidth); }}
         protected internal abstract GridControl Grid { get; }
         public virtual void OnNavigatingFrom() {
             SizeChanged -= GridDemoUserControl_SizeChanged;

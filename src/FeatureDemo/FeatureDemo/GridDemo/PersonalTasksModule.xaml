@@ -1,10 +1,11 @@
-﻿<local:GridDemoUserControl
+<local:GridDemoUserControl
     x:Class="GridDemo.PersonalTasksModule"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="using:GridDemo"
+    xmlns:sys="using:System"
     xmlns:dx="using:DevExpress.WinUI.Core"
     xmlns:dxg="using:DevExpress.WinUI.Grid"
     d:DesignHeight="300"
@@ -58,7 +59,7 @@
             </ResourceDictionary.ThemeDictionaries>
 
             <local:ImageVisibilityConverter x:Key="ImageVisibilityConveter" />
-            <dx:ObjectToObjectConverter x:Key="StatusDisplayTextConverter">
+            <dx:ObjectToObjectConverter x:Key="StatusDisplayTextConverter" DefaultTarget="(All)">
                 <dx:MapItem Source="NotStarted" Target="Not Started" />
                 <dx:MapItem Source="InProgress" Target="In Progress" />
                 <dx:MapItem Source="Completed" Target="Completed" />
@@ -73,18 +74,9 @@
 
             <DataTemplate x:Key="ColumnHeaderCompleteTemplate">
                 <FontIcon
-                    Margin="0,4,0,0"
+                    Margin="0,3,0,0"
                     FontSize="16"
                     Glyph="&#xE73E;" />
-            </DataTemplate>
-            <DataTemplate x:Key="ColumnCompleteTemplate" x:DataType="local:EmployeeTask">
-                <CheckBox
-                    MinWidth="0"
-                    MinHeight="0"
-                    Margin="-1,-1,1,-2"
-                    Padding="0"
-                    HorizontalAlignment="Center"
-                    IsChecked="{x:Bind Complete, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </DataTemplate>
 
             <Style x:Key="PriorityImageStyle" TargetType="Image">
@@ -92,7 +84,25 @@
                 <Setter Property="Height" Value="16" />
                 <Setter Property="Margin" Value="8,2,8,0" />
             </Style>
-            <DataTemplate x:Key="PriorityTemplate" x:DataType="local:TaskPriority">
+
+            <DataTemplate x:Key="PriorityDataTemplate" x:DataType="dxg:CellData">
+                <StackPanel Margin="-3,0,0,0" Orientation="Horizontal">
+                    <Image
+                        Source="{ThemeResource Priority_High}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Path=Value, Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=High, Mode=OneWay}" />
+                    <Image
+                        Source="{ThemeResource Priority_Low}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Path=Value, Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Low, Mode=OneWay}" />
+                    <Image
+                        Source="{ThemeResource Priority_Medium}"
+                        Style="{StaticResource PriorityImageStyle}"
+                        Visibility="{x:Bind Path=Value, Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Medium, Mode=OneWay}" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Bind Path=Value.ToString(), Mode=OneWay}" />
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="PriorityItemTemplate" x:DataType="local:TaskPriority">
                 <StackPanel Margin="-3,0,0,0" Orientation="Horizontal">
                     <Image
                         Source="{ThemeResource Priority_High}"
@@ -109,24 +119,28 @@
                     <TextBlock VerticalAlignment="Center" Text="{x:Bind}" />
                 </StackPanel>
             </DataTemplate>
+
             <DataTemplate x:Key="ColumnPriorityHeaderTemplate">
                 <FontIcon
-                    Margin="0,4,0,0"
+                    Margin="0,3,0,0"
                     FontSize="16"
                     Glyph="&#xE7BA;" />
             </DataTemplate>
 
-            <DataTemplate x:Key="ColumnStatusDataTemplate" x:DataType="local:TaskStatus">
+            <DataTemplate x:Key="ColumnStatusDataTemplate" x:DataType="dxg:CellData">
+                <TextBlock Text="{x:Bind Value, Converter={StaticResource StatusDisplayTextConverter}, Mode=OneWay}" />
+            </DataTemplate>
+            <DataTemplate x:Key="ColumnStatusItemTemplate" x:DataType="local:TaskStatus">
                 <TextBlock Text="{x:Bind Converter={StaticResource StatusDisplayTextConverter}}" />
             </DataTemplate>
 
-            <DataTemplate x:Key="ColumnPercentCompleteTemplate" x:DataType="local:EmployeeTask">
+            <DataTemplate x:Key="ColumnPercentCompleteTemplate" x:DataType="dxg:CellData">
                 <Slider
                     LargeChange="50"
                     Maximum="100"
                     Minimum="0"
                     SmallChange="10"
-                    Value="{x:Bind Path=PercentComplete, Mode=TwoWay}" />
+                    Value="{x:Bind Path=((local:EmployeeTask)Row).PercentComplete, Mode=TwoWay}" />
             </DataTemplate>
 
             <Style x:Key="CategoryImageStyle" TargetType="Image">
@@ -135,7 +149,24 @@
                 <Setter Property="Stretch" Value="Fill" />
                 <Setter Property="Margin" Value="0,2,0,0" />
             </Style>
-            <DataTemplate x:Key="ColumnCategoryDataTmplate" x:DataType="local:TaskCategory">
+            <DataTemplate x:Key="ColumnCategoryDataTemplate" x:DataType="dxg:CellData">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        Source="{ThemeResource Category_HouseChores}"
+                        Style="{StaticResource CategoryImageStyle}"
+                        Visibility="{x:Bind Path=Value, Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=HouseChores, Mode=OneWay}" />
+                    <Image
+                        Source="{ThemeResource Category_Shopping}"
+                        Style="{StaticResource CategoryImageStyle}"
+                        Visibility="{x:Bind Path=Value, Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Shopping, Mode=OneWay}" />
+                    <Image
+                        Source="{ThemeResource Category_Work}"
+                        Style="{StaticResource CategoryImageStyle}"
+                        Visibility="{x:Bind Path=Value, Converter={StaticResource ImageVisibilityConveter}, ConverterParameter=Work, Mode=OneWay}" />
+                    <TextBlock Margin="4,0,0,0" Text="{x:Bind Path=Value, Converter={StaticResource CategoryDisplayTextConverter}, Mode=OneWay}" />
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="ColumnCategoryItemTemplate" x:DataType="local:TaskCategory">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Source="{ThemeResource Category_HouseChores}"
@@ -169,14 +200,13 @@
         ShowSearchPanelMode="Always"
         ValidateCell="{x:Bind ViewModel.ValidateCell}">
         <dxg:GridControl.Columns>
-            <dxg:GridTemplateColumn
+            <dxg:GridCheckBoxColumn
                 FieldName="Complete"
                 Width="50"
                 AllowFiltering="False"
                 AllowResizing="False"
                 AllowSorting="False"
                 AllowGrouping="False"
-                CellTemplate="{StaticResource ColumnCompleteTemplate}"
                 HeaderTemplate="{StaticResource ColumnHeaderCompleteTemplate}" />
             <dxg:GridComboBoxColumn
                 FieldName="Priority"
@@ -185,9 +215,9 @@
                 AllowResizing="False"
                 AllowSorting="False"
                 AllowGrouping="False"
-                DisplayTemplate="{StaticResource PriorityTemplate}"
+                DisplayTemplate="{StaticResource PriorityDataTemplate}"
                 HeaderTemplate="{StaticResource ColumnPriorityHeaderTemplate}"
-                ItemTemplate="{StaticResource PriorityTemplate}"
+                ItemTemplate="{StaticResource PriorityItemTemplate}"
                 ItemsSource="{x:Bind ViewModel.TaskPriorities}" />
             <dxg:GridTextColumn
                 FieldName="Subject"
@@ -200,7 +230,7 @@
                 Width="130"
                 AllowGrouping="False"
                 DisplayTemplate="{StaticResource ColumnStatusDataTemplate}"
-                ItemTemplate="{StaticResource ColumnStatusDataTemplate}"
+                ItemTemplate="{StaticResource ColumnStatusItemTemplate}"
                 ItemsSource="{x:Bind ViewModel.TaskStatusList}" />
             <dxg:GridTemplateColumn
                 FieldName="PercentComplete"
@@ -241,11 +271,11 @@
                 Mask="M/d/yyyy"
                 NullText="None" />
             <dxg:GridComboBoxColumn
-                AllowGrouping="False"
                 FieldName="Category"
+                AllowGrouping="False"
                 Width="140"
-                DisplayTemplate="{StaticResource ColumnCategoryDataTmplate}"
-                ItemTemplate="{StaticResource ColumnCategoryDataTmplate}"
+                DisplayTemplate="{StaticResource ColumnCategoryDataTemplate}"
+                ItemTemplate="{StaticResource ColumnCategoryItemTemplate}"
                 ItemsSource="{x:Bind ViewModel.TaskCategories}" />
         </dxg:GridControl.Columns>
         <dxg:GridControl.GroupSummary>
@@ -260,12 +290,7 @@
                 ApplyToRow="True"
                 Expression="(Not [Complete]) And ([Priority]='High')"
                 PredefinedFormatName="{x:Bind dxg:PredefinedFormatNames.BoldText}" />
-            <dxg:FormatCondition ApplyToRow="True" Expression="([Status]='Completed') Or ([Status]='Deferred')">
-                <dxg:Format Foreground="Gray" />
-            </dxg:FormatCondition>
-            <dxg:FormatCondition ApplyToRow="True" Expression="[Status]='WaitingOnSomeoneElse'">
-                <dxg:Format Foreground="Orange" />
-            </dxg:FormatCondition>
+            
         </dxg:GridControl.FormatConditions>
         <dxg:GridControl.TotalSummary>
             <dxg:GridSummaryItem

@@ -60,21 +60,21 @@
 
     <local:GridDemoUserControl.Options>
         <common:OptionsPanel>
-            <common:OptionItem Header="Selection Mode:">
+            <common:OptionItem Header="Selection Mode">
                 <ComboBox
                     HorizontalAlignment="Stretch"
                     ItemsSource="{x:Bind ViewModel.MultiSelectModes}"
                     SelectedItem="{x:Bind ViewModel.SelectionMode, Mode=TwoWay}" />
             </common:OptionItem>
 
-            <common:OptionItem Header="Selected Items:">
+            <common:OptionItem Header="Selected Items">
                 <ListBox
                     MaxHeight="400"
                     ItemsSource="{x:Bind grid.SelectedItems, Mode=OneWay}"
                     SelectionMode="Multiple">
                     <ListBox.ItemTemplate>
                         <DataTemplate x:DataType="demodata:Invoices">
-                            <TextBlock Text="{x:Bind sys:String.Format(x:Null,'{0} {1}', OrderID, ProductName)}" />
+                            <TextBlock Text="{x:Bind sys:String.Format(x:Null, '{0} {1}', OrderID, ProductName)}" />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

@@ -1,8 +1,8 @@
 ﻿<common:DemoModuleView
     x:Class="GridDemo.RowAlternationDemo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:dxg="using:DevExpress.WinUI.Grid"
     xmlns:common="using:FeatureDemo.Common"
@@ -20,8 +20,8 @@
                 x:Name="colOrderID"
                 FieldName="OrderID"
                 Header="ID"
-                Width="90"
-                MinWidth="60" />
+                Width="50"
+                MinWidth="40" />
             <dxg:GridTextColumn
                 x:Name="colProductName"
                 FieldName="ProductName"
@@ -31,19 +31,21 @@
                 x:Name="colUnitPrice"
                 FieldName="UnitPrice"
                 Header="Unit Price"
-                Width="80"
-                MinWidth="60" />
+                MinWidth="60"
+                Width="70"
+                />
             <dxg:GridTextColumn
                 x:Name="colQuantity"
                 FieldName="Quantity"
                 Header="Quantity"
-                Width="80"
-                MinWidth="60" />
+                MinWidth="60"
+                Width="70"
+                />
             <dxg:GridTextColumn
                 x:Name="colTotal"
                 FieldName="Total"
-                Width="80"
                 MinWidth="60"
+                Width="70"
                 UnboundExpression="[UnitPrice] * [Quantity]"
                 UnboundType="Decimal" />
         </dxg:GridControl.Columns>

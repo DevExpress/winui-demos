@@ -29,7 +29,7 @@ namespace FeatureDemo.View {
         public MainViewModel MainViewModel { get; } = MainViewModel.Instance;
         public DemoModulePage() {
             InitializeComponent();
-            CurrentWindowHelper.CurrentWindow.SizeChanged += OnCurrentWindowSizeChanged;
+            ((App)App.Current).MainWindow.SizeChanged += OnCurrentWindowSizeChanged;
             MainViewModel.PropertyChanged += OnMainViewModelPropertyChanged;
             LoadDemo();
         }
@@ -55,12 +55,12 @@ namespace FeatureDemo.View {
         CancellationTokenSource loadDemoCancellationTokenSource;
         async void LoadDemoAsync(CancellationToken cancellationToken) {
             await Task.Delay(TimeSpan.FromSeconds(0.25));
-            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.Low, () => { });
-            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.Low, () => {
+            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.High, () => { });
+            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.High, () => {
                 if(cancellationToken.IsCancellationRequested) return;
                 GC.GetTotalMemory(true);
             });
-            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.Low, () => {
+            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.High, () => {
                 if(cancellationToken.IsCancellationRequested) return;
                 if(MainViewModel.SelectedDemo == null)
                     return;
@@ -69,7 +69,7 @@ namespace FeatureDemo.View {
                 IsOptionsPaneOpen = DemoModuleView.HasOptions && !DemoModuleView.HideOptionsInitially && !DemoModuleView.ShowOptionsInOverlay;
                 UpdateSplitViewDisplayMode();
             });
-            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.Low, () => {
+            await DispatcherQueueHelper.RunAsync(DispatcherQueuePriority.High, () => {
                 if(cancellationToken.IsCancellationRequested) return;
                 demoContainer.Opacity = 1;
                 indicator.Visibility = Visibility.Collapsed;
@@ -85,12 +85,12 @@ namespace FeatureDemo.View {
         SplitViewDisplayMode GetSplitViewDisplayMode() {
             if(DemoModuleView == null || !DemoModuleView.HasOptions) return SplitViewDisplayMode.Inline;
             if(DemoModuleView.ShowOptionsInOverlay) return SplitViewDisplayMode.Overlay;
-            var width = CurrentWindowHelper.CurrentWindow.Bounds.Width;
+            var width = ((App)App.Current).MainWindow.Bounds.Width;
             return width - 44 - DemoModuleView.OptionsPaneWidth <= 546 ? SplitViewDisplayMode.Overlay : SplitViewDisplayMode.Inline;
         }
 
         void ToggleTheme() {
-            var element = CurrentWindowHelper.CurrentWindow.Content as FrameworkElement;
+            var element = ((App)App.Current).MainWindow.Content as FrameworkElement;
             element.RequestedTheme = element.ActualTheme == ElementTheme.Light ? ElementTheme.Dark : ElementTheme.Light;
         }
     }

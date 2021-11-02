@@ -7,6 +7,7 @@
     xmlns:local="using:GridDemo"
     xmlns:dxg="using:DevExpress.WinUI.Grid"
     xmlns:dxmvvm="using:DevExpress.WinUI.Core"
+    x:DefaultBindMode="OneWay"
     d:DesignHeight="300"
     d:DesignWidth="400"
     mc:Ignorable="d">
@@ -19,82 +20,81 @@
         <dxg:GridControl
             x:Name="gridControl"
             AutoGenerateColumns="False"
-            ItemsSource="{x:Bind ViewModel.Items}">
+            ItemsSource="{x:Bind ViewModel.Items, Mode=OneTime}">
             <dxg:GridControl.Columns>
                 <dxg:GridTextColumn
                     FieldName="Country"
                     MinWidth="200"
                     AllowFiltering="True" />
                 <dxg:GridTemplateColumn
-                    AllowFiltering="False"
                     x:Name="ActualSalesTarget"
+                    AllowFiltering="False"
                     Header="Actual sales / target"
                     Width="280"
                     FixedWidth="True">
                     <dxg:GridTemplateColumn.CellTemplate>
-                        <DataTemplate x:DataType="local:SalesData">
+                        <DataTemplate x:DataType="dxg:CellData">
                             <local:DemoSparkBarControl
-                                ActualValue="{x:Bind ActualSales}"
+                                ActualValue="{x:Bind ((local:SalesData)Row).ActualSales}"
                                 BarScale="100000"
                                 Fill="#FF33BAF7"
-                                TargetValue="{x:Bind TargetSales}" />
+                                TargetValue="{x:Bind ((local:SalesData)Row).TargetSales}" />
                         </DataTemplate>
                     </dxg:GridTemplateColumn.CellTemplate>
                 </dxg:GridTemplateColumn>
                 <dxg:GridTemplateColumn
-                    AllowFiltering="False"
                     x:Name="ActualSales"
                     FieldName="ActualSales"
+                    AllowFiltering="False"
                     MinWidth="130">
                     <dxg:GridTemplateColumn.CellTemplate>
-                        <DataTemplate x:DataType="local:SalesData">
-                            <TextBlock Text="{x:Bind ActualSales, Converter={StaticResource FormatStringConverter}}" />
+                        <DataTemplate x:DataType="dxg:CellData">
+                            <TextBlock Text="{x:Bind Value, Converter={StaticResource FormatStringConverter}}" />
                         </DataTemplate>
                     </dxg:GridTemplateColumn.CellTemplate>
                 </dxg:GridTemplateColumn>
                 <dxg:GridTemplateColumn
-                    AllowFiltering="False"
                     x:Name="TargetSales"
                     FieldName="TargetSales"
+                    AllowFiltering="False"
                     MinWidth="130">
                     <dxg:GridTemplateColumn.CellTemplate>
-                        <DataTemplate x:DataType="local:SalesData">
-                            <TextBlock Text="{x:Bind TargetSales, Converter={StaticResource FormatStringConverter}}" />
+                        <DataTemplate x:DataType="dxg:CellData">
+                            <TextBlock Text="{x:Bind Value, Converter={StaticResource FormatStringConverter}}" />
                         </DataTemplate>
                     </dxg:GridTemplateColumn.CellTemplate>
                 </dxg:GridTemplateColumn>
                 <dxg:GridTemplateColumn
-                    AllowFiltering="False"
                     x:Name="ActualSalesByMonthlies"
+                    AllowFiltering="False"
                     Header="Actual Sales By Month"
                     Width="230"
                     FixedWidth="True">
                     <dxg:GridTemplateColumn.CellTemplate>
-                        <DataTemplate x:DataType="local:SalesData">
+                        <DataTemplate x:DataType="dxg:CellData">
                             <local:DemoSparkColumnChart
                                 BarScale="50000"
                                 Fill="#FF82C408"
-                                Points="{x:Bind ActualSalesByMonthlies}" />
+                                Points="{x:Bind ((local:SalesData)Row).ActualSalesByMonthlies}" />
                         </DataTemplate>
                     </dxg:GridTemplateColumn.CellTemplate>
                 </dxg:GridTemplateColumn>
                 <dxg:GridTemplateColumn
-                    AllowFiltering="False"
                     x:Name="QuantityTarget"
+                    AllowFiltering="False"
                     Header="Quantity sold / Target sell"
                     Width="230"
                     FixedWidth="True">
                     <dxg:GridTemplateColumn.CellTemplate>
-                        <DataTemplate x:DataType="local:SalesData">
+                        <DataTemplate x:DataType="dxg:CellData">
                             <Grid>
                                 <local:DemoSparkColumnChart
                                     BarScale="50000"
                                     Fill="#FF82C408"
-                                    Points="{x:Bind QuantitySoldByMonthlies}"
-                                    Stroke="#FFFF9700" />
+                                    Points="{x:Bind ((local:SalesData)Row).QuantitySoldByMonthlies}" />
                                 <local:DemoSparkLineChart
                                     BarScale="50000"
-                                    Points="{x:Bind QuantityTargetSellByMonthlies}"
+                                    Points="{x:Bind ((local:SalesData)Row).QuantityTargetSellByMonthlies}"
                                     StrokeThickness="2" />
                             </Grid>
                         </DataTemplate>

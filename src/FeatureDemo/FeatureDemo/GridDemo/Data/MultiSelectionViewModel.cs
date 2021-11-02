@@ -2,9 +2,11 @@
 using DevExpress.WinUI.Grid;
 using FeatureDemo.Data;
 using System.Collections.Generic;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace GridDemo {
-    public class MultiSelectionViewModel : BindableBase {
+    [GenerateViewModel]
+    public partial class MultiSelectionViewModel {
         public MultiSelectionViewModel() {
             OnIsMultiSelectionEnabledChanged();
             MultiSelectModes = new List<MultiSelectMode>(new[] { MultiSelectMode.None, MultiSelectMode.Row, MultiSelectMode.RowExtended });
@@ -14,9 +16,12 @@ namespace GridDemo {
 
         public List<Invoices> Invoices { get; } = NWindData<Invoices>.DataSource;
         public List<MultiSelectMode> MultiSelectModes { get; private set; }
-        public MultiSelectMode SelectionMode { get => GetValue<MultiSelectMode>(); set => SetValue(value); }
-        public bool IsMultiSelectionEnabled { get => GetValue<bool>(); set => SetValue(value, OnIsMultiSelectionEnabledChanged); }
-        public string Caption { get => GetValue<string>(); private set => SetValue(value); }
+        [GenerateProperty]
+        MultiSelectMode _SelectionMode;
+        [GenerateProperty]
+        bool _IsMultiSelectionEnabled;
+        [GenerateProperty(SetterAccessModifier = AccessModifier.Private)]
+        string _Caption;
 
         void OnIsMultiSelectionEnabledChanged() {
             UpdateSelectionMode();

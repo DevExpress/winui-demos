@@ -209,11 +209,4 @@ namespace GridDemo {
             public override bool ShouldSerializeValue(object component) { return true; }
         }        
     }
-    public class SalesByYearDataColumnTemplateSelector : DataTemplateSelector {
-        protected override DataTemplate SelectTemplateCore(object item, DependencyObject container) {
-            ColumnGeneratorItemContext context = (ColumnGeneratorItemContext)item;
-            GridControl grid = (GridControl)container;
-            return (DataTemplate)grid.Resources[context.PropertyDescriptor.Name == "Date" ? "DateColumnTemplate" : "EmployeeColumnTemplate"];
-        }
-    }
 }

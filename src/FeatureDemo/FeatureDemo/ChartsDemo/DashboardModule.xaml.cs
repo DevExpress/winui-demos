@@ -53,7 +53,7 @@ namespace ChartsDemo {
                 if(selectedCountry == value)
                     return;
                 selectedCountry = value;
-                OnPropertyChanged("SelectedCountry");
+                OnPropertyChanged(nameof(SelectedCountry));
                 PopulationDynamic = selectedCountry?.PopulationDynamic;
                 if(selectedCountry == null) return;
 
@@ -103,7 +103,7 @@ namespace ChartsDemo {
             get { return shapes; }
             set {
                 if(value == null)
-                    throw new ArgumentNullException("value");
+                    throw new ArgumentNullException(nameof(value));
                 shapes = value;
             }
         }
@@ -111,7 +111,7 @@ namespace ChartsDemo {
             get { return brush; }
             set {
                 if(value == null)
-                    throw new ArgumentNullException("value");
+                    throw new ArgumentNullException(nameof(value));
                 brush = value;
             }
         }

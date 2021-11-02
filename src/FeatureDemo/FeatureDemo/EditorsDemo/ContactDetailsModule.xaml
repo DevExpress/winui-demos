@@ -13,10 +13,10 @@
     <common:DemoModuleView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Default">
+                <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="AvatarBorderBrush" Color="{ThemeResource SystemBaseLowColor}" />
                 </ResourceDictionary>
-                <ResourceDictionary x:Key="Dark">
+                <ResourceDictionary x:Key="Default">
                     <SolidColorBrush x:Key="AvatarBorderBrush" Color="#FF303030" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
@@ -28,6 +28,7 @@
     </common:DemoModuleView.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+            
         <StackPanel
             Width="658"
             HorizontalAlignment="Center"
@@ -98,8 +99,8 @@
                         IsTextPredictionEnabled="True"
                         Validate="OnValidate" />
                     <dxe:TextEdit
-                        Header="ZIP code"
                         Grid.Column="1"
+                        Header="ZIP code"
                         Margin="12,0,0,0"
                         EditValue="{x:Bind ViewModel.Employee.PostalCode, Mode=TwoWay}"
                         Validate="OnValidate">

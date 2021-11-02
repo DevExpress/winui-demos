@@ -2,26 +2,40 @@
 using DevExpress.WinUI.Grid;
 using FeatureDemo.Data;
 using System.Collections.Generic;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace GridDemo {
-    public partial class GridSearchPanelViewModel : BindableBase {
+    [GenerateViewModel]
+    public partial class GridSearchPanelViewModel {
         public IList<Invoices> Invoices { get; } = NWindData<Invoices>.DataSource;
 
-        public bool IsShowModeDefault { get => GetValue<bool>(); set => SetValue(value, UpdateShowMode); }
-        public bool IsShowModeAlways { get => GetValue<bool>(); set => SetValue(value, UpdateShowMode); }
-        public bool IsShowModeNever { get => GetValue<bool>(); set => SetValue(value, UpdateShowMode); }
+        [GenerateProperty(OnChangedMethod = nameof(UpdateShowMode))]
+        bool _IsShowModeDefault;
+        [GenerateProperty(OnChangedMethod = nameof(UpdateShowMode))]
+        bool _IsShowModeAlways;
+        [GenerateProperty(OnChangedMethod = nameof(UpdateShowMode))]
+        bool _IsShowModeNever;
 
-        public bool IsSearchModeAlways { get => GetValue<bool>(); set => SetValue(value, UpdateSearchMode); }
-        public bool IsSearchModeFindOnEnter { get => GetValue<bool>(); set => SetValue(value, UpdateSearchMode); }
-        
-        public bool IsSearchColumnAll { get => GetValue<bool>(); set => SetValue(value, UpdateSearchColumns); }
-        public bool IsSearchColumnCountry { get => GetValue<bool>(); set => SetValue(value, UpdateSearchColumns); }
-        public bool IsSearchColumnCity { get => GetValue<bool>(); set => SetValue(value, UpdateSearchColumns); }
-        public bool IsSearchColumnCountryCity { get => GetValue<bool>(); set => SetValue(value, UpdateSearchColumns); }
+        [GenerateProperty(OnChangedMethod = nameof(UpdateSearchMode))]
+        bool _IsSearchModeAlways;
+        [GenerateProperty(OnChangedMethod = nameof(UpdateSearchMode))]
+        bool _IsSearchModeFindOnEnter;
 
-        public ShowSearchPanelMode ShowMode { get => GetValue<ShowSearchPanelMode>(); set => SetValue(value); }
-        public FindMode SearchMode { get => GetValue<FindMode>(); set => SetValue(value); }
-        public string SearchColumns { get => GetValue<string>(); set => SetValue(value); }
+        [GenerateProperty(OnChangedMethod = nameof(UpdateSearchColumns))]
+        bool _IsSearchColumnAll;
+        [GenerateProperty(OnChangedMethod = nameof(UpdateSearchColumns))]
+        bool _IsSearchColumnCountry;
+        [GenerateProperty(OnChangedMethod = nameof(UpdateSearchColumns))]
+        bool _IsSearchColumnCity;
+        [GenerateProperty(OnChangedMethod = nameof(UpdateSearchColumns))]
+        bool _IsSearchColumnCountryCity;
+
+        [GenerateProperty]
+        ShowSearchPanelMode _ShowMode;
+        [GenerateProperty]
+        FindMode _SearchMode;
+        [GenerateProperty]
+        string _SearchColumns;
 
         public GridSearchPanelViewModel() {
             IsShowModeDefault = false;

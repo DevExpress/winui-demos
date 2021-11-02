@@ -12,6 +12,7 @@
     mc:Ignorable="d"
     x:DefaultBindMode="OneWay">
 
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
     <StackPanel
         Width="658"
         VerticalAlignment="Center"
@@ -53,8 +54,8 @@
                     EditValue="{x:Bind ViewModel.Employee.City, Mode=TwoWay}"
                     Validate="ValidateInfo" />
                 <dxe:TextEdit
-                    Header="ZIP code"
                     Grid.Column="1"
+                    Header="ZIP code"
                     Margin="12,0,0,0"
                     EditValue="{x:Bind ViewModel.Employee.PostalCode, Mode=TwoWay}"
                     Validate="ValidateCritical">
@@ -89,4 +90,5 @@
             </dxe:TextEdit>
         </StackPanel>
     </StackPanel>
+    </ScrollViewer>
 </common:DemoModuleView>

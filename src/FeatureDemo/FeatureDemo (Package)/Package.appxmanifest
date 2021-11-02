@@ -7,9 +7,9 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="DevExpress.WinUI.Demos"
+    Name="DevExpress.WinUI.Desktop.Demos.Devs"
     Publisher="CN=Developer Express Incorporated, O=Developer Express Incorporated, L=Glendale, S=California, C=US"
-    Version="21.2.2.7"
+    Version="21.2.0.0"
   />
 
   <Properties>
@@ -40,6 +40,14 @@
         <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Images\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="dx-winui-demo-dev">
+            <uap:DisplayName>DX WinUI Demo URI Scheme</uap:DisplayName>
+            <uap:Logo>Images\Square44x44Logo.png</uap:Logo>
+          </uap:Protocol>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
 

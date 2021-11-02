@@ -6,6 +6,7 @@ using System.Linq;
 using System.ComponentModel;
 using DevExpress.Data.Filtering;
 using DevExpress.WinUI.Grid;
+using DevExpress.WinUI.Grid.Internal;
 
 namespace GridDemo {
     public static class IssuesHelper {

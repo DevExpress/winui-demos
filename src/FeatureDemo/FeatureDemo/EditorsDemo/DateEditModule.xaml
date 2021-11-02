@@ -8,7 +8,7 @@
     xmlns:dxe="using:DevExpress.WinUI.Editors"
     mc:Ignorable="d">
 
-    <Grid RowDefinitions="0.85*, 0.15*">
+    <Grid RowDefinitions="0.85*, 0.15*"  Background="{ThemeResource PageContentBackground}">
         <StackPanel
             MaxWidth="658"
             VerticalAlignment="Center"

@@ -92,11 +92,11 @@ namespace GridDemo {
         }
     }
 
-    public class DemoSparkColumnChart  : DemoSparkLineChart {
+    public class DemoSparkColumnChart : DemoSparkLineChart {
         readonly double offset = 2.5;
         public DemoSparkColumnChart() {
             DefaultStyleKey = typeof(DemoSparkColumnChart);
-            StrokeThickness = 0;            
+            StrokeThickness = 0;
         }
         public TextBlock TextBlockFirstValue { get; set; }
         public TextBlock TextBlockLastValue { get; set; }
@@ -110,17 +110,17 @@ namespace GridDemo {
             PointCollection pointCollection = new PointCollection();
             for(int i = 0; i < points.Count; i++) {
                 pointCollection.Add(new Point((Step * i) + offset, MaxAvailableHeight));
-                pointCollection.Add(new Point((Step * i) + offset, MaxAvailableHeight - points[i]/BarScale));
-                pointCollection.Add(new Point((Step * i) + Step - offset, MaxAvailableHeight - points[i]/BarScale));
+                pointCollection.Add(new Point((Step * i) + offset, MaxAvailableHeight - points[i] / BarScale));
+                pointCollection.Add(new Point((Step * i) + Step - offset, MaxAvailableHeight - points[i] / BarScale));
                 pointCollection.Add(new Point((Step * i) + Step - offset, MaxAvailableHeight));
             }
             pointCollection.Add(new Point((Step * points.Count) + Step, MaxAvailableHeight));
             return pointCollection;
+
         }
 
         PointCollection CreateColumn(double point, int orderNumber) {
             PointCollection points = new PointCollection();
-            
             points.Add(new Point((Step * orderNumber) + offset, MaxAvailableHeight));
             points.Add(new Point((Step * orderNumber) + offset, point));
             points.Add(new Point((Step * orderNumber) + Step - offset, point));
@@ -136,7 +136,7 @@ namespace GridDemo {
             return availableSize.Width / (Points.Count);
         }
         protected internal override void CreateStartEndFigure(PathGeometry geom) {
-        }                
+        }
     }
 
     public class DemoSparkAreaChart : DemoSparkLineChart {
@@ -170,7 +170,7 @@ namespace GridDemo {
         double scaleFactor = Double.NaN;
         protected double ScaleFactor {
             get {
-                if(scaleFactor == Double.NaN)
+                if(double.IsNaN(scaleFactor))
                     UpdateSupportValues();
                 return scaleFactor;
             }
@@ -294,7 +294,7 @@ namespace GridDemo {
         }
         protected virtual void UpdateData() {
             PathFigure figure = new PathFigure() { StartPoint = GetStartPoint() };
-            figure.Segments = GenerateSegments(Points);
+            figure.Segments = GenerateSegments(Points);            
 
             PathGeometry geom = new PathGeometry();
             geom.Figures.Add(figure);

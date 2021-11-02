@@ -8,67 +8,70 @@ using DevExpress.WinUI.Core.Internal;
 using System.Windows.Input;
 using Microsoft.UI.Xaml;
 using System;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace FeatureDemo.ViewModel {
-    public class MainViewModel : NavigationViewModelBase {
+    [GenerateViewModel]
+    public partial class MainViewModel : NavigationViewModelBase {
+        const string UriScheme = "dx-winui-demo://";
         public static MainViewModel Instance { get; } = new MainViewModel();
+
         #region services
         public IDemoNavigationService NavigationService { get; set; }
         #endregion
-        #region commands
-        public ICommand ShowPrevCommand { get; }
-        public ICommand ShowNextCommand { get; }
-        public ICommand MenuItemClickCommand { get; }
-        #endregion
+
         #region properties
-        private bool isHamburgerMenuPaneMinimized = false;
         
-        private double windowTitleOpacity = 0;
-        public double WindowTitleOpacity {
-            get { return windowTitleOpacity; }
-            set { SetProperty(ref windowTitleOpacity, value, nameof(WindowTitleOpacity)); }
-        }
-        public bool PrevNextEnabled {
-            get => GetValue<bool>();
-            set => SetValue(value);
-        }
+        [GenerateProperty]
+        double windowTitleOpacity;
+
+        [GenerateProperty]
+        bool _PrevNextEnabled;
+
         public Action<DemoModuleGroupMenuItem> ExpandGroupCallback { get; set; }
         public List<ProductGroupViewModel> ProductGroups { get; }
         public List<MenuItemViewModelBase> MenuItems { get; }
-        public MenuItemViewModelBase SelectedMenuItem {
-            get => GetValue<MenuItemViewModelBase>();
-            set => SetValue(value, OnSelectedMenuItemChanged);
-        }
-        public DemoModuleViewModel SelectedDemo {
-            get => GetValue<DemoModuleViewModel>();
-            set => SetValue(value);
-        }
-        public DemoModuleGroupMenuItem SelectedDemoModuleGroupMenuItem {
-            get => GetValue<DemoModuleGroupMenuItem>();
-            set => SetValue(value);
-        }
-        
-        
-        
-        
-        public bool IsHamburgerMenuMinimized {
-            get { return isHamburgerMenuPaneMinimized; }
-            set { SetProperty(ref isHamburgerMenuPaneMinimized, value, nameof(IsHamburgerMenuMinimized), OnIsHamburgerMenuMinimizedChanged); }
-        }
-        public List<DemoModuleViewModel> NavigationGroup {
-            get => GetValue<List<DemoModuleViewModel>>();
-            private set => SetValue(value);
-        }
+
+        [GenerateProperty]
+        MenuItemViewModelBase _SelectedMenuItem;
+
+        [GenerateProperty]
+        DemoModuleViewModel _SelectedDemo;
+
+        [GenerateProperty]
+        DemoModuleGroupMenuItem _SelectedDemoModuleGroupMenuItem;
+
+        [GenerateProperty]
+        bool isHamburgerMenuPaneMinimized = false;
+
+        [GenerateProperty(SetterAccessModifier = DevExpress.Mvvm.CodeGenerators.AccessModifier.Private)]
+        List<DemoModuleViewModel> _NavigationGroup;
+
         #endregion
+
         MainViewModel() {
             MenuItems = new List<MenuItemViewModelBase>();
             ProductGroups = new List<ProductGroupViewModel>();
-            ShowNextCommand = new DelegateCommand<object>(ShowNextCommandExecute);
-            ShowPrevCommand = new DelegateCommand<object>(ShowPrevCommandExecute);
-            MenuItemClickCommand = new DelegateCommand<object>(MenuItemClickCommandExecute);
             InitializeDemoModulesAndHamburgerMenuItems();
             InitializeProductGroups();
             SelectedMenuItem = MenuItems[0];            
+        }
+        public void Init(string args) {
+            if(TryInitFromUriScheme(args))
+                return;
+            NavigationService.Navigate("GetStartedPage", null);
+        }
+        bool TryInitFromUriScheme(string args) {
+            if(!args.StartsWith(UriScheme)) return false;
+            string[] pars = args.Remove(0, UriScheme.Length).Replace("%20"," ").Split('/');
+            if(pars.Length != 3) return false;
+            if(pars[0] != "demos") return false;
+            DemoModuleGroupMenuItem group = MenuItems.OfType<DemoModuleGroupMenuItem>().FirstOrDefault(x => x.Title.ToLower() == pars[1].ToLower());
+            if(group == null) return false;
+            DemoModuleMenuItem item = group.Items.FirstOrDefault(x => x.Title.ToLower() == pars[2].ToLower());
+            if(item == null) return false;
+            MenuItemClick(item);
+            return true;
         }
         void InitializeDemoModulesAndHamburgerMenuItems() {            
             MenuItems.Add(new GetStartedMenuItem(this,
@@ -92,16 +95,18 @@ namespace FeatureDemo.ViewModel {
         }
         void UpdateWindowTitleOpacity() => WindowTitleOpacity = SelectedMenuItem is GetStartedMenuItem ? 0 : 1;
         #region command handlers
-        void ShowNextCommandExecute(object parameter) {
+        [GenerateCommand]
+        void ShowNext(object parameter) {
             SelectedDemoModuleGroupMenuItem?.SetNextSelectedIndex();
             SelectedMenuItem = SelectedDemoModuleGroupMenuItem.SelectedItem;
         }
-        void ShowPrevCommandExecute(object parameter) {
+        [GenerateCommand]
+        void ShowPrev(object parameter) {
             SelectedDemoModuleGroupMenuItem?.SetPrevSelectedIndex();
             SelectedMenuItem = SelectedDemoModuleGroupMenuItem.SelectedItem;
         }
-            
-        void MenuItemClickCommandExecute(object parameter) {
+        [GenerateCommand]
+        void MenuItemClick(object parameter) {
             if(parameter == SelectedMenuItem || parameter is DemoModuleGroupMenuItem) return;
             if(parameter is GetStartedMenuItem) {
                 SelectedMenuItem = (GetStartedMenuItem)parameter;

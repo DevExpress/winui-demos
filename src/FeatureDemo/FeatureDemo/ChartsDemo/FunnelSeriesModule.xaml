@@ -58,13 +58,14 @@
     </Grid>
     <common:DemoModuleView.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="Points Distance" />
+            <common:OptionItem Header="Points Distance">
             <Slider
                 x:Name="pointDistance"
                 VerticalAlignment="Top"
                 Maximum="15"
                 Minimum="0"
                 Value="5" />
+            </common:OptionItem>
         </common:OptionsPanel>
     </common:DemoModuleView.Options>
 </common:DemoModuleView>

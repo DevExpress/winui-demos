@@ -19,7 +19,6 @@
     </local:GridDemoUserControl.Resources>
     <dxg:GridControl
         x:Name="gridControl"
-        AllowHorizontalScrollingVirtualization="True"
         AutoWidth="False"
         ItemsSource="{x:Bind Data.TotalSales}"
         NavigationStyle="Cell"
@@ -29,16 +28,16 @@
 
     <local:GridDemoUserControl.Options>
         <common:OptionsPanel>
-            <common:OptionsHeader Text="Selection Mode"/>
+            <common:OptionsHeader Text="Selection Mode" />
             <RadioButton
-                    Checked="RbCellMode_Checked"
-                    Content="Cell"
-                    GroupName="SelectionModes"
-                    IsChecked="True" />
+                Checked="RbCellMode_Checked"
+                Content="Cell"
+                GroupName="SelectionModes"
+                IsChecked="True" />
             <RadioButton
-                    Checked="RbCellExtendedMode_Checked"
-                    Content="Cell Extended"
-                    GroupName="SelectionModes" />
+                Checked="RbCellExtendedMode_Checked"
+                Content="Cell Extended"
+                GroupName="SelectionModes" />
         </common:OptionsPanel>
     </local:GridDemoUserControl.Options>
 </local:GridDemoUserControl>

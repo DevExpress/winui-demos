@@ -7,6 +7,9 @@ using DevExpress.WinUI.Editors;
 using FeatureDemo.Common;
 using FeatureDemo.Data;
 using Microsoft.UI.Xaml.Controls;
+using DevExpress.Mvvm.CodeGenerators;
+using FeatureDemo;
+using Microsoft.UI.Xaml;
 
 namespace EditorsDemo {
     public sealed partial class ContactDetailsModule : DemoModuleView {
@@ -27,7 +30,8 @@ namespace EditorsDemo {
         }
     }
 
-    public class ContactDetailsViewModel : ViewModelBase {
+    [GenerateViewModel]
+    public partial class ContactDetailsViewModel {
 
         public ContactDetailsViewModel() {
             var employee = new DataStorage().Employees.First();
@@ -52,24 +56,25 @@ namespace EditorsDemo {
                 ImageData = employee.ImageData,
             };
             Employee.LastName = null;
-            CallPhoneCommand = new DelegateCommand(() => ShowDialog("The CallPhoneCommand executed!"));
-            SendEmailCommand = new DelegateCommand(() => ShowDialog("The SendEmailCommand executed!"));
-            LoadPhotoCommand = new DelegateCommand(() => ShowDialog("The LoadPhotoCommand executed!"));
         }
 
         public Employee Employee { get; }
-        public ICommand CallPhoneCommand { get; }
-        public ICommand SendEmailCommand { get; }
-        public ICommand LoadPhotoCommand { get; }
+        [GenerateCommand]
+        void CallPhone() => ShowDialog("The CallPhoneCommand executed!");
+        [GenerateCommand]
+        void SendEmail() => ShowDialog("The SendEmailCommand executed!");
+        [GenerateCommand]
+        void LoadPhoto() => ShowDialog("The LoadPhotoCommand executed!");
 
         async void ShowDialog(string content) {
-            var xamlRoot = CurrentWindowHelper.CurrentWindow?.Content?.XamlRoot;
+            var xamlRoot = ((App)App.Current).MainWindow.Content?.XamlRoot;
             if (xamlRoot != null) {
                 var dlg = new ContentDialog() {
                     Title = "Result Dialog",
                     Content = content,
                     CloseButtonText = "OK",
-                    XamlRoot = xamlRoot
+                    XamlRoot = xamlRoot,
+                    RequestedTheme = ((FrameworkElement)xamlRoot.Content).RequestedTheme
                 };
                 await dlg.ShowAsync().AsTask();
             }

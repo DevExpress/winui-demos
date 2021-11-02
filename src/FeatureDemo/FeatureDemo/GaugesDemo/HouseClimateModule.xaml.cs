@@ -3,6 +3,7 @@ using DevExpress.WinUI.Gauges;
 using FeatureDemo.Common;
 using Microsoft.UI.Xaml;
 using System;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace GaugesDemo {
     public sealed partial class HouseClimateModule : DemoModuleView {
@@ -27,14 +28,22 @@ namespace GaugesDemo {
         }
     }
 
-    public class HouseClimateViewModel : BindableBase {
-        public double OuterTemp { get => GetValue<double>(); set => SetValue(value); }
-        public double PowerUsage { get => GetValue<double>(); set => SetValue(value); }
-        public double KWHUsed { get => GetValue<double>(); set => SetValue(value); }
-        public double GasUsage { get => GetValue<double>(); set => SetValue(value); }
-        public double CBMUsed { get => GetValue<double>(); set => SetValue(value); }
-        public InnerState InnerStateFloor1 { get => GetValue<InnerState>(); set => SetValue(value); }
-        public InnerState InnerStateFloor2 { get => GetValue<InnerState>(); set => SetValue(value); }
+    [GenerateViewModel]
+    public partial class HouseClimateViewModel {
+        [GenerateProperty]
+        double _OuterTemp;
+        [GenerateProperty]
+        double _PowerUsage;
+        [GenerateProperty]
+        double _KWHUsed;
+        [GenerateProperty]
+        double _GasUsage;
+        [GenerateProperty]
+        double _CBMUsed;
+        [GenerateProperty]
+        InnerState _InnerStateFloor1;
+        [GenerateProperty]
+        InnerState _InnerStateFloor2;
 
         const double tempDelta = 3.0;
         const double updateInterval = 1.0;
@@ -82,19 +91,27 @@ namespace GaugesDemo {
             CBMUsed += (updateInterval * GasUsage / 3600.0);
         }
     }
-    public class InnerState : BindableBase {
+
+    [GenerateViewModel]
+    public partial class InnerState {
         const double heaterPower = 3.0;
         const double heaterGasUsage = 0.6;
         const double coolerPower = 7.0;
         const double staticPower = 1.0;
         const double staticGasUsage = 0.0;
 
-        public double InnerTemp { get => GetValue<double>(); set => SetValue(value); }
-        public double DesiredTemp { get => GetValue<double>(); set => SetValue(value); }
-        public bool IndicatorVisible { get => GetValue<bool>(); set => SetValue(value); }
-        public string IndicatorText { get => GetValue<string>(); set => SetValue(value); }
-        public double GasUsage { get => GetValue<double>(); set => SetValue(value); }
-        public double PowerUsage { get => GetValue<double>(); set => SetValue(value); }
+        [GenerateProperty]
+        double _InnerTemp;
+        [GenerateProperty]
+        double _DesiredTemp;
+        [GenerateProperty]
+        bool _IndicatorVisible;
+        [GenerateProperty]
+        string _IndicatorText;
+        [GenerateProperty]
+        double _GasUsage;
+        [GenerateProperty]
+        double _PowerUsage;
 
         bool tempReady = false;
         public InnerState() {

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace GridDemo {
     public enum TaskStatus { NotStarted, InProgress, Completed, WaitingOnSomeoneElse, Deferred }
@@ -185,7 +186,9 @@ namespace GridDemo {
         public int Id { get; }
         public string FullName { get; }
     }
-    public sealed class EmployeeTask : BindableBase {
+
+    [GenerateViewModel]
+    public partial class EmployeeTask {
         public EmployeeTask(string subject, TaskCategory category)
             : this(subject, category, DateTime.Now) {
         }
@@ -195,71 +198,36 @@ namespace GridDemo {
             CreatedDate = date;
         }
 
+        [GenerateProperty]
         TaskPriority priority = TaskPriority.Medium;
+        [GenerateProperty]
         int percentComplete;
+        [GenerateProperty]
         DateTime createdDate;
+        [GenerateProperty]
         DateTime? startDate;
+        [GenerateProperty]
         DateTime? dueDate;
+        [GenerateProperty]
         DateTime? finishDate;
+        [GenerateProperty]
         string subject;
+        [GenerateProperty]
         TaskCategory category;
+        [GenerateProperty]
         TaskStatus status;
+        [GenerateProperty]
         int assignTo;
+        [GenerateProperty]
         bool complete;
+        [GenerateProperty]
         bool overdue;
+        [GenerateProperty]
         FlagStatus flagStatus;
 
-        public TaskPriority Priority {
-            get => priority;
-            set => SetProperty(ref priority, value, nameof(Priority)); 
-        }
-        public int PercentComplete {
-            get => percentComplete;
-            set => SetProperty(ref percentComplete, value, nameof(PercentComplete), OnPercentCompleteChanged);
-        }
-        public DateTime CreatedDate {
-            get => createdDate; 
-            set => SetProperty(ref createdDate, value, nameof(CreatedDate));
-        }
-        public DateTime? StartDate {
-            get => startDate;
-            set => SetProperty(ref startDate, value, nameof(StartDate), OnStartDateChanged);
-        }
-        public DateTime? DueDate {
-            get => dueDate;
-            set => SetProperty(ref dueDate, value, nameof(DueDate), () => { UpdateOverdue(); UpdateFlagStatus(); });
-        }
-        public DateTime? FinishDate {
-            get => finishDate;
-            set => SetProperty(ref finishDate, value, nameof(FinishDate), OnFinishDateChanged);
-        }
-        public string Subject {
-            get => subject;
-            set => SetProperty(ref subject, value, nameof(Subject));
-        }
-        public TaskCategory Category {
-            get => category;
-            set => SetProperty(ref category, value, nameof(Category));
-        }
-        public TaskStatus Status {
-            get => status;
-            set => SetProperty(ref status, value, nameof(Status), OnStatusChanged);
-        }
-        public int AssignTo {
-            get => assignTo;
-            set => SetProperty(ref assignTo, value, nameof(AssignTo));
-        }
-        public bool Complete {
-            get => complete;
-            set => SetProperty(ref complete, value, nameof(Complete), OnCompleteChanged);
-        }
-        public bool Overdue {
-            get => overdue;
-            private set => SetProperty(ref overdue, value, nameof(Overdue));
-        }
-        public FlagStatus FlagStatus {
-            get => flagStatus;
-            private set => SetProperty(ref flagStatus, value, nameof(FlagStatus));
+        void OnDueDateChanged() {
+            UpdateOverdue(); 
+            UpdateFlagStatus();
         }
         internal TimeSpan TimeDiff {
             get { return DateTime.Now - CreatedDate; }

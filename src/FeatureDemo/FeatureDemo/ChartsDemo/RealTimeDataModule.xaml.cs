@@ -1,5 +1,6 @@
 ﻿using DevExpress.WinUI.Charts;
 using DevExpress.WinUI.Core.Internal;
+using FeatureDemo;
 using FeatureDemo.Common;
 using Microsoft.UI.Xaml;
 using System;
@@ -30,7 +31,7 @@ namespace ChartsDemo {
             generator.UpdateDataSource();
         }
         void OnLoaded(object sender, RoutedEventArgs e) {
-            generator.Start(CurrentWindowHelper.CurrentWindow);
+            generator.Start(((App)App.Current).MainWindow);
             timer.Start();
         }
         void OnUnloaded(object sender, RoutedEventArgs e) {

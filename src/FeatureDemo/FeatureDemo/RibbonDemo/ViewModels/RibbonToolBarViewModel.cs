@@ -8,22 +8,17 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Storage;
 using Designer = DevExpress.WinUI.Core.Internal.UIElementExtensions;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace RibbonDemo {
-    public class RibbonToolBarViewModel : ViewModelBase {
-
+    [GenerateViewModel]
+    public partial class RibbonToolBarViewModel {
         public RibbonToolBarViewModel() {
             FontViewModel = new FontStyleGroupViewModel(this);
             ParagraphViewModel = new ParagraphStyleGroupViewModel(this);
             InsertViewModel = new InsertGroupViewModel(this);
             Fonts = PopulateFonts();
-            CopyCommand = new DelegateCommand(OnCopy);
-            PasteCommand = new DelegateCommand(OnPaste);
-            CutCommand = new DelegateCommand(OnCut);
-            UndoCommand = new DelegateCommand(OnUndo, CanUndo);
-            RedoCommand = new DelegateCommand(OnRedo, CanRedo);
             IsTextEditingAllowed = true;
-            RibbonViewMode = RibbonViewMode.Normal;
             DocumentColors = new ColorPalette() { Title = "Document Colors" };
             ReadContentFromFile("ms-appx:///RibbonDemo/Templates/Inital.rtf", "Alice's Adventures in Wonderland");
         }
@@ -32,56 +27,42 @@ namespace RibbonDemo {
         public ParagraphStyleGroupViewModel ParagraphViewModel { get; }
         public InsertGroupViewModel InsertViewModel { get; }
         public List<string> Fonts { get; }
-        public bool IsTextEditingAllowed {
-            get => GetValue<bool>();
-            set => SetValue(value);
-        }
-        public RibbonViewMode RibbonViewMode {
-            get => GetValue<RibbonViewMode>();
-            set => SetValue(value);
-        }
-        public bool IsBackstageOpen {
-            get => GetValue<bool>();
-            set => SetValue(value);
-        }
-        public string CurrentDocumentText {
-            get => GetValue<string>();
-            set => SetValue(value, () => OnCurrentDocumentTextChanged());
-        }
-        public string DefaultContent {
-            get => GetValue<string>();
-            set => SetValue(value);
-        }
-        public string DocumentName {
-            get => GetValue<string>();
-            set => SetValue(value);
-        }
-        public ParagraphAlignment CurrentSelectionAlignment{
-            get => GetValue<ParagraphAlignment>();
-            set => SetValue(value);
-        }
-        public bool AlignLeft {
-            get => GetValue<bool>();
-            set => SetValue(value, () => CurrentSelectionAlignment = value ? ParagraphAlignment.Left : CurrentSelectionAlignment);
-        }
-        public bool AlignRight {
-            get => GetValue<bool>();
-            set => SetValue(value, () => CurrentSelectionAlignment = value ? ParagraphAlignment.Right : CurrentSelectionAlignment);
-        }
-        public bool AlignCenter {
-            get => GetValue<bool>();
-            set => SetValue(value, () => CurrentSelectionAlignment = value ? ParagraphAlignment.Center : CurrentSelectionAlignment);
-        }
-        public bool AlignJustify {
-            get => GetValue<bool>();
-            set => SetValue(value, () => CurrentSelectionAlignment = value ? ParagraphAlignment.Justify : CurrentSelectionAlignment);
-        }
+
+        [GenerateProperty]
+        bool _IsTextEditingAllowed;
+
+        [GenerateProperty]
+        bool _IsBackstageOpen;
+
+        [GenerateProperty]
+        string _CurrentDocumentText;
+
+        [GenerateProperty]
+        string _DefaultContent;
+
+        [GenerateProperty]
+        string _DocumentName;
+
+        [GenerateProperty]
+        ParagraphAlignment _CurrentSelectionAlignment;
+
+        [GenerateProperty]
+        bool _AlignLeft;
+        void OnAlignLeftChanged() => CurrentSelectionAlignment = (AlignLeft ? ParagraphAlignment.Left : CurrentSelectionAlignment);
+
+        [GenerateProperty]
+        bool _AlignRight;
+        void OnAlignRightChanged() => CurrentSelectionAlignment = (AlignRight ? ParagraphAlignment.Right : CurrentSelectionAlignment);
+
+        [GenerateProperty]
+        bool _AlignCenter;
+        void OnAlignCenterChanged() => CurrentSelectionAlignment = (AlignCenter ? ParagraphAlignment.Center : CurrentSelectionAlignment);
+
+        [GenerateProperty]
+        bool _AlignJustify;
+        void OnAlignJustifyChanged() => CurrentSelectionAlignment = (AlignJustify ? ParagraphAlignment.Center : CurrentSelectionAlignment);
+
         public ColorPalette DocumentColors { get; }
-        public ICommand CopyCommand { get; }
-        public ICommand PasteCommand { get; }
-        public ICommand CutCommand { get; }
-        public ICommand UndoCommand { get; }
-        public ICommand RedoCommand { get; }
         public object Service { get; set; }
         protected IRichEditorCommonActionsService RichEditorService => Service as IRichEditorCommonActionsService;
         protected IRichEditorContentService RichEditorContentService => Service as IRichEditorContentService;
@@ -103,8 +84,8 @@ namespace RibbonDemo {
 
         }
         protected virtual void OnCurrentDocumentTextChanged() {
-            (UndoCommand as DelegateCommand).RaiseCanExecuteChanged();
-            (RedoCommand as DelegateCommand).RaiseCanExecuteChanged();
+            UndoCommand.RaiseCanExecuteChanged();
+            RedoCommand.RaiseCanExecuteChanged();
         }
         async void ReadContentFromFile(string filePath, string fileName) {
             if (Designer.IsInDesignMode())
@@ -120,20 +101,29 @@ namespace RibbonDemo {
             await Task.Yield();
         }
 
-        bool CanRedo() => (RichEditorService != null) ? RichEditorService.CanRedo() : false;
-        bool CanUndo() => (RichEditorService != null) ? RichEditorService.CanUndo() : false;
-        void OnRedo() {
+        [GenerateCommand]
+        void Redo() {
             RichEditorService.Redo();
-            (RedoCommand as DelegateCommand<object>).Do(x => x.RaiseCanExecuteChanged());
-            (UndoCommand as DelegateCommand<object>).Do(x => x.RaiseCanExecuteChanged());
+            RedoCommand.RaiseCanExecuteChanged();
+            UndoCommand.RaiseCanExecuteChanged();
         }
-        void OnUndo() {
+        bool CanRedo() => (RichEditorService != null) ? RichEditorService.CanRedo() : false;
+
+        [GenerateCommand]
+        void Undo() {
             RichEditorService.Undo();
-            (RedoCommand as DelegateCommand<object>).Do(x => x.RaiseCanExecuteChanged());
+            RedoCommand.RaiseCanExecuteChanged();
             (UndoCommand as DelegateCommand<object>).Do(x => x.RaiseCanExecuteChanged());
         }
-        void OnCut() { RichEditorService.Cut(); }
-        void OnPaste() { RichEditorService.Paste(); }
-        void OnCopy() { RichEditorService.Copy(); }
+        bool CanUndo() => (RichEditorService != null) ? RichEditorService.CanUndo() : false;
+
+        [GenerateCommand]
+        void Cut() => RichEditorService.Cut();
+
+        [GenerateCommand]
+        void Paste() => RichEditorService.Paste();
+
+        [GenerateCommand]
+        void Copy() => RichEditorService.Copy();
     }
 }

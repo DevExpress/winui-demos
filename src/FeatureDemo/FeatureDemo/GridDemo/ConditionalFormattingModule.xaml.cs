@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using DevExpress.Mvvm.CodeGenerators;
 
 namespace GridDemo {
     public sealed partial class ConditionalFormattingModule : GridDemoUserControl {
@@ -19,11 +20,15 @@ namespace GridDemo {
         }
     }
 
-    public class ConditionalFormattingViewModel : BindableBase {
+    [GenerateViewModel]
+    public partial class ConditionalFormattingViewModel {
         public ObservableCollection<SaleOverviewData> Data { get; }
         public ObservableCollection<string> FormatNames { get; }
-        public ObservableCollection<FormatConditionInfo> Infos { get { return GetValue<ObservableCollection<FormatConditionInfo>>(); } set { SetValue(value); } }
-        public FormatConditionInfo SelectedInfo { get { return GetValue<FormatConditionInfo>(); } set { SetValue(value); } }
+
+        [GenerateProperty]
+        ObservableCollection<FormatConditionInfo> _Infos;
+        [GenerateProperty]
+        FormatConditionInfo _SelectedInfo;
 
         public ConditionalFormattingViewModel() {
             Data = new ObservableCollection<SaleOverviewData>(SaleOverviewDataGenerator.Sales);
@@ -47,14 +52,29 @@ namespace GridDemo {
             SelectedInfo = Infos.FirstOrDefault();
         }
     }
-    public class FormatConditionInfo : BindableBase {
+
+    [GenerateViewModel]
+    public partial class FormatConditionInfo {
         public string Column { get; }
         public string Rule { get; }
 
-        public Format Format { get { return GetValue<Format>(); } private set { SetValue(value); } }
-        public bool ApplyToRow { get { return GetValue<bool>(); } set { SetValue(value, () => formatCondition.ApplyToRow = ApplyToRow); } }
-        public bool IsEnabled { get { return GetValue<bool>(); } set { SetValue(value, () => formatCondition.IsEnabled = IsEnabled); } }
-        public string FormatName { get { return GetValue<string>(); } set { SetValue(value, () => { formatCondition.PredefinedFormatName = FormatName; Format = formatCondition.ActualFormat as Format; }); } }
+        [GenerateProperty(SetterAccessModifier = AccessModifier.Private)]
+        Format _Format;
+
+        [GenerateProperty]
+        bool _ApplyToRow;
+        void OnApplyToRowChanged() => formatCondition.ApplyToRow = ApplyToRow;
+
+        [GenerateProperty]
+        bool _IsEnabled;
+        void OnIsEnabledChanged() => formatCondition.IsEnabled = IsEnabled;
+
+        [GenerateProperty]
+        string _FormatName;
+        void OnFormatNameChanged() { 
+            formatCondition.PredefinedFormatName = FormatName; 
+            Format = formatCondition.ActualFormat as Format; 
+        }
 
         FormatConditionBase formatCondition;
         public FormatConditionInfo(FormatConditionBase formatCondition) {

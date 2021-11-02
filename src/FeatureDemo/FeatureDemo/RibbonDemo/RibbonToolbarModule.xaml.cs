@@ -1,4 +1,5 @@
 ﻿using DevExpress.WinUI.Core.Internal;
+using FeatureDemo;
 using FeatureDemo.Common;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
@@ -15,7 +16,7 @@ namespace RibbonDemo {
         public RibbonToolBarViewModel ViewModel { get; }
 
         void OnUnloaded(object sender, RoutedEventArgs e) {
-            foreach(var popup in VisualTreeHelper.GetOpenPopups(CurrentWindowHelper.CurrentWindow)) 
+            foreach(var popup in VisualTreeHelper.GetOpenPopups(((App)App.Current).MainWindow)) 
                 popup.IsOpen = false;
             try {
                 InputPane.GetForCurrentView().TryHide();

@@ -57,7 +57,7 @@ namespace EditorsDemo {
         }
     }
 
-    public class InputValidationViewModel : ViewModelBase {
+    public class InputValidationViewModel {
         public InputValidationViewModel() {
             var employee = new DataStorage().Employees.ElementAt(1);
             Employee = new Employee() {

@@ -66,7 +66,7 @@ namespace FeatureDemo.Common {
 
                 WriteableBitmap bitmap = new WriteableBitmap(renderTargetBitmap.PixelWidth, renderTargetBitmap.PixelHeight);
                 using(Stream stream = bitmap.PixelBuffer.AsStream()) {
-                    await stream.WriteAsync(pixels, 0, pixels.Length);
+                    await stream.WriteAsync(pixels.AsMemory(0, pixels.Length));
                 }
 
                 return new Image() { Source = bitmap };
