@@ -4,7 +4,7 @@ This repository contains WinUI 3 demos that show how to use [DevExpress WinUI co
 
 **Tip:** You can also download the [DevExpress WinUI Demos App](https://demos.devexpress.com/winui/). This app allows you to execute all WinUI 3 demos without compiling the code.
 
-![](/images/winui-demos.png)
+![](/images/demos-winui.png)
 
 ## System Requirements
 
