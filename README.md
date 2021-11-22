@@ -17,7 +17,7 @@ For more information, refer to [Windows App SDK (formerly known as Project Reuni
 
 ## Run Demos
 
-**Important Note:** DevExpress Reports is not included in the DevExpress WinUI component distribution. To build this demo application, you must own an active DevExpress Subscription (Reporting, DXperience, or Universal). For pricing information, please refer to the [DevExpress Products matrix](https://www.devexpress.com/subscriptions/reporting/#Pricing).
+***Important Note: DevExpress Reports is not included in the DevExpress WinUI component distribution. To build this demo application, you must own an active DevExpress Subscription (Reporting, DXperience, or Universal). For pricing information, please refer to the [DevExpress Products matrix](https://www.devexpress.com/subscriptions/reporting/#Pricing).***
 
 1. Open the demo project.
 
