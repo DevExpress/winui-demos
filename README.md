@@ -11,9 +11,9 @@ This repository contains WinUI 3 demos that show how to use [DevExpress WinUI co
 * Windows 10, version 1809 (build 17763), or newer installed
 * Visual Studio 2019 version 16.9 or higher, or Visual Studio 2019 Preview version 16.10 or higher
 * .NET Desktop development workload for Visual Studio
-* Windows App SDK Version 1.0 Preview 3 (1.0.0-preview3) Visual Studio extension installed
+* Windows App SDK Version 1.0 Visual Studio extension installed
 
-For more information, refer to [Windows App SDK (formerly known as Project Reunion)](https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/).
+For more information, refer to [Windows App SDK (formerly known as Project Reunion)](https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/download/).
 
 ## Run Demos
 
