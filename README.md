@@ -13,7 +13,7 @@ This repository contains WinUI 3 demos that show how to use [DevExpress WinUI co
 * .NET Desktop development workload for Visual Studio
 * Windows App SDK Version 1.0 Visual Studio extension installed
 
-For more information, refer to [Windows App SDK (formerly known as Project Reunion)](https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/download/).
+For more information, refer to [Windows App SDK (formerly known as Project Reunion)](https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads/).
 
 ## Run Demos
 
