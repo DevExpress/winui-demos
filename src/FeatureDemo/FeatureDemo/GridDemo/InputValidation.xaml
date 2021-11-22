@@ -17,7 +17,7 @@
         ItemsSource="{x:Bind ViewModel.Invoices}"
         NavigationStyle="Cell"
         SelectionMode="None"
-        ShowIndicator="True"
+        ShowRowIndicator="True"
         ValidateRow="ValidateDemoRow">
         <dxg:GridControl.Columns>
             <dxg:GridTextColumn

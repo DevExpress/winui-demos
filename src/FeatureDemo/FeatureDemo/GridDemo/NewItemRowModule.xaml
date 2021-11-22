@@ -141,7 +141,7 @@
         ItemsSource="{x:Bind Data.Items}"
         NavigationStyle="Cell"
         NewItemRowPosition="{x:Bind GetNewItemRowPosition(top.IsChecked.Value), Mode=OneWay}"
-        ShowIndicator="True">
+        ShowRowIndicator="True">
         <dxg:GridControl.Columns>
             <dxg:GridTextColumn
                 FieldName="Name"
