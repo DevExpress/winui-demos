@@ -1,5 +1,14 @@
 # DevExpress WinUI 3 Demos
 
+**_NOTE: This repository is outdated._**
+
+**_Refer to the https://demos.devexpress.com/winui/ to install a ready-to-use WinUI demo application._**
+
+**_To get the source code of the latest WinUI Demos, follow the steps below:_**
+**_1. Download and run the Unified Component Installer._**
+**_2. Select the WinUI Controls to install the latest version._**
+**_3. When the DevExpress Controls are installed, navigate to the C:\Users\Public\Documents\DevExpress Demos 22.1\Components\WinUI folder to see the WinUI Demos source code._**
+
 This repository contains WinUI 3 demos that show how to use [DevExpress WinUI components](https://www.devexpress.com/winui/) and tools, including the Data Grid, Reporting, Scheduler, Charting, and Data Editors.
 
 **Tip:** You can also download the [DevExpress WinUI Demos App](https://demos.devexpress.com/winui/). This app allows you to execute all WinUI 3 demos without compiling the code.
